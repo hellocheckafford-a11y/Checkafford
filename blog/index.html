@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Finance Blog — Free Guides & Calculators | CheckAfford</title>
+<meta name="description" content="Free personal finance guides on car loans, mortgages, debt payoff, BNPL, and more. Learn how to calculate your debt-to-income ratio and make smarter money decisions.">
+<link rel="canonical" href="https://checkafford.com/blog">
+<meta property="og:title" content="Personal Finance Blog | CheckAfford">
+<meta property="og:description" content="Free guides on car loans, mortgages, debt payoff, and more. Make smarter money decisions in minutes.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Blog","name":"CheckAfford Blog","url":"https://checkafford.com/blog","description":"Free personal finance guides and calculators","publisher":{"@type":"Organization","name":"CheckAfford","url":"https://checkafford.com"}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8f8fa8;--accent:#00e5a0;--accent-dim:rgba(0,229,160,0.12);--radius:16px;--font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border);}
+.logo{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-link{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;}
+.nav-link:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#000;padding:8px 20px;border-radius:100px;font-size:13px;font-weight:700;text-decoration:none;font-family:var(--font-display);}
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:60px 24px 100px;}
+.page-tag{display:inline-block;background:var(--accent-dim);color:var(--accent);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:20px;}
+.page-title{font-family:var(--font-display);font-size:clamp(28px,5vw,48px);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:16px;}
+.page-title span{color:var(--accent);}
+.page-sub{font-size:17px;color:var(--muted);max-width:520px;margin-bottom:48px;line-height:1.6;}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:40px;}
+.filter-btn{font-family:var(--font-display);font-size:12px;font-weight:600;padding:6px 16px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;}
+.filter-btn.active,.filter-btn:hover{background:var(--accent);color:#000;border-color:var(--accent);}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:20px;}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:28px;text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:border-color .2s,transform .2s;}
+.card:hover{border-color:var(--accent);transform:translateY(-2px);}
+.card-cat{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--accent);}
+.card-title{font-family:var(--font-display);font-size:18px;font-weight:700;letter-spacing:-0.3px;color:var(--text);line-height:1.3;}
+.card-desc{font-size:14px;color:var(--muted);line-height:1.6;flex:1;}
+.card-meta{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding-top:12px;border-top:1px solid var(--border);}
+.card-arrow{color:var(--accent);font-size:16px;}
+.cta-strip{background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);border:1px solid var(--border);border-top:3px solid var(--accent);border-radius:var(--radius);padding:40px;text-align:center;margin-top:60px;}
+.cta-strip h2{font-family:var(--font-display);font-size:26px;font-weight:800;letter-spacing:-0.5px;margin-bottom:12px;}
+.cta-strip p{color:var(--muted);font-size:15px;margin-bottom:24px;}
+.cta-btn{display:inline-block;background:var(--accent);color:#000;font-family:var(--font-display);font-size:15px;font-weight:800;padding:14px 32px;border-radius:100px;text-decoration:none;}
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:28px 40px;text-align:center;font-size:13px;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;}
+footer a:hover{color:var(--accent);}
+@media(max-width:600px){header{padding:16px 20px;}.wrap{padding:40px 18px 70px;}.grid{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:var(--accent);color:#000;font-weight:700;border-radius:8px;text-decoration:none;">Skip to main content</a>
+<header>
+  <a href="https://checkafford.com" class="logo">Check<span>Afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link">Car Loan</a>
+    <a href="/mortgage" class="nav-link">Mortgage</a>
+    <a href="/bnpl" class="nav-link">BNPL</a>
+    <a href="/debt-payoff" class="nav-link">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link">Personal Loan</a>
+    <a href="/blog" class="nav-link">Blog</a>
+    <a href="/" class="nav-cta">Check Now →</a>
+  </nav>
+</header>
+<main id="main-content">
+<div class="wrap">
+  <div class="page-tag">Free Guides</div>
+  <h1 class="page-title">Smart money decisions<br><span>start here.</span></h1>
+  <p class="page-sub">Plain-English guides on loans, debt, and affordability — with free calculators so you can check your own numbers in seconds.</p>
+
+  <div class="filters" role="group" aria-label="Filter by category">
+    <button class="filter-btn active" onclick="filter('all')">All</button>
+    <button class="filter-btn" onclick="filter('car')">Car Loans</button>
+    <button class="filter-btn" onclick="filter('mortgage')">Mortgage</button>
+    <button class="filter-btn" onclick="filter('debt')">Debt Payoff</button>
+    <button class="filter-btn" onclick="filter('bnpl')">BNPL</button>
+    <button class="filter-btn" onclick="filter('personal')">Personal Finance</button>
+  </div>
+
+  <div class="grid" id="grid">
+
+    <a href="/blog/how-much-car-can-i-afford" class="card" data-cat="car">
+      <div class="card-cat">Car Loans</div>
+      <div class="card-title">How Much Car Can I Afford on My Salary?</div>
+      <div class="card-desc">The 20/4/10 rule, DTI breakdown, and a salary table showing exactly what you can afford at every income level.</div>
+      <div class="card-meta"><span>May 2025 · 8 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/is-500-car-payment-too-much" class="card" data-cat="car">
+      <div class="card-cat">Car Loans</div>
+      <div class="card-title">Is a $500 Car Payment Too Much?</div>
+      <div class="card-desc">The honest answer depends on one number — your income. Here's the exact salary you need and what to do if the payment is too high.</div>
+      <div class="card-meta"><span>May 2025 · 6 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/how-much-house-can-i-afford" class="card" data-cat="mortgage">
+      <div class="card-cat">Mortgage</div>
+      <div class="card-title">How Much House Can I Afford on My Salary?</div>
+      <div class="card-desc">The 28/36 rule, real salary-to-home-price table, and what banks won't tell you about your real budget.</div>
+      <div class="card-meta"><span>May 2025 · 9 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/credit-score-for-mortgage" class="card" data-cat="mortgage">
+      <div class="card-cat">Mortgage</div>
+      <div class="card-title">What Credit Score Do You Need to Buy a House in 2025?</div>
+      <div class="card-desc">Minimum scores by loan type, and how a 100-point difference can cost you $128,000 over 30 years.</div>
+      <div class="card-meta"><span>May 2025 · 7 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/how-to-pay-off-debt-fast" class="card" data-cat="debt">
+      <div class="card-cat">Debt Payoff</div>
+      <div class="card-title">How to Pay Off $10,000 in Debt Fast</div>
+      <div class="card-desc">Avalanche vs snowball method, a payoff timeline by monthly payment, and 5 ways to find extra money this month.</div>
+      <div class="card-meta"><span>May 2025 · 8 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/personal-loan-vs-credit-card" class="card" data-cat="personal">
+      <div class="card-cat">Personal Finance</div>
+      <div class="card-title">Personal Loan vs Credit Card: Which Is Better?</div>
+      <div class="card-desc">When a personal loan saves you thousands — and when a 0% balance transfer card beats both. Real numbers included.</div>
+      <div class="card-meta"><span>May 2025 · 7 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/bnpl-missed-payment" class="card" data-cat="bnpl">
+      <div class="card-cat">BNPL</div>
+      <div class="card-title">What Happens If You Miss a BNPL Payment?</div>
+      <div class="card-desc">Affirm, Klarna, Afterpay — exactly what each platform does when you miss a payment, and how to protect yourself.</div>
+      <div class="card-meta"><span>May 2025 · 7 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/what-is-a-good-debt-to-income-ratio" class="card" data-cat="personal">
+      <div class="card-cat">Personal Finance</div>
+      <div class="card-title">What Is a Good Debt-to-Income Ratio?</div>
+      <div class="card-desc">What lenders consider good, what's a red flag, and 5 proven ways to lower your DTI before applying for any loan.</div>
+      <div class="card-meta"><span>May 2025 · 7 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/calculate-debt-to-income-ratio" class="card" data-cat="personal">
+      <div class="card-cat">Personal Finance</div>
+      <div class="card-title">How to Calculate Your Debt-to-Income Ratio</div>
+      <div class="card-desc">A 3-step calculation with a real example. Know your number before a lender calculates it for you.</div>
+      <div class="card-meta"><span>May 2025 · 6 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+    <a href="/blog/how-much-to-spend-on-rent" class="card" data-cat="personal">
+      <div class="card-cat">Personal Finance</div>
+      <div class="card-title">How Much Should I Spend on Rent?</div>
+      <div class="card-desc">The 30% rule explained, why it fails in most American cities, and what actually works in 2025.</div>
+      <div class="card-meta"><span>May 2025 · 7 min</span><span class="card-arrow">→</span></div>
+    </a>
+
+  </div>
+
+  <div class="cta-strip">
+    <h2>Ready to check your numbers?</h2>
+    <p>Use our free calculators to know exactly where you stand — before you apply for anything.</p>
+    <a href="https://checkafford.com" class="cta-btn">Try the Free Calculators →</a>
+  </div>
+</div>
+</main>
+
+<footer>
+  <p>© 2025 CheckAfford · <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms of Use</a> · <a href="https://checkafford.com">Home</a></p>
+  <p style="margin-top:8px;">For educational purposes only. Not financial advice.</p>
+</footer>
+
+<script>
+function filter(cat) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.card').forEach(c => {
+    c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+</script>
+</body>
+</html>

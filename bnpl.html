@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title id="meta-title">Buy Now Pay Later Calculator — Is BNPL Worth It? | CheckAfford</title>
+<meta name="description" id="meta-desc" content="See the real cost of Buy Now Pay Later before you click. Affirm, Klarna, Afterpay — find out if BNPL fits your budget or quietly ruins it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<style>
+  :root { --bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8f8fa8;--accent:#00e5a0;--accent-dim:rgba(0,229,160,0.12);--warn:#f5c842;--warn-dim:rgba(245,200,66,0.15);--danger:#ff4d6d;--font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace; }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border);}
+  .logo{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);text-decoration:none;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+  .nav-link:hover{color:var(--text);}.nav-link.active{color:var(--accent);}
+  .lang-toggle{display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px;}
+  .lang-btn{background:none;border:none;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+  .lang-btn.active{background:var(--accent);color:#000;}
+  .breadcrumb{position:relative;z-index:5;padding:16px 40px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-family:var(--font-mono);}
+  .breadcrumb a{color:var(--muted);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}.breadcrumb span{color:var(--accent);}
+  .bnpl-banner{position:relative;z-index:5;max-width:900px;margin:0 auto 0;padding:0 24px;}
+  .bnpl-alert{background:var(--warn-dim);border:1px solid rgba(245,200,66,0.3);border-radius:14px;padding:16px 20px;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--warn);line-height:1.5;}
+  .bnpl-alert-icon{font-size:20px;flex-shrink:0;}
+  .page-hero{position:relative;z-index:5;max-width:900px;margin:0 auto;padding:40px 24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:640px){.page-hero{grid-template-columns:1fr;gap:24px;}header{padding:16px 20px;}.breadcrumb{padding:12px 20px;}.nav-links{display:none;}}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(245,200,66,0.1);border:1px solid rgba(245,200,66,0.25);color:var(--warn);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px;font-family:var(--font-mono);}
+  h1{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px;}
+  h1 em{font-style:normal;color:var(--warn);}
+  .page-sub{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px;font-weight:300;}
+  .quick-facts{display:flex;flex-direction:column;gap:10px;}
+  .fact-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5;}
+  .fact-icon{color:var(--warn);font-size:14px;flex-shrink:0;margin-top:1px;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hero-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;}
+  .hero-stat-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--warn);line-height:1;margin-bottom:6px;}
+  .hero-stat-label{font-size:11px;color:var(--muted);line-height:1.4;}
+  .calc-wrapper{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;}
+  .calc-inner{display:grid;grid-template-columns:1fr 1fr;}
+  @media(max-width:640px){.calc-inner{grid-template-columns:1fr;}}
+  .input-panel{padding:36px;border-right:1px solid var(--border);}
+  @media(max-width:640px){.input-panel{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px;}}
+  .panel-title{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+  .field{margin-bottom:20px;}.field label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:8px;}
+  .input-wrap{position:relative;}
+  .input-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:14px;color:var(--accent);pointer-events:none;}
+  .input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:13px;color:var(--muted);pointer-events:none;}
+  input[type="number"]{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:15px;font-weight:500;padding:13px 14px 13px 30px;outline:none;transition:border-color 0.2s;-moz-appearance:textfield;}
+  input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+  input:focus{border-color:var(--warn);}
+  input.no-prefix{padding-left:14px;}input.has-suffix{padding-right:38px;}
+  .calc-btn{width:100%;background:var(--warn);border:none;border-radius:12px;color:#000;font-family:var(--font-display);font-size:15px;font-weight:700;padding:16px;cursor:pointer;margin-top:8px;transition:all 0.2s;}
+  .calc-btn:hover{background:#ffd700;transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,0.25);}
+  .result-panel{padding:36px;display:flex;flex-direction:column;justify-content:center;}
+  @media(max-width:640px){.result-panel{padding:24px 20px;}}
+  .placeholder-state{text-align:center;padding:20px 0;}
+  .placeholder-state .big-q{font-family:var(--font-display);font-size:64px;font-weight:800;color:var(--surface2);line-height:1;margin-bottom:12px;}
+  .placeholder-state p{font-size:13px;color:var(--muted);}
+  .gauge-wrap{text-align:center;margin-bottom:24px;}
+  .gauge-svg{width:180px;height:100px;}
+  .gauge-track{fill:none;stroke:var(--surface2);stroke-width:14;stroke-linecap:round;}
+  .gauge-fill{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1),stroke 0.5s;stroke:var(--accent);stroke-dasharray:251;stroke-dashoffset:251;}
+  .gauge-score{font-family:var(--font-display);font-size:36px;font-weight:800;fill:var(--text);}
+  .gauge-label-svg{font-family:var(--font-body);font-size:10px;fill:var(--muted);letter-spacing:0.5px;}
+  .verdict-box{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;min-height:72px;transition:all 0.4s;}
+  .verdict-icon{font-size:24px;flex-shrink:0;}
+  .verdict-text{font-family:var(--font-display);font-size:14px;font-weight:600;line-height:1.4;color:var(--muted);}
+  .verdict-text.active{color:var(--text);}
+  .dti-bar-wrap{margin-bottom:16px;}
+  .dti-bar-header{display:flex;justify-content:space-between;margin-bottom:8px;}
+  .dti-bar-label{font-size:11px;color:var(--muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.5px;}
+  .dti-pct{font-family:var(--font-display);font-size:13px;font-weight:700;}
+  .dti-track{height:6px;background:var(--surface2);border-radius:100px;overflow:hidden;}
+  .dti-fill{height:100%;border-radius:100px;background:var(--accent);width:0%;transition:width 0.8s cubic-bezier(.4,0,.2,1),background 0.5s;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .stat-item{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px;}
+  .stat-label{font-size:10px;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;font-family:var(--font-mono);}
+  .stat-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);}
+  .stat-value.highlight{color:var(--warn);}
+  .tip-box{border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.5;display:none;margin-bottom:12px;}
+  .tip-box.show{display:block;}
+  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}
+  .cta-btn{display:none;width:100%;background:var(--danger);border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;padding:14px;cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;}
+  .cta-btn.show{display:block;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
+  .content-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
+  .content-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;}
+  .content-card h3{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:12px;}
+  .content-card p{font-size:13px;color:var(--muted);line-height:1.7;}.content-card p+p{margin-top:10px;}
+  .faq-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .section-label{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:10px;}
+  .faq-a{font-size:13px;color:var(--muted);line-height:1.7;}
+  footer{border-top:1px solid var(--border);text-align:center;padding:28px 24px;font-size:12px;color:var(--muted);position:relative;z-index:5;}
+  footer a{color:var(--accent);text-decoration:none;}
+  .other-calcs { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 80px; padding: 0 24px; }
+  .other-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 640px) { .other-grid { grid-template-columns: 1fr 1fr; } }
+  .other-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-decoration: none; transition: all 0.2s; display: block; }
+  .other-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+  .other-icon { font-size: 24px; margin-bottom: 8px; }
+  .other-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .other-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#00e5a0;color:#000;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;outline:2px solid #000;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" id="nav-car">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" id="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link active" id="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" id="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" id="nav-personal">Personal Loan</a>
+    <a href="/" class="nav-link" id="nav-all">← All calculators</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" id="btn-en" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" id="btn-es" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+</header>
+<main id="main-content">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/" id="bc-home">CheckAfford</a> › <span id="bc-label">BNPL Calculator</span></nav>
+<div class="bnpl-banner">
+  <div class="bnpl-alert">
+    <span class="bnpl-alert-icon">⚠️</span>
+    <span id="bnpl-banner-text">Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.</span>
+  </div>
+</div>
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="page-badge">📱 <span id="badge-text">BNPL Calculator</span></div>
+    <h1 id="hero-title">Is Buy Now Pay Later <em>really free?</em></h1>
+    <p class="page-sub" id="hero-sub">Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.</p>
+    <div class="quick-facts">
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">56% of BNPL users have missed at least one payment, triggering late fees.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">The average user has 3+ active plans without tracking total exposure.</span></div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">56%</div><div class="hero-stat-label" id="stat1-lbl">BNPL users who missed a payment</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">3+</div><div class="hero-stat-label" id="stat2-lbl">Avg active BNPL plans per user</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$135</div><div class="hero-stat-label" id="stat3-lbl">Avg late fee per missed payment</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">30%</div><div class="hero-stat-label" id="stat4-lbl">APR on some BNPL plans</div></div>
+  </div>
+</section>
+<div class="calc-wrapper">
+  <div class="calc-card">
+    <div class="calc-inner">
+      <div class="input-panel">
+        <p class="panel-title" id="panel-in">Your Numbers</p>
+        <div class="field"><label id="lbl-income">Monthly Income (after tax)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="4000"></div></div>
+        <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="300"></div></div>
+        <div class="field"><label id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="1200"></div></div>
+        <div class="field"><label id="lbl-rate">Interest Rate (0 if interest-free)</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label id="lbl-term">Number of Installments</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
+        <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Real Cost</button>
+      </div>
+      <div class="result-panel">
+        <p class="panel-title" id="panel-out">Real Cost Verdict</p>
+        <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p id="ph-text">Enter your purchase details above</p></div>
+        <div id="results-content" style="display:none;">
+          <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
+          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income Impact</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
+          <div class="stats-grid">
+            <div class="stat-item"><div class="stat-label" id="s1-lbl">Per Installment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s4-lbl">Extra Fees</div><div class="stat-value" id="stat-interest">–</div></div>
+          </div>
+          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <a class="cta-btn" id="cta-btn" href="#" target="_blank" rel="noopener">Compare rates</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-card"><h3 id="c1-title">Why BNPL feels cheaper than it is</h3><p id="c1-p1">Splitting $1,200 into four $300 payments feels painless. But you're still spending $1,200.</p><p id="c1-p2">BNPL providers count on this psychological trick. Our calculator shows the real monthly impact.</p></div>
+    <div class="content-card"><h3 id="c2-title">When BNPL actually makes sense</h3><p id="c2-p1">BNPL is useful for necessities if the plan is interest-free and less than 5% of your income.</p><p id="c2-p2">It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.</p></div>
+  </div>
+</section>
+<section class="faq-section">
+  <p class="section-label" id="faq-label">Common questions</p>
+  <div class="faq-item"><div class="faq-q" id="faq1-q">Does BNPL affect my credit score?</div><div class="faq-a" id="faq1-a">It depends. Providers may report missed payments which damage your credit score.</div></div>
+  <div class="faq-item"><div class="faq-q" id="faq2-q">Is 0% BNPL really free?</div><div class="faq-a" id="faq2-a">Only if you pay on time. Late fees and deferred interest traps can make it very expensive.</div></div>
+</section>
+<!-- OTHER CALCULATORS -->
+<section class="other-calcs">
+  <p class="section-label" id="other-label">Other calculators</p>
+  <div class="other-grid">
+    <a href="/car-loan" class="other-card"><div class="other-icon">🚗</div><div class="other-name">Auto Loan</div><div class="other-desc">Can you afford that car payment?</div></a>
+    <a href="/mortgage" class="other-card"><div class="other-icon">🏠</div><div class="other-name">Mortgage</div><div class="other-desc">How much house can you afford?</div></a>
+    <a href="/debt-payoff" class="other-card"><div class="other-icon">💳</div><div class="other-name">Debt Payoff</div><div class="other-desc">Can you handle your current debt?</div></a>
+    <a href="/personal-loan" class="other-card"><div class="other-icon">💵</div><div class="other-name">Personal Loan</div><div class="other-desc">Is a personal loan right for you?</div></a>
+  </div>
+</section>
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms" id="footer-terms">Terms of Use</a>
+  </p>
+</footer>
+<script>
+  let lang='en', lastResult=null;
+  const T={
+    en:{
+      title:"Buy Now Pay Later Calculator — Is BNPL Worth It? | CheckAfford",
+      desc:"See the real cost of Buy Now Pay Later before you click. Affirm, Klarna, Afterpay — find out if BNPL fits your budget or quietly ruins it.",
+      navCar:"Auto Loan", navMort:"Mortgage", navBnpl:"BNPL", navDebt:"Debt Payoff", navPersonal:"Personal Loan", navAll:"← All calculators",
+      bcHome:"CheckAfford", bcLabel:"BNPL Calculator",
+      banner:"Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.",
+      badge:"BNPL Calculator", heroTitle:"Is Buy Now Pay Later <em>really free?</em>",
+      heroSub:"Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.",
+      fact1:"56% of BNPL users have missed at least one payment, triggering late fees.",
+      fact2:"BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.",
+      fact3:"The average user has 3+ active plans without tracking total exposure.",
+      stat1:"BNPL users who missed a payment", stat2:"Avg active BNPL plans per user", stat3:"Avg late fee per missed payment", stat4:"APR on some BNPL plans",
+      pIn:"Your Numbers", pOut:"Real Cost Verdict",
+      lInc:"Monthly Income (after tax)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"Interest Rate (0 if interest-free)", lTerm:"Number of Installments",
+      suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
+      gaugeLbl:"SCORE", dtiLbl:"Debt-to-Income Impact",
+      s1:"Per Installment", s2:"Left Over", s3:"Total Cost", s4:"Extra Fees",
+      tipLbl:"TIP", cta:"Compare personal loan rates instead →",
+      vLow:'All clear. This BNPL plan fits your budget — just make sure it\'s the only one.',
+      vMid:'Possible, but tight. One missed payment could stress your budget.',
+      vHigh:'Red alert. This BNPL plan adds too much debt pressure to your monthly budget.',
+      tLow:'Good position. Set a payment reminder so you never miss an installment.',
+      tMid:'Manageable, but don\'t stack another BNPL plan on top of this one.',
+      tHigh:'Your DTI impact is too high. Consider saving up and paying cash.',
+      c1t:"Why BNPL feels cheaper than it is", c1p1:"Splitting $1,200 into four $300 payments feels painless. But you're still spending $1,200.", c1p2:"BNPL providers count on this psychological trick. Our calculator shows the real monthly impact.",
+      c2t:"When BNPL actually makes sense", c2p1:"BNPL is useful for necessities if the plan is interest-free and less than 5% of your income.", c2p2:"It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.",
+      fL:"Common questions", f1q:"Does BNPL affect my credit score?", f1a:"It depends. Providers may report missed payments which damage your credit score.",
+      f2q:"Is 0% BNPL really free?", f2a:"Only if you pay on time. Late fees and deferred interest traps can make it very expensive.",
+      foot:"For informational purposes only. Not financial advice. | checkafford.com"
+    },
+    es:{
+      title:"Calculadora Buy Now Pay Later — ¿Vale la pena? | CheckAfford",
+      desc:"Mira el costo real de 'Compra ahora, paga después' antes de hacer clic. Affirm, Klarna, Afterpay — descubre si el BNPL encaja en tu presupuesto.",
+      navCar:"Auto", navMort:"Hipoteca", navBnpl:"BNPL", navDebt:"Deudas", navPersonal:"Préstamo Personal", navAll:"← Calculadoras",
+      bcHome:"CheckAfford", bcLabel:"Calculadora BNPL",
+      banner:"El 'Compra ahora, paga después' sigue sumando deuda real a tu historial. Muchos subestiman el costo total.",
+      badge:"Calculadora BNPL", heroTitle:"¿El pago a plazos es <em>realmente gratis?</em>",
+      heroSub:"Affirm, Klarna, Afterpay — parecen cuotas pequeñas, pero se acumulan. Mira cómo afecta el BNPL a tu presupuesto.",
+      fact1:"El 56% de usuarios ha perdido al menos un pago, activando multas.",
+      fact2:"Los planes BNPL cuentan para tu relación Deuda-Ingreso — incluso los de 0% interés.",
+      fact3:"El usuario promedio tiene más de 3 planes activos sin rastrear su deuda total.",
+      stat1:"Usuarios que perdieron un pago", stat2:"Planes activos promedio", stat3:"Multa promedio por retraso", stat4:"Tasa (APR) en algunos planes",
+      pIn:"Tus Números", pOut:"Veredicto de Costo Real",
+      lInc:"Ingreso Mensual (neto)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"Tasa de Interés (0 si es gratis)", lTerm:"Número de Cuotas",
+      suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
+      gaugeLbl:"PUNTOS", dtiLbl:"Impacto Deuda-Ingreso",
+      s1:"Por Cuota", s2:"Te Queda", s3:"Costo Total", s4:"Intereses/Cargos",
+      tipLbl:"CONSEJO", cta:"Comparar préstamos personales →",
+      vLow:'Todo en orden. Este plan encaja en tu presupuesto — que sea el único.',
+      vMid:'Posible, pero ajustado. Un retraso podría estresar tus finanzas.',
+      vHigh:'Alerta roja. Este plan agrega demasiada presión de deuda a tu mes.',
+      tLow:'Buena posición. Pon un recordatorio para no olvidar ninguna cuota.',
+      tMid:'Manejable, pero no acumules más planes encima de este.',
+      tHigh:'El impacto en tu DTI es muy alto. Mejor ahorra y paga de contado.',
+      c1t:"¿Por qué el BNPL parece más barato?", c1p1:"Dividir $1,200 en cuatro pagos de $300 suena fácil, pero sigues gastando $1,200.", c1p2:"Es un truco psicológico. Nuestra calculadora te muestra el impacto real en tu bolsillo.",
+      c2t:"Cuándo tiene sentido usar BNPL", c2p1:"Es útil para necesidades reales si el plan no tiene intereses y la cuota es menor al 5% de tu ingreso.", c2p2:"Es peligroso para gastos innecesarios. Si no tienes el efectivo, el BNPL solo pospone el problema.",
+      fL:"Preguntas frecuentes", f1q:"¿Afecta mi historial crediticio?", f1a:"Depende del proveedor, pero los pagos atrasados casi siempre dañan tu puntaje.",
+      f2q:"¿El 0% es realmente gratis?", f2a:"Solo si pagas a tiempo. Las multas por retraso y los intereses diferidos pueden salir muy caros.",
+      foot:"Solo para fines informativos. No es asesoría financiera. | checkafford.com"
+    }
+  };
+
+  function setText(id, val, html=false){
+    const el = document.getElementById(id);
+    if(!el || val===undefined) return;
+    if(html) el.innerHTML=val; else el.innerText=val;
+  }
+  function setAttr(id, attr, val){
+    const el = document.getElementById(id);
+    if(!el || val===undefined) return;
+    el[attr]=val;
+  }
+
+  function setLang(l){
+    lang=l;
+    const t=T[l];
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const isActive = b.id === `btn-${l}`;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive);
+    });
+
+    setAttr('meta-desc','content',t.desc);
+    setText('meta-title',t.title);
+    setText('nav-car',t.navCar);
+    setText('nav-mortgage',t.navMort);
+    setText('nav-bnpl',t.navBnpl);
+    setText('nav-debt',t.navDebt);
+    setText('nav-personal',t.navPersonal);
+    setText('nav-all',t.navAll);
+    setText('bc-home',t.bcHome);
+    setText('bc-label',t.bcLabel);
+    setText('bnpl-banner-text',t.banner);
+    setText('badge-text',t.badge);
+    setText('hero-title',t.heroTitle,true);
+    setText('hero-sub',t.heroSub);
+    setText('fact1',t.fact1);
+    setText('fact2',t.fact2);
+    setText('fact3',t.fact3);
+    setText('stat1-lbl',t.stat1);
+    setText('stat2-lbl',t.stat2);
+    setText('stat3-lbl',t.stat3);
+    setText('stat4-lbl',t.stat4);
+    setText('panel-in',t.pIn);
+    setText('panel-out',t.pOut);
+    setText('lbl-income',t.lInc);
+    setText('lbl-expenses',t.lExp);
+    setText('lbl-amount',t.lAmt);
+    setText('lbl-rate',t.lRate);
+    setText('lbl-term',t.lTerm);
+    setText('suffix-pay',t.suffixPay);
+    setText('calc-btn',t.btnCalc);
+    setText('ph-text',t.phText);
+    setText('gauge-lbl',t.gaugeLbl);
+    setText('dti-lbl',t.dtiLbl);
+    setText('s1-lbl',t.s1);
+    setText('s2-lbl',t.s2);
+    setText('s3-lbl',t.s3);
+    setText('s4-lbl',t.s4);
+    setText('c1-title',t.c1t);
+    setText('c1-p1',t.c1p1);
+    setText('c1-p2',t.c1p2);
+    setText('c2-title',t.c2t);
+    setText('c2-p1',t.c2p1);
+    setText('c2-p2',t.c2p2);
+    setText('faq-label',t.fL);
+    setText('faq1-q',t.f1q);
+    setText('faq1-a',t.f1a);
+    setText('faq2-q',t.f2q);
+    setText('faq2-a',t.f2a);
+    setText('footer-text',t.foot);
+    setText('other-label',t.otherLabel);
+
+    if(lastResult) renderResults(lastResult);
+  }
+
+  function calculate(){
+    const income=parseFloat(document.getElementById('income').value)||0;
+    const expenses=parseFloat(document.getElementById('expenses').value)||0;
+    const loanAmount=parseFloat(document.getElementById('loanAmount').value)||0;
+    const annualRate=parseFloat(document.getElementById('rate').value)||0;
+    const termMonths=parseFloat(document.getElementById('term').value)||1;
+    let mp; const r=annualRate/100/12;
+    mp=annualRate===0?loanAmount/termMonths:loanAmount*r*Math.pow(1+r,termMonths)/(Math.pow(1+r,termMonths)-1);
+    const tc=mp*termMonths,ti=tc-loanAmount,dti=income>0?((expenses+mp)/income)*100:100,lo=income-expenses-mp;
+    let score=dti<=20?95:dti<=35?Math.round(95-(dti-20)*2.5):dti<=43?Math.round(57-(dti-35)*4):Math.max(0,Math.round(25-(dti-43)*1.5));
+    lastResult={mp,tc,ti,dti,lo,score};renderResults(lastResult);
+  }
+
+  function renderResults(r){
+    const t=T[lang];const{mp,tc,ti,dti,lo,score}=r;
+    let vt,icon,tip,color;
+    if(dti<=35){vt=t.vLow;icon='✅';tip=t.tLow;color='#00e5a0';}
+    else if(dti<=43){vt=t.vMid;icon='⚠️';tip=t.tMid;color='#f5c842';}
+    else{vt=t.vHigh;icon='🚨';tip=t.tHigh;color='#ff4d6d';}
+    document.getElementById('placeholder').style.display='none';
+    document.getElementById('results-content').style.display='block';
+    const gf=document.getElementById('gauge-fill');gf.style.strokeDashoffset=251-(score/100)*251;gf.style.stroke=color;
+    document.getElementById('gauge-score').textContent=score;
+    const vb=document.getElementById('verdict-box');vb.style.borderColor=color+'55';vb.style.background=color+'10';
+    document.getElementById('verdict-icon').textContent=icon;
+    const vtEl=document.getElementById('verdict-text');vtEl.textContent=vt;vtEl.classList.add('active');vtEl.style.color=color;
+    document.getElementById('dti-fill').style.width=Math.min(dti,100)+'%';document.getElementById('dti-fill').style.background=color;
+    document.getElementById('dti-pct').textContent=dti.toFixed(1)+'%';document.getElementById('dti-pct').style.color=color;
+    document.getElementById('stat-monthly').textContent=fmt(mp);
+    document.getElementById('stat-leftover').textContent=fmt(lo);document.getElementById('stat-leftover').style.color=lo>=0?'#00e5a0':'#ff4d6d';
+    document.getElementById('stat-total').textContent=fmt(tc);document.getElementById('stat-interest').textContent=fmt(ti);
+    const tb=document.getElementById('tip-box');tb.classList.add('show');tb.style.background=color+'15';tb.style.borderColor=color+'40';tb.style.color=color;
+    document.getElementById('tip-label').textContent=t.tipLbl;document.getElementById('tip-text').textContent=tip;
+    const cb=document.getElementById('cta-btn');cb.classList.add('show');cb.textContent=t.cta;
+  }
+
+  function fmt(n){
+    const locale = lang === 'es' ? 'es-ES' : 'en-US';
+    const a=Math.abs(n),f='$'+a.toLocaleString(locale,{minimumFractionDigits:0,maximumFractionDigits:0});
+    return n<0?'-'+f:f;
+  }
+  document.addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
+</script>
+</body>
+</html>

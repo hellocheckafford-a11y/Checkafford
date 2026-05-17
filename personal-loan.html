@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal Loan Calculator — Can You Afford It? | CheckAfford</title>
+<meta name="description" content="Enter your income, loan amount, rate and term. Get an instant verdict on whether a personal loan fits your budget. Free, no signup, results in 5 seconds.">
+<meta name="keywords" content="personal loan calculator, can I afford a personal loan, personal loan affordability, debt to income ratio personal loan">
+<link rel="canonical" href="https://checkafford.com/personal-loan">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<meta property="og:title" content="Personal Loan Calculator — Can You Afford It?">
+<meta property="og:description" content="5-second affordability check for your personal loan. No jargon, no signup.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --text: #f0f0f5;
+    --muted: #8f8fa8;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.12);
+    --warn: #f5c842;
+    --warn-dim: rgba(245,200,66,0.12);
+    --danger: #ff4d6d;
+    --danger-dim: rgba(255,77,109,0.12);
+    --radius: 16px;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-link {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--text); }
+  .nav-link.active { color: var(--accent); }
+  .lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn.active { background: var(--accent); color: #000; }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    position: relative;
+    z-index: 5;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { color: var(--accent); }
+
+  /* PAGE HERO */
+  .page-hero {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .page-hero { grid-template-columns: 1fr; gap: 24px; }
+    header { padding: 16px 20px; }
+    .breadcrumb { padding: 12px 20px; }
+    .nav-links { display: none; }
+  }
+  .page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+  }
+  .page-badge::before { content: '💵'; margin-right: 4px; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .page-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  /* QUICK FACTS */
+  .quick-facts { display: flex; gap: 16px; flex-wrap: wrap; }
+  .fact-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 6px 14px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .fact-chip strong { color: var(--accent); }
+
+  /* STATS GRID */
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    text-align: center;
+  }
+  .stat-val {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -1px;
+  }
+  .stat-label { font-size: 11px; color: var(--muted); margin-top: 4px; line-height: 1.3; }
+
+  /* INFO BANNER */
+  .info-banner {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 32px;
+    padding: 0 24px;
+  }
+  .info-banner-inner {
+    background: rgba(0,229,160,0.06);
+    border: 1px solid rgba(0,229,160,0.15);
+    border-radius: var(--radius);
+    padding: 14px 20px;
+    font-size: 13px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .info-banner-inner::before { content: '💡'; font-size: 16px; }
+
+  /* CALCULATOR */
+  .calc-wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 640px) { .calc-wrapper { grid-template-columns: 1fr; } }
+
+  .calc-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 8px;
+    font-family: var(--font-mono);
+  }
+  .field input {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 18px;
+    font-weight: 500;
+    padding: 14px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  .field input::-webkit-outer-spin-button,
+  .field input::-webkit-inner-spin-button { -webkit-appearance: none; }
+  .field input:focus { border-color: rgba(0,229,160,0.4); }
+  .field input::placeholder { color: var(--muted); font-size: 14px; }
+  .calc-btn {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.1s;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+  .calc-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  /* RESULTS */
+  .results-panel { display: flex; flex-direction: column; gap: 16px; }
+  .placeholder-msg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+    gap: 12px;
+    padding: 40px 0;
+  }
+  .placeholder-msg .ph-icon { font-size: 40px; opacity: 0.4; }
+
+  /* GAUGE */
+  .gauge-wrap { display: flex; flex-direction: column; align-items: center; }
+  .gauge-svg { width: 120px; height: 120px; }
+  .gauge-track { fill: none; stroke: var(--surface2); stroke-width: 10; }
+  .gauge-fill {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 10;
+    stroke-linecap: round;
+    stroke-dasharray: 251;
+    stroke-dashoffset: 251;
+    transition: stroke-dashoffset 0.6s ease, stroke 0.4s;
+    transform: rotate(-90deg);
+    transform-origin: center;
+  }
+  .gauge-score-wrap { text-align: center; margin-top: -8px; }
+  .gauge-score {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 800;
+    color: var(--text);
+    letter-spacing: -2px;
+  }
+  .gauge-label { font-size: 10px; color: var(--muted); letter-spacing: 2px; font-family: var(--font-mono); }
+
+  /* VERDICT */
+  .verdict-box {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    transition: all 0.4s;
+  }
+  .verdict-icon { font-size: 22px; flex-shrink: 0; }
+  .verdict-text { font-size: 14px; font-weight: 500; color: var(--muted); transition: color 0.4s; }
+  .verdict-text.active { color: var(--text); }
+
+  /* DTI BAR */
+  .dti-wrap {}
+  .dti-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .dti-title { font-size: 11px; color: var(--muted); font-family: var(--font-mono); letter-spacing: 1px; }
+  .dti-pct { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--accent); }
+  .dti-track { height: 6px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
+  .dti-fill { height: 100%; width: 0%; border-radius: 100px; background: var(--accent); transition: width 0.6s ease, background 0.4s; }
+
+  /* STATS ROW */
+  .stats-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stat-mini {
+    background: var(--surface2);
+    border-radius: 10px;
+    padding: 14px;
+    text-align: center;
+  }
+  .stat-mini-val { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: var(--text); }
+  .stat-mini-label { font-size: 10px; color: var(--muted); margin-top: 2px; font-family: var(--font-mono); }
+
+  /* TIP & CTA */
+  .tip-box {
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 13px;
+    display: none;
+    gap: 8px;
+  }
+  .tip-box.show { display: flex; }
+  .tip-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
+  .cta-btn {
+    display: none;
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 13px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+  }
+  .cta-btn.show { display: block; }
+  .cta-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* CONTENT SECTION */
+  .content-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
+  .content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+  }
+  .content-card h3 {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .content-card p { font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 8px; }
+
+  /* FAQ */
+  .faq-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq-q { font-weight: 600; font-size: 15px; margin-bottom: 8px; color: var(--text); }
+  .faq-a { font-size: 14px; color: var(--muted); line-height: 1.7; }
+
+  /* OTHER CALCULATORS */
+  .other-calcs { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 80px; padding: 0 24px; }
+  .other-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 640px) { .other-grid { grid-template-columns: 1fr 1fr; } }
+  .other-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-decoration: none; transition: all 0.2s; display: block; }
+  .other-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+  .other-icon { font-size: 24px; margin-bottom: 8px; }
+  .other-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .other-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+  /* FOOTER */
+  footer {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    padding: 40px 24px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--muted);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+  <nav class="nav-links">
+    <a href="/car-loan" class="nav-link" data-en="Auto Loan" data-es="Préstamo Auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-en="Mortgage" data-es="Hipoteca">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-en="BNPL" data-es="BNPL">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-en="Debt Payoff" data-es="Deudas">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link active" data-en="Personal Loan" data-es="Préstamo Personal">Personal Loan</a>
+    <a href="/" class="nav-link" data-en="← All calculators" data-es="← Todas">← All calculators</a>
+  </nav>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('en')">EN</button>
+    <button class="lang-btn" onclick="setLang('es')">ES</button>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <a href="/" data-en="CheckAfford" data-es="CheckAfford">CheckAfford</a>
+  <span>›</span>
+  <span data-en="Personal Loan Calculator" data-es="Calculadora de Préstamo Personal">Personal Loan Calculator</span>
+</div>
+
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="page-badge" data-en="Personal Loan Calculator" data-es="Calculadora de Préstamo Personal">Personal Loan Calculator</div>
+    <h1 data-en="Is a personal loan <em>right for you?</em>" data-es="¿Un préstamo personal es <em>para ti?</em>">Is a personal loan <em>right for you?</em></h1>
+    <p class="page-sub" data-en="Enter your income, loan amount and rate. Get an honest verdict on whether a personal loan fits your budget — before you apply." data-es="Ingresa tu ingreso, monto del préstamo y tasa. Obtén un veredicto honesto sobre si un préstamo personal cabe en tu presupuesto — antes de aplicar.">Enter your income, loan amount and rate. Get an honest verdict on whether a personal loan fits your budget — before you apply.</p>
+    <div class="quick-facts">
+      <div class="fact-chip"><strong data-en="36%" data-es="36%">36%</strong> <span data-en="Max safe DTI" data-es="DTI máximo seguro">Max safe DTI</span></div>
+      <div class="fact-chip"><strong data-en="11%" data-es="11%">11%</strong> <span data-en="Avg APR" data-es="APR promedio">Avg APR</span></div>
+      <div class="fact-chip"><strong data-en="5sec" data-es="5seg">5sec</strong> <span data-en="Instant result" data-es="Resultado inmediato">Instant result</span></div>
+    </div>
+  </div>
+  <div class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-val">43%</div>
+      <div class="stat-label" data-en="Max DTI lenders allow" data-es="DTI máximo que permiten los prestamistas">Max DTI lenders allow</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">$8k</div>
+      <div class="stat-label" data-en="Avg personal loan amount" data-es="Monto promedio de préstamo personal">Avg personal loan amount</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">24mo</div>
+      <div class="stat-label" data-en="Most common loan term" data-es="Plazo más común">Most common loan term</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">5sec</div>
+      <div class="stat-label" data-en="Time to get your verdict" data-es="Tiempo para obtener tu veredicto">Time to get your verdict</div>
+    </div>
+  </div>
+</section>
+
+<div class="info-banner">
+  <div class="info-banner-inner" data-en="Personal loans can consolidate debt or cover big expenses — but only if the payment fits your income. This calculator uses real lender DTI thresholds." data-es="Los préstamos personales pueden consolidar deudas o cubrir gastos grandes — pero solo si el pago cabe en tu ingreso. Esta calculadora usa umbrales de DTI reales de prestamistas.">Personal loans can consolidate debt or cover big expenses — but only if the payment fits your income. This calculator uses real lender DTI thresholds.</div>
+</div>
+
+<main id="main-content">
+<div class="calc-wrapper">
+  <!-- INPUT PANEL -->
+  <div class="calc-panel">
+    <p class="panel-title" data-en="Your Numbers" data-es="Tus Números">Your Numbers</p>
+
+    <div class="field">
+      <label data-en="Monthly Income (after tax)" data-es="Ingreso Mensual (después de impuestos)">Monthly Income (after tax)</label>
+      <input type="number" id="income" placeholder="e.g. 4500" min="0">
+    </div>
+    <div class="field">
+      <label data-en="Existing Monthly Debt Payments" data-es="Pagos de Deuda Mensuales Existentes">Existing Monthly Debt Payments</label>
+      <input type="number" id="expenses" placeholder="e.g. 800" min="0">
+    </div>
+    <div class="field">
+      <label data-en="Loan Amount" data-es="Monto del Préstamo">Loan Amount</label>
+      <input type="number" id="loanAmount" placeholder="e.g. 10000" min="0">
+    </div>
+    <div class="field">
+      <label data-en="Annual Interest Rate (%)" data-es="Tasa de Interés Anual (%)">Annual Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="e.g. 11.5" min="0" step="0.1">
+    </div>
+    <div class="field">
+      <label data-en="Loan Term (months)" data-es="Plazo del Préstamo (meses)">Loan Term (months)</label>
+      <input type="number" id="term" placeholder="e.g. 36" min="1">
+    </div>
+    <button class="calc-btn" onclick="calculate()" data-en="Check Affordability" data-es="Verificar Asequibilidad">Check Affordability</button>
+  </div>
+
+  <!-- RESULTS PANEL -->
+  <div class="calc-panel results-panel">
+    <p class="panel-title" data-en="Affordability Verdict" data-es="Veredicto de Asequibilidad">Affordability Verdict</p>
+
+    <div id="placeholder" class="placeholder-msg">
+      <div class="ph-icon">💵</div>
+      <span data-en="Enter your loan details above" data-es="Ingresa los detalles del préstamo arriba">Enter your loan details above</span>
+    </div>
+
+    <div id="results-content" style="display:none; display:flex; flex-direction:column; gap:16px;">
+      <div class="gauge-wrap">
+        <svg class="gauge-svg" viewBox="0 0 100 100">
+          <circle class="gauge-track" cx="50" cy="50" r="40"/>
+          <circle class="gauge-fill" id="gauge-fill" cx="50" cy="50" r="40"/>
+        </svg>
+        <div class="gauge-score-wrap">
+          <div class="gauge-score" id="gauge-score">—</div>
+          <div class="gauge-label">SCORE</div>
+        </div>
+      </div>
+
+      <div class="verdict-box" id="verdict-box">
+        <span class="verdict-icon" id="verdict-icon">💵</span>
+        <span class="verdict-text" id="verdict-text" data-en="Enter your numbers to see your verdict" data-es="Ingresa tus números para ver tu veredicto">Enter your numbers to see your verdict</span>
+      </div>
+
+      <div class="dti-wrap">
+        <div class="dti-header">
+          <span class="dti-title" data-en="DEBT-TO-INCOME IMPACT" data-es="IMPACTO EN DTI">DEBT-TO-INCOME IMPACT</span>
+          <span class="dti-pct" id="dti-pct">—</span>
+        </div>
+        <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-mini">
+          <div class="stat-mini-val" id="stat-monthly">—</div>
+          <div class="stat-mini-label" data-en="Monthly Payment" data-es="Pago Mensual">Monthly Payment</div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-mini-val" id="stat-leftover">—</div>
+          <div class="stat-mini-label" data-en="Left Over" data-es="Sobrante">Left Over</div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-mini-val" id="stat-total">—</div>
+          <div class="stat-mini-label" data-en="Total Cost" data-es="Costo Total">Total Cost</div>
+        </div>
+        <div class="stat-mini">
+          <div class="stat-mini-val" id="stat-interest">—</div>
+          <div class="stat-mini-label" data-en="Total Interest" data-es="Interés Total">Total Interest</div>
+        </div>
+      </div>
+
+      <div class="tip-box" id="tip-box">
+        <div>
+          <div class="tip-label" id="tip-label">TIP</div>
+          <div id="tip-text"></div>
+        </div>
+      </div>
+
+      <button class="cta-btn" id="cta-btn">Compare personal loan rates →</button>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-card">
+      <h3 data-en="When a personal loan makes sense" data-es="Cuándo tiene sentido un préstamo personal">When a personal loan makes sense</h3>
+      <p data-en="Personal loans work best for debt consolidation — replacing multiple high-interest debts with one fixed payment at a lower rate." data-es="Los préstamos personales funcionan mejor para consolidar deudas — reemplazar múltiples deudas de alto interés con un pago fijo a una tasa menor.">Personal loans work best for debt consolidation — replacing multiple high-interest debts with one fixed payment at a lower rate.</p>
+      <p data-en="They also make sense for large one-time expenses like home repairs or medical bills, where you need a fixed payoff timeline." data-es="También tienen sentido para gastos grandes únicos como reparaciones del hogar o facturas médicas, donde necesitas un plazo de pago fijo.">They also make sense for large one-time expenses like home repairs or medical bills, where you need a fixed payoff timeline.</p>
+    </div>
+    <div class="content-card">
+      <h3 data-en="When to avoid a personal loan" data-es="Cuándo evitar un préstamo personal">When to avoid a personal loan</h3>
+      <p data-en="If a loan pushes your DTI above 43%, most lenders will reject your application anyway. Even at 36–43%, you risk financial stress if your income dips." data-es="Si un préstamo lleva tu DTI por encima del 43%, la mayoría de los prestamistas rechazarán tu solicitud de todas formas. Incluso al 36–43%, arriesgas estrés financiero si tu ingreso baja.">If a loan pushes your DTI above 43%, most lenders will reject your application anyway. Even at 36–43%, you risk financial stress if your income dips.</p>
+      <p data-en="Avoid personal loans for discretionary spending like vacations or shopping — the interest cost makes these purchases much more expensive." data-es="Evita préstamos personales para gastos discrecionales como vacaciones o compras — el costo del interés hace que estas compras sean mucho más caras.">Avoid personal loans for discretionary spending like vacations or shopping — the interest cost makes these purchases much more expensive.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
+  <div class="faq-item">
+    <div class="faq-q" data-en="What credit score do I need for a personal loan?" data-es="¿Qué score de crédito necesito para un préstamo personal?">What credit score do I need for a personal loan?</div>
+    <div class="faq-a" data-en="Most lenders require a score of 580+ to qualify, but the best rates (under 10% APR) typically require 700 or higher. With a score below 600, expect rates of 20–36% APR, which significantly increases the total cost of borrowing." data-es="La mayoría de los prestamistas requieren un score de 580+ para calificar, pero las mejores tasas (menos del 10% APR) típicamente requieren 700 o más. Con un score por debajo de 600, espera tasas del 20–36% APR.">Most lenders require a score of 580+ to qualify, but the best rates (under 10% APR) typically require 700 or higher. With a score below 600, expect rates of 20–36% APR, which significantly increases the total cost of borrowing.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" data-en="Is it better to pay off debt or take a personal loan?" data-es="¿Es mejor pagar deudas o tomar un préstamo personal?">Is it better to pay off debt or take a personal loan?</div>
+    <div class="faq-a" data-en="If your existing debt carries a higher rate than the personal loan (e.g., credit cards at 20%+ vs. a personal loan at 11%), consolidating makes sense mathematically. The key is not accumulating new debt afterward." data-es="Si tu deuda existente tiene una tasa mayor que el préstamo personal (ej. tarjetas al 20%+ vs. préstamo al 11%), consolidar tiene sentido matemáticamente. La clave es no acumular nueva deuda después.">If your existing debt carries a higher rate than the personal loan (e.g., credit cards at 20%+ vs. a personal loan at 11%), consolidating makes sense mathematically. The key is not accumulating new debt afterward.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" data-en="How much can I borrow with a personal loan?" data-es="¿Cuánto puedo pedir prestado con un préstamo personal?">How much can I borrow with a personal loan?</div>
+    <div class="faq-a" data-en="Most lenders offer between $1,000 and $50,000. The amount you qualify for depends on your income, credit score, and existing debts. Lenders won't approve an amount that pushes your DTI above 43%." data-es="La mayoría de los prestamistas ofrecen entre $1,000 y $50,000. El monto para el que calificas depende de tu ingreso, score de crédito y deudas existentes. Los prestamistas no aprobarán un monto que lleve tu DTI por encima del 43%.">Most lenders offer between $1,000 and $50,000. The amount you qualify for depends on your income, credit score, and existing debts. Lenders won't approve an amount that pushes your DTI above 43%.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" data-en="Does a personal loan hurt my credit score?" data-es="¿Un préstamo personal daña mi score de crédito?">Does a personal loan hurt my credit score?</div>
+    <div class="faq-a" data-en="Applying causes a small temporary dip (hard inquiry). However, if you use it to pay off credit cards, your overall credit utilization drops, which can actually improve your score over time. On-time payments also build positive history." data-es="Aplicar causa una pequeña caída temporal (consulta dura). Sin embargo, si lo usas para pagar tarjetas de crédito, tu utilización de crédito baja, lo que puede mejorar tu score con el tiempo. Los pagos a tiempo también construyen historial positivo.">Applying causes a small temporary dip (hard inquiry). However, if you use it to pay off credit cards, your overall credit utilization drops, which can actually improve your score over time. On-time payments also build positive history.</div>
+  </div>
+</section>
+
+<!-- OTHER CALCULATORS -->
+<section class="other-calcs">
+  <p class="section-label" data-en="Other calculators" data-es="Otras calculadoras">Other calculators</p>
+  <div class="other-grid">
+    <a href="/car-loan" class="other-card">
+      <div class="other-icon">🚗</div>
+      <div class="other-name" data-en="Auto Loan" data-es="Préstamo Auto">Auto Loan</div>
+      <div class="other-desc" data-en="Can you afford that car payment?" data-es="¿Puedes pagar ese auto?">Can you afford that car payment?</div>
+    </a>
+    <a href="/mortgage" class="other-card">
+      <div class="other-icon">🏠</div>
+      <div class="other-name" data-en="Mortgage" data-es="Hipoteca">Mortgage</div>
+      <div class="other-desc" data-en="How much house can you afford?" data-es="¿Cuánta casa puedes pagar?">How much house can you afford?</div>
+    </a>
+    <a href="/bnpl" class="other-card">
+      <div class="other-icon">📱</div>
+      <div class="other-name">BNPL</div>
+      <div class="other-desc" data-en="Is Buy Now Pay Later worth it?" data-es="¿Vale la pena el BNPL?">Is Buy Now Pay Later worth it?</div>
+    </a>
+    <a href="/debt-payoff" class="other-card">
+      <div class="other-icon">💳</div>
+      <div class="other-name" data-en="Debt Payoff" data-es="Pago de Deudas">Debt Payoff</div>
+      <div class="other-desc" data-en="Can you handle your current debt?" data-es="¿Puedes manejar tu deuda actual?">Can you handle your current debt?</div>
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización.">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms">Terms of Use</a>
+  </p>
+</footer>
+
+<script>
+  let lang = 'en';
+
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const isActive = b.textContent === l.toUpperCase();
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive);
+    });
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (el.tagName === 'INPUT') return;
+      const val = el.getAttribute('data-' + l);
+      if (val) el.innerHTML = val;
+    });
+    if (lastResult) renderResults(lastResult);
+  }
+
+  const T = {
+    en: {
+      verdictLow: 'All clear. This personal loan fits comfortably in your budget.',
+      verdictMid: 'Possible, but tight. Make sure your income stays stable.',
+      verdictHigh: 'Red alert. This loan could put you in financial stress.',
+      tipLow: 'Strong position. Consider a shorter term to save on total interest paid.',
+      tipMid: 'Manageable, but avoid taking on any additional debt while repaying this loan.',
+      tipHigh: 'Your DTI exceeds safe limits. Try a smaller loan amount or longer repayment term.',
+      tipLabel: 'TIP',
+      cta: 'Compare personal loan rates →',
+    },
+    es: {
+      verdictLow: 'Todo en orden. Este préstamo personal cabe bien en tu presupuesto.',
+      verdictMid: 'Posible, pero ajustado. Asegúrate de que tu ingreso se mantenga estable.',
+      verdictHigh: 'Alerta roja. Este préstamo podría causarte estrés financiero.',
+      tipLow: 'Posición sólida. Considera un plazo más corto para ahorrar en interés total.',
+      tipMid: 'Manejable, pero evita adquirir deuda adicional mientras pagas este préstamo.',
+      tipHigh: 'Tu DTI supera los límites seguros. Intenta un monto menor o un plazo más largo.',
+      tipLabel: 'CONSEJO',
+      cta: 'Comparar tasas de préstamo personal →',
+    }
+  };
+
+  let lastResult = null;
+
+  function calculate() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+    const termMonths = parseFloat(document.getElementById('term').value) || 1;
+
+    let monthlyPayment;
+    if (annualRate === 0) {
+      monthlyPayment = loanAmount / termMonths;
+    } else {
+      const r = annualRate / 100 / 12;
+      monthlyPayment = loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
+    }
+
+    const totalCost = monthlyPayment * termMonths;
+    const totalInterest = totalCost - loanAmount;
+    const dti = income > 0 ? ((expenses + monthlyPayment) / income) * 100 : 100;
+    const leftover = income - expenses - monthlyPayment;
+
+    let score;
+    if (dti <= 20) score = 95;
+    else if (dti <= 35) score = Math.round(95 - (dti - 20) * 2.5);
+    else if (dti <= 43) score = Math.round(57 - (dti - 35) * 4);
+    else score = Math.max(0, Math.round(25 - (dti - 43) * 1.5));
+
+    lastResult = { monthlyPayment, totalCost, totalInterest, dti, leftover, score };
+    renderResults(lastResult);
+  }
+
+  function renderResults(r) {
+    const t = T[lang];
+    const { monthlyPayment, totalCost, totalInterest, dti, leftover, score } = r;
+
+    let risk, verdictText, icon, tipText, color;
+    if (dti <= 35) { risk='low'; verdictText=t.verdictLow; icon='✅'; tipText=t.tipLow; color='#00e5a0'; }
+    else if (dti <= 43) { risk='mid'; verdictText=t.verdictMid; icon='⚠️'; tipText=t.tipMid; color='#f5c842'; }
+    else { risk='high'; verdictText=t.verdictHigh; icon='🚨'; tipText=t.tipHigh; color='#ff4d6d'; }
+
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-content').style.display = 'flex';
+
+    const gf = document.getElementById('gauge-fill');
+    gf.style.strokeDashoffset = 251 - (score / 100) * 251;
+    gf.style.stroke = color;
+    document.getElementById('gauge-score').textContent = score;
+
+    const vb = document.getElementById('verdict-box');
+    vb.style.borderColor = color + '55';
+    vb.style.background = color + '10';
+    document.getElementById('verdict-icon').textContent = icon;
+    const vt = document.getElementById('verdict-text');
+    vt.textContent = verdictText;
+    vt.classList.add('active');
+    vt.style.color = color;
+
+    document.getElementById('dti-fill').style.width = Math.min(dti, 100) + '%';
+    document.getElementById('dti-fill').style.background = color;
+    document.getElementById('dti-pct').textContent = dti.toFixed(1) + '%';
+    document.getElementById('dti-pct').style.color = color;
+
+    document.getElementById('stat-monthly').textContent = fmt(monthlyPayment);
+    document.getElementById('stat-leftover').textContent = fmt(leftover);
+    document.getElementById('stat-leftover').style.color = leftover >= 0 ? '#00e5a0' : '#ff4d6d';
+    document.getElementById('stat-total').textContent = fmt(totalCost);
+    document.getElementById('stat-interest').textContent = fmt(totalInterest);
+
+    const tb = document.getElementById('tip-box');
+    tb.classList.add('show');
+    tb.style.background = color + '15';
+    tb.style.borderColor = color + '40';
+    tb.style.color = color;
+    document.getElementById('tip-label').textContent = t.tipLabel;
+    document.getElementById('tip-text').textContent = tipText;
+
+    const cb = document.getElementById('cta-btn');
+    cb.classList.add('show');
+    cb.textContent = t.cta;
+  }
+
+  function fmt(n) {
+    const abs = Math.abs(n);
+    const f = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    return n < 0 ? '-' + f : f;
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>

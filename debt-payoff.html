@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt Payoff Calculator — Can You Handle Your Debt? | CheckAfford</title>
+<meta name="description" content="Find out if your current debt load is manageable. Enter your income and debts. Get an instant DTI check and a clear payoff verdict. Free, no signup.">
+<meta name="keywords" content="debt payoff calculator, can I afford my debt, debt to income ratio, debt consolidation calculator, how to pay off debt">
+<link rel="canonical" href="https://checkafford.com/debt-payoff">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8f8fa8;--accent:#00e5a0;--accent-dim:rgba(0,229,160,0.12);--warn:#f5c842;--danger:#ff4d6d;--font-display:'Syne',sans-serif;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+  body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+  header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border);}
+  .logo{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);text-decoration:none;}
+  .logo span{color:var(--accent);}
+  .nav-links{display:flex;gap:24px;align-items:center;}
+  .nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+  .nav-link:hover{color:var(--text);}.nav-link.active{color:var(--accent);}
+  .lang-toggle{display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px;}
+  .lang-btn{background:none;border:none;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+  .lang-btn.active{background:var(--accent);color:#000;}
+  .breadcrumb{position:relative;z-index:5;padding:16px 40px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-family:var(--font-mono);}
+  .breadcrumb a{color:var(--muted);text-decoration:none;}.breadcrumb a:hover{color:var(--accent);}.breadcrumb span{color:var(--accent);}
+  .page-hero{position:relative;z-index:5;max-width:900px;margin:0 auto;padding:40px 24px 48px;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  @media(max-width:640px){.page-hero{grid-template-columns:1fr;gap:24px;}header{padding:16px 20px;}.breadcrumb{padding:12px 20px;}.nav-links{display:none;}}
+  .page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,77,109,0.1);border:1px solid rgba(255,77,109,0.25);color:var(--danger);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:20px;font-family:var(--font-mono);}
+  h1{font-family:var(--font-display);font-size:clamp(28px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:16px;}
+  h1 em{font-style:normal;color:var(--danger);}
+  .page-sub{font-size:15px;color:var(--muted);line-height:1.7;margin-bottom:24px;font-weight:300;}
+  .quick-facts{display:flex;flex-direction:column;gap:10px;}
+  .fact-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5;}
+  .fact-icon{color:var(--danger);font-size:14px;flex-shrink:0;margin-top:1px;}
+  .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .hero-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;}
+  .hero-stat-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--danger);line-height:1;margin-bottom:6px;}
+  .hero-stat-label{font-size:11px;color:var(--muted);line-height:1.4;}
+  .calc-wrapper{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .calc-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;}
+  .calc-inner{display:grid;grid-template-columns:1fr 1fr;}
+  @media(max-width:640px){.calc-inner{grid-template-columns:1fr;}}
+  .input-panel{padding:36px;border-right:1px solid var(--border);}
+  @media(max-width:640px){.input-panel{border-right:none;border-bottom:1px solid var(--border);padding:24px 20px;}}
+  .panel-title{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:28px;}
+  .field{margin-bottom:20px;}.field label{display:block;font-size:12px;font-weight:500;color:var(--muted);margin-bottom:8px;}
+  .input-wrap{position:relative;}
+  .input-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:14px;color:var(--accent);pointer-events:none;}
+  .input-suffix{position:absolute;right:14px;top:50%;transform:translateY(-50%);font-family:var(--font-mono);font-size:13px;color:var(--muted);pointer-events:none;}
+  input[type="number"]{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:15px;font-weight:500;padding:13px 14px 13px 30px;outline:none;transition:border-color 0.2s;-moz-appearance:textfield;}
+  input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
+  input:focus{border-color:var(--accent);}
+  input.no-prefix{padding-left:14px;}input.has-suffix{padding-right:38px;}
+  .calc-btn{width:100%;background:var(--accent);border:none;border-radius:12px;color:#000;font-family:var(--font-display);font-size:15px;font-weight:700;padding:16px;cursor:pointer;margin-top:8px;transition:all 0.2s;}
+  .calc-btn:hover{background:#00ffb3;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,229,160,0.25);}
+  .result-panel{padding:36px;display:flex;flex-direction:column;justify-content:center;}
+  @media(max-width:640px){.result-panel{padding:24px 20px;}}
+  .placeholder-state{text-align:center;padding:20px 0;}
+  .placeholder-state .big-q{font-family:var(--font-display);font-size:64px;font-weight:800;color:var(--surface2);line-height:1;margin-bottom:12px;}
+  .placeholder-state p{font-size:13px;color:var(--muted);}
+  .gauge-wrap{text-align:center;margin-bottom:24px;}
+  .gauge-svg{width:180px;height:100px;}
+  .gauge-track{fill:none;stroke:var(--surface2);stroke-width:14;stroke-linecap:round;}
+  .gauge-fill{fill:none;stroke-width:14;stroke-linecap:round;transition:stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1),stroke 0.5s;stroke:var(--accent);stroke-dasharray:251;stroke-dashoffset:251;}
+  .gauge-score{font-family:var(--font-display);font-size:36px;font-weight:800;fill:var(--text);}
+  .gauge-label-svg{font-family:var(--font-body);font-size:10px;fill:var(--muted);letter-spacing:0.5px;}
+  .verdict-box{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:16px 18px;margin-bottom:16px;display:flex;align-items:center;gap:12px;min-height:72px;transition:all 0.4s;}
+  .verdict-icon{font-size:24px;flex-shrink:0;}
+  .verdict-text{font-family:var(--font-display);font-size:14px;font-weight:600;line-height:1.4;color:var(--muted);}
+  .verdict-text.active{color:var(--text);}
+  .dti-bar-wrap{margin-bottom:16px;}
+  .dti-bar-header{display:flex;justify-content:space-between;margin-bottom:8px;}
+  .dti-bar-label{font-size:11px;color:var(--muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:0.5px;}
+  .dti-pct{font-family:var(--font-display);font-size:13px;font-weight:700;}
+  .dti-track{height:6px;background:var(--surface2);border-radius:100px;overflow:hidden;}
+  .dti-fill{height:100%;border-radius:100px;background:var(--accent);width:0%;transition:width 0.8s cubic-bezier(.4,0,.2,1),background 0.5s;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .stat-item{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:14px;}
+  .stat-label{font-size:10px;color:var(--muted);letter-spacing:0.8px;text-transform:uppercase;margin-bottom:6px;font-family:var(--font-mono);}
+  .stat-value{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--text);}
+  .stat-value.highlight{color:var(--accent);}
+  .tip-box{border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.5;display:none;margin-bottom:12px;}
+  .tip-box.show{display:block;}
+  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}
+  .cta-btn{display:none;width:100%;background:var(--danger);border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;padding:14px;cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;}
+  .cta-btn.show{display:block;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
+  .content-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
+  .content-card{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;}
+  .content-card h3{font-family:var(--font-display);font-size:16px;font-weight:700;margin-bottom:12px;}
+  .content-card p{font-size:13px;color:var(--muted);line-height:1.7;}.content-card p+p{margin-top:10px;}
+  .faq-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
+  .section-label{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:24px;}
+  .faq-item{border-bottom:1px solid var(--border);padding:20px 0;}
+  .faq-q{font-family:var(--font-display);font-size:15px;font-weight:700;margin-bottom:10px;}
+  .faq-a{font-size:13px;color:var(--muted);line-height:1.7;}
+  .other-calcs{position:relative;z-index:5;max-width:900px;margin:0 auto 80px;padding:0 24px;}
+  .other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+  @media(max-width:640px){.other-grid{grid-template-columns:1fr 1fr;}}
+  .other-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;text-decoration:none;transition:all 0.2s;display:block;}
+  .other-card:hover{border-color:rgba(0,229,160,0.3);transform:translateY(-2px);}
+  .other-icon{font-size:24px;margin-bottom:8px;}
+  .other-name{font-family:var(--font-display);font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+  .other-desc{font-size:11px;color:var(--muted);line-height:1.4;}
+  footer{border-top:1px solid var(--border);text-align:center;padding:28px 24px;font-size:12px;color:var(--muted);position:relative;z-index:5;}
+  footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#00e5a0;color:#000;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;outline:2px solid #000;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link active" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/" class="nav-link" data-i="nav-all">← All calculators</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+</header>
+
+<main id="main-content">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">CheckAfford</a> ›
+  <span data-i="bc-label">Debt Payoff Calculator</span>
+</nav>
+
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="page-badge">💳 <span data-i="badge-text">Debt Payoff Calculator</span></div>
+    <h1 data-i="hero-title">Is your debt load <em data-i="hero-title-em">manageable?</em></h1>
+    <p class="page-sub" data-i="hero-sub">Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.</p>
+    <div class="quick-facts">
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact1">The average American carries $104,215 in total debt including mortgages, auto loans and credit cards.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact2">If your DTI exceeds 43%, most lenders will deny new credit — and financial advisors consider it a crisis threshold.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact3">Paying just $100 extra per month on a $20,000 debt at 18% APR saves over $8,000 in interest.</span></div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">$104k</div><div class="hero-stat-label" data-i="stat1-lbl">Avg total debt per American</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">43%</div><div class="hero-stat-label" data-i="stat2-lbl">DTI threshold lenders flag as risky</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">18%</div><div class="hero-stat-label" data-i="stat3-lbl">Avg credit card APR in the U.S.</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">24mo</div><div class="hero-stat-label" data-i="stat4-lbl">Avg time to pay off $20k debt</div></div>
+  </div>
+</section>
+
+<div class="calc-wrapper">
+  <div class="calc-card">
+    <div class="calc-inner">
+
+      <div class="input-panel">
+        <p class="panel-title" data-i="panel-in">Your Numbers</p>
+        <div class="field"><label data-i="lbl-income">Monthly Income (after tax)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
+        <div class="field"><label data-i="lbl-expenses">Other Monthly Expenses (rent, food, etc.)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
+        <div class="field"><label data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="20000"></div></div>
+        <div class="field"><label data-i="lbl-rate">Average Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <button class="calc-btn" onclick="calculate()" data-i="calc-btn">Check My Debt Load</button>
+      </div>
+
+      <div class="result-panel">
+        <p class="panel-title" data-i="panel-out">Your Verdict</p>
+        <div class="placeholder-state" id="placeholder">
+          <div class="big-q">?</div>
+          <p data-i="ph-text">Enter your numbers above</p>
+        </div>
+        <div id="results-content" style="display:none;">
+          <div class="gauge-wrap">
+            <svg class="gauge-svg" viewBox="0 0 200 110">
+              <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
+              <path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/>
+              <text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text>
+              <text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text>
+            </svg>
+          </div>
+          <div class="verdict-box" id="verdict-box">
+            <span class="verdict-icon" id="verdict-icon">💭</span>
+            <span class="verdict-text" id="verdict-text">–</span>
+          </div>
+          <div class="dti-bar-wrap">
+            <div class="dti-bar-header">
+              <span class="dti-bar-label" data-i="dti-lbl">Debt-to-Income</span>
+              <span class="dti-pct" id="dti-pct">–</span>
+            </div>
+            <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
+          </div>
+          <div class="stats-grid">
+            <div class="stat-item"><div class="stat-label" data-i="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
+          </div>
+          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <a class="cta-btn" id="cta-btn" href="https://www.achieve.com" target="_blank" rel="noopener">Explore debt consolidation options →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-card">
+      <h3 data-i="c1-title">Avalanche vs. Snowball method</h3>
+      <p data-i="c1-p1">The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.</p>
+      <p data-i="c1-p2">Both work. The best method is the one you actually stick to. Use this calculator to find the monthly payment that keeps you on track without breaking your budget.</p>
+    </div>
+    <div class="content-card">
+      <h3 data-i="c2-title">When to consider consolidation</h3>
+      <p data-i="c2-p1">Debt consolidation makes sense when: you have multiple high-interest debts (especially credit cards above 20% APR), you can qualify for a consolidation loan at a lower rate, and your DTI is below 43%.</p>
+      <p data-i="c2-p2">It does not solve overspending — it restructures existing debt. If you consolidate and continue using the cards, you end up with more debt, not less. Fix the behavior first, then consolidate.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <p class="section-label" data-i="faq-label">Common questions</p>
+  <div class="faq-item">
+    <div class="faq-q" data-i="faq1-q">How long will it take to pay off $20,000 in credit card debt?</div>
+    <div class="faq-a" data-i="faq1-a">At 18% APR paying only the minimum (~2% of balance), it takes over 30 years and costs more than $40,000 in total. Paying $600/month clears the debt in about 42 months at a total cost of ~$25,000. Paying $1,000/month clears it in about 24 months. Use the calculator above to find your optimal payment.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" data-i="faq2-q">What DTI is considered too high?</div>
+    <div class="faq-a" data-i="faq2-a">Under 35% is healthy. 35–43% is manageable but leaves little room for emergencies. Over 43% means most lenders will deny new credit and financial advisors consider it a crisis level requiring immediate action — either increasing income, cutting expenses, or consolidating at a lower rate.</div>
+  </div>
+  <div class="faq-item">
+    <div class="faq-q" data-i="faq3-q">Should I pay off debt or save first?</div>
+    <div class="faq-a" data-i="faq3-a">Build a $1,000 emergency fund first — always. Then aggressively pay down any debt above 7% APR before investing. Debt at 18% APR is a guaranteed 18% return when paid off — no investment consistently beats that. Once high-interest debt is clear, shift to building a 3–6 month emergency fund and then investing.</div>
+  </div>
+</section>
+
+<section class="other-calcs">
+  <p class="section-label" data-i="other-label">Other calculators</p>
+  <div class="other-grid">
+    <a href="/car-loan" class="other-card"><div class="other-icon">🚗</div><div class="other-name" data-i="other1-name">Auto Loan</div><div class="other-desc" data-i="other1-desc">Can you afford that car payment?</div></a>
+    <a href="/mortgage" class="other-card"><div class="other-icon">🏠</div><div class="other-name" data-i="other2-name">Mortgage</div><div class="other-desc" data-i="other2-desc">How much house can you afford?</div></a>
+    <a href="/bnpl" class="other-card"><div class="other-icon">📱</div><div class="other-name" data-i="other3-name">BNPL</div><div class="other-desc" data-i="other3-desc">Is Buy Now Pay Later worth it?</div></a>
+    <a href="/personal-loan" class="other-card"><div class="other-icon">💵</div><div class="other-name" data-i="other4-name">Personal Loan</div><div class="other-desc" data-i="other4-desc">Is a personal loan right for you?</div></a>
+  </div>
+</section>
+
+</main>
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms" id="footer-terms">Terms of Use</a>
+  </p>
+</footer>
+<script>
+  let lang = 'en', lastResult = null;
+
+  const T = {
+    en: {
+      // nav
+      'nav-auto':     'Auto Loan',
+      'nav-mortgage': 'Mortgage',
+      'nav-bnpl':     'BNPL',
+      'nav-debt':     'Debt Payoff',
+      'nav-personal': 'Personal Loan',
+      'nav-all':      '← All calculators',
+      // breadcrumb & badge
+      'bc-label':     'Debt Payoff Calculator',
+      'badge-text':   'Debt Payoff Calculator',
+      // hero
+      'hero-title':    'Is your debt load ',
+      'hero-title-em': 'manageable?',
+      'hero-sub':      'Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.',
+      'fact1': 'The average American carries $104,215 in total debt including mortgages, auto loans and credit cards.',
+      'fact2': 'If your DTI exceeds 43%, most lenders will deny new credit — and financial advisors consider it a crisis threshold.',
+      'fact3': 'Paying just $100 extra per month on a $20,000 debt at 18% APR saves over $8,000 in interest.',
+      // hero stats
+      'stat1-lbl': 'Avg total debt per American',
+      'stat2-lbl': 'DTI threshold lenders flag as risky',
+      'stat3-lbl': 'Avg credit card APR in the U.S.',
+      'stat4-lbl': 'Avg time to pay off $20k debt',
+      // calculator
+      'panel-in':    'Your Numbers',
+      'panel-out':   'Your Verdict',
+      'lbl-income':   'Monthly Income (after tax)',
+      'lbl-expenses': 'Other Monthly Expenses (rent, food, etc.)',
+      'lbl-amount':   'Total Debt to Pay Off',
+      'lbl-rate':     'Average Interest Rate',
+      'lbl-term':     'Payoff Target (months)',
+      'calc-btn':     'Check My Debt Load',
+      'ph-text':      'Enter your numbers above',
+      // result labels
+      'dti-lbl': 'Debt-to-Income',
+      's1-lbl':  'Monthly Payment',
+      's2-lbl':  'Left Over',
+      's3-lbl':  'Total Cost',
+      's4-lbl':  'Total Interest',
+      // dynamic result strings
+      scoreLabel:  'SCORE',
+      verdictLow:  'Your debt load is manageable. Keep making consistent payments and avoid new debt.',
+      verdictMid:  'Possible to manage, but tight. One surprise expense could derail your payoff plan.',
+      verdictHigh: 'Red alert. Your debt-to-income ratio is dangerously high. Consider consolidation or professional help.',
+      tipLow:      'Strong position. Apply any extra income directly to your highest-interest debt to accelerate payoff.',
+      tipMid:      'Stay consistent. Even $50 extra per month can save hundreds in interest. Avoid new credit card charges.',
+      tipHigh:     "Your DTI exceeds 43%. Speak to a nonprofit credit counselor (NFCC) — it's free and can help you build a realistic plan.",
+      tipLabel:    'TIP',
+      cta:         'Explore debt consolidation options →',
+      // content cards
+      'c1-title': 'Avalanche vs. Snowball method',
+      'c1-p1':    'The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.',
+      'c1-p2':    'Both work. The best method is the one you actually stick to. Use this calculator to find the monthly payment that keeps you on track without breaking your budget.',
+      'c2-title': 'When to consider consolidation',
+      'c2-p1':    'Debt consolidation makes sense when: you have multiple high-interest debts (especially credit cards above 20% APR), you can qualify for a consolidation loan at a lower rate, and your DTI is below 43%.',
+      'c2-p2':    'It does not solve overspending — it restructures existing debt. If you consolidate and continue using the cards, you end up with more debt, not less. Fix the behavior first, then consolidate.',
+      // faq
+      'faq-label': 'Common questions',
+      'faq1-q': 'How long will it take to pay off $20,000 in credit card debt?',
+      'faq1-a': 'At 18% APR paying only the minimum (~2% of balance), it takes over 30 years and costs more than $40,000 in total. Paying $600/month clears the debt in about 42 months at a total cost of ~$25,000. Paying $1,000/month clears it in about 24 months. Use the calculator above to find your optimal payment.',
+      'faq2-q': 'What DTI is considered too high?',
+      'faq2-a': 'Under 35% is healthy. 35–43% is manageable but leaves little room for emergencies. Over 43% means most lenders will deny new credit and financial advisors consider it a crisis level requiring immediate action — either increasing income, cutting expenses, or consolidating at a lower rate.',
+      'faq3-q': 'Should I pay off debt or save first?',
+      'faq3-a': 'Build a $1,000 emergency fund first — always. Then aggressively pay down any debt above 7% APR before investing. Debt at 18% APR is a guaranteed 18% return when paid off — no investment consistently beats that. Once high-interest debt is clear, shift to building a 3–6 month emergency fund and then investing.',
+      // other calcs
+      'other-label':  'Other calculators',
+      'other1-name':  'Auto Loan',   'other1-desc': 'Can you afford that car payment?',
+      'other2-name':  'Mortgage',    'other2-desc': 'How much house can you afford?',
+      'other3-name':  'BNPL',        'other3-desc': 'Is Buy Now Pay Later worth it?',
+      'other4-name':  'Personal Loan','other4-desc': 'Is a personal loan right for you?',
+      // footer
+      'footer': 'For informational purposes only. Not financial advice. | <a href="/">checkafford.com</a>'
+    },
+
+    es: {
+      // nav
+      'nav-auto':     'Préstamo Auto',
+      'nav-mortgage': 'Hipoteca',
+      'nav-bnpl':     'BNPL',
+      'nav-debt':     'Pago de Deuda',
+      'nav-personal': 'Préstamo Personal',
+      'nav-all':      '← Todas las calculadoras',
+      // breadcrumb & badge
+      'bc-label':   'Calculadora de Pago de Deuda',
+      'badge-text': 'Calculadora de Pago de Deuda',
+      // hero
+      'hero-title':    '¿Tu deuda es ',
+      'hero-title-em': 'manejable?',
+      'hero-sub':      'Tarjetas de crédito, préstamos estudiantiles, pagos de auto — descubre si tu deuda total está bajo control o creciendo en silencio.',
+      'fact1': 'El estadounidense promedio tiene $104,215 en deuda total incluyendo hipotecas, préstamos de auto y tarjetas de crédito.',
+      'fact2': 'Si tu DTI supera el 43%, la mayoría de los prestamistas negarán nuevo crédito — y los asesores financieros lo consideran un umbral de crisis.',
+      'fact3': 'Pagar solo $100 extra por mes en una deuda de $20,000 al 18% APR ahorra más de $8,000 en intereses.',
+      // hero stats
+      'stat1-lbl': 'Deuda total promedio por americano',
+      'stat2-lbl': 'Umbral DTI que los prestamistas marcan como riesgoso',
+      'stat3-lbl': 'APR promedio de tarjeta de crédito en EE.UU.',
+      'stat4-lbl': 'Tiempo promedio para pagar $20k de deuda',
+      // calculator
+      'panel-in':    'Tus Números',
+      'panel-out':   'Tu Veredicto',
+      'lbl-income':   'Ingreso Mensual (después de impuestos)',
+      'lbl-expenses': 'Otros Gastos Mensuales (renta, comida, etc.)',
+      'lbl-amount':   'Deuda Total a Pagar',
+      'lbl-rate':     'Tasa de Interés Promedio',
+      'lbl-term':     'Meta de Pago (meses)',
+      'calc-btn':     'Revisar Mi Carga de Deuda',
+      'ph-text':      'Ingresa tus números arriba',
+      // result labels
+      'dti-lbl': 'Deuda-sobre-Ingreso',
+      's1-lbl':  'Pago Mensual',
+      's2-lbl':  'Sobrante',
+      's3-lbl':  'Costo Total',
+      's4-lbl':  'Interés Total',
+      // dynamic result strings
+      scoreLabel:  'PUNTOS',
+      verdictLow:  'Tu carga de deuda es manejable. Sigue haciendo pagos consistentes y evita nuevas deudas.',
+      verdictMid:  'Posible de manejar, pero ajustado. Un gasto inesperado podría descarrilar tu plan de pago.',
+      verdictHigh: 'Alerta roja. Tu ratio deuda-ingreso es peligrosamente alto. Considera consolidación o ayuda profesional.',
+      tipLow:      'Posición sólida. Aplica cualquier ingreso extra directamente a tu deuda de mayor interés para acelerar el pago.',
+      tipMid:      'Mantén la consistencia. Incluso $50 extra por mes puede ahorrarte cientos en intereses. Evita nuevos cargos en tarjetas.',
+      tipHigh:     'Tu DTI supera el 43%. Habla con un asesor de crédito sin fines de lucro (NFCC) — es gratis y puede ayudarte a construir un plan realista.',
+      tipLabel:    'CONSEJO',
+      cta:         'Explorar opciones de consolidación de deudas →',
+      // content cards
+      'c1-title': 'Método Avalancha vs. Bola de Nieve',
+      'c1-p1':    'El método avalancha paga primero la deuda con mayor interés — ahorra más dinero matemáticamente. El método bola de nieve paga primero los saldos más pequeños — genera impulso psicológico.',
+      'c1-p2':    'Ambos funcionan. El mejor método es el que realmente mantienes. Usa esta calculadora para encontrar el pago mensual que te mantiene en camino sin romper tu presupuesto.',
+      'c2-title': 'Cuándo considerar la consolidación',
+      'c2-p1':    'La consolidación de deuda tiene sentido cuando: tienes múltiples deudas de alto interés (especialmente tarjetas de crédito por encima del 20% APR), puedes calificar para un préstamo de consolidación a una tasa más baja, y tu DTI está por debajo del 43%.',
+      'c2-p2':    'No resuelve el gasto excesivo — reestructura la deuda existente. Si consolidas y continúas usando las tarjetas, terminas con más deuda, no menos. Corrige el comportamiento primero, luego consolida.',
+      // faq
+      'faq-label': 'Preguntas frecuentes',
+      'faq1-q': '¿Cuánto tiempo tomará pagar $20,000 en deuda de tarjeta de crédito?',
+      'faq1-a': 'Al 18% APR pagando solo el mínimo (~2% del saldo), toma más de 30 años y cuesta más de $40,000 en total. Pagar $600/mes liquida la deuda en aproximadamente 42 meses a un costo total de ~$25,000. Pagar $1,000/mes la liquida en aproximadamente 24 meses. Usa la calculadora para encontrar tu pago óptimo.',
+      'faq2-q': '¿Qué DTI se considera demasiado alto?',
+      'faq2-a': 'Por debajo del 35% es saludable. 35–43% es manejable pero deja poco margen para emergencias. Por encima del 43%, la mayoría de los prestamistas negarán nuevo crédito y los asesores financieros lo consideran un nivel de crisis que requiere acción inmediata.',
+      'faq3-q': '¿Debo pagar la deuda o ahorrar primero?',
+      'faq3-a': 'Construye primero un fondo de emergencia de $1,000 — siempre. Luego paga agresivamente cualquier deuda por encima del 7% APR antes de invertir. Una deuda al 18% APR es un retorno garantizado del 18% cuando se paga — ninguna inversión supera eso consistentemente.',
+      // other calcs
+      'other-label':  'Otras calculadoras',
+      'other1-name':  'Préstamo Auto',  'other1-desc': '¿Puedes pagar ese auto?',
+      'other2-name':  'Hipoteca',       'other2-desc': '¿Cuánta casa puedes pagar?',
+      'other3-name':  'BNPL',           'other3-desc': '¿Vale la pena comprar ahora y pagar después?',
+      'other4-name':  'Préstamo Personal','other4-desc': '¿Es un préstamo personal adecuado para ti?',
+      // footer
+      'footer': 'Solo para fines informativos. No es asesoramiento financiero. | <a href="/">checkafford.com</a>'
+    }
+  };
+
+  function setLang(l) {
+    lang = l;
+    document.documentElement.lang = l;
+
+    // toggle active button
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const isActive = b.textContent === l.toUpperCase();
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive);
+    });
+
+    const t = T[l];
+
+    // update all static [data-i] elements
+    document.querySelectorAll('[data-i]').forEach(el => {
+      const key = el.getAttribute('data-i');
+      if (t[key] !== undefined) {
+        // footer has an anchor tag — use innerHTML for it
+        if (key === 'footer') {
+          el.innerHTML = t[key];
+        } else {
+          el.textContent = t[key];
+        }
+      }
+    });
+
+    // update gauge label
+    const gaugeLbl = document.getElementById('gauge-lbl');
+    if (gaugeLbl) gaugeLbl.textContent = t.scoreLabel;
+
+    // re-render results if already calculated
+    if (lastResult) renderResults(lastResult);
+  }
+
+  function calculate() {
+    const income     = parseFloat(document.getElementById('income').value)     || 0;
+    const expenses   = parseFloat(document.getElementById('expenses').value)   || 0;
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value)       || 0;
+    const termMonths = parseFloat(document.getElementById('term').value)       || 1;
+
+    const r  = annualRate / 100 / 12;
+    const mp = annualRate === 0
+      ? loanAmount / termMonths
+      : loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
+
+    const tc   = mp * termMonths;
+    const ti   = tc - loanAmount;
+    const dti  = income > 0 ? ((expenses + mp) / income) * 100 : 100;
+    const lo   = income - expenses - mp;
+    let score  = dti <= 20  ? 95
+               : dti <= 35  ? Math.round(95 - (dti-20) * 2.5)
+               : dti <= 43  ? Math.round(57 - (dti-35) * 4)
+               : Math.max(0, Math.round(25 - (dti-43) * 1.5));
+
+    lastResult = {mp, tc, ti, dti, lo, score};
+    renderResults(lastResult);
+  }
+
+  function renderResults(r) {
+    const t = T[lang];
+    const {mp, tc, ti, dti, lo, score} = r;
+
+    let vt, icon, tip, color;
+    if (dti <= 35)      { vt = t.verdictLow;  icon = '✅'; tip = t.tipLow;  color = '#00e5a0'; }
+    else if (dti <= 43) { vt = t.verdictMid;  icon = '⚠️'; tip = t.tipMid;  color = '#f5c842'; }
+    else                { vt = t.verdictHigh; icon = '🚨'; tip = t.tipHigh; color = '#ff4d6d'; }
+
+    document.getElementById('placeholder').style.display      = 'none';
+    document.getElementById('results-content').style.display  = 'block';
+
+    const gf = document.getElementById('gauge-fill');
+    gf.style.strokeDashoffset = 251 - (score / 100) * 251;
+    gf.style.stroke = color;
+    document.getElementById('gauge-score').textContent = score;
+
+    const vb = document.getElementById('verdict-box');
+    vb.style.borderColor = color + '55';
+    vb.style.background  = color + '10';
+    document.getElementById('verdict-icon').textContent = icon;
+    const vtEl = document.getElementById('verdict-text');
+    vtEl.textContent = vt;
+    vtEl.classList.add('active');
+    vtEl.style.color = color;
+
+    document.getElementById('dti-fill').style.width      = Math.min(dti, 100) + '%';
+    document.getElementById('dti-fill').style.background = color;
+    document.getElementById('dti-pct').textContent       = dti.toFixed(1) + '%';
+    document.getElementById('dti-pct').style.color       = color;
+
+    document.getElementById('stat-monthly').textContent  = fmt(mp);
+    document.getElementById('stat-leftover').textContent = fmt(lo);
+    document.getElementById('stat-leftover').style.color = lo >= 0 ? '#00e5a0' : '#ff4d6d';
+    document.getElementById('stat-total').textContent    = fmt(tc);
+    document.getElementById('stat-interest').textContent = fmt(ti);
+
+    const tb = document.getElementById('tip-box');
+    tb.classList.add('show');
+    tb.style.background  = color + '15';
+    tb.style.borderColor = color + '40';
+    tb.style.color       = color;
+    document.getElementById('tip-label').textContent = t.tipLabel;
+    document.getElementById('tip-text').textContent  = tip;
+
+    const cb = document.getElementById('cta-btn');
+    cb.classList.add('show');
+    cb.textContent = t.cta;
+  }
+
+  function fmt(n) {
+    const a = Math.abs(n);
+    const f = '$' + a.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+    return n < 0 ? '-' + f : f;
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+</body>
+</html>

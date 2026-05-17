@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us | CheckAfford</title>
+<meta name="description" content="Get in touch with the CheckAfford team. We welcome questions, feedback, bug reports, and partnership inquiries.">
+<link rel="canonical" href="https://checkafford.com/contact">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8f8fa8;--accent:#00e5a0;--font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border);}
+.logo{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.nav-link:hover{color:var(--text);}
+.lang-toggle{display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px;}
+.lang-btn{background:none;border:none;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{background:var(--accent);color:#000;}
+.page-wrap{position:relative;z-index:5;max-width:680px;margin:0 auto;padding:72px 24px 100px;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);color:var(--accent);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;font-family:var(--font-mono);}
+.page-title{font-family:var(--font-display);font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;}
+.page-title em{font-style:normal;color:var(--accent);}
+.page-sub{font-size:16px;color:var(--muted);max-width:500px;margin-bottom:48px;font-weight:300;line-height:1.7;}
+.contact-cards{display:flex;flex-direction:column;gap:16px;margin-bottom:40px;}
+.contact-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;display:flex;gap:20px;align-items:flex-start;transition:border-color 0.2s;}
+.contact-card:hover{border-color:rgba(0,229,160,0.3);}
+.c-icon{font-size:28px;flex-shrink:0;}
+.c-label{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:6px;}
+.c-title{font-family:var(--font-display);font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;}
+.c-desc{font-size:14px;color:var(--muted);line-height:1.6;margin-bottom:14px;}
+.c-link{display:inline-block;color:var(--accent);font-size:14px;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(0,229,160,0.3);padding-bottom:2px;transition:border-color 0.2s;}
+.c-link:hover{border-color:var(--accent);}
+.response-box{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:24px 28px;margin-bottom:40px;}
+.response-box h3{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);margin-bottom:16px;}
+.r-item{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px;}
+.r-item:last-child{border-bottom:none;}
+.r-type{color:var(--muted);}
+.r-time{color:var(--accent);font-weight:600;font-family:var(--font-mono);}
+.disclaimer{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--muted);border-radius:16px;padding:20px 24px;}
+.disclaimer p{font-size:14px;color:var(--muted);line-height:1.6;margin:0;}
+footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+footer a:hover{color:var(--accent);}
+@media(max-width:640px){header{padding:16px 20px;}.nav-links{display:none;}.page-wrap{padding:48px 20px 80px;}.contact-card{flex-direction:column;gap:12px;}}
+</style>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:var(--accent);color:#000;font-weight:700;border-radius:8px;text-decoration:none;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">Check<span>Afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/blog" class="nav-link" data-i="nav-blog">Blog</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+</header>
+<main id="main-content">
+<div class="page-wrap">
+  <div class="page-badge">✦ <span data-i="badge">Contact</span></div>
+  <h1 class="page-title"><span data-i="page-title">We would love to </span><em data-i="page-title-em">hear from you.</em></h1>
+  <p class="page-sub" data-i="page-sub">Questions, feedback, bug reports, or partnership inquiries — reach out and we will get back to you as soon as possible.</p>
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="c-icon">✉️</div>
+      <div>
+        <div class="c-label" data-i="c1-label">General Inquiries</div>
+        <div class="c-title" data-i="c1-title">Say hello</div>
+        <div class="c-desc" data-i="c1-desc">Questions about our calculators, feedback on the site, or anything else — we read every email.</div>
+        <a href="mailto:hello.checkafford@gmail.com" class="c-link">hello.checkafford@gmail.com</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">🐛</div>
+      <div>
+        <div class="c-label" data-i="c2-label">Bug Reports</div>
+        <div class="c-title" data-i="c2-title">Found something broken?</div>
+        <div class="c-desc" data-i="c2-desc">If a calculator is not working correctly or you spotted an error, please let us know. Include your browser and what you were calculating.</div>
+        <a href="mailto:hello.checkafford@gmail.com?subject=Bug Report" class="c-link" data-i="c2-link">Report a bug →</a>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="c-icon">🤝</div>
+      <div>
+        <div class="c-label" data-i="c3-label">Partnerships</div>
+        <div class="c-title" data-i="c3-title">Work with us</div>
+        <div class="c-desc" data-i="c3-desc">Interested in advertising, affiliate partnerships, or content collaborations? We would love to explore opportunities that genuinely help our users.</div>
+        <a href="mailto:hello.checkafford@gmail.com?subject=Partnership Inquiry" class="c-link" data-i="c3-link">Get in touch →</a>
+      </div>
+    </div>
+  </div>
+  <div class="response-box">
+    <h3 data-i="resp-title">Response Times</h3>
+    <div class="r-item"><span class="r-type" data-i="r1-type">General questions</span><span class="r-time">1–2 days</span></div>
+    <div class="r-item"><span class="r-type" data-i="r2-type">Bug reports</span><span class="r-time">24–48 hrs</span></div>
+    <div class="r-item"><span class="r-type" data-i="r3-type">Partnership inquiries</span><span class="r-time">2–3 days</span></div>
+  </div>
+  <div class="disclaimer"><p data-i="disclaimer"><strong>Please note:</strong> CheckAfford is a free educational tool — we are not a lender, bank, or licensed financial advisor. We cannot help with loan applications or credit decisions. For those needs, please consult a licensed financial professional.</p></div>
+</div>
+</main>
+<footer>
+  <p data-i="footer-disc">For informational purposes only. Not financial advice.</p>
+  <p style="margin-top:8px;"><a href="/">checkafford.com</a> &nbsp;·&nbsp; <a href="/privacy" data-i="f-priv">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" data-i="f-terms">Terms of Use</a> &nbsp;·&nbsp; <a href="/about" data-i="f-about">About</a> &nbsp;·&nbsp; <a href="/blog" data-i="f-blog">Blog</a></p>
+</footer>
+<script>
+const T={
+  en:{"nav-auto":"Auto Loan","nav-mortgage":"Mortgage","nav-bnpl":"BNPL","nav-debt":"Debt Payoff","nav-blog":"Blog","badge":"Contact","page-title":"We would love to ","page-title-em":"hear from you.","page-sub":"Questions, feedback, bug reports, or partnership inquiries — reach out and we will get back to you as soon as possible.","c1-label":"General Inquiries","c1-title":"Say hello","c1-desc":"Questions about our calculators, feedback on the site, or anything else — we read every email.","c2-label":"Bug Reports","c2-title":"Found something broken?","c2-desc":"If a calculator is not working correctly or you spotted an error, please let us know.","c2-link":"Report a bug →","c3-label":"Partnerships","c3-title":"Work with us","c3-desc":"Interested in advertising, affiliate partnerships, or content collaborations? We would love to explore opportunities.","c3-link":"Get in touch →","resp-title":"Response Times","r1-type":"General questions","r2-type":"Bug reports","r3-type":"Partnership inquiries","disclaimer":"Please note: CheckAfford is a free educational tool — we are not a lender, bank, or licensed financial advisor.","footer-disc":"For informational purposes only. Not financial advice.","f-priv":"Privacy Policy","f-terms":"Terms of Use","f-about":"About","f-blog":"Blog"},
+  es:{"nav-auto":"Préstamo Auto","nav-mortgage":"Hipoteca","nav-bnpl":"BNPL","nav-debt":"Pago de Deuda","nav-blog":"Blog","badge":"Contacto","page-title":"Nos encantaría ","page-title-em":"saber de ti.","page-sub":"Preguntas, comentarios, errores o consultas de alianzas — escríbenos y te responderemos lo antes posible.","c1-label":"Consultas Generales","c1-title":"Saluda","c1-desc":"Preguntas sobre nuestras calculadoras, comentarios sobre el sitio, o lo que sea — leemos cada correo.","c2-label":"Reportar Errores","c2-title":"¿Encontraste algo roto?","c2-desc":"Si una calculadora no funciona bien o encontraste un error, avísanos. Incluye tu navegador y qué estabas calculando.","c2-link":"Reportar error →","c3-label":"Alianzas","c3-title":"Trabaja con nosotros","c3-desc":"¿Interesado en publicidad, afiliados o colaboraciones de contenido? Nos encantaría explorar oportunidades.","c3-link":"Contáctanos →","resp-title":"Tiempos de Respuesta","r1-type":"Preguntas generales","r2-type":"Reportes de errores","r3-type":"Consultas de alianzas","disclaimer":"Nota: CheckAfford es una herramienta educativa gratuita — no somos un prestamista, banco ni asesor financiero certificado.","footer-disc":"Solo para fines informativos. No es asesoría financiera.","f-priv":"Política de Privacidad","f-terms":"Términos de Uso","f-about":"Sobre Nosotros","f-blog":"Blog"}
+};
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>{const a=b.textContent===l.toUpperCase();b.classList.toggle('active',a);b.setAttribute('aria-pressed',a);});
+  const t=T[l];
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(t[k]!==undefined)el.textContent=t[k];});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Can I Afford a Mortgage? — Free Home Affordability Calculator | CheckAfford</title>
+<meta name="description" content="Find out instantly if you can afford a mortgage payment. Enter your income and debts. Get a clear yes or no in 5 seconds. Free, no signup required.">
+<meta name="keywords" content="can I afford a mortgage, home affordability calculator, how much house can I afford, mortgage DTI calculator">
+<link rel="canonical" href="https://checkafford.com/mortgage">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --surface: #111118; --surface2: #18181f;
+    --border: rgba(255,255,255,0.07); --text: #f0f0f5; --muted: #8f8fa8;
+    --accent: #00e5a0; --accent-dim: rgba(0,229,160,0.12);
+    --warn: #f5c842; --danger: #ff4d6d;
+    --font-display: 'Syne', sans-serif; --font-body: 'DM Sans', sans-serif; --font-mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.6; min-height: 100vh; overflow-x: hidden; }
+  body::before { content: ''; position: fixed; inset: 0; background-image: linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px); background-size: 40px 40px; pointer-events: none; z-index: 0; }
+  header { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 20px 40px; border-bottom: 1px solid var(--border); }
+  .logo { font-family: var(--font-display); font-size: 18px; font-weight: 800; letter-spacing: -0.5px; color: var(--text); text-decoration: none; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 24px; align-items: center; }
+  .nav-link { color: var(--muted); font-size: 13px; font-weight: 500; text-decoration: none; transition: color 0.2s; }
+  .nav-link:hover { color: var(--text); }
+  .nav-link.active { color: var(--accent); }
+  .lang-toggle { display: flex; gap: 4px; background: var(--surface2); border: 1px solid var(--border); border-radius: 100px; padding: 4px; }
+  .lang-btn { background: none; border: none; color: var(--muted); font-family: var(--font-display); font-size: 13px; font-weight: 600; padding: 6px 16px; border-radius: 100px; cursor: pointer; transition: all 0.2s; }
+  .lang-btn.active { background: var(--accent); color: #000; }
+  .breadcrumb { position: relative; z-index: 5; padding: 16px 40px; display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--muted); font-family: var(--font-mono); }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { color: var(--accent); }
+  .page-hero { position: relative; z-index: 5; max-width: 900px; margin: 0 auto; padding: 40px 24px 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  @media (max-width: 640px) { .page-hero { grid-template-columns: 1fr; gap: 24px; } header { padding: 16px 20px; } .breadcrumb { padding: 12px 20px; } .nav-links { display: none; } }
+  .page-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(0,229,160,0.08); border: 1px solid rgba(0,229,160,0.2); color: var(--accent); font-size: 11px; font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 14px; border-radius: 100px; margin-bottom: 20px; font-family: var(--font-mono); }
+  h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 48px); font-weight: 800; line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .page-sub { font-size: 15px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; font-weight: 300; }
+  .quick-facts { display: flex; flex-direction: column; gap: 10px; }
+  .fact-item { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: var(--muted); line-height: 1.5; }
+  .fact-icon { color: var(--accent); font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hero-stat { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px; }
+  .hero-stat-num { font-family: var(--font-display); font-size: 24px; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 6px; }
+  .hero-stat-label { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  .calc-wrapper { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
+  .calc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 24px; overflow: hidden; }
+  .calc-inner { display: grid; grid-template-columns: 1fr 1fr; }
+  @media (max-width: 640px) { .calc-inner { grid-template-columns: 1fr; } }
+  .input-panel { padding: 36px; border-right: 1px solid var(--border); }
+  @media (max-width: 640px) { .input-panel { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; } }
+  .panel-title { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 28px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 12px; font-weight: 500; color: var(--muted); margin-bottom: 8px; }
+  .input-wrap { position: relative; }
+  .input-prefix { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 14px; color: var(--accent); pointer-events: none; }
+  .input-suffix { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-family: var(--font-mono); font-size: 13px; color: var(--muted); pointer-events: none; }
+  input[type="number"] { width: 100%; background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; color: var(--text); font-family: var(--font-mono); font-size: 15px; font-weight: 500; padding: 13px 14px 13px 30px; outline: none; transition: border-color 0.2s; -moz-appearance: textfield; }
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input:focus { border-color: var(--accent); }
+  input.no-prefix { padding-left: 14px; }
+  input.has-suffix { padding-right: 38px; }
+  .calc-btn { width: 100%; background: var(--accent); border: none; border-radius: 12px; color: #000; font-family: var(--font-display); font-size: 15px; font-weight: 700; padding: 16px; cursor: pointer; margin-top: 8px; transition: all 0.2s; }
+  .calc-btn:hover { background: #00ffb3; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,229,160,0.25); }
+  .result-panel { padding: 36px; display: flex; flex-direction: column; justify-content: center; }
+  @media (max-width: 640px) { .result-panel { padding: 24px 20px; } }
+  .placeholder-state { text-align: center; padding: 20px 0; }
+  .placeholder-state .big-q { font-family: var(--font-display); font-size: 64px; font-weight: 800; color: var(--surface2); line-height: 1; margin-bottom: 12px; }
+  .placeholder-state p { font-size: 13px; color: var(--muted); }
+  .gauge-wrap { text-align: center; margin-bottom: 24px; }
+  .gauge-svg { width: 180px; height: 100px; }
+  .gauge-track { fill: none; stroke: var(--surface2); stroke-width: 14; stroke-linecap: round; }
+  .gauge-fill { fill: none; stroke-width: 14; stroke-linecap: round; transition: stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1), stroke 0.5s; stroke: var(--accent); stroke-dasharray: 251; stroke-dashoffset: 251; }
+  .gauge-score { font-family: var(--font-display); font-size: 36px; font-weight: 800; fill: var(--text); }
+  .gauge-label-svg { font-family: var(--font-body); font-size: 10px; fill: var(--muted); letter-spacing: 0.5px; }
+  .verdict-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; display: flex; align-items: center; gap: 12px; min-height: 72px; transition: all 0.4s; }
+  .verdict-icon { font-size: 24px; flex-shrink: 0; }
+  .verdict-text { font-family: var(--font-display); font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--muted); }
+  .verdict-text.active { color: var(--text); }
+  .dti-bar-wrap { margin-bottom: 16px; }
+  .dti-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .dti-bar-label { font-size: 11px; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.5px; }
+  .dti-pct { font-family: var(--font-display); font-size: 13px; font-weight: 700; }
+  .dti-track { height: 6px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
+  .dti-fill { height: 100%; border-radius: 100px; background: var(--accent); width: 0%; transition: width 0.8s cubic-bezier(.4,0,.2,1), background 0.5s; }
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .stat-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; font-family: var(--font-mono); }
+  .stat-value { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); }
+  .stat-value.highlight { color: var(--accent); }
+  .tip-box { background: var(--accent-dim); border: 1px solid rgba(0,229,160,0.2); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: var(--accent); line-height: 1.5; display: none; margin-bottom: 12px; }
+  .tip-box.show { display: block; }
+  .tip-box strong { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
+  .cta-btn { display: none; width: 100%; background: var(--danger); border: none; border-radius: 12px; color: #fff; font-family: var(--font-display); font-size: 14px; font-weight: 700; padding: 14px; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
+  .cta-btn.show { display: block; }
+  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
+  .content-section { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
+  .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
+  .content-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+  .content-card h3 { font-family: var(--font-display); font-size: 16px; font-weight: 700; margin-bottom: 12px; }
+  .content-card p { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .content-card p + p { margin-top: 10px; }
+  .faq-section { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
+  .section-label { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  .faq-q { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 10px; }
+  .faq-a { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .other-calcs { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 80px; padding: 0 24px; }
+  .other-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  @media (max-width: 640px) { .other-grid { grid-template-columns: 1fr 1fr; } }
+  .other-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 16px; text-decoration: none; transition: all 0.2s; display: block; }
+  .other-card:hover { border-color: rgba(0,229,160,0.3); transform: translateY(-2px); }
+  .other-icon { font-size: 24px; margin-bottom: 8px; }
+  .other-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .other-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+  footer { border-top: 1px solid var(--border); text-align: center; padding: 28px 24px; font-size: 12px; color: var(--muted); position: relative; z-index: 5; }
+  footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#00e5a0;color:#000;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;outline:2px solid #000;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link">Auto Loan</a>
+    <a href="/mortgage" class="nav-link active">Mortgage</a>
+    <a href="/bnpl" class="nav-link">BNPL</a>
+    <a href="/debt-payoff" class="nav-link">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link">Personal Loan</a>
+    <a href="/" class="nav-link">← All calculators</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+</header>
+<main id="main-content">
+<nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">CheckAfford</a> › <span id="bc-label">Mortgage Calculator</span></nav>
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="page-badge">🏠 <span id="badge-text">Mortgage Calculator</span></div>
+    <h1 id="hero-title">Can you afford that <em>mortgage?</em></h1>
+    <p class="page-sub" id="hero-sub">The 28/36 rule, your DTI, your leftover money — all in one instant check. No bank appointment needed.</p>
+    <div class="quick-facts">
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">Lenders use the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">The absolute max DTI most lenders allow is 43% — FHA loans can go to 50% in some cases.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">Every 1% increase in interest rate on a $300k loan adds ~$170 to your monthly payment.</span></div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">28%</div><div class="hero-stat-label" id="stat1-lbl">Max housing cost of gross income</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">36%</div><div class="hero-stat-label" id="stat2-lbl">Max total debt ratio (28/36 rule)</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">30yr</div><div class="hero-stat-label" id="stat3-lbl">Most common mortgage term</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">20%</div><div class="hero-stat-label" id="stat4-lbl">Ideal down payment to avoid PMI</div></div>
+  </div>
+</section>
+<div class="calc-wrapper">
+  <div class="calc-card">
+    <div class="calc-inner">
+      <div class="input-panel">
+        <p class="panel-title" id="panel-in">Your Numbers</p>
+        <div class="field"><label id="lbl-income">Monthly Income (gross)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="8000"></div></div>
+        <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="1200"></div></div>
+        <div class="field"><label id="lbl-amount">Mortgage Amount</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="350000"></div></div>
+        <div class="field"><label id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Affordability</button>
+      </div>
+      <div class="result-panel">
+        <p class="panel-title" id="panel-out">Your Verdict</p>
+        <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p id="ph-text">Enter your numbers above</p></div>
+        <div id="results-content" style="display:none;">
+          <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
+          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
+          <div class="stats-grid">
+            <div class="stat-item"><div class="stat-label" id="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
+          </div>
+          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <a class="cta-btn" id="cta-btn" href="https://www.credible.com/mortgage" target="_blank" rel="noopener">Compare mortgage rates →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-card"><h3 id="c1-title">The 28/36 Rule explained</h3><p id="c1-p1">Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost (mortgage + insurance + taxes) should not exceed 28% of your gross monthly income.</p><p id="c1-p2">Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.</p></div>
+    <div class="content-card"><h3 id="c2-title">What really drives your mortgage payment</h3><p id="c2-p1">Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term has lower monthly payments but you pay nearly double the home's price in total interest.</p><p id="c2-p2">A 15-year mortgage cuts total interest roughly in half — but monthly payments are 40-50% higher. Use the calculator to find the right balance for your income.</p></div>
+  </div>
+</section>
+<section class="faq-section">
+  <p class="section-label" id="faq-label">Common questions</p>
+  <div class="faq-item"><div class="faq-q" id="faq1-q">How much house can I afford on a $80,000 salary?</div><div class="faq-a" id="faq1-a">On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing costs. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years, before factoring in property taxes and insurance.</div></div>
+  <div class="faq-item"><div class="faq-q" id="faq2-q">Is a $2,500 mortgage too much on a $70k salary?</div><div class="faq-a" id="faq2-a">On $70,000/year (~$5,833/month gross), a $2,500 mortgage payment represents 43% of gross income — right at the absolute limit most lenders allow. You'd have very little margin for other debts or emergencies. Most financial advisors would call this too aggressive.</div></div>
+  <div class="faq-item"><div class="faq-q" id="faq3-q">Do I need 20% down to get a mortgage?</div><div class="faq-a" id="faq3-a">No — FHA loans allow as little as 3.5% down, and conventional loans can go as low as 3%. However, putting less than 20% down means paying Private Mortgage Insurance (PMI), which adds $50–$200/month to your payment depending on the loan size.</div></div>
+</section>
+<section class="other-calcs">
+  <p class="section-label">Other calculators</p>
+  <div class="other-grid">
+    <a href="/car-loan" class="other-card"><div class="other-icon">🚗</div><div class="other-name">Auto Loan</div><div class="other-desc">Can you afford that car payment?</div></a>
+    <a href="/bnpl" class="other-card"><div class="other-icon">📱</div><div class="other-name">BNPL</div><div class="other-desc">Is Buy Now Pay Later worth it?</div></a>
+    <a href="/debt-payoff" class="other-card"><div class="other-icon">💳</div><div class="other-name">Debt Payoff</div><div class="other-desc">Can you handle your current debt?</div></a>
+    <a href="/personal-loan" class="other-card"><div class="other-icon">💵</div><div class="other-name">Personal Loan</div><div class="other-desc">Is a personal loan right for you?</div></a>
+  </div>
+</section>
+</main>
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms" id="footer-terms">Terms of Use</a>
+  </p>
+</footer><script>
+  let lang = 'en', lastResult = null;
+  const T = {
+    en: { verdictLow: 'All clear. This mortgage fits comfortably within your budget.', verdictMid: 'Possible, but tight. You will have little financial flexibility.', verdictHigh: 'Red alert. This mortgage payment exceeds safe limits for your income.', tipLow: 'Strong position. Consider a 15-year term to save significantly on total interest.', tipMid: 'Manageable, but look for ways to increase your down payment or reduce the loan amount.', tipHigh: 'Your housing cost exceeds the 28% threshold. Consider a less expensive home or a larger down payment.', tipLabel: 'TIP', cta: 'Compare mortgage rates →', scoreLabel: 'SCORE' },
+    es: { verdictLow: 'Todo en orden. Esta hipoteca encaja cómodamente en tu presupuesto.', verdictMid: 'Posible, pero ajustado. Tendrás poca flexibilidad financiera.', verdictHigh: 'Alerta roja. Este pago de hipoteca supera los límites seguros para tu ingreso.', tipLow: 'Posición sólida. Considera un plazo de 15 años para ahorrar en interés total.', tipMid: 'Manejable, pero busca formas de aumentar tu pago inicial o reducir el monto del préstamo.', tipHigh: 'Tu costo de vivienda supera el umbral del 28%. Considera una propiedad menos costosa.', tipLabel: 'CONSEJO', cta: 'Comparar tasas de hipoteca →', scoreLabel: 'PUNTOS' }
+  };
+  const translations = {
+    'bc-label': { en: 'Mortgage Calculator', es: 'Calculadora de Hipoteca' },
+    'badge-text': { en: 'Mortgage Calculator', es: 'Calculadora de Hipoteca' },
+    'hero-title': { en: 'Can you afford that <em>mortgage?</em>', es: '¿Puedes pagar esa <em>hipoteca?</em>' },
+    'hero-sub': { en: 'The 28/36 rule, your DTI, your leftover money — all in one instant check.', es: 'La regla 28/36, tu DTI, tu dinero sobrante — todo en una verificación instantánea.' },
+    'fact1': { en: 'Lenders use the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.', es: 'Los prestamistas usan la regla 28/36: costos de vivienda bajo el 28% del ingreso bruto, deuda total bajo el 36%.' },
+    'fact2': { en: 'The absolute max DTI most lenders allow is 43% — FHA loans can go to 50% in some cases.', es: 'El DTI máximo absoluto que la mayoría de prestamistas permite es el 43% — los préstamos FHA pueden llegar al 50%.' },
+    'fact3': { en: 'Every 1% increase in rate on a $300k loan adds ~$170 to your monthly payment.', es: 'Cada 1% de aumento en la tasa de un préstamo de $300k agrega ~$170 a tu pago mensual.' },
+    'stat1-lbl': { en: 'Max housing cost of gross income', es: 'Costo máximo de vivienda sobre ingreso bruto' },
+    'stat2-lbl': { en: 'Max total debt ratio (28/36 rule)', es: 'Ratio máximo de deuda total (regla 28/36)' },
+    'stat3-lbl': { en: 'Most common mortgage term', es: 'Plazo de hipoteca más común' },
+    'stat4-lbl': { en: 'Ideal down payment to avoid PMI', es: 'Pago inicial ideal para evitar el PMI' },
+    'panel-in': { en: 'Your Numbers', es: 'Tus Datos' },
+    'lbl-income': { en: 'Monthly Income (gross)', es: 'Ingreso mensual (bruto)' },
+    'lbl-expenses': { en: 'Existing Monthly Debt Payments', es: 'Deudas mensuales existentes' },
+    'lbl-amount': { en: 'Mortgage Amount', es: 'Monto de la hipoteca' },
+    'lbl-rate': { en: 'Annual Interest Rate', es: 'Tasa de interés anual' },
+    'lbl-term': { en: 'Loan Term (months)', es: 'Plazo del préstamo (meses)' },
+    'calc-btn': { en: 'Check Affordability', es: 'Verificar capacidad de pago' },
+    'panel-out': { en: 'Your Verdict', es: 'Tu Veredicto' },
+    'ph-text': { en: 'Enter your numbers above', es: 'Ingresa tus datos arriba' },
+    'dti-lbl': { en: 'Debt-to-Income', es: 'Deuda-Ingreso' },
+    's1-lbl': { en: 'Monthly Payment', es: 'Pago mensual' },
+    's2-lbl': { en: 'Left Over', es: 'Sobrante' },
+    's3-lbl': { en: 'Total Cost', es: 'Costo total' },
+    's4-lbl': { en: 'Total Interest', es: 'Interés total' },
+    'faq-label': { en: 'Common questions', es: 'Preguntas frecuentes' },
+    'faq1-q': { en: 'How much house can I afford on a $80,000 salary?', es: '¿Cuánta casa puedo pagar con un salario de $80,000?' },
+    'faq1-a': { en: 'On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years.', es: 'Con $80,000/año (~$6,667/mes bruto), la regla del 28% permite hasta $1,867/mes para vivienda. Con tasas actuales (~7%), eso soporta una hipoteca de aproximadamente $280,000–$300,000 a 30 años.' },
+    'faq2-q': { en: 'Is a $2,500 mortgage too much on a $70k salary?', es: '¿Es demasiado una hipoteca de $2,500 con un salario de $70k?' },
+    'faq2-a': { en: 'On $70,000/year (~$5,833/month gross), a $2,500 payment is 43% of gross income — right at the limit. Very little margin for other debts or emergencies.', es: 'Con $70,000/año (~$5,833/mes bruto), un pago de $2,500 es el 43% del ingreso bruto — justo en el límite. Muy poco margen para otras deudas o emergencias.' },
+    'faq3-q': { en: 'Do I need 20% down to get a mortgage?', es: '¿Necesito el 20% de enganche para obtener una hipoteca?' },
+    'faq3-a': { en: 'No — FHA loans allow as little as 3.5% down. However, putting less than 20% means paying Private Mortgage Insurance (PMI), adding $50–$200/month to your payment.', es: 'No — los préstamos FHA permiten tan solo el 3.5% de enganche. Sin embargo, menos del 20% significa pagar el Seguro Hipotecario Privado (PMI), agregando $50–$200/mes a tu pago.' },
+    'c1-title': { en: 'The 28/36 Rule explained', es: 'La regla 28/36 explicada' },
+    'c1-p1': { en: 'Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost should not exceed 28% of your gross monthly income.', es: 'Los bancos usan esta regla para decidir si puedes pagar una hipoteca. Tu costo mensual de vivienda no debe superar el 28% de tu ingreso mensual bruto.' },
+    'c1-p2': { en: 'Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.', es: 'Tu deuda mensual total — vivienda más pagos de auto, tarjetas, préstamos estudiantiles — no debe superar el 36%.' },
+    'c2-title': { en: 'What really drives your mortgage payment', es: 'Qué realmente determina tu pago de hipoteca' },
+    'c2-p1': { en: 'Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term has lower monthly payments but you pay nearly double the home\'s price in total interest.', es: 'Tres factores mueven tu pago más que nada: el monto del préstamo, la tasa de interés y el plazo. Un plazo de 30 años tiene pagos mensuales más bajos pero pagas casi el doble del precio de la casa en interés total.' },
+    'c2-p2': { en: 'A 15-year mortgage cuts total interest roughly in half — but monthly payments are 40-50% higher. Use the calculator to find the right balance for your income.', es: 'Una hipoteca a 15 años reduce el interés total a la mitad — pero los pagos mensuales son 40-50% más altos.' }
+  };
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const isActive = b.textContent === l.toUpperCase();
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive);
+    });
+    Object.entries(translations).forEach(([id, vals]) => { const el = document.getElementById(id); if (el && vals[l]) el.innerHTML = vals[l]; });
+    document.getElementById('gauge-lbl').textContent = T[l].scoreLabel;
+    if (lastResult) renderResults(lastResult);
+  }
+  function calculate() {
+    const income = parseFloat(document.getElementById('income').value) || 0;
+    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
+    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
+    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
+    const termMonths = parseFloat(document.getElementById('term').value) || 1;
+    let mp; const r = annualRate / 100 / 12;
+    mp = annualRate === 0 ? loanAmount / termMonths : loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
+    const tc = mp * termMonths, ti = tc - loanAmount, dti = income > 0 ? ((expenses + mp) / income) * 100 : 100, lo = income - expenses - mp;
+    let score = dti <= 20 ? 95 : dti <= 35 ? Math.round(95-(dti-20)*2.5) : dti <= 43 ? Math.round(57-(dti-35)*4) : Math.max(0, Math.round(25-(dti-43)*1.5));
+    lastResult = { mp, tc, ti, dti, lo, score };
+    renderResults(lastResult);
+  }
+  function renderResults(r) {
+    const t = T[lang]; const { mp, tc, ti, dti, lo, score } = r;
+    let vt, icon, tip, color;
+    if (dti <= 35) { vt=t.verdictLow; icon='✅'; tip=t.tipLow; color='#00e5a0'; }
+    else if (dti <= 43) { vt=t.verdictMid; icon='⚠️'; tip=t.tipMid; color='#f5c842'; }
+    else { vt=t.verdictHigh; icon='🚨'; tip=t.tipHigh; color='#ff4d6d'; }
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-content').style.display = 'block';
+    const gf = document.getElementById('gauge-fill'); gf.style.strokeDashoffset = 251-(score/100)*251; gf.style.stroke = color;
+    document.getElementById('gauge-score').textContent = score;
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color+'55'; vb.style.background = color+'10';
+    document.getElementById('verdict-icon').textContent = icon;
+    const vtEl = document.getElementById('verdict-text'); vtEl.textContent = vt; vtEl.classList.add('active'); vtEl.style.color = color;
+    document.getElementById('dti-fill').style.width = Math.min(dti,100)+'%'; document.getElementById('dti-fill').style.background = color;
+    document.getElementById('dti-pct').textContent = dti.toFixed(1)+'%'; document.getElementById('dti-pct').style.color = color;
+    document.getElementById('stat-monthly').textContent = fmt(mp);
+    document.getElementById('stat-leftover').textContent = fmt(lo); document.getElementById('stat-leftover').style.color = lo>=0?'#00e5a0':'#ff4d6d';
+    document.getElementById('stat-total').textContent = fmt(tc); document.getElementById('stat-interest').textContent = fmt(ti);
+    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background=color+'15'; tb.style.borderColor=color+'40'; tb.style.color=color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
+    const cb = document.getElementById('cta-btn'); cb.classList.add('show'); cb.textContent = t.cta;
+  }
+  function fmt(n) { const a=Math.abs(n), f='$'+a.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); return n<0?'-'+f:f; }
+  document.addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
+</script>
+</body>
+</html>

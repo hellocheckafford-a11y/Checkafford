@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CheckAfford — Free Financial Calculators</title>
+<meta name="description" content="Free financial calculators to check if you can afford a car, house, or manage your debt. Instant verdict, no signup.">
+<meta name="keywords" content="financial calculator, can I afford, auto loan calculator, mortgage calculator, debt payoff calculator, BNPL calculator">
+<link rel="canonical" href="https://checkafford.com/">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0a0a0f;
+  --surface:#111118;
+  --surface2:#18181f;
+  --border:rgba(255,255,255,0.07);
+  --text:#f0f0f5;
+  --muted:#8f8fa8;
+  --accent:#00e5a0;
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+  --font-mono:'DM Mono',monospace;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--font-body);
+  font-size:16px;
+  line-height:1.6;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body::before{
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);
+  background-size:40px 40px;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* HEADER */
+header{
+  position:relative;
+  z-index:10;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:20px 40px;
+  border-bottom:1px solid var(--border);
+}
+.logo{
+  font-family:var(--font-display);
+  font-size:18px;
+  font-weight:800;
+  letter-spacing:-0.5px;
+  color:var(--text);
+  text-decoration:none;
+}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-link{
+  color:var(--muted);
+  font-size:13px;
+  font-weight:500;
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.nav-link:hover{color:var(--text);}
+.lang-toggle{
+  display:flex;
+  gap:4px;
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:100px;
+  padding:4px;
+}
+.lang-btn{
+  background:none;
+  border:none;
+  color:var(--muted);
+  font-family:var(--font-display);
+  font-size:13px;
+  font-weight:600;
+  padding:6px 16px;
+  border-radius:100px;
+  cursor:pointer;
+  transition:all 0.2s;
+}
+.lang-btn.active{background:var(--accent);color:#000;}
+
+/* HERO */
+.hero{
+  position:relative;
+  z-index:5;
+  max-width:900px;
+  margin:0 auto;
+  padding:80px 24px 64px;
+  text-align:center;
+}
+.hero-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:rgba(0,229,160,0.08);
+  border:1px solid rgba(0,229,160,0.2);
+  color:var(--accent);
+  font-size:11px;
+  font-weight:500;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  padding:6px 16px;
+  border-radius:100px;
+  margin-bottom:28px;
+  font-family:var(--font-mono);
+}
+.hero h1{
+  font-family:var(--font-display);
+  font-size:clamp(36px,6vw,68px);
+  font-weight:800;
+  line-height:1.05;
+  letter-spacing:-2px;
+  margin-bottom:20px;
+}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero-sub{
+  font-size:16px;
+  color:var(--muted);
+  max-width:520px;
+  margin:0 auto 48px;
+  font-weight:300;
+  line-height:1.7;
+}
+
+/* CALCULATOR GRID */
+.calc-grid{
+  position:relative;
+  z-index:5;
+  max-width:900px;
+  margin:0 auto 80px;
+  padding:0 24px;
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+@media(max-width:640px){
+  .calc-grid{grid-template-columns:1fr;}
+  header{padding:16px 20px;}
+  .nav-links{display:none;}
+  .hero{padding:48px 24px 40px;}
+}
+
+.calc-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:28px;
+  text-decoration:none;
+  display:block;
+  transition:all 0.2s;
+  position:relative;
+  overflow:hidden;
+}
+.calc-card::before{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse at top left,var(--card-glow,rgba(0,229,160,0.04)) 0%,transparent 60%);
+  pointer-events:none;
+}
+.calc-card:hover{
+  border-color:rgba(0,229,160,0.25);
+  transform:translateY(-3px);
+  box-shadow:0 12px 40px rgba(0,0,0,0.3);
+}
+
+.card-icon{
+  font-size:32px;
+  margin-bottom:16px;
+  display:block;
+}
+.card-tag{
+  display:inline-block;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:500;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  padding:3px 10px;
+  border-radius:100px;
+  margin-bottom:12px;
+}
+.card-title{
+  font-family:var(--font-display);
+  font-size:20px;
+  font-weight:800;
+  color:var(--text);
+  margin-bottom:8px;
+  letter-spacing:-0.5px;
+}
+.card-title em{font-style:normal;}
+.card-desc{
+  font-size:13px;
+  color:var(--muted);
+  line-height:1.6;
+  margin-bottom:20px;
+}
+.card-stats{
+  display:flex;
+  gap:16px;
+}
+.card-stat{
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+}
+.card-stat-val{
+  font-family:var(--font-display);
+  font-size:15px;
+  font-weight:700;
+}
+.card-stat-lbl{
+  font-size:10px;
+  color:var(--muted);
+  font-family:var(--font-mono);
+}
+.card-arrow{
+  position:absolute;
+  top:28px;
+  right:28px;
+  font-size:18px;
+  color:var(--muted);
+  transition:transform 0.2s, color 0.2s;
+}
+.calc-card:hover .card-arrow{
+  transform:translate(3px,-3px);
+  color:var(--accent);
+}
+
+/* WHY SECTION */
+.why-section{
+  position:relative;
+  z-index:5;
+  max-width:900px;
+  margin:0 auto 80px;
+  padding:0 24px;
+}
+.section-label{
+  font-family:var(--font-display);
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:24px;
+}
+.why-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+@media(max-width:640px){.why-grid{grid-template-columns:1fr;}}
+.why-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:22px;
+}
+.why-icon{font-size:24px;margin-bottom:12px;}
+.why-title{
+  font-family:var(--font-display);
+  font-size:14px;
+  font-weight:700;
+  margin-bottom:8px;
+}
+.why-desc{font-size:13px;color:var(--muted);line-height:1.6;}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:28px 24px;
+  font-size:12px;
+  color:var(--muted);
+  position:relative;
+  z-index:5;
+}
+footer a{color:var(--accent);text-decoration:none;}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#00e5a0;color:#000;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;outline:2px solid #000;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan"    class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage"   class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl"       class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff"class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/blog" class="nav-link" data-i="nav-blog">Blog</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+</header>
+
+<main id="main-content">
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">⚡ <span data-i="badge">Free · Instant · No signup</span></div>
+  <h1 data-i="h1">Can you <em data-i="h1-em">actually afford it?</em></h1>
+  <p class="hero-sub" data-i="hero-sub">Enter your numbers. Get an honest verdict in seconds — no guesswork, no jargon, no signup required.</p>
+</section>
+
+<!-- CALCULATOR CARDS -->
+<div class="calc-grid">
+
+  <!-- Auto Loan -->
+  <a href="/car-loan" class="calc-card" style="--card-glow:rgba(255,100,80,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">🚗</span>
+    <span class="card-tag" style="background:rgba(255,100,80,0.1);color:#ff6450;" data-i="tag-auto">Auto Loan</span>
+    <div class="card-title" data-i="title-auto">Can you afford that <em style="color:#ff6450;">car payment?</em></div>
+    <p class="card-desc" data-i="desc-auto">Check your DTI, monthly payment, and total loan cost. Find out if that car fits your budget before you sign.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">43%</span><span class="card-stat-lbl" data-i="cs-dti">Max DTI</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">$735</span><span class="card-stat-lbl" data-i="cs-avg-car">Avg payment</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">5sec</span><span class="card-stat-lbl" data-i="cs-time">Instant result</span></div>
+    </div>
+  </a>
+
+  <!-- Mortgage -->
+  <a href="/mortgage" class="calc-card" style="--card-glow:rgba(0,229,160,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">🏠</span>
+    <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--accent);" data-i="tag-mortgage">Mortgage</span>
+    <div class="card-title" data-i="title-mortgage">Can you afford that <em style="color:var(--accent);">mortgage?</em></div>
+    <p class="card-desc" data-i="desc-mortgage">Enter income, debts, home price and rate. Get an instant affordability verdict with full payment breakdown.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">28%</span><span class="card-stat-lbl" data-i="cs-rule">28/36 Rule</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">$2,317</span><span class="card-stat-lbl" data-i="cs-avg-mort">Avg payment</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">5sec</span><span class="card-stat-lbl" data-i="cs-time2">Instant result</span></div>
+    </div>
+  </a>
+
+  <!-- Debt Payoff -->
+  <a href="/debt-payoff" class="calc-card" style="--card-glow:rgba(255,77,109,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">💳</span>
+    <span class="card-tag" style="background:rgba(255,77,109,0.1);color:#ff4d6d;" data-i="tag-debt">Debt Payoff</span>
+    <div class="card-title" data-i="title-debt">Is your debt load <em style="color:#ff4d6d;">manageable?</em></div>
+    <p class="card-desc" data-i="desc-debt">Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">43%</span><span class="card-stat-lbl" data-i="cs-crisis">Crisis DTI</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">18%</span><span class="card-stat-lbl" data-i="cs-apr">Avg card APR</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">5sec</span><span class="card-stat-lbl" data-i="cs-time3">Instant result</span></div>
+    </div>
+  </a>
+
+  <!-- BNPL -->
+  <a href="/bnpl" class="calc-card" style="--card-glow:rgba(160,100,255,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">📱</span>
+    <span class="card-tag" style="background:rgba(160,100,255,0.1);color:#a064ff;" data-i="tag-bnpl">BNPL</span>
+    <div class="card-title" data-i="title-bnpl">Is Buy Now Pay Later <em style="color:#a064ff;">worth it?</em></div>
+    <p class="card-desc" data-i="desc-bnpl">See the real cost of Afterpay, Klarna and other BNPL plans — including fees, interest, and what happens if you miss a payment.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-apr">Max APR</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">$180</span><span class="card-stat-lbl" data-i="cs-avg-bnpl">Avg purchase</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">5sec</span><span class="card-stat-lbl" data-i="cs-time4">Instant result</span></div>
+    </div>
+  </a>
+
+  <!-- PERSONAL LOAN -->
+  <a href="/personal-loan" class="calc-card" style="--card-glow:rgba(0,200,255,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">💵</span>
+    <span class="card-tag" style="background:rgba(0,200,255,0.1);color:#00c8ff;" data-i="tag-personal">Personal Loan</span>
+    <div class="card-title" data-i="title-personal">Is a personal loan <em style="color:#00c8ff;">right for you?</em></div>
+    <p class="card-desc" data-i="desc-personal">Enter your income, existing debts and loan details. Get an instant verdict on whether you can handle the payments — before you apply.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-personal">Max APR</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">$8k</span><span class="card-stat-lbl" data-i="cs-avg-personal">Avg loan</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">5sec</span><span class="card-stat-lbl" data-i="cs-time5">Instant result</span></div>
+    </div>
+  </a>
+
+</div>
+
+<!-- WHY SECTION -->
+<section class="why-section">
+  <p class="section-label" data-i="why-label">Why CheckAfford</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <div class="why-title" data-i="why1-title">Instant verdict</div>
+      <p class="why-desc" data-i="why1-desc">No lengthy forms, no email required. Enter your numbers and get a clear answer in seconds.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <div class="why-title" data-i="why2-title">Real lender logic</div>
+      <p class="why-desc" data-i="why2-desc">We use the same DTI thresholds real banks use — not optimistic estimates that set you up to fail.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <div class="why-title" data-i="why3-title">No data collected</div>
+      <p class="why-desc" data-i="why3-desc">All calculations happen in your browser. We never store, sell, or share your financial information.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms" id="footer-terms">Terms of Use</a>
+  </p>
+</footer>
+<script>
+  const T = {
+    en: {
+      'nav-auto':     'Auto Loan',
+      'nav-mortgage': 'Mortgage',
+      'nav-bnpl':     'BNPL',
+      'nav-debt':     'Debt Payoff',
+      'nav-personal': 'Personal Loan',
+      'h1':           'Can you ',
+      'h1-em':        'actually afford it?',
+      'hero-sub':     'Enter your numbers. Get an honest verdict in seconds — no guesswork, no jargon, no signup required.',
+      'tag-auto':     'Auto Loan',
+      'title-auto':   'Can you afford that car payment?',
+      'desc-auto':    'Check your DTI, monthly payment, and total loan cost. Find out if that car fits your budget before you sign.',
+      'cs-dti':       'Max DTI', 'cs-avg-car': 'Avg payment', 'cs-time': 'Instant result',
+      'tag-mortgage': 'Mortgage',
+      'title-mortgage':'Can you afford that mortgage?',
+      'desc-mortgage':'Enter income, debts, home price and rate. Get an instant affordability verdict with full payment breakdown.',
+      'cs-rule':      '28/36 Rule', 'cs-avg-mort': 'Avg payment', 'cs-time2': 'Instant result',
+      'tag-debt':     'Debt Payoff',
+      'title-debt':   'Is your debt load manageable?',
+      'desc-debt':    'Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.',
+      'cs-crisis':    'Crisis DTI', 'cs-apr': 'Avg card APR', 'cs-time3': 'Instant result',
+      'tag-bnpl':     'BNPL',
+      'title-bnpl':   'Is Buy Now Pay Later worth it?',
+      'desc-bnpl':    'See the real cost of Afterpay, Klarna and other BNPL plans — including fees, interest, and what happens if you miss a payment.',
+      'cs-max-apr':   'Max APR', 'cs-avg-bnpl': 'Avg purchase', 'cs-time4': 'Instant result',
+      'tag-personal': 'Personal Loan',
+      'title-personal': 'Is a personal loan right for you?',
+      'desc-personal': 'Enter your income, existing debts and loan details. Get an instant verdict on whether you can handle the payments — before you apply.',
+      'cs-max-personal': 'Max APR', 'cs-avg-personal': 'Avg loan', 'cs-time5': 'Instant result',
+      'why1-title':   'Instant verdict',
+      'why1-desc':    'No lengthy forms, no email required. Enter your numbers and get a clear answer in seconds.',
+      'why2-title':   'Real lender logic',
+      'why2-desc':    'We use the same DTI thresholds real banks use — not optimistic estimates that set you up to fail.',
+      'why3-title':   'No data collected',
+      'why3-desc':    'All calculations happen in your browser. We never store, sell, or share your financial information.',
+      'footer':       'For informational purposes only. Not financial advice. | <a href="/">checkafford.com</a>'
+    },
+    es: {
+      'nav-auto':     'Préstamo Auto',
+      'nav-mortgage': 'Hipoteca',
+      'nav-bnpl':     'BNPL',
+      'nav-debt':     'Pago de Deuda',
+      'nav-personal': 'Préstamo Personal',
+      'h1':           '¿Realmente lo puedes ',
+      'h1-em':        'pagar?',
+      'hero-sub':     'Ingresa tus números. Obtén una respuesta honesta en segundos — sin suposiciones, sin tecnicismos, sin registro.',
+      'tag-auto':     'Préstamo Auto',
+      'title-auto':   '¿Puedes pagar ese auto?',
+      'desc-auto':    'Revisa tu DTI, pago mensual y costo total del préstamo. Descubre si ese auto cabe en tu presupuesto antes de firmar.',
+      'cs-dti':       'DTI máx', 'cs-avg-car': 'Pago prom.', 'cs-time': 'Resultado inst.',
+      'tag-mortgage': 'Hipoteca',
+      'title-mortgage':'¿Puedes pagar esa hipoteca?',
+      'desc-mortgage':'Ingresa ingresos, deudas, precio de la casa y tasa. Obtén un veredicto de accesibilidad instantáneo.',
+      'cs-rule':      'Regla 28/36', 'cs-avg-mort': 'Pago prom.', 'cs-time2': 'Resultado inst.',
+      'tag-debt':     'Pago de Deuda',
+      'title-debt':   '¿Tu deuda es manejable?',
+      'desc-debt':    'Tarjetas, préstamos estudiantiles, pagos de auto — descubre si tu deuda total está bajo control o creciendo.',
+      'cs-crisis':    'DTI crisis', 'cs-apr': 'APR prom. tarjeta', 'cs-time3': 'Resultado inst.',
+      'tag-bnpl':     'BNPL',
+      'title-bnpl':   '¿Vale la pena comprar ahora y pagar después?',
+      'desc-bnpl':    'Mira el costo real de Afterpay, Klarna y otros planes BNPL — incluyendo cargos, intereses y pagos perdidos.',
+      'cs-max-apr':   'APR máx', 'cs-avg-bnpl': 'Compra prom.', 'cs-time4': 'Resultado inst.',
+      'why-label':    'Por qué CheckAfford',
+      'why1-title':   'Veredicto instantáneo',
+      'why1-desc':    'Sin formularios largos, sin correo requerido. Ingresa tus números y obtén una respuesta clara en segundos.',
+      'why2-title':   'Lógica real de prestamistas',
+      'why2-desc':    'Usamos los mismos umbrales DTI que usan los bancos reales — no estimaciones optimistas que te hacen fallar.',
+      'why3-title':   'Sin recolección de datos',
+      'why3-desc':    'Todos los cálculos ocurren en tu navegador. Nunca almacenamos, vendemos ni compartimos tu información financiera.',
+      'footer':       'Solo para fines informativos. No es asesoramiento financiero. | <a href="/">checkafford.com</a>'
+    }
+  };
+
+  function setLang(l) {
+    document.documentElement.lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => {
+      const isActive = b.textContent === l.toUpperCase();
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', isActive);
+    });
+    const t = T[l];
+    document.querySelectorAll('[data-i]').forEach(el => {
+      const key = el.getAttribute('data-i');
+      if (t[key] !== undefined) {
+        if (key === 'footer') { el.innerHTML = t[key]; }
+        else { el.textContent = t[key]; }
+      }
+    });
+  }
+</script>
+</body>
+</html>
