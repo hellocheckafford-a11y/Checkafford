@@ -42,6 +42,17 @@ header{position:relative;z-index:10;display:flex;justify-content:space-between;a
 .cta-note{font-size:12px;color:var(--muted);margin-top:10px;}
 footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);font-family:var(--font-mono);}footer a{color:var(--muted);text-decoration:none;}footer a:hover{color:var(--accent);}
 @media(max-width:640px){header{padding:16px 20px;}.nav-links{display:none;}.breadcrumb{padding:12px 20px;}.article-wrap{padding:32px 20px 80px;}}
+
+/* MOBILE NAV */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);text-decoration:none;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+.mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
+.mobile-lang{display:flex;gap:8px;margin-top:16px;}
+@media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
 </style>
 </head>
 <body>
@@ -59,6 +70,23 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-to
     <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
     <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
   </div>
+<!-- MOBILE NAV -->
+<button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/car-loan" data-i="nav-auto">Auto Loan</a>
+  <a href="/mortgage" data-i="nav-mortgage">Mortgage</a>
+  <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
+  <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
+  <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/blog" data-i="nav-blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
+    <button class="lang-btn" onclick="setLang('es');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">ES</button>
+  </div>
+</div>
 </header>
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <a href="/">checkafford.com</a> ›

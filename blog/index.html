@@ -49,35 +49,70 @@ footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:28
 footer a{color:var(--muted);text-decoration:none;}
 footer a:hover{color:var(--accent);}
 @media(max-width:600px){header{padding:16px 20px;}.wrap{padding:40px 18px 70px;}.grid{grid-template-columns:1fr;}}
+
+.lang-toggle{display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px;}
+.lang-btn{background:none;border:none;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{background:var(--accent);color:#000;}
+
+/* MOBILE NAV */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);text-decoration:none;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+.mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
+.mobile-lang{display:flex;gap:8px;margin-top:16px;}
+@media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
 </style>
 </head>
 <body>
 <a href="#main-content" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:var(--accent);color:#000;font-weight:700;border-radius:8px;text-decoration:none;">Skip to main content</a>
 <header>
   <a href="https://checkafford.com" class="logo">Check<span>Afford</span></a>
-  <nav class="nav-links" aria-label="Main navigation">
-    <a href="/car-loan" class="nav-link">Car Loan</a>
-    <a href="/mortgage" class="nav-link">Mortgage</a>
-    <a href="/bnpl" class="nav-link">BNPL</a>
-    <a href="/debt-payoff" class="nav-link">Debt Payoff</a>
-    <a href="/personal-loan" class="nav-link">Personal Loan</a>
-    <a href="/blog" class="nav-link">Blog</a>
-    <a href="/" class="nav-cta">Check Now →</a>
+    <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/blog" class="nav-link active" data-i="nav-blog">Blog</a>
   </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+<!-- MOBILE NAV -->
+<button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/car-loan" data-i="nav-auto">Auto Loan</a>
+  <a href="/mortgage" data-i="nav-mortgage">Mortgage</a>
+  <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
+  <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
+  <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/blog" data-i="nav-blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
+    <button class="lang-btn" onclick="setLang('es');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">ES</button>
+  </div>
+</div>
 </header>
 <main id="main-content">
 <div class="wrap">
-  <div class="page-tag">Free Guides</div>
-  <h1 class="page-title">Smart money decisions<br><span>start here.</span></h1>
-  <p class="page-sub">Plain-English guides on loans, debt, and affordability — with free calculators so you can check your own numbers in seconds.</p>
+  <div class="page-tag" data-i="page-tag">Free Guides</div>
+  <h1 class="page-title" data-i="page-title">Smart money decisions<br><span>start here.</span></h1>
+  <p class="page-sub" data-i="page-sub">Plain-English guides on loans, debt, and affordability — with free calculators so you can check your own numbers in seconds.</p>
 
   <div class="filters" role="group" aria-label="Filter by category">
-    <button class="filter-btn active" onclick="filter('all')">All</button>
-    <button class="filter-btn" onclick="filter('car')">Car Loans</button>
-    <button class="filter-btn" onclick="filter('mortgage')">Mortgage</button>
-    <button class="filter-btn" onclick="filter('debt')">Debt Payoff</button>
-    <button class="filter-btn" onclick="filter('bnpl')">BNPL</button>
-    <button class="filter-btn" onclick="filter('personal')">Personal Finance</button>
+    <button class="filter-btn active" onclick="filter('all')" data-i="f-all">All</button>
+    <button class="filter-btn" onclick="filter('car')" data-i="f-car">Car Loans</button>
+    <button class="filter-btn" onclick="filter('mortgage')" data-i="f-mortgage">Mortgage</button>
+    <button class="filter-btn" onclick="filter('debt')" data-i="f-debt">Debt Payoff</button>
+    <button class="filter-btn" onclick="filter('bnpl')" data-i="f-bnpl">BNPL</button>
+    <button class="filter-btn" onclick="filter('personal')" data-i="f-personal">Personal Finance</button>
   </div>
 
   <div class="grid" id="grid">
@@ -155,9 +190,9 @@ footer a:hover{color:var(--accent);}
   </div>
 
   <div class="cta-strip">
-    <h2>Ready to check your numbers?</h2>
-    <p>Use our free calculators to know exactly where you stand — before you apply for anything.</p>
-    <a href="https://checkafford.com" class="cta-btn">Try the Free Calculators →</a>
+    <h2 data-i="cta-title">Ready to check your numbers?</h2>
+    <p data-i="cta-desc">Use our free calculators to know exactly where you stand — before you apply for anything.</p>
+    <a href="https://checkafford.com" class="cta-btn" data-i="cta-btn">Try the Free Calculators →</a>
   </div>
 </div>
 </main>
@@ -173,6 +208,41 @@ function filter(cat) {
   event.target.classList.add('active');
   document.querySelectorAll('.card').forEach(c => {
     c.style.display = (cat === 'all' || c.dataset.cat === cat) ? 'flex' : 'none';
+  });
+}
+</script>
+<script>
+const T = {
+  en: {
+    "nav-auto":"Car Loan","nav-mortgage":"Mortgage","nav-bnpl":"BNPL","nav-debt":"Debt Payoff","nav-personal":"Personal Loan","nav-blog":"Blog",
+    "page-tag":"Free Guides",
+    "page-sub":"Plain-English guides on loans, debt, and affordability — with free calculators so you can check your own numbers in seconds.",
+    "f-all":"All","f-car":"Car Loans","f-mortgage":"Mortgage","f-debt":"Debt Payoff","f-bnpl":"BNPL","f-personal":"Personal Finance",
+    "cta-title":"Ready to check your numbers?",
+    "cta-desc":"Use our free calculators to know exactly where you stand — before you apply for anything.",
+    "cta-btn":"Try the Free Calculators →"
+  },
+  es: {
+    "nav-auto":"Préstamo Auto","nav-mortgage":"Hipoteca","nav-bnpl":"BNPL","nav-debt":"Pago de Deuda","nav-personal":"Préstamo Personal","nav-blog":"Blog",
+    "page-tag":"Guías Gratis",
+    "page-sub":"Guías en español sobre préstamos, deudas y capacidad de pago — con calculadoras gratis para verificar tus números en segundos.",
+    "f-all":"Todos","f-car":"Préstamos de Auto","f-mortgage":"Hipoteca","f-debt":"Pago de Deuda","f-bnpl":"BNPL","f-personal":"Finanzas Personales",
+    "cta-title":"¿Listo para verificar tus números?",
+    "cta-desc":"Usa nuestras calculadoras gratuitas para saber exactamente dónde estás — antes de aplicar a cualquier préstamo.",
+    "cta-btn":"Prueba las Calculadoras Gratis →"
+  }
+};
+function setLang(l) {
+  document.documentElement.lang = l;
+  document.querySelectorAll('.lang-btn').forEach(b => {
+    const isActive = b.textContent === l.toUpperCase();
+    b.classList.toggle('active', isActive);
+    b.setAttribute('aria-pressed', isActive);
+  });
+  const t = T[l];
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const key = el.getAttribute('data-i');
+    if (t[key] !== undefined) el.textContent = t[key];
   });
 }
 </script>
