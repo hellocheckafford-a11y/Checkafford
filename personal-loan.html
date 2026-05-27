@@ -468,24 +468,52 @@
   }
   footer a { color: var(--muted); text-decoration: none; }
   footer a:hover { color: var(--accent); }
+
+/* MOBILE NAV */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);text-decoration:none;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+.mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
+.mobile-lang{display:flex;gap:8px;margin-top:16px;}
+@media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
 </style>
 </head>
 <body>
 
 <header>
   <a href="/" class="logo">check<span>afford</span></a>
-  <nav class="nav-links">
-    <a href="/car-loan" class="nav-link" data-en="Auto Loan" data-es="Préstamo Auto">Auto Loan</a>
-    <a href="/mortgage" class="nav-link" data-en="Mortgage" data-es="Hipoteca">Mortgage</a>
-    <a href="/bnpl" class="nav-link" data-en="BNPL" data-es="BNPL">BNPL</a>
-    <a href="/debt-payoff" class="nav-link" data-en="Debt Payoff" data-es="Deudas">Debt Payoff</a>
-    <a href="/personal-loan" class="nav-link active" data-en="Personal Loan" data-es="Préstamo Personal">Personal Loan</a>
-    <a href="/" class="nav-link" data-en="← All calculators" data-es="← Todas">← All calculators</a>
+    <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link active" data-i="nav-personal">Personal Loan</a>
+    <a href="/blog" class="nav-link" data-i="nav-blog">Blog</a>
   </nav>
   <div class="lang-toggle">
     <button class="lang-btn active" onclick="setLang('en')">EN</button>
     <button class="lang-btn" onclick="setLang('es')">ES</button>
   </div>
+<!-- MOBILE NAV -->
+<button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/car-loan" data-i="nav-auto">Auto Loan</a>
+  <a href="/mortgage" data-i="nav-mortgage">Mortgage</a>
+  <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
+  <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
+  <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/blog" data-i="nav-blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
+    <button class="lang-btn" onclick="setLang('es');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">ES</button>
+  </div>
+</div>
 </header>
 
 <div class="breadcrumb">
