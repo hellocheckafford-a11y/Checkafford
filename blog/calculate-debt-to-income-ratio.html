@@ -53,6 +53,16 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-to
 .mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
 .mobile-lang{display:flex;gap:8px;margin-top:16px;}
 @media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
+
+/* RELATED GUIDES */
+.rel-guides{margin:48px 0 0;}
+.rel-guides.rel-page{position:relative;z-index:1;max-width:900px;margin:48px auto 80px;padding:0 24px;}
+.rel-guides h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;margin:0 0 14px;color:var(--text);}
+.rel-guides ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.rel-guides li{margin:0;padding:0;border:0;}
+.rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
+.rel-guides a:hover{border-color:var(--accent);}
+.rel-guides .arr{color:var(--accent);flex-shrink:0;}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -120,7 +130,7 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-to
     <tr><td>Minimum credit card payments</td><td>$85</td><td><span class="tg" data-i="s-yes"></span></td></tr>
     <tr><td>Car loan payment</td><td>$420</td><td><span class="tg" data-i="s-yes"></span></td></tr>
     <tr><td>Student loan payment</td><td>$280</td><td><span class="tg" data-i="s-yes"></span></td></tr>
-    <tr><td>Mortgage/rent</td><td>$1,200</td><td><span class="tg" data-i="s-yes"></span></td></tr>
+    <tr><td>Mortgage/rent</td><td>$1,350</td><td><span class="tg" data-i="s-yes"></span></td></tr>
     <tr><td>Groceries / utilities</td><td>—</td><td><span class="tb" data-i="s-no"></span></td></tr>
     <tr><td>Insurance / subscriptions</td><td>—</td><td><span class="tb" data-i="s-no"></span></td></tr>
     </tbody></table>
@@ -131,6 +141,14 @@ footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-to
     <div class="hbox"><div class="lbl" data-i="hbox1-lbl"></div><p data-i="hbox1-p"></p></div>
     <div class="cta-block"><h3 data-i="cta2-title"></h3><p data-i="cta2-desc"></p><a href="/" class="cta-btn" data-i="cta2-btn"></a><div class="cta-note" data-i="cta-note2"></div></div>
   </div>
+<section class="rel-guides" aria-labelledby="rel-title">
+  <h2 id="rel-title" data-en="Related guides" data-es="Guías relacionadas">Related guides</h2>
+  <ul>
+    <li><a href="/blog/what-is-a-good-debt-to-income-ratio"><span data-en="What Is a Good Debt-to-Income Ratio?" data-es="¿Qué es un buen ratio deuda-ingreso?">What Is a Good Debt-to-Income Ratio?</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/how-much-car-can-i-afford"><span data-en="How Much Car Can I Afford on My Salary?" data-es="¿Cuánto auto puedo pagar con mi salario?">How Much Car Can I Afford on My Salary?</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/how-much-house-can-i-afford"><span data-en="How Much House Can I Afford on My Salary?" data-es="¿Cuánta casa puedo pagar con mi salario?">How Much House Can I Afford on My Salary?</span><span class="arr">→</span></a></li>
+  </ul>
+</section>
 </article>
 </main>
 <footer>
@@ -165,6 +183,20 @@ function setLang(l) {
     }
   });
 }
+</script>
+<script>
+(function(){
+  function swap(l){
+    document.querySelectorAll('.rel-guides [data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + l);
+      if (v) el.textContent = v;
+    });
+  }
+  if (typeof window.setLang === 'function') {
+    var orig = window.setLang;
+    window.setLang = function(l){ var r = orig.apply(this, arguments); swap(l); return r; };
+  }
+})();
 </script>
 </body>
 </html>
