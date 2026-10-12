@@ -562,6 +562,16 @@
 .mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
 .mobile-lang{display:flex;gap:8px;margin-top:16px;}
 @media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
+
+/* RELATED GUIDES */
+.rel-guides{margin:48px 0 0;}
+.rel-guides.rel-page{position:relative;z-index:1;max-width:900px;margin:48px auto 80px;padding:0 24px;}
+.rel-guides h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;margin:0 0 14px;color:var(--text);}
+.rel-guides ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.rel-guides li{margin:0;padding:0;border:0;}
+.rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
+.rel-guides a:hover{border-color:var(--accent);}
+.rel-guides .arr{color:var(--accent);flex-shrink:0;}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -818,16 +828,26 @@
   </div>
 </section>
 
+<section class="rel-guides rel-page" aria-labelledby="rel-title">
+  <h2 id="rel-title" data-en="Related guides" data-es="Guías relacionadas">Related guides</h2>
+  <ul>
+    <li><a href="/blog/how-much-car-can-i-afford"><span data-en="How Much Car Can I Afford on My Salary?" data-es="¿Cuánto auto puedo pagar con mi salario?">How Much Car Can I Afford on My Salary?</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/is-500-car-payment-too-much"><span data-en="Is a $500 Car Payment Too Much?" data-es="¿Es un pago de auto de $500 demasiado?">Is a $500 Car Payment Too Much?</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/what-is-a-good-debt-to-income-ratio"><span data-en="What Is a Good Debt-to-Income Ratio?" data-es="¿Qué es un buen ratio deuda-ingreso?">What Is a Good Debt-to-Income Ratio?</span><span class="arr">→</span></a></li>
+  </ul>
+</section>
 </main>
-<footer>
 <footer>
   <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
   <p style="margin-top:8px;">
     <a href="/">checkafford.com</a> &nbsp;·&nbsp;
     <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
-    <a href="/terms" id="footer-terms">Terms of Use</a>
+    <a href="/terms" id="footer-terms">Terms of Use</a> &nbsp;·&nbsp;
+    <a href="/about" data-en="About" data-es="Acerca de">About</a> &nbsp;·&nbsp;
+    <a href="/contact" data-en="Contact" data-es="Contacto">Contact</a> &nbsp;·&nbsp;
+    <a href="/blog" data-en="Blog" data-es="Blog">Blog</a>
   </p>
-</footer></footer>
+</footer>
 
 <script>
   let lang = 'en';
@@ -959,6 +979,20 @@
   }
 
   document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+</script>
+<script>
+(function(){
+  function swap(l){
+    document.querySelectorAll('.rel-guides [data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + l);
+      if (v) el.textContent = v;
+    });
+  }
+  if (typeof window.setLang === 'function') {
+    var orig = window.setLang;
+    window.setLang = function(l){ var r = orig.apply(this, arguments); swap(l); return r; };
+  }
+})();
 </script>
 </body>
 </html>
