@@ -34,6 +34,7 @@ header{position:relative;z-index:10;display:flex;justify-content:space-between;a
 .section h2{font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:16px;}
 .section p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:14px;}
 .section p strong{color:var(--text);font-weight:600;}
+.section p a,.value-desc a,.disclaimer p a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
 .values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
 .value-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.2s;}
 .value-card:hover{border-color:rgba(0,229,160,0.3);}
@@ -73,6 +74,7 @@ footer a:hover{color:var(--accent);}
   gtag('js', new Date());
   gtag('config', 'G-ZHN6PQSLWN');
 </script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AboutPage","url":"https://checkafford.com/about","mainEntity":{"@type":"Person","name":"Elba Nabetcy Guissepe Avalo","jobTitle":"Actuary","worksFor":{"@type":"Organization","name":"CheckAfford","url":"https://checkafford.com"}}}</script>
 </head>
 <body>
 <a href="#main-content" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:var(--accent);color:#000;font-weight:700;border-radius:8px;text-decoration:none;">Skip to main content</a>
@@ -110,28 +112,45 @@ footer a:hover{color:var(--accent);}
 </header>
 <main id="main-content">
 <div class="page-wrap">
-  <div class="page-badge">✦ <span data-i="badge">About Us</span></div>
-  <h1 class="page-title"><span data-i="page-title">Built for people who want </span><em data-i="page-title-em">honest answers.</em></h1>
-  <p class="page-sub" data-i="page-sub">CheckAfford is a free financial tool that helps everyday Americans figure out if they can really afford a loan — before signing anything.</p>
+  <div class="page-badge">✦ <span data-i="badge">About</span></div>
+  <h1 class="page-title"><span data-i="page-title">Built on real risk math. </span><em data-i="page-title-em">Explained in plain English.</em></h1>
+  <p class="page-sub" data-i="page-sub">CheckAfford is a free set of calculators that helps everyday Americans check whether a loan, mortgage, or car payment fits their budget — before they apply.</p>
+
   <div class="section">
-    <div class="section-label" data-i="s1-label">Our Story</div>
-    <h2 data-i="s1-title">Why we built this</h2>
-    <p data-i="s1-p1">Most people find out they cannot afford a loan <strong>after</strong> they apply — when the rejection hits their credit score, or when the monthly payments start squeezing their budget.</p>
-    <p data-i="s1-p2">We built CheckAfford because the question <strong>"Can I actually afford this?"</strong> deserves a clear, honest answer in seconds — not after a hard credit pull, not after talking to a salesperson.</p>
-    <p data-i="s1-p3">Our calculators use the same debt-to-income formulas that lenders use. We show you the result in plain English — before you commit.</p>
+    <div class="section-label" data-i="s0-label">Who is behind this</div>
+    <h2 data-i="s0-title">Hi, I'm Elba Nabetcy Guissepe Avalo</h2>
+    <p data-i="s0-p1">I'm an <strong>actuary</strong> by training. My profession is measuring risk with data: building statistical and econometric models, valuing financial obligations, and explaining the results to people who have to make decisions with them.</p>
+    <p data-i="s0-p2">CheckAfford applies that same way of thinking to everyday money questions. The math behind a loan is not complicated, but it is rarely shown clearly to the person signing for it. My goal is to show it.</p>
   </div>
+
   <div class="section">
-    <div class="section-label" data-i="s2-label">What We Stand For</div>
-    <h2 data-i="s2-title">Our principles</h2>
+    <div class="section-label" data-i="s1-label">Why this exists</div>
+    <h2 data-i="s1-title">Why I built this</h2>
+    <p data-i="s1-p1">Most people find out they cannot afford a loan <strong>after</strong> they apply — when the rejection hits their credit score, or when the monthly payments start squeezing their budget.</p>
+    <p data-i="s1-p2">I built CheckAfford because the question <strong>"Can I actually afford this?"</strong> deserves a clear, honest answer in seconds — not after a hard credit pull, not after talking to a salesperson.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s4-label">Method</div>
+    <h2 data-i="s4-title">How the calculators work</h2>
+    <p data-i="s4-p1">Monthly loan payments use the standard amortization formula. Your debt-to-income ratio (DTI) is your total monthly debt payments divided by your gross monthly income — the same measure lenders look at.</p>
+    <p data-i="s4-p2">Every result is an <strong>estimate</strong> based on the numbers you enter. It is not a loan offer, a pre-approval, or a prediction that a lender will approve you. Actual rates, fees, and approval rules vary by lender.</p>
+    <p data-i="s4-p3">Each guide in the <a href="/blog">blog</a> shows the date it was last updated. If you find a number that looks wrong, <a href="/contact">tell me</a> and I will check it.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s2-label">What I stand for</div>
+    <h2 data-i="s2-title">Principles</h2>
     <div class="values-grid">
-      <div class="value-card"><div class="value-icon">🔒</div><div class="value-title" data-i="v1-t">No data collected</div><div class="value-desc" data-i="v1-d">We do not store your numbers. Everything runs in your browser and disappears when you close the tab.</div></div>
+      <div class="value-card"><div class="value-icon">🔒</div><div class="value-title" data-i="v1-t">Your numbers stay in your browser</div><div class="value-desc" data-i="v1-d">What you type into the calculators is processed in your browser and is not stored by CheckAfford. Like most websites, CheckAfford uses Google Analytics to measure traffic and Google AdSense to show ads, which may use cookies — details in the <a href="/privacy">Privacy Policy</a>.</div></div>
       <div class="value-card"><div class="value-icon">⚡</div><div class="value-title" data-i="v2-t">Results in 5 seconds</div><div class="value-desc" data-i="v2-d">No signup, no email, no waiting. Enter your numbers and get your answer instantly.</div></div>
-      <div class="value-card"><div class="value-icon">🇺🇸</div><div class="value-title" data-i="v3-t">Built for the US market</div><div class="value-desc" data-i="v3-d">Our calculators use US lending standards — DTI thresholds, APR calculations, and lender benchmarks.</div></div>
-      <div class="value-card"><div class="value-icon">🌎</div><div class="value-title" data-i="v4-t">Bilingual support</div><div class="value-desc" data-i="v4-d">Available in English and Spanish — because 62 million Americans speak Spanish and deserve the same tools.</div></div>
+      <div class="value-card"><div class="value-icon">🇺🇸</div><div class="value-title" data-i="v3-t">Built for the US market</div><div class="value-desc" data-i="v3-d">The calculators use US lending conventions — DTI thresholds, APR calculations, and common lender benchmarks.</div></div>
+      <div class="value-card"><div class="value-icon">🗣️</div><div class="value-title" data-i="v4-t">English and Spanish</div><div class="value-desc" data-i="v4-d">Every tool is available in both languages — about 42 million people in the U.S. speak Spanish at home.</div></div>
     </div>
   </div>
+
   <div class="section">
-    <div class="section-label" data-i="s3-label">Our Tools</div>
+    <div class="section-label" data-i="s3-label">The tools</div>
     <h2 data-i="s3-title">Free calculators — no signup</h2>
     <p data-i="s3-sub">Every tool is free, requires no signup, and gives you a result in under 10 seconds.</p>
     <div class="tools-list">
@@ -142,23 +161,132 @@ footer a:hover{color:var(--accent);}
       <a href="/blog" class="tool-item"><div><div class="tool-name" data-i="t5-n">📖 Free Finance Guides</div><div class="tool-desc" data-i="t5-d">Plain-English articles on loans, debt, and affordability.</div></div><span class="tool-arrow">↗</span></a>
     </div>
   </div>
-  <div class="disclaimer"><p data-i="disclaimer"><strong>A note on our content:</strong> Everything on CheckAfford is for educational purposes only. We are not a bank, lender, or licensed financial advisor. Questions? <a href="/contact" style="color:var(--accent);">Contact us here</a>.</p></div>
+
+  <div class="disclaimer"><p data-i="disclaimer"><strong>A note on this content:</strong> Everything on CheckAfford is for educational purposes only. I am not a bank, lender, or licensed financial advisor, and my actuarial training does not make this site financial advice. Questions? <a href="/contact">Contact me here</a>.</p></div>
 </div>
 </main>
 <footer>
   <p data-i="footer-disc">For informational purposes only. Not financial advice.</p>
-  <p style="margin-top:8px;"><a href="/">checkafford.com</a> &nbsp;·&nbsp; <a href="/privacy" data-i="f-priv">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" data-i="f-terms">Terms of Use</a> &nbsp;·&nbsp; <a href="/contact" data-i="f-contact">Contact</a> &nbsp;·&nbsp; <a href="/blog" data-i="f-blog">Blog</a></p>
+  <p style="margin-top:8px;"><a href="/">checkafford.com</a> &nbsp;·&nbsp; <a href="/privacy" data-i="f-priv">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" data-i="f-terms">Terms of Use</a> &nbsp;·&nbsp; <a href="/about" data-i="f-about">About</a> &nbsp;·&nbsp; <a href="/contact" data-i="f-contact">Contact</a> &nbsp;·&nbsp; <a href="/blog" data-i="f-blog">Blog</a></p>
 </footer>
 <script>
 const T={
-  en:{"nav-auto":"Auto Loan","nav-mortgage":"Mortgage","nav-bnpl":"BNPL","nav-debt":"Debt Payoff","nav-blog":"Blog","badge":"About Us","page-title":"Built for people who want ","page-title-em":"honest answers.","page-sub":"CheckAfford is a free financial tool that helps everyday Americans figure out if they can really afford a loan — before signing anything.","s1-label":"Our Story","s1-title":"Why we built this","s1-p1":"Most people find out they cannot afford a loan after they apply — when the rejection hits their credit score, or when the monthly payments start squeezing their budget.","s1-p2":"We built CheckAfford because the question Can I actually afford this? deserves a clear, honest answer in seconds — not after a hard credit pull, not after talking to a salesperson.","s1-p3":"Our calculators use the same debt-to-income formulas that lenders use. We show you the result in plain English — before you commit.","s2-label":"What We Stand For","s2-title":"Our principles","v1-t":"No data collected","v1-d":"We do not store your numbers. Everything runs in your browser and disappears when you close the tab.","v2-t":"Results in 5 seconds","v2-d":"No signup, no email, no waiting. Enter your numbers and get your answer instantly.","v3-t":"Built for the US market","v3-d":"Our calculators use US lending standards — DTI thresholds, APR calculations, and lender benchmarks.","v4-t":"Bilingual support","v4-d":"Available in English and Spanish — because 62 million Americans speak Spanish and deserve the same tools.","s3-label":"Our Tools","s3-title":"Free calculators — no signup","s3-sub":"Every tool is free, requires no signup, and gives you a result in under 10 seconds.","t1-n":"🚗 Car Loan Calculator","t1-d":"Find out if you can afford that car payment before you sign.","t2-n":"🏠 Mortgage Calculator","t2-d":"See how much house your income and debts can actually support.","t3-n":"📱 BNPL Calculator","t3-d":"Check if those Affirm or Klarna installments fit your budget.","t4-n":"💳 Debt Payoff Calculator","t4-d":"Find your fastest path out of debt and how much interest you will save.","t5-n":"📖 Free Finance Guides","t5-d":"Plain-English articles on loans, debt, and affordability.","disclaimer":"A note on our content: Everything on CheckAfford is for educational purposes only. We are not a bank, lender, or licensed financial advisor.","footer-disc":"For informational purposes only. Not financial advice.","f-priv":"Privacy Policy","f-terms":"Terms of Use","f-contact":"Contact","f-blog":"Blog"},
-  es:{"nav-auto":"Préstamo Auto","nav-mortgage":"Hipoteca","nav-bnpl":"BNPL","nav-debt":"Pago de Deuda","nav-blog":"Blog","badge":"Sobre Nosotros","page-title":"Creado para quienes quieren ","page-title-em":"respuestas honestas.","page-sub":"CheckAfford es una herramienta financiera gratuita que ayuda a los americanos a saber si realmente pueden pagar un préstamo — antes de firmar nada.","s1-label":"Nuestra Historia","s1-title":"Por qué lo construimos","s1-p1":"La mayoría descubre que no puede pagar un préstamo después de aplicar — cuando el rechazo afecta su crédito o los pagos empiezan a presionar su presupuesto.","s1-p2":"Construimos CheckAfford porque la pregunta ¿Realmente puedo pagarlo? merece una respuesta clara y honesta en segundos — no después de una consulta de crédito.","s1-p3":"Nuestras calculadoras usan las mismas fórmulas de deuda-ingreso que usan los prestamistas. Te mostramos el resultado en lenguaje simple — antes de comprometerte.","s2-label":"En Lo Que Creemos","s2-title":"Nuestros principios","v1-t":"Sin recolección de datos","v1-d":"No guardamos tus números. Todo funciona en tu navegador y desaparece cuando cierras la pestaña.","v2-t":"Resultados en 5 segundos","v2-d":"Sin registro, sin correo, sin espera. Ingresa tus números y obtén tu respuesta al instante.","v3-t":"Creado para EE.UU.","v3-d":"Nuestras calculadoras usan estándares de préstamos de EE.UU. — umbrales DTI, cálculos APR y referencias de prestamistas.","v4-t":"Soporte bilingüe","v4-d":"Disponible en inglés y español — porque 62 millones de americanos hablan español y merecen las mismas herramientas.","s3-label":"Nuestras Herramientas","s3-title":"Calculadoras gratis — sin registro","s3-sub":"Cada herramienta es gratuita, no requiere registro y te da un resultado en menos de 10 segundos.","t1-n":"🚗 Calculadora de Préstamo Auto","t1-d":"Descubre si puedes pagar ese auto antes de firmar.","t2-n":"🏠 Calculadora de Hipoteca","t2-d":"Mira cuánta casa pueden soportar tus ingresos y deudas.","t3-n":"📱 Calculadora BNPL","t3-d":"Verifica si las cuotas de Affirm o Klarna caben en tu presupuesto.","t4-n":"💳 Calculadora de Pago de Deuda","t4-d":"Encuentra el camino más rápido para salir de deudas.","t5-n":"📖 Guías Financieras Gratuitas","t5-d":"Artículos en lenguaje simple sobre préstamos y presupuesto.","disclaimer":"Nota: Todo en CheckAfford es solo para fines educativos. No somos un banco, prestamista ni asesor financiero certificado.","footer-disc":"Solo para fines informativos. No es asesoría financiera.","f-priv":"Política de Privacidad","f-terms":"Términos de Uso","f-contact":"Contacto","f-blog":"Blog"}
+ "en": {
+  "nav-auto": "Auto Loan",
+  "nav-mortgage": "Mortgage",
+  "nav-bnpl": "BNPL",
+  "nav-debt": "Debt Payoff",
+  "nav-personal": "Personal Loan",
+  "nav-blog": "Blog",
+  "badge": "About",
+  "page-title": "Built on real risk math. ",
+  "page-title-em": "Explained in plain English.",
+  "page-sub": "CheckAfford is a free set of calculators that helps everyday Americans check whether a loan, mortgage, or car payment fits their budget — before they apply.",
+  "s0-label": "Who is behind this",
+  "s0-title": "Hi, I'm Elba Nabetcy Guissepe Avalo",
+  "s0-p1": "I'm an <strong>actuary</strong> by training. My profession is measuring risk with data: building statistical and econometric models, valuing financial obligations, and explaining the results to people who have to make decisions with them.",
+  "s0-p2": "CheckAfford applies that same way of thinking to everyday money questions. The math behind a loan is not complicated, but it is rarely shown clearly to the person signing for it. My goal is to show it.",
+  "s1-label": "Why this exists",
+  "s1-title": "Why I built this",
+  "s1-p1": "Most people find out they cannot afford a loan <strong>after</strong> they apply — when the rejection hits their credit score, or when the monthly payments start squeezing their budget.",
+  "s1-p2": "I built CheckAfford because the question <strong>\"Can I actually afford this?\"</strong> deserves a clear, honest answer in seconds — not after a hard credit pull, not after talking to a salesperson.",
+  "s4-label": "Method",
+  "s4-title": "How the calculators work",
+  "s4-p1": "Monthly loan payments use the standard amortization formula. Your debt-to-income ratio (DTI) is your total monthly debt payments divided by your gross monthly income — the same measure lenders look at.",
+  "s4-p2": "Every result is an <strong>estimate</strong> based on the numbers you enter. It is not a loan offer, a pre-approval, or a prediction that a lender will approve you. Actual rates, fees, and approval rules vary by lender.",
+  "s4-p3": "Each guide in the <a href=\"/blog\">blog</a> shows the date it was last updated. If you find a number that looks wrong, <a href=\"/contact\">tell me</a> and I will check it.",
+  "s2-label": "What I stand for",
+  "s2-title": "Principles",
+  "v1-t": "Your numbers stay in your browser",
+  "v1-d": "What you type into the calculators is processed in your browser and is not stored by CheckAfford. Like most websites, CheckAfford uses Google Analytics to measure traffic and Google AdSense to show ads, which may use cookies — details in the <a href=\"/privacy\">Privacy Policy</a>.",
+  "v2-t": "Results in 5 seconds",
+  "v2-d": "No signup, no email, no waiting. Enter your numbers and get your answer instantly.",
+  "v3-t": "Built for the US market",
+  "v3-d": "The calculators use US lending conventions — DTI thresholds, APR calculations, and common lender benchmarks.",
+  "v4-t": "English and Spanish",
+  "v4-d": "Every tool is available in both languages — about 42 million people in the U.S. speak Spanish at home.",
+  "s3-label": "The tools",
+  "s3-title": "Free calculators — no signup",
+  "s3-sub": "Every tool is free, requires no signup, and gives you a result in under 10 seconds.",
+  "t1-n": "🚗 Car Loan Calculator",
+  "t1-d": "Find out if you can afford that car payment before you sign.",
+  "t2-n": "🏠 Mortgage Calculator",
+  "t2-d": "See how much house your income and debts can actually support.",
+  "t3-n": "📱 BNPL Calculator",
+  "t3-d": "Check if those Affirm or Klarna installments fit your budget.",
+  "t4-n": "💳 Debt Payoff Calculator",
+  "t4-d": "Find your fastest path out of debt and how much interest you will save.",
+  "t5-n": "📖 Free Finance Guides",
+  "t5-d": "Plain-English articles on loans, debt, and affordability.",
+  "disclaimer": "<strong>A note on this content:</strong> Everything on CheckAfford is for educational purposes only. I am not a bank, lender, or licensed financial advisor, and my actuarial training does not make this site financial advice. Questions? <a href=\"/contact\">Contact me here</a>.",
+  "footer-disc": "For informational purposes only. Not financial advice.",
+  "f-priv": "Privacy Policy",
+  "f-terms": "Terms of Use",
+  "f-about": "About",
+  "f-contact": "Contact",
+  "f-blog": "Blog"
+ },
+ "es": {
+  "nav-auto": "Préstamo Auto",
+  "nav-mortgage": "Hipoteca",
+  "nav-bnpl": "BNPL",
+  "nav-debt": "Pago de Deuda",
+  "nav-personal": "Préstamo Personal",
+  "nav-blog": "Blog",
+  "badge": "Acerca de",
+  "page-title": "Basado en matemática de riesgo real. ",
+  "page-title-em": "Explicado en lenguaje simple.",
+  "page-sub": "CheckAfford es un conjunto gratuito de calculadoras que ayuda a los estadounidenses a comprobar si un préstamo, una hipoteca o el pago de un auto cabe en su presupuesto — antes de solicitarlo.",
+  "s0-label": "Quién está detrás",
+  "s0-title": "Hola, soy Elba Nabetcy Guissepe Avalo",
+  "s0-p1": "Soy <strong>actuario</strong> de formación. Mi profesión es medir el riesgo con datos: construir modelos estadísticos y econométricos, valorar obligaciones financieras y explicar los resultados a quienes deben tomar decisiones con ellos.",
+  "s0-p2": "CheckAfford aplica esa misma forma de pensar a las preguntas de dinero del día a día. La matemática de un préstamo no es complicada, pero rara vez se le muestra con claridad a quien firma. Mi objetivo es mostrarla.",
+  "s1-label": "Por qué existe",
+  "s1-title": "Por qué lo construí",
+  "s1-p1": "La mayoría descubre que no puede pagar un préstamo <strong>después</strong> de aplicar — cuando el rechazo afecta su crédito o los pagos mensuales empiezan a presionar su presupuesto.",
+  "s1-p2": "Construí CheckAfford porque la pregunta <strong>«¿Realmente puedo pagarlo?»</strong> merece una respuesta clara y honesta en segundos — no después de una consulta de crédito, ni después de hablar con un vendedor.",
+  "s4-label": "Método",
+  "s4-title": "Cómo funcionan las calculadoras",
+  "s4-p1": "Los pagos mensuales usan la fórmula estándar de amortización. Tu relación deuda-ingreso (DTI) es el total de tus pagos mensuales de deuda dividido entre tu ingreso mensual bruto — la misma medida que miran los prestamistas.",
+  "s4-p2": "Cada resultado es una <strong>estimación</strong> basada en los números que ingresas. No es una oferta de préstamo, una preaprobación ni una predicción de que un prestamista te aprobará. Las tasas, comisiones y reglas de aprobación reales varían según el prestamista.",
+  "s4-p3": "Cada guía del <a href=\"/blog\">blog</a> muestra la fecha de su última actualización. Si encuentras un número que parece incorrecto, <a href=\"/contact\">avísame</a> y lo reviso.",
+  "s2-label": "En lo que creo",
+  "s2-title": "Principios",
+  "v1-t": "Tus números se quedan en tu navegador",
+  "v1-d": "Lo que escribes en las calculadoras se procesa en tu navegador y CheckAfford no lo guarda. Como la mayoría de los sitios web, CheckAfford usa Google Analytics para medir el tráfico y Google AdSense para mostrar anuncios, que pueden usar cookies — los detalles están en la <a href=\"/privacy\">Política de Privacidad</a>.",
+  "v2-t": "Resultados en 5 segundos",
+  "v2-d": "Sin registro, sin correo, sin espera. Ingresa tus números y obtén tu respuesta al instante.",
+  "v3-t": "Creado para el mercado de EE.UU.",
+  "v3-d": "Las calculadoras usan las convenciones de préstamos de EE.UU. — umbrales de DTI, cálculos de APR y referencias comunes de prestamistas.",
+  "v4-t": "Inglés y español",
+  "v4-d": "Todas las herramientas están disponibles en ambos idiomas — unos 42 millones de personas en EE.UU. hablan español en casa.",
+  "s3-label": "Las herramientas",
+  "s3-title": "Calculadoras gratuitas — sin registro",
+  "s3-sub": "Cada herramienta es gratuita, no requiere registro y te da un resultado en menos de 10 segundos.",
+  "t1-n": "🚗 Calculadora de Préstamo de Auto",
+  "t1-d": "Descubre si puedes pagar esa cuota de auto antes de firmar.",
+  "t2-n": "🏠 Calculadora de Hipoteca",
+  "t2-d": "Mira cuánta casa pueden sostener realmente tus ingresos y deudas.",
+  "t3-n": "📱 Calculadora BNPL",
+  "t3-d": "Comprueba si esas cuotas de Affirm o Klarna caben en tu presupuesto.",
+  "t4-n": "💳 Calculadora de Pago de Deuda",
+  "t4-d": "Encuentra tu camino más rápido para salir de deudas y cuánto interés ahorrarás.",
+  "t5-n": "📖 Guías Financieras Gratis",
+  "t5-d": "Artículos en lenguaje simple sobre préstamos, deudas y capacidad de pago.",
+  "disclaimer": "<strong>Una nota sobre este contenido:</strong> Todo en CheckAfford es solo con fines educativos. No soy un banco, prestamista ni asesora financiera con licencia, y mi formación actuarial no convierte este sitio en asesoría financiera. ¿Preguntas? <a href=\"/contact\">Escríbeme aquí</a>.",
+  "footer-disc": "Solo para fines informativos. No es asesoría financiera.",
+  "f-priv": "Política de Privacidad",
+  "f-terms": "Términos de Uso",
+  "f-about": "Acerca de",
+  "f-contact": "Contacto",
+  "f-blog": "Blog"
+ }
 };
 function setLang(l){
   document.documentElement.lang=l;
   document.querySelectorAll('.lang-btn').forEach(b=>{const a=b.textContent===l.toUpperCase();b.classList.toggle('active',a);b.setAttribute('aria-pressed',a);});
   const t=T[l];
-  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(t[k]!==undefined)el.textContent=t[k];});
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(t[k]!==undefined)el.innerHTML=t[k];});
 }
 </script>
 </body>
