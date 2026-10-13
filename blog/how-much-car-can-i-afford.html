@@ -52,6 +52,7 @@ header{position:relative;z-index:10;display:flex;justify-content:space-between;a
 .tbl td{padding:12px 14px;border-bottom:1px solid var(--border);color:var(--muted);}
 .tbl td:first-child{color:var(--text);font-weight:500;font-family:var(--font-mono);}
 .tbl tr:hover td{background:var(--surface2);}
+@media(max-width:480px){.tbl th,.tbl td{padding:10px 8px}}
 .tg{color:var(--accent);font-weight:600;}
 .tw{color:var(--warn);font-weight:600;}
 .tb{color:var(--danger);font-weight:600;}
@@ -144,7 +145,7 @@ footer a:hover{color:var(--accent);}
     <div class="meta-dot"></div>
     <span>Updated October 2026</span>
     <div class="meta-dot"></div>
-    <span data-i="art-read">3 min read</span>
+    <span data-i="art-read">4 min read</span>
   </div>
   <div class="article-body">
     <p data-i="p1">Every year, millions of Americans drive off a lot in a car they cannot actually afford. Not because they are irresponsible — but because no one showed them the right numbers before they signed.</p>
@@ -201,6 +202,20 @@ footer a:hover{color:var(--accent);}
       <li data-i="li7">Improve your credit score before applying to get a lower rate</li>
       <li data-i="li8">Shorten the loan term if you can afford higher monthly payments</li>
     </ul>
+    <h2 data-i="xa1">How We Estimated These Prices</h2>
+    <p data-i="xa2">The table above assumes a 48-month loan at about 7% APR with 20% down, then rounds the price down to leave room for sales tax and fees. If your rate is higher or your term is longer, the same payment buys a different car, so run your own numbers in the calculator.</p>
+    <h2 data-i="xa3">The Real Cost of Owning a Car</h2>
+    <p data-i="xa4">The loan payment is only one line of the bill. Before you decide what you can afford, add the costs that come with the car:</p>
+    <ul><li data-i="xa5">Insurance, which varies a lot by age, location, and model, and is often higher on a financed car because the lender requires full coverage</li><li data-i="xa6">Fuel or charging, based on how much you actually drive</li><li data-i="xa7">Maintenance and repairs, including tires, brakes, and the repair that arrives right after the warranty ends</li><li data-i="xa8">Registration, taxes, parking, and tolls</li></ul>
+    <p data-i="xa9">A stricter version of the 20/4/10 rule counts insurance inside the 10%. With $5,000 of gross monthly income, that leaves $500 for payment and insurance together, so a $380 payment leaves $120 for insurance.</p>
+    <h2 data-i="xa10">Loan Term and Rate Change the Real Price</h2>
+    <p data-i="xa11">A longer loan lowers the monthly payment, but you pay for it in interest. Here is a $30,000 loan at 7% APR:</p>
+    <table class="tbl"><thead><tr><th data-i="xa12">Loan term</th><th data-i="xa13">Monthly payment</th><th data-i="xa14">Total interest</th></tr></thead><tbody><tr><td><span data-i="xa15">48 months</span></td><td><span data-i="xa16">$718</span></td><td><span class="tg" data-i="xa17">$4,483</span></td></tr><tr><td><span data-i="xa18">60 months</span></td><td><span data-i="xa19">$594</span></td><td><span class="tw" data-i="xa20">$5,642</span></td></tr><tr><td><span data-i="xa21">72 months</span></td><td><span data-i="xa22">$511</span></td><td><span class="tw" data-i="xa23">$6,826</span></td></tr><tr><td><span data-i="xa24">84 months</span></td><td><span data-i="xa25">$453</span></td><td><span class="tb" data-i="xa26">$8,034</span></td></tr></tbody></table>
+    <p data-i="xa27">The rate matters just as much. On the same $30,000 over 60 months, 5% APR costs about $3,968 in interest, while 12% costs about $10,040. Improving your credit score before you shop can be worth thousands.</p>
+    <h2 data-i="xa28">New or Used?</h2>
+    <p data-i="xa29">New cars lose roughly 20% of their value in the first year. A car that is two or three years old, or a certified pre-owned one, usually gives you the best price for what you get. If you finance a new car with little or no down payment, you can end up owing more than the car is worth, which is called negative equity. That becomes a real problem if the car is totaled or you need to sell early. Gap insurance can cover the difference, but it is cheaper not to be in that position.</p>
+    <h2 data-i="xa30">Before You Visit the Dealer</h2>
+    <ul><li data-i="xa31">Get pre-approved by your bank or a credit union so you know your rate and have something to compare with the dealer's offer</li><li data-i="xa32">Negotiate the out-the-door price, not the monthly payment, since a payment can look low just because the term is long</li><li data-i="xa33">Set your maximum price using the table above and walk away if the number goes over it</li><li data-i="xa34">Get an insurance quote for the exact model before you buy</li></ul>
     <div class="cta-block">
       <h3 data-i="cta2-title">Know Before You Sign</h3>
       <p data-i="cta2-desc">Use our free car loan calculator to check your debt-to-income ratio before you commit.</p>
@@ -231,88 +246,8 @@ footer a:hover{color:var(--accent);}
 </footer>
 <script>
 const T = {
-  en: {
-    "nav-auto":"Auto Loan","nav-mortgage":"Mortgage","nav-bnpl":"BNPL","nav-debt":"Debt Payoff","nav-personal":"Personal Loan","nav-blog":"Blog",
-    "bc-blog":"Blog","bc-art":"Car Loans","art-cat":"Car Loans",
-    "art-h1":"How much car can I afford <em>on my salary?</em>",
-    "art-intro":"The dealer will tell you what you qualify for. That is not the same as what you can actually afford. Here is how to know the difference before you sign anything.",
-    "art-read":"3 min read",
-    "p1":"Every year, millions of Americans drive off a lot in a car they cannot actually afford. Not because they are irresponsible — but because no one showed them the right numbers before they signed.",
-    "h2-1":"The Quick Answer: The 20/4/10 Rule",
-    "p2":"The most widely agreed-upon rule for car affordability has three parts:",
-    "hbox1-lbl":"The 20/4/10 Rule",
-    "hbox1-p":"20% minimum down payment · 4 years maximum loan term · 10% max monthly payment as % of gross income",
-    "p3":"The 10% rule is the most important. If your gross monthly income is $5,000, your car payment should be no more than $500/month.",
-    "h2-2":"How Much Car by Salary?",
-    "th1":"Annual Salary","th2":"Max Monthly Payment","th3":"Affordable Car Price","th4":"Status",
-    "s-tight":"⚠ Tight","s-manageable":"✓ Manageable","s-comfortable":"✓ Comfortable","s-strong":"✓ Strong",
-    "wbox1":"These numbers assume no other significant debt. If you have student loans or credit cards, your real affordable car price is lower.",
-    "h2-3":"The Number That Actually Matters: Your DTI",
-    "p4":"Lenders use your debt-to-income ratio (DTI) — all monthly debt payments divided by gross monthly income. Under 36% is ideal. Above 43% and most lenders will decline.",
-    "hbox2-lbl":"DTI Formula",
-    "hbox2-p":"DTI = (All monthly debts ÷ Gross monthly income) × 100 · Example: $1,500 debts ÷ $5,000 income = 30% DTI ✓",
-    "h2-4":"Signs You Are Buying Too Much Car",
-    "li1":"Your car payment exceeds 15% of your gross monthly income",
-    "li2":"You are extending the loan beyond 60 months to make it affordable",
-    "li3":"You have no emergency fund after the down payment",
-    "li4":"Your total debt payments exceed 40% of your gross income",
-    "cta1-title":"Check Your Car Affordability Now",
-    "cta1-desc":"Enter your income, existing debts and the car you want. Get your DTI and a clear verdict in seconds.",
-    "cta1-btn":"Try the Free Car Loan Calculator →",
-    "cta-note1":"No signup · No email · 100% free",
-    "h2-5":"How to Lower Your Car Payment",
-    "li5":"Make a larger down payment to reduce the loan amount",
-    "li6":"Choose a less expensive vehicle — consider certified pre-owned",
-    "li7":"Improve your credit score before applying to get a lower rate",
-    "li8":"Shorten the loan term if you can afford higher monthly payments",
-    "cta2-title":"Know Before You Sign",
-    "cta2-desc":"Use our free car loan calculator to check your debt-to-income ratio before you commit.",
-    "cta2-btn":"Check My Car Affordability →",
-    "cta-note2":"Free · No signup · Results in 5 seconds",
-    "footer-disc":"For informational purposes only. Not financial advice.",
-    "f-privacy":"Privacy Policy","f-terms":"Terms of Use","f-about":"About","f-contact":"Contact","f-blog":"Blog"
-  },
-  es: {
-    "nav-auto":"Préstamo Auto","nav-mortgage":"Hipoteca","nav-bnpl":"BNPL","nav-debt":"Pago de Deuda","nav-personal":"Préstamo Personal","nav-blog":"Blog",
-    "bc-blog":"Blog","bc-art":"Préstamos de Auto","art-cat":"Préstamos de Auto",
-    "art-h1":"¿Cuánto auto puedo pagar <em>con mi salario?</em>",
-    "art-intro":"El dealer te dirá para qué calificas. Eso no es lo mismo que lo que realmente puedes pagar. Aquí está cómo saber la diferencia antes de firmar.",
-    "art-read":"3 min de lectura",
-    "p1":"Cada año, millones de americanos se van del concesionario en un auto que realmente no pueden pagar. No porque sean irresponsables — sino porque nadie les mostró los números correctos antes de firmar.",
-    "h2-1":"La Respuesta Rápida: La Regla 20/4/10",
-    "p2":"La regla más aceptada para la capacidad de compra de auto tiene tres partes:",
-    "hbox1-lbl":"La Regla 20/4/10",
-    "hbox1-p":"20% de pago inicial mínimo · 4 años máximo de plazo · 10% máximo del pago mensual como % del ingreso bruto",
-    "p3":"La regla del 10% es la más importante. Si tu ingreso mensual bruto es $5,000, tu pago de auto no debería superar $500/mes.",
-    "h2-2":"¿Cuánto Auto por Salario?",
-    "th1":"Salario Anual","th2":"Pago Mensual Máximo","th3":"Precio de Auto Accesible","th4":"Estado",
-    "s-tight":"⚠ Ajustado","s-manageable":"✓ Manejable","s-comfortable":"✓ Cómodo","s-strong":"✓ Sólido",
-    "wbox1":"Estos números asumen que no tienes otras deudas significativas. Si tienes préstamos estudiantiles o tarjetas de crédito, tu precio de auto accesible es menor.",
-    "h2-3":"El Número que Realmente Importa: Tu DTI",
-    "p4":"Los prestamistas usan tu ratio deuda-ingreso (DTI) — todos los pagos de deuda mensuales divididos entre el ingreso mensual bruto. Menos del 36% es ideal. Por encima del 43% la mayoría rechazará.",
-    "hbox2-lbl":"Fórmula DTI",
-    "hbox2-p":"DTI = (Total de deudas mensuales ÷ Ingreso mensual bruto) × 100 · Ejemplo: $1,500 deudas ÷ $5,000 ingreso = 30% DTI ✓",
-    "h2-4":"Señales de que Estás Comprando Demasiado Auto",
-    "li1":"Tu pago de auto supera el 15% de tu ingreso mensual bruto",
-    "li2":"Estás extendiendo el préstamo más de 60 meses para poder pagarlo",
-    "li3":"No tienes fondo de emergencia después del pago inicial",
-    "li4":"Tus pagos totales de deuda superan el 40% de tu ingreso bruto",
-    "cta1-title":"Verifica Tu Capacidad de Auto Ahora",
-    "cta1-desc":"Ingresa tu ingreso, deudas existentes y el auto que quieres. Obtén tu DTI y un veredicto claro en segundos.",
-    "cta1-btn":"Prueba la Calculadora de Auto Gratis →",
-    "cta-note1":"Sin registro · Sin email · 100% gratis",
-    "h2-5":"Cómo Reducir Tu Pago de Auto",
-    "li5":"Haz un pago inicial más grande para reducir el monto del préstamo",
-    "li6":"Elige un vehículo menos costoso — considera autos certificados de segunda mano",
-    "li7":"Mejora tu puntaje de crédito antes de aplicar para obtener una tasa menor",
-    "li8":"Acorta el plazo del préstamo si puedes pagar cuotas mensuales más altas",
-    "cta2-title":"Sabe Antes de Firmar",
-    "cta2-desc":"Usa nuestra calculadora gratuita de préstamo de auto para verificar tu ratio deuda-ingreso antes de comprometerte.",
-    "cta2-btn":"Verificar Mi Capacidad de Auto →",
-    "cta-note2":"Gratis · Sin registro · Resultados en 5 segundos",
-    "footer-disc":"Solo para fines informativos. No es asesoría financiera.",
-    "f-privacy":"Política de Privacidad","f-terms":"Términos de Uso","f-about":"Sobre Nosotros","f-contact":"Contacto","f-blog":"Blog"
-  }
+  en: {"nav-auto": "Auto Loan", "nav-mortgage": "Mortgage", "nav-bnpl": "BNPL", "nav-debt": "Debt Payoff", "nav-personal": "Personal Loan", "nav-blog": "Blog", "bc-blog": "Blog", "bc-art": "Car Loans", "art-cat": "Car Loans", "art-h1": "How much car can I afford <em>on my salary?</em>", "art-intro": "The dealer will tell you what you qualify for. That is not the same as what you can actually afford. Here is how to know the difference before you sign anything.", "art-read": "4 min read", "p1": "Every year, millions of Americans drive off a lot in a car they cannot actually afford. Not because they are irresponsible — but because no one showed them the right numbers before they signed.", "h2-1": "The Quick Answer: The 20/4/10 Rule", "p2": "The most widely agreed-upon rule for car affordability has three parts:", "hbox1-lbl": "The 20/4/10 Rule", "hbox1-p": "20% minimum down payment · 4 years maximum loan term · 10% max monthly payment as % of gross income", "p3": "The 10% rule is the most important. If your gross monthly income is $5,000, your car payment should be no more than $500/month.", "h2-2": "How Much Car by Salary?", "th1": "Annual Salary", "th2": "Max Monthly Payment", "th3": "Affordable Car Price", "th4": "Status", "s-tight": "⚠ Tight", "s-manageable": "✓ Manageable", "s-comfortable": "✓ Comfortable", "s-strong": "✓ Strong", "wbox1": "These numbers assume no other significant debt. If you have student loans or credit cards, your real affordable car price is lower.", "h2-3": "The Number That Actually Matters: Your DTI", "p4": "Lenders use your debt-to-income ratio (DTI) — all monthly debt payments divided by gross monthly income. Under 36% is ideal. Above 43% and most lenders will decline.", "hbox2-lbl": "DTI Formula", "hbox2-p": "DTI = (All monthly debts ÷ Gross monthly income) × 100 · Example: $1,500 debts ÷ $5,000 income = 30% DTI ✓", "h2-4": "Signs You Are Buying Too Much Car", "li1": "Your car payment exceeds 15% of your gross monthly income", "li2": "You are extending the loan beyond 60 months to make it affordable", "li3": "You have no emergency fund after the down payment", "li4": "Your total debt payments exceed 40% of your gross income", "cta1-title": "Check Your Car Affordability Now", "cta1-desc": "Enter your income, existing debts and the car you want. Get your DTI and a clear verdict in seconds.", "cta1-btn": "Try the Free Car Loan Calculator →", "cta-note1": "No signup · No email · 100% free", "h2-5": "How to Lower Your Car Payment", "li5": "Make a larger down payment to reduce the loan amount", "li6": "Choose a less expensive vehicle — consider certified pre-owned", "li7": "Improve your credit score before applying to get a lower rate", "li8": "Shorten the loan term if you can afford higher monthly payments", "cta2-title": "Know Before You Sign", "cta2-desc": "Use our free car loan calculator to check your debt-to-income ratio before you commit.", "cta2-btn": "Check My Car Affordability →", "cta-note2": "Free · No signup · Results in 5 seconds", "footer-disc": "For informational purposes only. Not financial advice.", "f-privacy": "Privacy Policy", "f-terms": "Terms of Use", "f-about": "About", "f-contact": "Contact", "f-blog": "Blog", "xa1": "How We Estimated These Prices", "xa2": "The table above assumes a 48-month loan at about 7% APR with 20% down, then rounds the price down to leave room for sales tax and fees. If your rate is higher or your term is longer, the same payment buys a different car, so run your own numbers in the calculator.", "xa3": "The Real Cost of Owning a Car", "xa4": "The loan payment is only one line of the bill. Before you decide what you can afford, add the costs that come with the car:", "xa5": "Insurance, which varies a lot by age, location, and model, and is often higher on a financed car because the lender requires full coverage", "xa6": "Fuel or charging, based on how much you actually drive", "xa7": "Maintenance and repairs, including tires, brakes, and the repair that arrives right after the warranty ends", "xa8": "Registration, taxes, parking, and tolls", "xa9": "A stricter version of the 20/4/10 rule counts insurance inside the 10%. With $5,000 of gross monthly income, that leaves $500 for payment and insurance together, so a $380 payment leaves $120 for insurance.", "xa10": "Loan Term and Rate Change the Real Price", "xa11": "A longer loan lowers the monthly payment, but you pay for it in interest. Here is a $30,000 loan at 7% APR:", "xa12": "Loan term", "xa13": "Monthly payment", "xa14": "Total interest", "xa15": "48 months", "xa16": "$718", "xa17": "$4,483", "xa18": "60 months", "xa19": "$594", "xa20": "$5,642", "xa21": "72 months", "xa22": "$511", "xa23": "$6,826", "xa24": "84 months", "xa25": "$453", "xa26": "$8,034", "xa27": "The rate matters just as much. On the same $30,000 over 60 months, 5% APR costs about $3,968 in interest, while 12% costs about $10,040. Improving your credit score before you shop can be worth thousands.", "xa28": "New or Used?", "xa29": "New cars lose roughly 20% of their value in the first year. A car that is two or three years old, or a certified pre-owned one, usually gives you the best price for what you get. If you finance a new car with little or no down payment, you can end up owing more than the car is worth, which is called negative equity. That becomes a real problem if the car is totaled or you need to sell early. Gap insurance can cover the difference, but it is cheaper not to be in that position.", "xa30": "Before You Visit the Dealer", "xa31": "Get pre-approved by your bank or a credit union so you know your rate and have something to compare with the dealer's offer", "xa32": "Negotiate the out-the-door price, not the monthly payment, since a payment can look low just because the term is long", "xa33": "Set your maximum price using the table above and walk away if the number goes over it", "xa34": "Get an insurance quote for the exact model before you buy"},
+  es: {"nav-auto": "Préstamo Auto", "nav-mortgage": "Hipoteca", "nav-bnpl": "BNPL", "nav-debt": "Pago de Deuda", "nav-personal": "Préstamo Personal", "nav-blog": "Blog", "bc-blog": "Blog", "bc-art": "Préstamos de Auto", "art-cat": "Préstamos de Auto", "art-h1": "¿Cuánto auto puedo pagar <em>con mi salario?</em>", "art-intro": "El dealer te dirá para qué calificas. Eso no es lo mismo que lo que realmente puedes pagar. Aquí está cómo saber la diferencia antes de firmar.", "art-read": "4 min de lectura", "p1": "Cada año, millones de americanos se van del concesionario en un auto que realmente no pueden pagar. No porque sean irresponsables — sino porque nadie les mostró los números correctos antes de firmar.", "h2-1": "La Respuesta Rápida: La Regla 20/4/10", "p2": "La regla más aceptada para la capacidad de compra de auto tiene tres partes:", "hbox1-lbl": "La Regla 20/4/10", "hbox1-p": "20% de pago inicial mínimo · 4 años máximo de plazo · 10% máximo del pago mensual como % del ingreso bruto", "p3": "La regla del 10% es la más importante. Si tu ingreso mensual bruto es $5,000, tu pago de auto no debería superar $500/mes.", "h2-2": "¿Cuánto Auto por Salario?", "th1": "Salario Anual", "th2": "Pago Mensual Máximo", "th3": "Precio de Auto Accesible", "th4": "Estado", "s-tight": "⚠ Ajustado", "s-manageable": "✓ Manejable", "s-comfortable": "✓ Cómodo", "s-strong": "✓ Sólido", "wbox1": "Estos números asumen que no tienes otras deudas significativas. Si tienes préstamos estudiantiles o tarjetas de crédito, tu precio de auto accesible es menor.", "h2-3": "El Número que Realmente Importa: Tu DTI", "p4": "Los prestamistas usan tu ratio deuda-ingreso (DTI) — todos los pagos de deuda mensuales divididos entre el ingreso mensual bruto. Menos del 36% es ideal. Por encima del 43% la mayoría rechazará.", "hbox2-lbl": "Fórmula DTI", "hbox2-p": "DTI = (Total de deudas mensuales ÷ Ingreso mensual bruto) × 100 · Ejemplo: $1,500 deudas ÷ $5,000 ingreso = 30% DTI ✓", "h2-4": "Señales de que Estás Comprando Demasiado Auto", "li1": "Tu pago de auto supera el 15% de tu ingreso mensual bruto", "li2": "Estás extendiendo el préstamo más de 60 meses para poder pagarlo", "li3": "No tienes fondo de emergencia después del pago inicial", "li4": "Tus pagos totales de deuda superan el 40% de tu ingreso bruto", "cta1-title": "Verifica Tu Capacidad de Auto Ahora", "cta1-desc": "Ingresa tu ingreso, deudas existentes y el auto que quieres. Obtén tu DTI y un veredicto claro en segundos.", "cta1-btn": "Prueba la Calculadora de Auto Gratis →", "cta-note1": "Sin registro · Sin email · 100% gratis", "h2-5": "Cómo Reducir Tu Pago de Auto", "li5": "Haz un pago inicial más grande para reducir el monto del préstamo", "li6": "Elige un vehículo menos costoso — considera autos certificados de segunda mano", "li7": "Mejora tu puntaje de crédito antes de aplicar para obtener una tasa menor", "li8": "Acorta el plazo del préstamo si puedes pagar cuotas mensuales más altas", "cta2-title": "Sabe Antes de Firmar", "cta2-desc": "Usa nuestra calculadora gratuita de préstamo de auto para verificar tu ratio deuda-ingreso antes de comprometerte.", "cta2-btn": "Verificar Mi Capacidad de Auto →", "cta-note2": "Gratis · Sin registro · Resultados en 5 segundos", "footer-disc": "Solo para fines informativos. No es asesoría financiera.", "f-privacy": "Política de Privacidad", "f-terms": "Términos de Uso", "f-about": "Sobre Nosotros", "f-contact": "Contacto", "f-blog": "Blog", "xa1": "Cómo estimamos estos precios", "xa2": "La tabla anterior supone un préstamo a 48 meses con una tasa de cerca del 7% y 20% de enganche, y redondea el precio hacia abajo para dejar espacio a impuestos y cargos. Si tu tasa es más alta o tu plazo más largo, el mismo pago compra un carro distinto, así que calcula tus propios números en la calculadora.", "xa3": "El costo real de tener un carro", "xa4": "El pago del préstamo es solo una línea de la factura. Antes de decidir cuánto puedes pagar, suma los costos que trae el carro:", "xa5": "Seguro, que varía mucho según la edad, la zona y el modelo, y suele ser más alto en un carro financiado porque el prestamista exige cobertura completa", "xa6": "Combustible o carga, según cuánto manejes realmente", "xa7": "Mantenimiento y reparaciones, incluyendo llantas, frenos y la reparación que llega justo cuando termina la garantía", "xa8": "Registro, impuestos, estacionamiento y peajes", "xa9": "Una versión más estricta de la regla 20/4/10 cuenta el seguro dentro del 10%. Con $5,000 de ingreso bruto mensual, quedan $500 para pago y seguro juntos, así que un pago de $380 deja $120 para el seguro.", "xa10": "El plazo y la tasa cambian el precio real", "xa11": "Un préstamo más largo baja el pago mensual, pero lo pagas en intereses. Este es un préstamo de $30,000 al 7% de tasa anual:", "xa12": "Plazo", "xa13": "Pago mensual", "xa14": "Intereses totales", "xa15": "48 meses", "xa16": "$718", "xa17": "$4,483", "xa18": "60 meses", "xa19": "$594", "xa20": "$5,642", "xa21": "72 meses", "xa22": "$511", "xa23": "$6,826", "xa24": "84 meses", "xa25": "$453", "xa26": "$8,034", "xa27": "La tasa importa igual. Sobre los mismos $30,000 a 60 meses, una tasa de 5% cuesta unos $3,968 en intereses, mientras que una de 12% cuesta unos $10,040. Mejorar tu score de crédito antes de comprar puede valer miles de dólares.", "xa28": "¿Nuevo o usado?", "xa29": "Los carros nuevos pierden cerca del 20% de su valor el primer año. Un carro de dos o tres años, o uno certificado de segunda mano, suele darte el mejor precio por lo que recibes. Si financias un carro nuevo con poco o ningún enganche, puedes terminar debiendo más de lo que vale, lo que se llama capital negativo. Eso se vuelve un problema real si el carro se declara pérdida total o si necesitas venderlo pronto. El seguro GAP puede cubrir la diferencia, pero es más barato no estar en esa situación.", "xa30": "Antes de ir al concesionario", "xa31": "Consigue una preaprobación de tu banco o de una cooperativa de crédito para conocer tu tasa y tener con qué comparar la oferta del concesionario", "xa32": "Negocia el precio final con todo incluido y no el pago mensual, porque un pago puede verse bajo solo porque el plazo es largo", "xa33": "Fija tu precio máximo con la tabla anterior y vete si el número lo supera", "xa34": "Pide una cotización de seguro del modelo exacto antes de comprar"}
 };
 function setLang(l) {
   document.documentElement.lang = l;
