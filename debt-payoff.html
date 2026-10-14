@@ -210,7 +210,7 @@
         <div class="field"><label data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
         <div class="field"><label data-i="lbl-expenses">Other Monthly Expenses (rent, food, etc.)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
         <div class="field"><label data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="20000"></div></div>
-        <div class="field"><label data-i="lbl-rate">Average Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label data-i="lbl-rate">Average APR</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
         <div class="field"><label data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
         <button class="calc-btn" onclick="calculate()" data-i="calc-btn">Check My Debt Load</button>
       </div>
@@ -230,7 +230,7 @@
               <text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text>
             </svg>
           </div>
-          <div class="verdict-box" id="verdict-box">
+          <p class="score-note" data-i="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box">
             <span class="verdict-icon" id="verdict-icon">💭</span>
             <span class="verdict-text" id="verdict-text">–</span>
           </div>
@@ -350,7 +350,7 @@
       'lbl-income':   'Monthly Income (before taxes)',
       'lbl-expenses': 'Other Monthly Expenses (rent, food, etc.)',
       'lbl-amount':   'Total Debt to Pay Off',
-      'lbl-rate':     'Average Interest Rate',
+      'lbl-rate':     'Average APR',
       'lbl-term':     'Payoff Target (months)',
       'calc-btn':     'Check My Debt Load',
       'ph-text':      'Enter your numbers above',
@@ -392,6 +392,7 @@
       'other3-name':  'BNPL',        'other3-desc': 'Is Buy Now Pay Later worth it?',
       'other4-name':  'Personal Loan','other4-desc': 'Is a personal loan right for you?',
       // footer
+      'score-note': "This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.",
       'footer': 'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>'
     },
 
@@ -424,7 +425,7 @@
       'lbl-income':   'Ingreso mensual (bruto, antes de impuestos)',
       'lbl-expenses': 'Otros Gastos Mensuales (renta, comida, etc.)',
       'lbl-amount':   'Deuda Total a Pagar',
-      'lbl-rate':     'Tasa de Interés Promedio',
+      'lbl-rate':     'APR promedio',
       'lbl-term':     'Meta de Pago (meses)',
       'calc-btn':     'Revisar Mi Carga de Deuda',
       'ph-text':      'Ingresa tus números arriba',
@@ -466,6 +467,7 @@
       'other3-name':  'BNPL',           'other3-desc': '¿Vale la pena comprar ahora y pagar después?',
       'other4-name':  'Préstamo Personal','other4-desc': '¿Es un préstamo personal adecuado para ti?',
       // footer
+      'score-note': "Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.",
       'footer': 'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>'
     }
   };

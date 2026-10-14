@@ -225,7 +225,7 @@
         <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p id="ph-text">Enter your numbers above</p></div>
         <div id="results-content" style="display:none;">
           <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
-          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
+          <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
           <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" id="s1-lbl">Principal &amp; Interest</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
@@ -303,6 +303,7 @@
     'lbl-expenses': { en: 'Existing Monthly Debt Payments', es: 'Deudas mensuales existentes' },
     'lbl-amount': { en: 'Mortgage Amount', es: 'Monto de la hipoteca' },
     'lbl-rate': { en: 'Annual Interest Rate', es: 'Tasa de interés anual' },
+    'score-note': { en: "This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.", es: "Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito." },
     'lbl-term': { en: 'Loan Term (months)', es: 'Plazo del préstamo (meses)' },
     'lbl-housing': { en: 'Taxes, Insurance, HOA &amp; PMI (monthly, optional)', es: 'Impuestos, seguro, HOA y PMI (mensual, opcional)' },
     'hint-housing': { en: 'Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.', es: 'Incluye el seguro hipotecario si tu préstamo lo exige: PMI en préstamos convencionales con menos de 20% de enganche, o el MIP mensual en préstamos FHA. Los prestamistas cuentan estos costos en tu DTI.' },
