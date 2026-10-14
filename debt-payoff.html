@@ -188,14 +188,14 @@
     <h1 data-i="hero-title">Is your debt load <em data-i="hero-title-em">manageable?</em></h1>
     <p class="page-sub" data-i="hero-sub">Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.</p>
     <div class="quick-facts">
-      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact1">The average American carries $104,215 in total debt including mortgages, auto loans and credit cards.</span></div>
-      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact2">If your DTI exceeds 43%, most lenders will deny new credit — and financial advisors consider it a crisis threshold.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact1">The average American carries about $105,000 in total debt, including mortgages, auto loans and credit cards (Experian, September 2025).</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact2">If your DTI exceeds 43%, many lenders may decline new credit or charge higher rates, and many professionals treat it as a high-risk level. Limits vary by lender and loan type.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact3">Paying just $100 extra per month on a $20,000 debt at 18% APR saves over $8,000 in interest.</span></div>
     </div>
   </div>
   <div class="hero-stats">
     <div class="hero-stat"><div class="hero-stat-num">$104k</div><div class="hero-stat-label" data-i="stat1-lbl">Avg total debt per American</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">43%</div><div class="hero-stat-label" data-i="stat2-lbl">DTI threshold lenders flag as risky</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">43%</div><div class="hero-stat-label" data-i="stat2-lbl">DTI many lenders see as high risk</div></div>
     <div class="hero-stat"><div class="hero-stat-num">18%</div><div class="hero-stat-label" data-i="stat3-lbl">Avg credit card APR in the U.S.</div></div>
     <div class="hero-stat"><div class="hero-stat-num">24mo</div><div class="hero-stat-label" data-i="stat4-lbl">Avg time to pay off $20k debt</div></div>
   </div>
@@ -207,7 +207,7 @@
 
       <div class="input-panel">
         <p class="panel-title" data-i="panel-in">Your Numbers</p>
-        <div class="field"><label data-i="lbl-income">Monthly Income (after tax)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
+        <div class="field"><label data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
         <div class="field"><label data-i="lbl-expenses">Other Monthly Expenses (rent, food, etc.)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
         <div class="field"><label data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="20000"></div></div>
         <div class="field"><label data-i="lbl-rate">Average Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
@@ -243,7 +243,7 @@
           </div>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" data-i="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over (pre-tax)</div><div class="stat-value" id="stat-leftover">–</div></div>
             <div class="stat-item"><div class="stat-label" data-i="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
             <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
@@ -279,7 +279,7 @@
   </div>
   <div class="faq-item">
     <div class="faq-q" data-i="faq2-q">What DTI is considered too high?</div>
-    <div class="faq-a" data-i="faq2-a">Under 35% is healthy. 35–43% is manageable but leaves little room for emergencies. Over 43% means most lenders will deny new credit and financial advisors consider it a crisis level requiring immediate action — either increasing income, cutting expenses, or consolidating at a lower rate.</div>
+    <div class="faq-a" data-i="faq2-a">Under 35% is generally considered healthy. 35–43% is manageable but leaves little room for emergencies. Above 43%, many lenders may decline new credit or charge higher rates, and it is a sign to act: increase income, cut expenses, or look at consolidating at a lower rate. These ranges are common guidelines, and each lender sets its own limits.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" data-i="faq3-q">Should I pay off debt or save first?</div>
@@ -307,7 +307,7 @@
 </section>
 </main>
 <footer>
-  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización. Las pautas de préstamo y los promedios corresponden al mercado de EE. UU." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market.</p>
   <p style="margin-top:8px;">
     <a href="/">checkafford.com</a> &nbsp;·&nbsp;
     <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
@@ -336,18 +336,18 @@
       'hero-title':    'Is your debt load ',
       'hero-title-em': 'manageable?',
       'hero-sub':      'Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.',
-      'fact1': 'The average American carries $104,215 in total debt including mortgages, auto loans and credit cards.',
-      'fact2': 'If your DTI exceeds 43%, most lenders will deny new credit — and financial advisors consider it a crisis threshold.',
+      'fact1': 'The average American carries about $105,000 in total debt, including mortgages, auto loans and credit cards (Experian, September 2025).',
+      'fact2': 'If your DTI exceeds 43%, many lenders may decline new credit or charge higher rates, and many professionals treat it as a high-risk level. Limits vary by lender and loan type.',
       'fact3': 'Paying just $100 extra per month on a $20,000 debt at 18% APR saves over $8,000 in interest.',
       // hero stats
       'stat1-lbl': 'Avg total debt per American',
-      'stat2-lbl': 'DTI threshold lenders flag as risky',
+      'stat2-lbl': 'DTI many lenders see as high risk',
       'stat3-lbl': 'Avg credit card APR in the U.S.',
       'stat4-lbl': 'Avg time to pay off $20k debt',
       // calculator
       'panel-in':    'Your Numbers',
       'panel-out':   'Your Verdict',
-      'lbl-income':   'Monthly Income (after tax)',
+      'lbl-income':   'Monthly Income (before taxes)',
       'lbl-expenses': 'Other Monthly Expenses (rent, food, etc.)',
       'lbl-amount':   'Total Debt to Pay Off',
       'lbl-rate':     'Average Interest Rate',
@@ -357,7 +357,7 @@
       // result labels
       'dti-lbl': 'Debt-to-Income',
       's1-lbl':  'Monthly Payment',
-      's2-lbl':  'Left Over',
+      's2-lbl':  'Left Over (pre-tax)',
       's3-lbl':  'Total Cost',
       's4-lbl':  'Total Interest',
       // dynamic result strings
@@ -382,7 +382,7 @@
       'faq1-q': 'How long will it take to pay off $20,000 in credit card debt?',
       'faq1-a': 'At 18% APR paying only the minimum (~2% of balance), it takes over 30 years and costs more than $40,000 in total. Paying $600/month clears the debt in about 42 months at a total cost of ~$25,000. Paying $1,000/month clears it in about 24 months. Use the calculator above to find your optimal payment.',
       'faq2-q': 'What DTI is considered too high?',
-      'faq2-a': 'Under 35% is healthy. 35–43% is manageable but leaves little room for emergencies. Over 43% means most lenders will deny new credit and financial advisors consider it a crisis level requiring immediate action — either increasing income, cutting expenses, or consolidating at a lower rate.',
+      'faq2-a': 'Under 35% is generally considered healthy. 35–43% is manageable but leaves little room for emergencies. Above 43%, many lenders may decline new credit or charge higher rates, and it is a sign to act: increase income, cut expenses, or look at consolidating at a lower rate. These ranges are common guidelines, and each lender sets its own limits.',
       'faq3-q': 'Should I pay off debt or save first?',
       'faq3-a': 'Build a $1,000 emergency fund first — always. Then aggressively pay down any debt above 7% APR before investing. Debt at 18% APR is a guaranteed 18% return when paid off — no investment consistently beats that. Once high-interest debt is clear, shift to building a 3–6 month emergency fund and then investing.',
       // other calcs
@@ -392,7 +392,7 @@
       'other3-name':  'BNPL',        'other3-desc': 'Is Buy Now Pay Later worth it?',
       'other4-name':  'Personal Loan','other4-desc': 'Is a personal loan right for you?',
       // footer
-      'footer': 'For informational purposes only. Not financial advice. | <a href="/">checkafford.com</a>'
+      'footer': 'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>'
     },
 
     es: {
@@ -410,18 +410,18 @@
       'hero-title':    '¿Tu deuda es ',
       'hero-title-em': 'manejable?',
       'hero-sub':      'Tarjetas de crédito, préstamos estudiantiles, pagos de auto — descubre si tu deuda total está bajo control o creciendo en silencio.',
-      'fact1': 'El estadounidense promedio tiene $104,215 en deuda total incluyendo hipotecas, préstamos de auto y tarjetas de crédito.',
-      'fact2': 'Si tu DTI supera el 43%, la mayoría de los prestamistas negarán nuevo crédito — y los asesores financieros lo consideran un umbral de crisis.',
+      'fact1': 'El estadounidense promedio tiene unos $105,000 en deuda total, incluyendo hipotecas, préstamos de auto y tarjetas de crédito (Experian, septiembre de 2025).',
+      'fact2': 'Si tu DTI supera el 43%, muchos prestamistas pueden negar nuevo crédito o cobrar tasas más altas, y muchos profesionales lo consideran un nivel de alto riesgo. Los límites varían según el prestamista y el tipo de préstamo.',
       'fact3': 'Pagar solo $100 extra por mes en una deuda de $20,000 al 18% APR ahorra más de $8,000 en intereses.',
       // hero stats
       'stat1-lbl': 'Deuda total promedio por americano',
-      'stat2-lbl': 'Umbral DTI que los prestamistas marcan como riesgoso',
+      'stat2-lbl': 'DTI que muchos prestamistas ven como alto riesgo',
       'stat3-lbl': 'APR promedio de tarjeta de crédito en EE.UU.',
       'stat4-lbl': 'Tiempo promedio para pagar $20k de deuda',
       // calculator
       'panel-in':    'Tus Números',
       'panel-out':   'Tu Veredicto',
-      'lbl-income':   'Ingreso Mensual (después de impuestos)',
+      'lbl-income':   'Ingreso mensual (bruto, antes de impuestos)',
       'lbl-expenses': 'Otros Gastos Mensuales (renta, comida, etc.)',
       'lbl-amount':   'Deuda Total a Pagar',
       'lbl-rate':     'Tasa de Interés Promedio',
@@ -431,7 +431,7 @@
       // result labels
       'dti-lbl': 'Deuda-sobre-Ingreso',
       's1-lbl':  'Pago Mensual',
-      's2-lbl':  'Sobrante',
+      's2-lbl':  'Sobrante (antes de impuestos)',
       's3-lbl':  'Costo Total',
       's4-lbl':  'Interés Total',
       // dynamic result strings
@@ -456,7 +456,7 @@
       'faq1-q': '¿Cuánto tiempo tomará pagar $20,000 en deuda de tarjeta de crédito?',
       'faq1-a': 'Al 18% APR pagando solo el mínimo (~2% del saldo), toma más de 30 años y cuesta más de $40,000 en total. Pagar $600/mes liquida la deuda en aproximadamente 42 meses a un costo total de ~$25,000. Pagar $1,000/mes la liquida en aproximadamente 24 meses. Usa la calculadora para encontrar tu pago óptimo.',
       'faq2-q': '¿Qué DTI se considera demasiado alto?',
-      'faq2-a': 'Por debajo del 35% es saludable. 35–43% es manejable pero deja poco margen para emergencias. Por encima del 43%, la mayoría de los prestamistas negarán nuevo crédito y los asesores financieros lo consideran un nivel de crisis que requiere acción inmediata.',
+      'faq2-a': 'Por debajo del 35% se considera en general saludable. 35–43% es manejable pero deja poco margen para emergencias. Por encima del 43%, muchos prestamistas pueden negar nuevo crédito o cobrar tasas más altas, y es una señal para actuar: aumentar ingresos, recortar gastos o evaluar consolidar a una tasa menor. Estos rangos son pautas comunes y cada prestamista fija sus propios límites.',
       'faq3-q': '¿Debo pagar la deuda o ahorrar primero?',
       'faq3-a': 'Construye primero un fondo de emergencia de $1,000 — siempre. Luego paga agresivamente cualquier deuda por encima del 7% APR antes de invertir. Una deuda al 18% APR es un retorno garantizado del 18% cuando se paga — ninguna inversión supera eso consistentemente.',
       // other calcs
@@ -466,7 +466,7 @@
       'other3-name':  'BNPL',           'other3-desc': '¿Vale la pena comprar ahora y pagar después?',
       'other4-name':  'Préstamo Personal','other4-desc': '¿Es un préstamo personal adecuado para ti?',
       // footer
-      'footer': 'Solo para fines informativos. No es asesoramiento financiero. | <a href="/">checkafford.com</a>'
+      'footer': 'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>'
     }
   };
 

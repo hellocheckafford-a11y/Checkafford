@@ -195,8 +195,8 @@
     <h1 id="hero-title">Can you afford that <em>mortgage?</em></h1>
     <p class="page-sub" id="hero-sub">The 28/36 rule, your DTI, your leftover money — all in one instant check. No bank appointment needed.</p>
     <div class="quick-facts">
-      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">Lenders use the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.</span></div>
-      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">The absolute max DTI most lenders allow is 43% — FHA loans can go to 50% in some cases.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">A common guideline is the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">Many lenders prefer a total DTI between 36% and 43%. Some programs, such as FHA loans, can approve higher ratios (up to about 50%) with strong compensating factors.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">Every 1% increase in interest rate on a $300k loan adds ~$170 to your monthly payment.</span></div>
     </div>
   </div>
@@ -217,6 +217,7 @@
         <div class="field"><label id="lbl-amount">Mortgage Amount</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="350000"></div></div>
         <div class="field"><label id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
         <div class="field"><label id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <div class="field"><label id="lbl-housing">Taxes, Insurance, HOA &amp; PMI (monthly, optional)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly property tax, insurance, HOA and mortgage insurance in dollars" type="number" id="housing" value="" placeholder="e.g. 600" min="0"></div><p id="hint-housing" style="font-size:12px;line-height:1.45;color:var(--muted,#8a94a6);margin:6px 0 0;">Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.</p></div>
         <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Affordability</button>
       </div>
       <div class="result-panel">
@@ -227,7 +228,7 @@
           <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
           <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
           <div class="stats-grid">
-            <div class="stat-item"><div class="stat-label" id="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s1-lbl">Principal &amp; Interest</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
@@ -248,7 +249,7 @@
 <section class="faq-section">
   <p class="section-label" id="faq-label">Common questions</p>
   <div class="faq-item"><div class="faq-q" id="faq1-q">How much house can I afford on a $80,000 salary?</div><div class="faq-a" id="faq1-a">On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing costs. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years, before factoring in property taxes and insurance.</div></div>
-  <div class="faq-item"><div class="faq-q" id="faq2-q">Is a $2,500 mortgage too much on a $70k salary?</div><div class="faq-a" id="faq2-a">On $70,000/year (~$5,833/month gross), a $2,500 mortgage payment represents 43% of gross income — right at the absolute limit most lenders allow. You'd have very little margin for other debts or emergencies. Most financial advisors would call this too aggressive.</div></div>
+  <div class="faq-item"><div class="faq-q" id="faq2-q">Is a $2,500 mortgage too much on a $70k salary?</div><div class="faq-a" id="faq2-a">On $70,000/year (~$5,833/month gross), a $2,500 mortgage payment represents 43% of gross income, which is at the upper end of what many lenders accept. That leaves very little margin for other debts or emergencies, so many advisors would call it aggressive.</div></div>
   <div class="faq-item"><div class="faq-q" id="faq3-q">Do I need 20% down to get a mortgage?</div><div class="faq-a" id="faq3-a">No — FHA loans allow as little as 3.5% down, and conventional loans can go as low as 3%. However, putting less than 20% down means paying Private Mortgage Insurance (PMI), which adds $50–$200/month to your payment depending on the loan size.</div></div>
 </section>
 <section class="other-calcs">
@@ -270,7 +271,7 @@
 </section>
 </main>
 <footer>
-  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización. Las pautas de préstamo y los promedios corresponden al mercado de EE. UU." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market.</p>
   <p style="margin-top:8px;">
     <a href="/">checkafford.com</a> &nbsp;·&nbsp;
     <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
@@ -290,8 +291,8 @@
     'badge-text': { en: 'Mortgage Calculator', es: 'Calculadora de Hipoteca' },
     'hero-title': { en: 'Can you afford that <em>mortgage?</em>', es: '¿Puedes pagar esa <em>hipoteca?</em>' },
     'hero-sub': { en: 'The 28/36 rule, your DTI, your leftover money — all in one instant check.', es: 'La regla 28/36, tu DTI, tu dinero sobrante — todo en una verificación instantánea.' },
-    'fact1': { en: 'Lenders use the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.', es: 'Los prestamistas usan la regla 28/36: costos de vivienda bajo el 28% del ingreso bruto, deuda total bajo el 36%.' },
-    'fact2': { en: 'The absolute max DTI most lenders allow is 43% — FHA loans can go to 50% in some cases.', es: 'El DTI máximo absoluto que la mayoría de prestamistas permite es el 43% — los préstamos FHA pueden llegar al 50%.' },
+    'fact1': { en: 'A common guideline is the 28/36 rule: housing costs under 28% of gross income, total debt under 36%.', es: 'Una pauta común es la regla 28/36: costos de vivienda bajo el 28% del ingreso bruto, deuda total bajo el 36%.' },
+    'fact2': { en: 'Many lenders prefer a total DTI between 36% and 43%. Some programs, such as FHA loans, can approve higher ratios (up to about 50%) with strong compensating factors.', es: 'Muchos prestamistas prefieren un DTI total de entre 36% y 43%. Algunos programas, como los préstamos FHA, pueden aprobar ratios más altos (hasta cerca del 50%) con factores compensatorios sólidos.' },
     'fact3': { en: 'Every 1% increase in rate on a $300k loan adds ~$170 to your monthly payment.', es: 'Cada 1% de aumento en la tasa de un préstamo de $300k agrega ~$170 a tu pago mensual.' },
     'stat1-lbl': { en: 'Max housing cost of gross income', es: 'Costo máximo de vivienda sobre ingreso bruto' },
     'stat2-lbl': { en: 'Max total debt ratio (28/36 rule)', es: 'Ratio máximo de deuda total (regla 28/36)' },
@@ -303,11 +304,13 @@
     'lbl-amount': { en: 'Mortgage Amount', es: 'Monto de la hipoteca' },
     'lbl-rate': { en: 'Annual Interest Rate', es: 'Tasa de interés anual' },
     'lbl-term': { en: 'Loan Term (months)', es: 'Plazo del préstamo (meses)' },
+    'lbl-housing': { en: 'Taxes, Insurance, HOA &amp; PMI (monthly, optional)', es: 'Impuestos, seguro, HOA y PMI (mensual, opcional)' },
+    'hint-housing': { en: 'Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.', es: 'Incluye el seguro hipotecario si tu préstamo lo exige: PMI en préstamos convencionales con menos de 20% de enganche, o el MIP mensual en préstamos FHA. Los prestamistas cuentan estos costos en tu DTI.' },
     'calc-btn': { en: 'Check Affordability', es: 'Verificar capacidad de pago' },
     'panel-out': { en: 'Your Verdict', es: 'Tu Veredicto' },
     'ph-text': { en: 'Enter your numbers above', es: 'Ingresa tus datos arriba' },
     'dti-lbl': { en: 'Debt-to-Income', es: 'Deuda-Ingreso' },
-    's1-lbl': { en: 'Monthly Payment', es: 'Pago mensual' },
+    's1-lbl': { en: 'Principal &amp; Interest', es: 'Capital e intereses' },
     's2-lbl': { en: 'Left Over', es: 'Sobrante' },
     's3-lbl': { en: 'Total Cost', es: 'Costo total' },
     's4-lbl': { en: 'Total Interest', es: 'Interés total' },
@@ -315,7 +318,7 @@
     'faq1-q': { en: 'How much house can I afford on a $80,000 salary?', es: '¿Cuánta casa puedo pagar con un salario de $80,000?' },
     'faq1-a': { en: 'On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years.', es: 'Con $80,000/año (~$6,667/mes bruto), la regla del 28% permite hasta $1,867/mes para vivienda. Con tasas actuales (~7%), eso soporta una hipoteca de aproximadamente $280,000–$300,000 a 30 años.' },
     'faq2-q': { en: 'Is a $2,500 mortgage too much on a $70k salary?', es: '¿Es demasiado una hipoteca de $2,500 con un salario de $70k?' },
-    'faq2-a': { en: 'On $70,000/year (~$5,833/month gross), a $2,500 payment is 43% of gross income — right at the limit. Very little margin for other debts or emergencies.', es: 'Con $70,000/año (~$5,833/mes bruto), un pago de $2,500 es el 43% del ingreso bruto — justo en el límite. Muy poco margen para otras deudas o emergencias.' },
+    'faq2-a': { en: 'On $70,000/year (~$5,833/month gross), a $2,500 payment is 43% of gross income, which is at the upper end of what many lenders accept. Very little margin for other debts or emergencies.', es: 'Con $70,000/año (~$5,833/mes bruto), un pago de $2,500 es el 43% del ingreso bruto, en el extremo alto de lo que muchos prestamistas aceptan. Muy poco margen para otras deudas o emergencias.' },
     'faq3-q': { en: 'Do I need 20% down to get a mortgage?', es: '¿Necesito el 20% de enganche para obtener una hipoteca?' },
     'faq3-a': { en: 'No — FHA loans allow as little as 3.5% down. However, putting less than 20% means paying Private Mortgage Insurance (PMI), adding $50–$200/month to your payment.', es: 'No — los préstamos FHA permiten tan solo el 3.5% de enganche. Sin embargo, menos del 20% significa pagar el Seguro Hipotecario Privado (PMI), agregando $50–$200/mes a tu pago.' },
     'c1-title': { en: 'The 28/36 Rule explained', es: 'La regla 28/36 explicada' },
@@ -342,9 +345,10 @@
     const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
     const annualRate = parseFloat(document.getElementById('rate').value) || 0;
     const termMonths = parseFloat(document.getElementById('term').value) || 1;
+    const housing = parseFloat(document.getElementById('housing').value) || 0; // property tax + insurance + HOA: US lenders count these in DTI
     let mp; const r = annualRate / 100 / 12;
     mp = annualRate === 0 ? loanAmount / termMonths : loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
-    const tc = mp * termMonths, ti = tc - loanAmount, dti = income > 0 ? ((expenses + mp) / income) * 100 : 100, lo = income - expenses - mp;
+    const tc = mp * termMonths, ti = tc - loanAmount, dti = income > 0 ? ((expenses + mp + housing) / income) * 100 : 100, lo = income - expenses - mp - housing;
     let score = dti <= 20 ? 95 : dti <= 35 ? Math.round(95-(dti-20)*2.5) : dti <= 43 ? Math.round(57-(dti-35)*4) : Math.max(0, Math.round(25-(dti-43)*1.5));
     lastResult = { mp, tc, ti, dti, lo, score };
     renderResults(lastResult);

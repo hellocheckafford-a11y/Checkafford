@@ -191,7 +191,7 @@
     <div class="quick-facts">
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">56% of BNPL users have missed at least one payment, triggering late fees.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.</span></div>
-      <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">The average user has 3+ active plans without tracking total exposure.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.</span></div>
     </div>
   </div>
   <div class="hero-stats">
@@ -206,7 +206,7 @@
     <div class="calc-inner">
       <div class="input-panel">
         <p class="panel-title" id="panel-in">Your Numbers</p>
-        <div class="field"><label id="lbl-income">Monthly Income (after tax)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="4000"></div></div>
+        <div class="field"><label id="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="4000"></div></div>
         <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="300"></div></div>
         <div class="field"><label id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="1200"></div></div>
         <div class="field"><label id="lbl-rate">Interest Rate (0 if interest-free)</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
@@ -222,7 +222,7 @@
           <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income Impact</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" id="s1-lbl">Per Installment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (pre-tax)</div><div class="stat-value" id="stat-leftover">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s4-lbl">Extra Fees</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
@@ -264,7 +264,7 @@
 </section>
 </main>
 <footer>
-  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas.</p>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización. Las pautas de préstamo y los promedios corresponden al mercado de EE. UU." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market.</p>
   <p style="margin-top:8px;">
     <a href="/">checkafford.com</a> &nbsp;·&nbsp;
     <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
@@ -287,13 +287,13 @@
       heroSub:"Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.",
       fact1:"56% of BNPL users have missed at least one payment, triggering late fees.",
       fact2:"BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.",
-      fact3:"The average user has 3+ active plans without tracking total exposure.",
+      fact3:"BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.",
       stat1:"BNPL users who missed a payment", stat2:"Avg active BNPL plans per user", stat3:"Avg late fee per missed payment", stat4:"APR on some BNPL plans",
       pIn:"Your Numbers", pOut:"Real Cost Verdict",
-      lInc:"Monthly Income (after tax)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"Interest Rate (0 if interest-free)", lTerm:"Number of Installments",
+      lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"Interest Rate (0 if interest-free)", lTerm:"Number of Installments",
       suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
       gaugeLbl:"SCORE", dtiLbl:"Debt-to-Income Impact",
-      s1:"Per Installment", s2:"Left Over", s3:"Total Cost", s4:"Extra Fees",
+      s1:"Per Installment", s2:"Left Over (pre-tax)", s3:"Total Cost", s4:"Extra Fees",
       tipLbl:"TIP", cta:"Compare personal loan rates instead →",
       vLow:'All clear. This BNPL plan fits your budget — just make sure it\'s the only one.',
       vMid:'Possible, but tight. One missed payment could stress your budget.',
@@ -305,7 +305,7 @@
       c2t:"When BNPL actually makes sense", c2p1:"BNPL is useful for necessities if the plan is interest-free and less than 5% of your income.", c2p2:"It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.",
       fL:"Common questions", f1q:"Does BNPL affect my credit score?", f1a:"It depends. Providers may report missed payments which damage your credit score.",
       f2q:"Is 0% BNPL really free?", f2a:"Only if you pay on time. Late fees and deferred interest traps can make it very expensive.",
-      foot:"For informational purposes only. Not financial advice. | checkafford.com"
+      foot:"For informational purposes only. Not financial advice. U.S. market guidelines. | checkafford.com"
     },
     es:{
       title:"Calculadora Buy Now Pay Later — ¿Vale la pena? | CheckAfford",
@@ -317,13 +317,13 @@
       heroSub:"Affirm, Klarna, Afterpay — parecen cuotas pequeñas, pero se acumulan. Mira cómo afecta el BNPL a tu presupuesto.",
       fact1:"El 56% de usuarios ha perdido al menos un pago, activando multas.",
       fact2:"Los planes BNPL cuentan para tu relación Deuda-Ingreso — incluso los de 0% interés.",
-      fact3:"El usuario promedio tiene más de 3 planes activos sin rastrear su deuda total.",
+      fact3:"Los planes de compra ahora y paga después de distintos proveedores se acumulan rápido, y cada uno cuenta en tu presupuesto mensual.",
       stat1:"Usuarios que perdieron un pago", stat2:"Planes activos promedio", stat3:"Multa promedio por retraso", stat4:"Tasa (APR) en algunos planes",
       pIn:"Tus Números", pOut:"Veredicto de Costo Real",
-      lInc:"Ingreso Mensual (neto)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"Tasa de Interés (0 si es gratis)", lTerm:"Número de Cuotas",
+      lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"Tasa de Interés (0 si es gratis)", lTerm:"Número de Cuotas",
       suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
       gaugeLbl:"PUNTOS", dtiLbl:"Impacto Deuda-Ingreso",
-      s1:"Por Cuota", s2:"Te Queda", s3:"Costo Total", s4:"Intereses/Cargos",
+      s1:"Por Cuota", s2:"Te Queda (antes de impuestos)", s3:"Costo Total", s4:"Intereses/Cargos",
       tipLbl:"CONSEJO", cta:"Comparar préstamos personales →",
       vLow:'Todo en orden. Este plan encaja en tu presupuesto — que sea el único.',
       vMid:'Posible, pero ajustado. Un retraso podría estresar tus finanzas.',
@@ -335,7 +335,7 @@
       c2t:"Cuándo tiene sentido usar BNPL", c2p1:"Es útil para necesidades reales si el plan no tiene intereses y la cuota es menor al 5% de tu ingreso.", c2p2:"Es peligroso para gastos innecesarios. Si no tienes el efectivo, el BNPL solo pospone el problema.",
       fL:"Preguntas frecuentes", f1q:"¿Afecta mi historial crediticio?", f1a:"Depende del proveedor, pero los pagos atrasados casi siempre dañan tu puntaje.",
       f2q:"¿El 0% es realmente gratis?", f2a:"Solo si pagas a tiempo. Las multas por retraso y los intereses diferidos pueden salir muy caros.",
-      foot:"Solo para fines informativos. No es asesoría financiera. | checkafford.com"
+      foot:"Solo para fines informativos. No es asesoría financiera. Pautas del mercado de EE. UU. | checkafford.com"
     }
   };
 
