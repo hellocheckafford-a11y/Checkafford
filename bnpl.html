@@ -38,6 +38,7 @@
   .fact-item{display:flex;align-items:flex-start;gap:10px;font-size:13px;color:var(--muted);line-height:1.5;}
   .fact-icon{color:var(--warn);font-size:14px;flex-shrink:0;margin-top:1px;}
   .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  #stat-sources a{color:var(--accent,#00e5a0);text-decoration:underline;}
   .hero-stat{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:18px;}
   .hero-stat-num{font-family:var(--font-display);font-size:24px;font-weight:800;color:var(--warn);line-height:1;margin-bottom:6px;}
   .hero-stat-label{font-size:11px;color:var(--muted);line-height:1.4;}
@@ -189,17 +190,18 @@
     <h1 id="hero-title">Is Buy Now Pay Later <em>really free?</em></h1>
     <p class="page-sub" id="hero-sub">Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.</p>
     <div class="quick-facts">
-      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">56% of BNPL users have missed at least one payment, triggering late fees.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">In a March 2026 LendingTree survey, 47% of U.S. BNPL users said they paid late on at least one loan in the past year.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.</span></div>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="hero-stat"><div class="hero-stat-num">56%</div><div class="hero-stat-label" id="stat1-lbl">BNPL users who missed a payment</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">3+</div><div class="hero-stat-label" id="stat2-lbl">Avg active BNPL plans per user</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">$135</div><div class="hero-stat-label" id="stat3-lbl">Avg late fee per missed payment</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">30%</div><div class="hero-stat-label" id="stat4-lbl">APR on some BNPL plans</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">47%</div><div class="hero-stat-label" id="stat1-lbl">BNPL users who paid late in the past year (survey)</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">4.1%</div><div class="hero-stat-label" id="stat2-lbl">of BNPL loans were assessed a late fee (2023)</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$9.99</div><div class="hero-stat-label" id="stat3-lbl">Avg late fee assessed (2023, inflation-adjusted)</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$8</div><div class="hero-stat-label" id="stat4-lbl">Max Afterpay late fee per missed installment (U.S.)</div></div>
   </div>
+  <p id="stat-sources" style="font-size:12px;line-height:1.5;color:var(--muted,#8f8fa8);margin:14px 0 0;">Sources: <a href="https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/" target="_blank" rel="noopener">LendingTree BNPL survey</a> (March 2026, 2,060 U.S. adults, self-reported); <a href="https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/" target="_blank" rel="noopener">CFPB, The Buy Now, Pay Later Market</a> (Dec. 2025, 2023 data from four lenders, measured per loan, not per borrower); <a href="https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay" target="_blank" rel="noopener">Afterpay Help Center</a> (late fees capped at 25% of the order value). The survey and the CFPB figures measure different things and are not directly comparable.</p>
 </section>
 <div class="calc-wrapper">
   <div class="calc-card">
@@ -236,7 +238,7 @@
 <section class="content-section">
   <div class="content-grid">
     <div class="content-card"><h3 id="c1-title">Why BNPL feels cheaper than it is</h3><p id="c1-p1">Splitting $1,200 into four $300 payments feels painless. But you're still spending $1,200.</p><p id="c1-p2">BNPL providers count on this psychological trick. Our calculator shows the real monthly impact.</p></div>
-    <div class="content-card"><h3 id="c2-title">When BNPL actually makes sense</h3><p id="c2-p1">BNPL is useful for necessities if the plan is interest-free and less than 5% of your income.</p><p id="c2-p2">It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.</p></div>
+    <div class="content-card"><h3 id="c2-title">When BNPL actually makes sense</h3><p id="c2-p1">BNPL can be useful for necessities if the plan is interest-free and the payments fit comfortably in your budget (a common rule of thumb is under 5% of your income).</p><p id="c2-p2">It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.</p></div>
   </div>
 </section>
 <section class="faq-section">
@@ -285,10 +287,10 @@
       banner:"Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.",
       badge:"BNPL Calculator", heroTitle:"Is Buy Now Pay Later <em>really free?</em>",
       heroSub:"Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.",
-      fact1:"56% of BNPL users have missed at least one payment, triggering late fees.",
+      fact1:"In a March 2026 LendingTree survey, 47% of U.S. BNPL users said they paid late on at least one loan in the past year.",
       fact2:"BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.",
       fact3:"BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.",
-      stat1:"BNPL users who missed a payment", stat2:"Avg active BNPL plans per user", stat3:"Avg late fee per missed payment", stat4:"APR on some BNPL plans",
+      srcnote:"Sources: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">LendingTree BNPL survey</a> (March 2026, 2,060 U.S. adults, self-reported); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (Dec. 2025, 2023 data from four lenders, measured per loan, not per borrower); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Afterpay Help Center</a> (late fees capped at 25% of the order value). The survey and the CFPB figures measure different things and are not directly comparable.", stat1:"BNPL users who paid late in the past year (survey)", stat2:"of BNPL loans were assessed a late fee (2023)", stat3:"Avg late fee assessed (2023, inflation-adjusted)", stat4:"Max Afterpay late fee per missed installment (U.S.)",
       pIn:"Your Numbers", pOut:"Real Cost Verdict",
       lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"Interest Rate (0 if interest-free)", lTerm:"Number of Installments",
       suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
@@ -302,7 +304,7 @@
       tMid:'Manageable, but don\'t stack another BNPL plan on top of this one.',
       tHigh:'Your DTI impact is too high. Consider saving up and paying cash.',
       c1t:"Why BNPL feels cheaper than it is", c1p1:"Splitting $1,200 into four $300 payments feels painless. But you're still spending $1,200.", c1p2:"BNPL providers count on this psychological trick. Our calculator shows the real monthly impact.",
-      c2t:"When BNPL actually makes sense", c2p1:"BNPL is useful for necessities if the plan is interest-free and less than 5% of your income.", c2p2:"It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.",
+      c2t:"When BNPL actually makes sense", c2p1:"BNPL can be useful for necessities if the plan is interest-free and the payments fit comfortably in your budget (a common rule of thumb is under 5% of your income).", c2p2:"It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.",
       fL:"Common questions", f1q:"Does BNPL affect my credit score?", f1a:"It depends. Providers may report missed payments which damage your credit score.",
       f2q:"Is 0% BNPL really free?", f2a:"Only if you pay on time. Late fees and deferred interest traps can make it very expensive.",
       foot:"For informational purposes only. Not financial advice. U.S. market guidelines. | checkafford.com"
@@ -315,10 +317,10 @@
       banner:"El 'Compra ahora, paga después' sigue sumando deuda real a tu historial. Muchos subestiman el costo total.",
       badge:"Calculadora BNPL", heroTitle:"¿El pago a plazos es <em>realmente gratis?</em>",
       heroSub:"Affirm, Klarna, Afterpay — parecen cuotas pequeñas, pero se acumulan. Mira cómo afecta el BNPL a tu presupuesto.",
-      fact1:"El 56% de usuarios ha perdido al menos un pago, activando multas.",
+      fact1:"En una encuesta de LendingTree de marzo de 2026, el 47% de los usuarios de BNPL en EE. UU. dijo haber pagado tarde al menos un préstamo en el último año.",
       fact2:"Los planes BNPL cuentan para tu relación Deuda-Ingreso — incluso los de 0% interés.",
       fact3:"Los planes de compra ahora y paga después de distintos proveedores se acumulan rápido, y cada uno cuenta en tu presupuesto mensual.",
-      stat1:"Usuarios que perdieron un pago", stat2:"Planes activos promedio", stat3:"Multa promedio por retraso", stat4:"Tasa (APR) en algunos planes",
+      srcnote:"Fuentes: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">encuesta de LendingTree sobre BNPL</a> (marzo de 2026, 2,060 adultos en EE. UU., autorreportada); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (dic. 2025, datos de 2023 de cuatro prestamistas, medidos por préstamo y no por persona); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Centro de ayuda de Afterpay</a> (cargos por retraso limitados al 25% del valor del pedido). La encuesta y las cifras de la CFPB miden cosas distintas y no son directamente comparables.", stat1:"Usuarios de BNPL que pagaron tarde en el último año (encuesta)", stat2:"de los préstamos BNPL tuvo un cargo por retraso (2023)", stat3:"Cargo promedio por retraso (2023, ajustado por inflación)", stat4:"Cargo máximo de Afterpay por cuota atrasada (EE. UU.)",
       pIn:"Tus Números", pOut:"Veredicto de Costo Real",
       lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"Tasa de Interés (0 si es gratis)", lTerm:"Número de Cuotas",
       suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
@@ -381,6 +383,7 @@
     setText('stat2-lbl',t.stat2);
     setText('stat3-lbl',t.stat3);
     setText('stat4-lbl',t.stat4);
+    setText('stat-sources',t.srcnote,true);
     setText('panel-in',t.pIn);
     setText('panel-out',t.pOut);
     setText('lbl-income',t.lInc);
