@@ -248,7 +248,6 @@
             <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
           <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
-          <a class="cta-btn" id="cta-btn" href="https://www.achieve.com" target="_blank" rel="noopener">Explore debt consolidation options →</a>
         </div>
       </div>
 
@@ -577,8 +576,7 @@
     document.getElementById('tip-text').textContent  = tip;
 
     const cb = document.getElementById('cta-btn');
-    cb.classList.add('show');
-    cb.textContent = t.cta;
+    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {
