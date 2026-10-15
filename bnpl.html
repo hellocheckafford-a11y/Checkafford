@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="canonical" href="https://checkafford.com/bnpl">
 <title id="meta-title">Buy Now Pay Later Calculator — Is BNPL Worth It? | CheckAfford</title>
 <meta name="description" id="meta-desc" content="See the real cost of Buy Now Pay Later before you click. Affirm, Klarna, Afterpay — find out if BNPL fits your budget or quietly ruins it.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,6 +58,7 @@
   input[type="number"]::-webkit-inner-spin-button{-webkit-appearance:none;}
   input:focus{border-color:var(--warn);}
   input.no-prefix{padding-left:14px;}input.has-suffix{padding-right:38px;}
+  select#freq{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:15px;font-weight:500;padding:13px 14px;outline:none;}select#freq:focus{border-color:var(--warn);}
   .calc-btn{width:100%;background:var(--warn);border:none;border-radius:12px;color:#000;font-family:var(--font-display);font-size:15px;font-weight:700;padding:16px;cursor:pointer;margin-top:8px;transition:all 0.2s;}
   .calc-btn:hover{background:#ffd700;transform:translateY(-1px);box-shadow:0 8px 24px rgba(245,200,66,0.25);}
   .result-panel{padding:36px;display:flex;flex-direction:column;justify-content:center;}
@@ -212,7 +214,8 @@
         <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="300"></div></div>
         <div class="field"><label id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="1200"></div></div>
         <div class="field"><label id="lbl-rate">APR (0 if interest-free)</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label id="lbl-term">Number of Installments</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
+        <div class="field"><label id="lbl-term">Number of Installments</label><div class="input-wrap"><input aria-label="Number of installments" type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
+        <div class="field"><label id="lbl-freq" for="freq">Payment Frequency</label><div class="input-wrap"><select id="freq" aria-label="Payment frequency"><option value="26" id="opt-biweekly">Every 2 weeks</option><option value="52" id="opt-weekly">Weekly</option><option value="12" id="opt-monthly">Monthly</option></select></div></div>
         <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Real Cost</button>
       </div>
       <div class="result-panel">
@@ -222,6 +225,7 @@
           <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
           <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
           <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income Impact</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
+          <p id="mo-eq" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);margin:-6px 0 14px;"></p>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" id="s1-lbl">Per Installment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (pre-tax)</div><div class="stat-value" id="stat-leftover">–</div></div>
@@ -229,7 +233,6 @@
             <div class="stat-item"><div class="stat-label" id="s4-lbl">Extra Fees</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
           <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
-          <a class="cta-btn" id="cta-btn" href="#" target="_blank" rel="noopener">Compare rates</a>
         </div>
       </div>
     </div>
@@ -292,14 +295,14 @@
       fact3:"BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.",
       scoreNote:"This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.", srcnote:"Sources: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">LendingTree BNPL survey</a> (March 2026, 2,060 U.S. adults, self-reported); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (Dec. 2025, 2023 data from four lenders, measured per loan, not per borrower); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Afterpay Help Center</a> (late fees capped at 25% of the order value). The survey and the CFPB figures measure different things and are not directly comparable.", stat1:"BNPL users who paid late in the past year (survey)", stat2:"of BNPL loans were assessed a late fee (2023)", stat3:"Avg late fee assessed (2023, inflation-adjusted)", stat4:"Max Afterpay late fee per missed installment (U.S.)",
       pIn:"Your Numbers", pOut:"Real Cost Verdict",
-      lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"APR (0 if interest-free)", lTerm:"Number of Installments",
+      lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"APR (0 if interest-free)", lTerm:"Number of Installments", lFreq:"Payment Frequency", oBi:"Every 2 weeks", oW:"Weekly", oM:"Monthly", moEq:"Monthly equivalent while the plan lasts:",
       suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
       gaugeLbl:"SCORE", dtiLbl:"Debt-to-Income Impact",
       s1:"Per Installment", s2:"Left Over (pre-tax)", s3:"Total Cost", s4:"Extra Fees",
       tipLbl:"TIP", cta:"Compare personal loan rates instead →",
-      vLow:'All clear. This BNPL plan fits your budget — just make sure it\'s the only one.',
+      vLow:'Looks manageable based on your debt-to-income ratio. Make sure it is your only BNPL plan.',
       vMid:'Possible, but tight. One missed payment could stress your budget.',
-      vHigh:'Red alert. This BNPL plan adds too much debt pressure to your monthly budget.',
+      vHigh:'High risk. This BNPL plan adds a lot of pressure to your monthly budget.',
       tLow:'Good position. Set a payment reminder so you never miss an installment.',
       tMid:'Manageable, but don\'t stack another BNPL plan on top of this one.',
       tHigh:'Your DTI impact is too high. Consider saving up and paying cash.',
@@ -322,14 +325,14 @@
       fact3:"Los planes de compra ahora y paga después de distintos proveedores se acumulan rápido, y cada uno cuenta en tu presupuesto mensual.",
       scoreNote:"Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.", srcnote:"Fuentes: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">encuesta de LendingTree sobre BNPL</a> (marzo de 2026, 2,060 adultos en EE. UU., autorreportada); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (dic. 2025, datos de 2023 de cuatro prestamistas, medidos por préstamo y no por persona); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Centro de ayuda de Afterpay</a> (cargos por retraso limitados al 25% del valor del pedido). La encuesta y las cifras de la CFPB miden cosas distintas y no son directamente comparables.", stat1:"Usuarios de BNPL que pagaron tarde en el último año (encuesta)", stat2:"de los préstamos BNPL tuvo un cargo por retraso (2023)", stat3:"Cargo promedio por retraso (2023, ajustado por inflación)", stat4:"Cargo máximo de Afterpay por cuota atrasada (EE. UU.)",
       pIn:"Tus Números", pOut:"Veredicto de Costo Real",
-      lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"APR (0 si es gratis)", lTerm:"Número de Cuotas",
+      lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"APR (0 si es gratis)", lTerm:"Número de Cuotas", lFreq:"Frecuencia de pago", oBi:"Cada 2 semanas", oW:"Semanal", oM:"Mensual", moEq:"Equivalente mensual mientras dure el plan:",
       suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
-      gaugeLbl:"PUNTOS", dtiLbl:"Impacto Deuda-Ingreso",
+      gaugeLbl:"PUNTAJE", dtiLbl:"Impacto Deuda-Ingreso",
       s1:"Por Cuota", s2:"Te Queda (antes de impuestos)", s3:"Costo Total", s4:"Intereses/Cargos",
       tipLbl:"CONSEJO", cta:"Comparar préstamos personales →",
-      vLow:'Todo en orden. Este plan encaja en tu presupuesto — que sea el único.',
+      vLow:'Parece manejable según tu relación deuda-ingreso. Procura que sea tu único plan BNPL.',
       vMid:'Posible, pero ajustado. Un retraso podría estresar tus finanzas.',
-      vHigh:'Alerta roja. Este plan agrega demasiada presión de deuda a tu mes.',
+      vHigh:'Riesgo alto. Este plan añade mucha presión a tu presupuesto mensual.',
       tLow:'Buena posición. Pon un recordatorio para no olvidar ninguna cuota.',
       tMid:'Manejable, pero no acumules más planes encima de este.',
       tHigh:'El impacto en tu DTI es muy alto. Mejor ahorra y paga de contado.',
@@ -344,7 +347,7 @@
   function setText(id, val, html=false){
     const el = document.getElementById(id);
     if(!el || val===undefined) return;
-    if(html) el.innerHTML=val; else el.innerText=val;
+    if(html) el.innerHTML=val; else el.textContent=val;
   }
   function setAttr(id, attr, val){
     const el = document.getElementById(id);
@@ -393,6 +396,7 @@
     setText('lbl-rate',t.lRate);
     setText('lbl-term',t.lTerm);
     setText('suffix-pay',t.suffixPay);
+    setText('lbl-freq',t.lFreq);setText('opt-biweekly',t.oBi);setText('opt-weekly',t.oW);setText('opt-monthly',t.oM);
     setText('calc-btn',t.btnCalc);
     setText('ph-text',t.phText);
     setText('gauge-lbl',t.gaugeLbl);
@@ -423,16 +427,18 @@
     const expenses=parseFloat(document.getElementById('expenses').value)||0;
     const loanAmount=parseFloat(document.getElementById('loanAmount').value)||0;
     const annualRate=parseFloat(document.getElementById('rate').value)||0;
-    const termMonths=parseFloat(document.getElementById('term').value)||1;
-    let mp; const r=annualRate/100/12;
-    mp=annualRate===0?loanAmount/termMonths:loanAmount*r*Math.pow(1+r,termMonths)/(Math.pow(1+r,termMonths)-1);
-    const tc=mp*termMonths,ti=tc-loanAmount,dti=income>0?((expenses+mp)/income)*100:100,lo=income-expenses-mp;
+    const n=Math.max(1,Math.round(parseFloat(document.getElementById('term').value)||1));
+    const ppy=parseFloat(document.getElementById('freq').value)||12; /* payments per year: 52, 26 or 12 */
+    let mp; const r=annualRate/100/ppy;
+    mp=annualRate===0?loanAmount/n:loanAmount*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
+    const me=mp*ppy/12; /* monthly equivalent used for DTI and left-over */
+    const tc=mp*n,ti=tc-loanAmount,dti=income>0?((expenses+me)/income)*100:100,lo=income-expenses-me;
     let score=dti<=20?95:dti<=35?Math.round(95-(dti-20)*2.5):dti<=43?Math.round(57-(dti-35)*4):Math.max(0,Math.round(25-(dti-43)*1.5));
-    lastResult={mp,tc,ti,dti,lo,score};renderResults(lastResult);
+    lastResult={mp,me,tc,ti,dti,lo,score};renderResults(lastResult);
   }
 
   function renderResults(r){
-    const t=T[lang];const{mp,tc,ti,dti,lo,score}=r;
+    const t=T[lang];const{mp,me,tc,ti,dti,lo,score}=r;
     let vt,icon,tip,color;
     if(dti<=35){vt=t.vLow;icon='✅';tip=t.tLow;color='#00e5a0';}
     else if(dti<=43){vt=t.vMid;icon='⚠️';tip=t.tMid;color='#f5c842';}
@@ -447,11 +453,12 @@
     document.getElementById('dti-fill').style.width=Math.min(dti,100)+'%';document.getElementById('dti-fill').style.background=color;
     document.getElementById('dti-pct').textContent=dti.toFixed(1)+'%';document.getElementById('dti-pct').style.color=color;
     document.getElementById('stat-monthly').textContent=fmt(mp);
+    document.getElementById('mo-eq').textContent=t.moEq+' '+fmt(me);
     document.getElementById('stat-leftover').textContent=fmt(lo);document.getElementById('stat-leftover').style.color=lo>=0?'#00e5a0':'#ff4d6d';
     document.getElementById('stat-total').textContent=fmt(tc);document.getElementById('stat-interest').textContent=fmt(ti);
     const tb=document.getElementById('tip-box');tb.classList.add('show');tb.style.background=color+'15';tb.style.borderColor=color+'40';tb.style.color=color;
     document.getElementById('tip-label').textContent=t.tipLbl;document.getElementById('tip-text').textContent=tip;
-    const cb=document.getElementById('cta-btn');cb.classList.add('show');cb.textContent=t.cta;
+    const cb=document.getElementById('cta-btn');if(cb){cb.classList.add('show');cb.textContent=t.cta;}
   }
 
   function fmt(n){

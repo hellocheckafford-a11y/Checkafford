@@ -208,7 +208,7 @@
       <div class="input-panel">
         <p class="panel-title" data-i="panel-in">Your Numbers</p>
         <div class="field"><label data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
-        <div class="field"><label data-i="lbl-expenses">Other Monthly Expenses (rent, food, etc.)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
+        <div class="field"><label data-i="lbl-expenses">Existing Monthly Debt Payments (housing, cards, loans)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
         <div class="field"><label data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="20000"></div></div>
         <div class="field"><label data-i="lbl-rate">Average APR</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
         <div class="field"><label data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
@@ -348,7 +348,7 @@
       'panel-in':    'Your Numbers',
       'panel-out':   'Your Verdict',
       'lbl-income':   'Monthly Income (before taxes)',
-      'lbl-expenses': 'Other Monthly Expenses (rent, food, etc.)',
+      'lbl-expenses': 'Existing Monthly Debt Payments (housing, cards, loans)',
       'lbl-amount':   'Total Debt to Pay Off',
       'lbl-rate':     'Average APR',
       'lbl-term':     'Payoff Target (months)',
@@ -364,7 +364,7 @@
       scoreLabel:  'SCORE',
       verdictLow:  'Your debt load is manageable. Keep making consistent payments and avoid new debt.',
       verdictMid:  'Possible to manage, but tight. One surprise expense could derail your payoff plan.',
-      verdictHigh: 'Red alert. Your debt-to-income ratio is dangerously high. Consider consolidation or professional help.',
+      verdictHigh: 'High risk. Your debt-to-income ratio is high. Consider consolidation or professional help.',
       tipLow:      'Strong position. Apply any extra income directly to your highest-interest debt to accelerate payoff.',
       tipMid:      'Stay consistent. Even $50 extra per month can save hundreds in interest. Avoid new credit card charges.',
       tipHigh:     "Your DTI exceeds 43%. Speak to a nonprofit credit counselor (NFCC) — it's free and can help you build a realistic plan.",
@@ -423,7 +423,7 @@
       'panel-in':    'Tus Números',
       'panel-out':   'Tu Veredicto',
       'lbl-income':   'Ingreso mensual (bruto, antes de impuestos)',
-      'lbl-expenses': 'Otros Gastos Mensuales (renta, comida, etc.)',
+      'lbl-expenses': 'Pagos de deuda mensuales existentes (vivienda, tarjetas, préstamos)',
       'lbl-amount':   'Deuda Total a Pagar',
       'lbl-rate':     'APR promedio',
       'lbl-term':     'Meta de Pago (meses)',
@@ -436,10 +436,10 @@
       's3-lbl':  'Costo Total',
       's4-lbl':  'Interés Total',
       // dynamic result strings
-      scoreLabel:  'PUNTOS',
+      scoreLabel:  'PUNTAJE',
       verdictLow:  'Tu carga de deuda es manejable. Sigue haciendo pagos consistentes y evita nuevas deudas.',
       verdictMid:  'Posible de manejar, pero ajustado. Un gasto inesperado podría descarrilar tu plan de pago.',
-      verdictHigh: 'Alerta roja. Tu ratio deuda-ingreso es peligrosamente alto. Considera consolidación o ayuda profesional.',
+      verdictHigh: 'Riesgo alto. Tu relación deuda-ingreso es alta. Considera consolidación o ayuda profesional.',
       tipLow:      'Posición sólida. Aplica cualquier ingreso extra directamente a tu deuda de mayor interés para acelerar el pago.',
       tipMid:      'Mantén la consistencia. Incluso $50 extra por mes puede ahorrarte cientos en intereses. Evita nuevos cargos en tarjetas.',
       tipHigh:     'Tu DTI supera el 43%. Habla con un asesor de crédito sin fines de lucro (NFCC) — es gratis y puede ayudarte a construir un plan realista.',

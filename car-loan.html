@@ -723,7 +723,7 @@
               <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
               <path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/>
               <text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text>
-              <text class="gauge-label-svg" x="100" y="100" text-anchor="middle">SCORE</text>
+              <text class="gauge-label-svg" x="100" y="100" text-anchor="middle" data-en="SCORE" data-es="PUNTAJE">SCORE</text>
             </svg>
           </div>
           <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;" data-en="This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score." data-es="Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p>
@@ -733,7 +733,7 @@
           </div>
           <div class="dti-bar-wrap">
             <div class="dti-bar-header">
-              <span class="dti-bar-label">Debt-to-Income</span>
+              <span class="dti-bar-label" data-en="Debt-to-Income" data-es="Deuda-Ingreso">Debt-to-Income</span>
               <span class="dti-pct" id="dti-pct">–</span>
             </div>
             <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
@@ -760,9 +760,6 @@
             <strong id="tip-label">TIP</strong>
             <span id="tip-text">–</span>
           </div>
-          <a class="cta-btn" id="cta-btn" href="https://www.credible.com" target="_blank" rel="noopener">
-            Compare auto loan rates →
-          </a>
         </div>
       </div>
     </div>
@@ -870,9 +867,9 @@
 
   const T = {
     en: {
-      verdictLow: 'All clear. This car payment fits comfortably in your budget.',
+      verdictLow: 'Based on your debt-to-income ratio, this car payment looks manageable. Also check insurance, taxes, living costs and savings.',
       verdictMid: 'Possible, but tight. Your savings will take a hit.',
-      verdictHigh: 'Red alert. This car payment could put you in financial stress.',
+      verdictHigh: 'High risk. This car payment could strain your budget.',
       tipLow: 'Strong position. Consider a shorter term to reduce total interest paid.',
       tipMid: 'Manageable, but consider a larger down payment to reduce the monthly amount.',
       tipHigh: 'Your DTI exceeds safe limits. Try a less expensive vehicle or a larger down payment.',
@@ -880,9 +877,9 @@
       cta: 'Compare auto loan rates →',
     },
     es: {
-      verdictLow: 'Todo en orden. Este pago de auto encaja bien en tu presupuesto.',
+      verdictLow: 'Según tu relación deuda-ingreso, este pago de auto parece manejable. Revisa también seguro, impuestos, gastos de vida y ahorro.',
       verdictMid: 'Posible, pero ajustado. Tus ahorros se verán afectados.',
-      verdictHigh: 'Alerta roja. Este pago de auto podría causarte estrés financiero.',
+      verdictHigh: 'Riesgo alto. Este pago de auto podría presionar tu presupuesto.',
       tipLow: 'Posición sólida. Considera un plazo más corto para reducir el interés total.',
       tipMid: 'Manejable, pero considera un enganche mayor para reducir el pago mensual.',
       tipHigh: 'Tu DTI supera los límites seguros. Considera un vehículo menos costoso o un mayor enganche.',
@@ -969,8 +966,7 @@
     document.getElementById('tip-text').textContent = tipText;
 
     const cb = document.getElementById('cta-btn');
-    cb.classList.add('show');
-    cb.textContent = t.cta;
+    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {

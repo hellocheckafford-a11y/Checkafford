@@ -621,7 +621,7 @@
         </svg>
         <div class="gauge-score-wrap">
           <div class="gauge-score" id="gauge-score">—</div>
-          <div class="gauge-label">SCORE</div>
+          <div class="gauge-label" data-en="SCORE" data-es="PUNTAJE">SCORE</div>
         </div>
       </div>
 
@@ -665,7 +665,6 @@
         </div>
       </div>
 
-      <button class="cta-btn" id="cta-btn">Compare personal loan rates →</button>
     </div>
   </div>
 </div>
@@ -776,9 +775,9 @@
 
   const T = {
     en: {
-      verdictLow: 'All clear. This personal loan fits comfortably in your budget.',
+      verdictLow: 'Based on your debt-to-income ratio, this loan looks manageable. Also check taxes, living costs and savings.',
       verdictMid: 'Possible, but tight. Make sure your income stays stable.',
-      verdictHigh: 'Red alert. This loan could put you in financial stress.',
+      verdictHigh: 'High risk. This loan could strain your budget.',
       tipLow: 'Strong position. Consider a shorter term to save on total interest paid.',
       tipMid: 'Manageable, but avoid taking on any additional debt while repaying this loan.',
       tipHigh: 'Your DTI exceeds safe limits. Try a smaller loan amount or longer repayment term.',
@@ -786,9 +785,9 @@
       cta: 'Compare personal loan rates →',
     },
     es: {
-      verdictLow: 'Todo en orden. Este préstamo personal cabe bien en tu presupuesto.',
+      verdictLow: 'Según tu relación deuda-ingreso, este préstamo parece manejable. Revisa también impuestos, gastos de vida y ahorro.',
       verdictMid: 'Posible, pero ajustado. Asegúrate de que tu ingreso se mantenga estable.',
-      verdictHigh: 'Alerta roja. Este préstamo podría causarte estrés financiero.',
+      verdictHigh: 'Riesgo alto. Este préstamo podría presionar tu presupuesto.',
       tipLow: 'Posición sólida. Considera un plazo más corto para ahorrar en interés total.',
       tipMid: 'Manejable, pero evita adquirir deuda adicional mientras pagas este préstamo.',
       tipHigh: 'Tu DTI supera los límites seguros. Intenta un monto menor o un plazo más largo.',
@@ -875,8 +874,7 @@
     document.getElementById('tip-text').textContent = tipText;
 
     const cb = document.getElementById('cta-btn');
-    cb.classList.add('show');
-    cb.textContent = t.cta;
+    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {
