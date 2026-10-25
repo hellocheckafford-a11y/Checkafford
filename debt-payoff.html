@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Debt Payoff Calculator — Can You Handle Your Debt? | CheckAfford</title>
-<meta name="description" content="Find out if your current debt load is manageable. Enter your income and debts. Get an instant DTI check and a clear payoff verdict. Free, no signup.">
-<meta name="keywords" content="debt payoff calculator, can I afford my debt, debt to income ratio, debt consolidation calculator, how to pay off debt">
+<title>Debt Payoff Calculator: Avalanche vs. Snowball Plan | CheckAfford</title>
+<meta name="description" content="List your debts and what you can pay each month. See your debt-free date, payoff order and total interest with the avalanche and snowball methods side by side. Free, no signup.">
+<meta name="keywords" content="debt payoff calculator, debt avalanche calculator, debt snowball calculator, debt free date, pay off credit cards">
 <link rel="canonical" href="https://checkafford.com/debt-payoff">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -128,6 +128,31 @@
 .rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
 .rel-guides a:hover{border-color:var(--accent);}
 .rel-guides .arr{color:var(--accent);flex-shrink:0;}
+
+  .debt-list{display:grid;gap:12px;margin-bottom:14px;}
+  .debt-row{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:12px;}
+  .debt-row-head{display:flex;gap:8px;align-items:center;margin-bottom:8px;}
+  .debt-row-head input{flex:1;}
+  .debt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+  .debt-grid label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;}
+  .debt-row input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-mono);font-size:14px;padding:9px 10px;}
+  .debt-row input:focus{outline:none;border-color:var(--accent);}
+  .rm-debt{background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:13px;padding:6px 10px;}
+  .rm-debt:hover,.rm-debt:focus{color:#ff6b81;border-color:#ff6b81;}
+  .add-debt{width:100%;background:none;border:1px dashed var(--border);border-radius:12px;color:var(--accent);cursor:pointer;font-family:var(--font-body);font-size:13px;padding:10px;margin-bottom:18px;}
+  .add-debt:disabled{opacity:.4;cursor:not-allowed;}
+  .ca-err{color:#ff6b81;font-size:12px;line-height:1.4;margin:6px 0 0;}
+  input[aria-invalid="true"]{border-color:#ff4d6d!important;}
+  .plan-table{width:100%;border-collapse:collapse;font-size:13px;margin:4px 0 16px;}
+  .plan-table th,.plan-table td{padding:8px 6px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;}
+  .plan-table th{font-size:11px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .plan-table td.num{font-family:var(--font-mono);white-space:nowrap;}
+  .plan-table tr.best td:first-child{color:var(--accent);font-weight:600;}
+  .order{font-size:12px;color:var(--muted);line-height:1.5;}
+  .warn-box{background:rgba(245,200,66,.08);border:1px solid rgba(245,200,66,.3);color:#f5c842;border-radius:12px;padding:10px 12px;font-size:12px;margin-bottom:12px;display:none;}
+  .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
+  .field-hint{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.4;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -183,17 +208,17 @@
 <section class="page-hero">
   <div class="hero-left">
     <div class="page-badge">💳 <span data-i="badge-text">Debt Payoff Calculator</span></div>
-    <h1 data-i="hero-title">Is your debt load <em data-i="hero-title-em">manageable?</em></h1>
-    <p class="page-sub" data-i="hero-sub">Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.</p>
+    <h1><span data-i="hero-title">Which debt should you </span><em data-i="hero-title-em">pay first?</em></h1>
+    <p class="page-sub" data-i="hero-sub">List your debts and what you can pay each month. See your debt-free date and the interest you pay with the avalanche and snowball methods, side by side.</p>
     <div class="quick-facts">
       <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact1">The average American carries about $105,000 in total debt, including mortgages, auto loans and credit cards (Experian, September 2025).</span></div>
-      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact2">If your DTI exceeds 43%, many lenders may decline new credit or charge higher rates, and many professionals treat it as a high-risk level. Limits vary by lender and loan type.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact2">Avalanche sends extra money to the highest interest rate first; snowball sends it to the smallest balance first. Both keep paying every minimum.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span data-i="fact3">On a $20,000 balance at 18% APR, paying $600 instead of $500 per month saves about $2,800 in interest and finishes about 15 months sooner.</span></div>
     </div>
   </div>
   <div class="hero-stats">
     <div class="hero-stat"><div class="hero-stat-num">$105k</div><div class="hero-stat-label" data-i="stat1-lbl">Avg total debt per American</div></div>
-    <div class="hero-stat"><div class="hero-stat-num">43%</div><div class="hero-stat-label" data-i="stat2-lbl">DTI many lenders see as high risk</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">2</div><div class="hero-stat-label" data-i="stat2-lbl">Payoff methods compared side by side</div></div>
     <div class="hero-stat"><div class="hero-stat-num">21%</div><div class="hero-stat-label" data-i="stat3-lbl">Avg credit card APR in the U.S. (Federal Reserve, Q2 2026)</div></div>
     <div class="hero-stat"><div class="hero-stat-num">24mo</div><div class="hero-stat-label" data-i="stat4-lbl">To pay off $20k at 18% APR paying $1,000/month</div></div>
   </div>
@@ -204,49 +229,37 @@
     <div class="calc-inner">
 
       <div class="input-panel">
-        <p class="panel-title" data-i="panel-in">Your Numbers</p>
-        <div class="field"><label for="income" data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="5000"></div></div>
-        <div class="field"><label for="expenses" data-i="lbl-expenses">Existing Monthly Debt Payments (housing, cards, loans)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="2000"></div></div>
-        <div class="field"><label for="loanAmount" data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="loanAmount" value="20000"></div></div>
-        <div class="field"><label for="rate" data-i="lbl-rate">Average APR</label><div class="input-wrap"><input type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label for="term" data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
-        <button class="calc-btn" onclick="calculate()" data-i="calc-btn">Check My Debt Load</button>
+        <p class="panel-title" data-i="panel-in">Your Debts</p>
+        <div class="debt-list" id="debt-list" aria-live="off"></div>
+        <button type="button" class="add-debt" id="add-debt" onclick="addDebt()" data-i="add-debt">+ Add a debt</button>
+        <div class="field"><label for="budget" data-i="lbl-budget">Total you can pay toward debts each month</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="budget" value="600" min="0"></div><p class="field-hint" id="budget-hint"></p></div>
+        <button class="calc-btn" onclick="calculate()" data-i="calc-btn">Build My Payoff Plan</button>
       </div>
 
       <div class="result-panel">
-        <p class="panel-title" data-i="panel-out">Your Verdict</p>
+        <p class="panel-title" data-i="panel-out">Your Plan</p>
         <div class="placeholder-state" id="placeholder">
           <div class="big-q">?</div>
-          <p data-i="ph-text">Enter your numbers above</p>
+          <p data-i="ph-text">Add your debts and monthly budget</p>
+          <p class="ca-err" id="form-error" role="alert"></p>
         </div>
         <div id="results-content" style="display:none;">
-          <div class="gauge-wrap">
-            <svg class="gauge-svg" viewBox="0 0 200 110">
-              <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
-              <path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/>
-              <text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text>
-              <text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text>
-            </svg>
-          </div>
-          <p class="score-note" data-i="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box">
-            <span class="verdict-icon" id="verdict-icon">💭</span>
-            <span class="verdict-text" id="verdict-text">–</span>
-          </div>
-          <div class="dti-bar-wrap">
-            <div class="dti-bar-header">
-              <span class="dti-bar-label" data-i="dti-lbl">Debt-to-Income</span>
-              <span class="dti-pct" id="dti-pct">–</span>
-            </div>
-            <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
-          </div>
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">✅</span><span class="verdict-text" id="verdict-text">–</span></div>
+          <div class="warn-box" id="warn-box" role="note"></div>
           <div class="stats-grid">
-            <div class="stat-item"><div class="stat-label" data-i="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over (before taxes)</div><div class="stat-value" id="stat-leftover">–</div></div>
-            <div class="stat-item"><div class="stat-label" data-i="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
-            <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s1-lbl">Debt-free (avalanche)</div><div class="stat-value highlight" id="stat-free">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Total interest (avalanche)</div><div class="stat-value" id="stat-interest">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s3-lbl">Interest saved vs. minimums only</div><div class="stat-value" id="stat-saved">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Months sooner than minimums only</div><div class="stat-value" id="stat-sooner">–</div></div>
           </div>
-          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <table class="plan-table" id="plan-table">
+            <thead><tr><th data-i="th-method">Method</th><th data-i="th-free">Debt-free</th><th data-i="th-int">Interest</th><th data-i="th-first">First debt gone</th></tr></thead>
+            <tbody id="plan-body"></tbody>
+          </table>
+          <div class="tip-box show" id="tip-box"><strong id="tip-label">PAYOFF ORDER</strong><span id="tip-text">–</span></div>
+          <p class="assume" data-i="assume">Assumes interest of APR ÷ 12 each month, fixed minimum payments and no new charges. Results are estimates, not a lender quote.</p>
         </div>
+        <div class="sr-only" id="plan-live" aria-live="polite" role="status"></div>
       </div>
 
     </div>
@@ -258,7 +271,7 @@
     <div class="content-card">
       <h3 data-i="c1-title">Avalanche vs. Snowball method</h3>
       <p data-i="c1-p1">The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.</p>
-      <p data-i="c1-p2">Both work. The best method is the one you actually stick to. Use this calculator to find the monthly payment that keeps you on track without breaking your budget.</p>
+      <p data-i="c1-p2">Both pay every minimum each month; the only difference is where the extra money goes. The calculator runs both on your numbers so you can see what snowball\'s earlier wins cost compared with avalanche.</p>
     </div>
     <div class="content-card">
       <h3 data-i="c2-title">When to consider consolidation</h3>
@@ -275,8 +288,8 @@
     <div class="faq-a" data-i="faq1-a">On a $20,000 balance at 18% APR, paying only a minimum of about 2% of the balance would take over 50 years and cost roughly $77,000 in total (illustrative; actual minimums vary by issuer and assume no new charges). Paying $600/month clears the debt in about 47 months at a total cost of about $27,900. Paying $1,000/month clears it in about 24 months, for about $24,000 in total. Use the calculator above to find your optimal payment.</div>
   </div>
   <div class="faq-item">
-    <div class="faq-q" data-i="faq2-q">What DTI is considered too high?</div>
-    <div class="faq-a" data-i="faq2-a">Under 35% is generally considered healthy. 35–43% is manageable but leaves little room for emergencies. Above 43%, many lenders may decline new credit or charge higher rates, and it is a sign to act: increase income, cut expenses, or look at consolidating at a lower rate. These ranges are common guidelines, and each lender sets its own limits.</div>
+    <div class="faq-q" data-i="faq2-q">Is avalanche or snowball better?</div>
+    <div class="faq-a" data-i="faq2-a">Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With three debts of $4,000 at 24%, $1,500 at 19% and $9,000 at 7%, and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" data-i="faq3-q">Should I pay off debt or save first?</div>
@@ -330,46 +343,33 @@
       'bc-label':     'Debt Payoff Calculator',
       'badge-text':   'Debt Payoff Calculator',
       // hero
-      'hero-title':    'Is your debt load ',
-      'hero-title-em': 'manageable?',
-      'hero-sub':      'Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.',
+      'hero-title':    'Which debt should you ',
+      'hero-title-em': 'pay first?',
+      'hero-sub':      'List your debts and what you can pay each month. See your debt-free date and the interest you pay with the avalanche and snowball methods, side by side.',
       'fact1': 'The average American carries about $105,000 in total debt, including mortgages, auto loans and credit cards (Experian, September 2025).',
-      'fact2': 'If your DTI exceeds 43%, many lenders may decline new credit or charge higher rates, and many professionals treat it as a high-risk level. Limits vary by lender and loan type.',
+      'fact2': 'Avalanche sends extra money to the highest interest rate first; snowball sends it to the smallest balance first. Both keep paying every minimum.',
       'fact3': 'On a $20,000 balance at 18% APR, paying $600 instead of $500 per month saves about $2,800 in interest and finishes about 15 months sooner.',
       // hero stats
       'stat1-lbl': 'Avg total debt per American',
-      'stat2-lbl': 'DTI many lenders see as high risk',
+      'stat2-lbl': 'Payoff methods compared side by side',
       'stat3-lbl': 'Avg credit card APR in the U.S. (Federal Reserve, Q2 2026)',
       'stat4-lbl': 'To pay off $20k at 18% APR paying $1,000/month',
       // calculator
-      'panel-in':    'Your Numbers',
-      'panel-out':   'Your Verdict',
-      'lbl-income':   'Monthly Income (before taxes)',
-      'lbl-expenses': 'Existing Monthly Debt Payments (housing, cards, loans)',
-      'lbl-amount':   'Total Debt to Pay Off',
-      'lbl-rate':     'Average APR',
-      'lbl-term':     'Payoff Target (months)',
-      'calc-btn':     'Check My Debt Load',
-      'ph-text':      'Enter your numbers above',
+      'panel-in':    'Your Debts',
+      'panel-out':   'Your Plan',
+      'calc-btn':     'Build My Payoff Plan',
+      'ph-text':      'Add your debts and monthly budget',
       // result labels
-      'dti-lbl': 'Debt-to-Income',
-      's1-lbl':  'Monthly Payment',
-      's2-lbl':  'Left Over (before taxes)',
-      's3-lbl':  'Total Cost',
-      's4-lbl':  'Total Interest',
+      's1-lbl':  'Debt-free (avalanche)',
+      's2-lbl':  'Total interest (avalanche)',
+      's3-lbl':  'Interest saved vs. minimums only',
+      's4-lbl':  'Months sooner than minimums only',
       // dynamic result strings
-      scoreLabel:  'SCORE',
-      verdictLow:  'Your debt load is manageable. Keep making consistent payments and avoid new debt.',
-      verdictMid:  'Possible to manage, but tight. One surprise expense could derail your payoff plan.',
-      verdictHigh: 'High risk. Your debt-to-income ratio is high. Consider consolidation or professional help.',
-      tipLow:      'Strong position. Apply any extra income directly to your highest-interest debt to accelerate payoff.',
-      tipMid:      'Stay consistent. Even $50 extra per month can save hundreds in interest. Avoid new credit card charges.',
-      tipHigh:     "Your DTI exceeds 43%. Speak to a nonprofit credit counselor (NFCC) — it's free and can help you build a realistic plan.",
       tipLabel:    'TIP',
       // content cards
       'c1-title': 'Avalanche vs. Snowball method',
       'c1-p1':    'The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.',
-      'c1-p2':    'Both work. The best method is the one you actually stick to. Use this calculator to find the monthly payment that keeps you on track without breaking your budget.',
+      'c1-p2':    'Both pay every minimum each month; the only difference is where the extra money goes. The calculator runs both on your numbers so you can see what snowball\'s earlier wins cost compared with avalanche.',
       'c2-title': 'When to consider consolidation',
       'c2-p1':    'Debt consolidation makes sense when: you have multiple high-interest debts (especially credit cards above 20% APR), you can qualify for a consolidation loan at a lower rate, and your DTI is below 43%.',
       'c2-p2':    'It does not solve overspending — it restructures existing debt. If you consolidate and continue using the cards, you end up with more debt, not less. Fix the behavior first, then consolidate.',
@@ -377,8 +377,8 @@
       'faq-label': 'Common questions',
       'faq1-q': 'How long will it take to pay off $20,000 in credit card debt?',
       'faq1-a': 'On a $20,000 balance at 18% APR, paying only a minimum of about 2% of the balance would take over 50 years and cost roughly $77,000 in total (illustrative; actual minimums vary by issuer and assume no new charges). Paying $600/month clears the debt in about 47 months at a total cost of about $27,900. Paying $1,000/month clears it in about 24 months, for about $24,000 in total. Use the calculator above to find your optimal payment.',
-      'faq2-q': 'What DTI is considered too high?',
-      'faq2-a': 'Under 35% is generally considered healthy. 35–43% is manageable but leaves little room for emergencies. Above 43%, many lenders may decline new credit or charge higher rates, and it is a sign to act: increase income, cut expenses, or look at consolidating at a lower rate. These ranges are common guidelines, and each lender sets its own limits.',
+      'faq2-q': 'Is avalanche or snowball better?',
+      'faq2-a': 'Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With three debts of $4,000 at 24%, $1,500 at 19% and $9,000 at 7%, and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16.',
       'faq3-q': 'Should I pay off debt or save first?',
       'faq3-a': 'Build a $1,000 emergency fund first — always. Then aggressively pay down any debt above 7% APR before investing. Debt at 18% APR is a guaranteed 18% return when paid off — no investment consistently beats that. Once high-interest debt is clear, shift to building a 3–6 month emergency fund and then investing.',
       // other calcs
@@ -388,8 +388,14 @@
       'other3-name':  'BNPL',        'other3-desc': 'Is Buy Now Pay Later worth it?',
       'other4-name':  'Personal Loan','other4-desc': 'Is a personal loan right for you?',
       // footer
-      'score-note': "This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.",
-      'footer': 'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>'
+      'footer': 'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>',
+      'add-debt': '+ Add a debt',
+      'lbl-budget': 'Total you can pay toward debts each month',
+      'th-method': 'Method',
+      'th-free': 'Debt-free',
+      'th-int': 'Interest',
+      'th-first': 'First debt gone',
+      'assume': 'Assumes interest of APR ÷ 12 each month, fixed minimum payments and no new charges. Results are estimates, not a lender quote.'
     },
 
     es: {
@@ -401,49 +407,36 @@
       'nav-personal': 'Préstamo Personal',
       'nav-all':      '← Todas las calculadoras',
       // breadcrumb & badge
-      'bc-label':   'Calculadora de Pago de Deuda',
-      'badge-text': 'Calculadora de Pago de Deuda',
+      'bc-label':   'Calculadora de Pago de Deudas',
+      'badge-text': 'Calculadora de Pago de Deudas',
       // hero
-      'hero-title':    '¿Tu deuda es ',
-      'hero-title-em': 'manejable?',
-      'hero-sub':      'Tarjetas de crédito, préstamos estudiantiles, pagos de auto — descubre si tu deuda total está bajo control o creciendo en silencio.',
+      'hero-title':    '¿Qué deuda debes ',
+      'hero-title-em': 'pagar primero?',
+      'hero-sub':      'Anota tus deudas y lo que puedes pagar cada mes. Mira tu fecha libre de deudas y el interés que pagas con los métodos avalancha y bola de nieve, lado a lado.',
       'fact1': 'El estadounidense promedio tiene unos $105,000 en deuda total, incluyendo hipotecas, préstamos de auto y tarjetas de crédito (Experian, septiembre de 2025).',
-      'fact2': 'Si tu DTI supera el 43%, muchos prestamistas pueden negar nuevo crédito o cobrar tasas más altas, y muchos profesionales lo consideran un nivel de alto riesgo. Los límites varían según el prestamista y el tipo de préstamo.',
+      'fact2': 'La avalancha manda el dinero extra primero a la tasa más alta; la bola de nieve, al saldo más pequeño. Las dos siguen pagando todos los mínimos.',
       'fact3': 'En un saldo de $20,000 al 18% APR, pagar $600 en vez de $500 al mes ahorra unos $2,800 en intereses y termina unos 15 meses antes.',
       // hero stats
       'stat1-lbl': 'Deuda total promedio por americano',
-      'stat2-lbl': 'DTI que muchos prestamistas ven como alto riesgo',
+      'stat2-lbl': 'Métodos de pago comparados lado a lado',
       'stat3-lbl': 'APR promedio de tarjeta de crédito en EE. UU. (Reserva Federal, 2.º trim. 2026)',
       'stat4-lbl': 'Para pagar $20k al 18% APR pagando $1,000 al mes',
       // calculator
-      'panel-in':    'Tus Números',
-      'panel-out':   'Tu Veredicto',
-      'lbl-income':   'Ingreso mensual (bruto, antes de impuestos)',
-      'lbl-expenses': 'Pagos de deuda mensuales existentes (vivienda, tarjetas, préstamos)',
-      'lbl-amount':   'Deuda Total a Pagar',
-      'lbl-rate':     'APR promedio',
-      'lbl-term':     'Meta de Pago (meses)',
-      'calc-btn':     'Revisar Mi Carga de Deuda',
-      'ph-text':      'Ingresa tus números arriba',
+      'panel-in':    'Tus Deudas',
+      'panel-out':   'Tu Plan',
+      'calc-btn':     'Armar Mi Plan de Pago',
+      'ph-text':      'Agrega tus deudas y tu presupuesto mensual',
       // result labels
-      'dti-lbl': 'Deuda-sobre-Ingreso',
-      's1-lbl':  'Pago Mensual',
-      's2-lbl':  'Sobrante (antes de impuestos)',
-      's3-lbl':  'Costo Total',
-      's4-lbl':  'Interés Total',
+      's1-lbl':  'Libre de deudas (avalancha)',
+      's2-lbl':  'Interés total (avalancha)',
+      's3-lbl':  'Interés ahorrado vs. solo mínimos',
+      's4-lbl':  'Meses antes que solo mínimos',
       // dynamic result strings
-      scoreLabel:  'PUNTAJE',
-      verdictLow:  'Tu carga de deuda es manejable. Sigue haciendo pagos consistentes y evita nuevas deudas.',
-      verdictMid:  'Posible de manejar, pero ajustado. Un gasto inesperado podría descarrilar tu plan de pago.',
-      verdictHigh: 'Riesgo alto. Tu relación deuda-ingreso es alta. Considera consolidación o ayuda profesional.',
-      tipLow:      'Posición sólida. Aplica cualquier ingreso extra directamente a tu deuda de mayor interés para acelerar el pago.',
-      tipMid:      'Mantén la consistencia. Incluso $50 extra por mes puede ahorrarte cientos en intereses. Evita nuevos cargos en tarjetas.',
-      tipHigh:     'Tu DTI supera el 43%. Habla con un asesor de crédito sin fines de lucro (NFCC) — es gratis y puede ayudarte a construir un plan realista.',
       tipLabel:    'CONSEJO',
       // content cards
       'c1-title': 'Método Avalancha vs. Bola de Nieve',
       'c1-p1':    'El método avalancha paga primero la deuda con mayor interés — ahorra más dinero matemáticamente. El método bola de nieve paga primero los saldos más pequeños — genera impulso psicológico.',
-      'c1-p2':    'Ambos funcionan. El mejor método es el que realmente mantienes. Usa esta calculadora para encontrar el pago mensual que te mantiene en camino sin romper tu presupuesto.',
+      'c1-p2':    'Las dos pagan todos los mínimos cada mes; la única diferencia es adónde va el dinero extra. La calculadora corre las dos con tus números para que veas cuánto cuestan las victorias rápidas de la bola de nieve frente a la avalancha.',
       'c2-title': 'Cuándo considerar la consolidación',
       'c2-p1':    'La consolidación de deuda tiene sentido cuando: tienes múltiples deudas de alto interés (especialmente tarjetas de crédito por encima del 20% APR), puedes calificar para un préstamo de consolidación a una tasa más baja, y tu DTI está por debajo del 43%.',
       'c2-p2':    'No resuelve el gasto excesivo — reestructura la deuda existente. Si consolidas y continúas usando las tarjetas, terminas con más deuda, no menos. Corrige el comportamiento primero, luego consolida.',
@@ -451,8 +444,8 @@
       'faq-label': 'Preguntas frecuentes',
       'faq1-q': '¿Cuánto tiempo tomará pagar $20,000 en deuda de tarjeta de crédito?',
       'faq1-a': 'En un saldo de $20,000 al 18% APR, pagar solo un mínimo de aproximadamente 2% del saldo tomaría más de 50 años y costaría unos $77,000 en total (ilustrativo; los mínimos reales varían según el emisor y se asume que no hay compras nuevas). Pagar $600/mes liquida la deuda en unos 47 meses, con un costo total de unos $27,900. Pagar $1,000/mes la liquida en unos 24 meses, por unos $24,000 en total. Usa la calculadora para encontrar tu pago óptimo.',
-      'faq2-q': '¿Qué DTI se considera demasiado alto?',
-      'faq2-a': 'Por debajo del 35% se considera en general saludable. 35–43% es manejable pero deja poco margen para emergencias. Por encima del 43%, muchos prestamistas pueden negar nuevo crédito o cobrar tasas más altas, y es una señal para actuar: aumentar ingresos, recortar gastos o evaluar consolidar a una tasa menor. Estos rangos son pautas comunes y cada prestamista fija sus propios límites.',
+      'faq2-q': '¿Qué es mejor, avalancha o bola de nieve?',
+      'faq2-a': 'La avalancha nunca cuesta más interés que la bola de nieve, porque cada dólar extra va a la tasa más alta. La bola de nieve liquida tu primera deuda antes, lo que ayuda a algunas personas a mantenerse motivadas. Con tres deudas de $4,000 al 24%, $1,500 al 19% y $9,000 al 7%, y $600 al mes, ambas terminan en el mes 28; la avalancha paga unos $88 menos de interés, mientras que la bola de nieve liquida la primera deuda en el mes 7 en vez del mes 16.',
       'faq3-q': '¿Debo pagar la deuda o ahorrar primero?',
       'faq3-a': 'Construye primero un fondo de emergencia de $1,000 — siempre. Luego paga agresivamente cualquier deuda por encima del 7% APR antes de invertir. Una deuda al 18% APR es un retorno garantizado del 18% cuando se paga — ninguna inversión supera eso consistentemente.',
       // other calcs
@@ -462,8 +455,14 @@
       'other3-name':  'BNPL',           'other3-desc': '¿Vale la pena comprar ahora y pagar después?',
       'other4-name':  'Préstamo Personal','other4-desc': '¿Es un préstamo personal adecuado para ti?',
       // footer
-      'score-note': "Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.",
-      'footer': 'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>'
+      'footer': 'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>',
+      'add-debt': '+ Agregar una deuda',
+      'lbl-budget': 'Total que puedes pagar a tus deudas cada mes',
+      'th-method': 'Método',
+      'th-free': 'Libre de deudas',
+      'th-int': 'Interés',
+      'th-first': 'Primera deuda pagada',
+      'assume': 'Supone un interés mensual de APR ÷ 12, pagos mínimos fijos y sin cargos nuevos. Los resultados son estimaciones, no una cotización de un prestamista.'
     }
   };
 
@@ -493,92 +492,241 @@
       }
     });
 
-    // update gauge label
-    const gaugeLbl = document.getElementById('gauge-lbl');
-    if (gaugeLbl) gaugeLbl.textContent = t.scoreLabel;
-
-    // re-render results if already calculated
-    if (lastResult) renderResults(lastResult);
+    // relabel debt rows in the new language (values are kept)
+    document.querySelectorAll('.debt-row').forEach(row => {
+      const t2 = D[l];
+      const labels = row.querySelectorAll('.debt-grid label');
+      [t2.bal, t2.apr, t2.min].forEach((txt, i) => { if (labels[i]) labels[i].textContent = txt; });
+      const nm = row.querySelector('.d-name'); nm.placeholder = t2.name;
+      row.querySelector('.debt-row-head label').textContent = t2.name;
+      const rm = row.querySelector('.rm-debt'); rm.textContent = t2.remove; rm.setAttribute('aria-label', t2.removeLabel(nm.value || t2.name));
+    });
+    if (invalid || calculated) calculate();
   }
+
+  const D = {
+    en: {
+      name: 'Debt name', bal: 'Balance', apr: 'APR %', min: 'Minimum', remove: 'Remove', removeLabel: n => 'Remove ' + n,
+      defaultName: i => 'Debt ' + i,
+      req: 'Enter a value.', pos: 'Enter an amount greater than $0.', rate: 'Enter a rate from 0% to 60%.', minErr: 'Enter a minimum from $0 up to the balance.',
+      budgetLow: m => 'Your budget must cover all minimum payments (' + m + ').',
+      fix: 'Fix the highlighted fields to see your plan.',
+      need: 'Add at least one debt.',
+      hint: (m, x) => 'Minimums add up to ' + m + (x > 0.005 ? '; the other ' + fmt(x) + ' goes to the target debt each month.' : '.'),
+      methods: { avalanche: 'Avalanche', snowball: 'Snowball', minimum: 'Minimums only' },
+      months: n => n + (n === 1 ? ' month' : ' months'),
+      never: 'Over 50 years',
+      month: n => 'month ' + n,
+      orderLabel: 'PAYOFF ORDER',
+      order: (m, list) => m + ': ' + list,
+      verdictBoth: (diff, first) => 'Avalanche saves ' + diff + ' in interest. Snowball clears its first debt in ' + first + ', if early wins help you stick with the plan.',
+      verdictSame: 'Both methods pay off your debts in the same order here, so they cost the same.',
+      verdictNoExtra: 'Your budget only covers the minimums. Any extra amount you add goes straight to the target debt and shortens the plan.',
+      warn: (n, i) => n + ': the minimum does not cover this month\'s interest (' + i + '). Paying only the minimum, this balance would grow.',
+      live: (free, int) => 'Avalanche plan: debt-free in ' + free + ', total interest ' + int + '.'
+    },
+    es: {
+      name: 'Nombre de la deuda', bal: 'Saldo', apr: 'APR %', min: 'Mínimo', remove: 'Quitar', removeLabel: n => 'Quitar ' + n,
+      defaultName: i => 'Deuda ' + i,
+      req: 'Ingresa un valor.', pos: 'Ingresa un monto mayor que $0.', rate: 'Ingresa una tasa entre 0% y 60%.', minErr: 'Ingresa un mínimo entre $0 y el saldo.',
+      budgetLow: m => 'Tu presupuesto debe cubrir todos los pagos mínimos (' + m + ').',
+      fix: 'Corrige los campos marcados para ver tu plan.',
+      need: 'Agrega al menos una deuda.',
+      hint: (m, x) => 'Los mínimos suman ' + m + (x > 0.005 ? '; los otros ' + fmt(x) + ' van cada mes a la deuda objetivo.' : '.'),
+      methods: { avalanche: 'Avalancha', snowball: 'Bola de nieve', minimum: 'Solo mínimos' },
+      months: n => n + (n === 1 ? ' mes' : ' meses'),
+      never: 'Más de 50 años',
+      month: n => 'mes ' + n,
+      orderLabel: 'ORDEN DE PAGO',
+      order: (m, list) => m + ': ' + list,
+      verdictBoth: (diff, first) => 'La avalancha ahorra ' + diff + ' en interés. La bola de nieve liquida su primera deuda en el ' + first + ', por si las victorias rápidas te ayudan a mantener el plan.',
+      verdictSame: 'Aquí los dos métodos pagan tus deudas en el mismo orden, así que cuestan lo mismo.',
+      verdictNoExtra: 'Tu presupuesto solo cubre los mínimos. Cualquier monto extra que agregues va directo a la deuda objetivo y acorta el plan.',
+      warn: (n, i) => n + ': el mínimo no cubre el interés de este mes (' + i + '). Pagando solo el mínimo, este saldo crecería.',
+      live: (free, int) => 'Plan avalancha: libre de deudas en ' + free + ', interés total ' + int + '.'
+    }
+  };
+
+  const MAX_DEBTS = 10, MAX_MONTHS = 600;
+  const START = [
+    { name: 'Credit card A', bal: 4000, apr: 24, min: 120 },
+    { name: 'Credit card B', bal: 1500, apr: 19, min: 45 },
+    { name: 'Car loan', bal: 9000, apr: 7, min: 250 }
+  ];
+  let rowSeq = 0, calculated = false, invalid = false;
+
+  function debtRowHTML(id, d) {
+    const t = D[lang];
+    const v = x => (x === undefined || x === null) ? '' : x;
+    return '<div class="debt-row" data-row="' + id + '">' +
+      '<div class="debt-row-head"><label class="sr-only" for="n' + id + '">' + t.name + '</label>' +
+      '<input type="text" id="n' + id + '" class="d-name" maxlength="40" value="' + v(d.name).replace(/"/g, '&quot;') + '" placeholder="' + t.name + '">' +
+      '<button type="button" class="rm-debt" onclick="removeDebt(' + id + ')" aria-label="' + t.removeLabel(v(d.name) || t.name) + '">' + t.remove + '</button></div>' +
+      '<div class="debt-grid">' +
+      '<div><label for="b' + id + '">' + t.bal + '</label><input type="number" id="b' + id + '" class="d-bal" min="0" inputmode="decimal" value="' + v(d.bal) + '"></div>' +
+      '<div><label for="r' + id + '">' + t.apr + '</label><input type="number" id="r' + id + '" class="d-apr" min="0" max="60" step="0.1" inputmode="decimal" value="' + v(d.apr) + '"></div>' +
+      '<div><label for="m' + id + '">' + t.min + '</label><input type="number" id="m' + id + '" class="d-min" min="0" inputmode="decimal" value="' + v(d.min) + '"></div>' +
+      '</div></div>';
+  }
+  function addDebt(d) {
+    const list = document.getElementById('debt-list');
+    if (list.children.length >= MAX_DEBTS) return;
+    const id = ++rowSeq;
+    list.insertAdjacentHTML('beforeend', debtRowHTML(id, d || { name: D[lang].defaultName(list.children.length + 1) }));
+    bindRow(list.lastElementChild);
+    updateAddButton();
+    if (!d) document.getElementById('b' + id).focus();
+    onEdit();
+  }
+  function removeDebt(id) {
+    const row = document.querySelector('[data-row="' + id + '"]');
+    if (row) row.remove();
+    updateAddButton();
+    onEdit();
+  }
+  function updateAddButton() {
+    document.getElementById('add-debt').disabled = document.getElementById('debt-list').children.length >= MAX_DEBTS;
+  }
+  function readRows() {
+    return [...document.querySelectorAll('.debt-row')].map(row => ({
+      row,
+      name: row.querySelector('.d-name').value.trim(),
+      balEl: row.querySelector('.d-bal'), aprEl: row.querySelector('.d-apr'), minEl: row.querySelector('.d-min')
+    }));
+  }
+
+  // ----- validation
+  function mark(el, msg) {
+    let p = el.parentNode.querySelector('.ca-err');
+    if (!p) { p = document.createElement('p'); p.className = 'ca-err'; p.id = 'err-' + el.id; el.parentNode.appendChild(p); }
+    p.textContent = msg || ''; p.hidden = !msg;
+    if (msg) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', p.id); }
+    else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
+  }
+  function num(el) { const raw = String(el.value).trim(); return raw === '' ? NaN : Number(raw); }
+  function validate() {
+    const t = D[lang]; const rows = readRows(); let ok = true; const debts = [];
+    rows.forEach((r, i) => {
+      const bal = num(r.balEl), apr = num(r.aprEl), min = num(r.minEl);
+      const eb = isNaN(bal) ? t.req : (bal <= 0 || bal > 10000000) ? t.pos : '';
+      const ea = isNaN(apr) ? t.req : (apr < 0 || apr > 60) ? t.rate : '';
+      const em = isNaN(min) ? t.req : (min < 0 || (!eb && min > bal)) ? t.minErr : '';
+      mark(r.balEl, eb); mark(r.aprEl, ea); mark(r.minEl, em);
+      if (eb || ea || em) ok = false;
+      else debts.push({ name: r.name || t.defaultName(i + 1), bal, apr, min, order: i });
+    });
+    const budgetEl = document.getElementById('budget');
+    const budget = num(budgetEl);
+    let eb = isNaN(budget) ? t.req : (budget <= 0 || budget > 10000000) ? t.pos : '';
+    const minSum = debts.reduce((a, d) => a + d.min, 0);
+    if (!eb && ok && budget + 1e-9 < minSum) eb = t.budgetLow(fmt(minSum));
+    mark(budgetEl, eb);
+    if (eb) ok = false;
+    let formMsg = '';
+    if (!rows.length) { ok = false; formMsg = t.need; }
+    else if (!ok) formMsg = t.fix;
+    document.getElementById('form-error').textContent = formMsg;
+    document.getElementById('budget-hint').textContent = (ok && debts.length) ? t.hint(fmt(minSum), budget - minSum) : '';
+    return ok ? { debts, budget } : null;
+  }
+
+  // ----- engine: month-by-month simulation, same rules as the reference spreadsheet
+  function simulate(debts, budget, priority) {
+    const ds = debts.map(d => ({ ...d, left: d.bal, done: 0 }));
+    const order = [...ds].sort(priority);
+    let month = 0, interest = 0;
+    while (ds.some(d => d.left > 0.005) && month < MAX_MONTHS) {
+      month++;
+      ds.forEach(d => { if (d.left > 0) { const i = d.left * d.apr / 1200; d.left += i; interest += i; } });
+      let pool = budget;
+      ds.forEach(d => { if (d.left > 0) { const p = Math.min(d.min, d.left); d.left -= p; pool -= p; } });
+      for (const d of order) { if (pool <= 0) break; if (d.left > 0) { const p = Math.min(pool, d.left); d.left -= p; pool -= p; } }
+      ds.forEach(d => { if (d.left <= 0.005 && !d.done) { d.left = 0; d.done = month; } });
+    }
+    const finished = !ds.some(d => d.left > 0.005);
+    return { months: finished ? month : null, interest, payoff: ds.map(d => ({ name: d.name, month: d.done || null })) };
+  }
+  const BY_RATE = (a, b) => b.apr - a.apr || a.bal - b.bal || a.order - b.order;
+  const BY_BALANCE = (a, b) => a.bal - b.bal || b.apr - a.apr || a.order - b.order;
 
   function calculate() {
-    const income     = parseFloat(document.getElementById('income').value)     || 0;
-    const expenses   = parseFloat(document.getElementById('expenses').value)   || 0;
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
-    const annualRate = parseFloat(document.getElementById('rate').value)       || 0;
-    const termMonths = parseFloat(document.getElementById('term').value)       || 1;
-
-    const r  = annualRate / 100 / 12;
-    const mp = annualRate === 0
-      ? loanAmount / termMonths
-      : loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
-
-    const tc   = mp * termMonths;
-    const ti   = tc - loanAmount;
-    const dti  = income > 0 ? ((expenses + mp) / income) * 100 : 100;
-    const lo   = income - expenses - mp;
-    let score  = dti <= 20  ? 95
-               : dti <= 35  ? Math.round(95 - (dti-20) * 2.5)
-               : dti <= 43  ? Math.round(57 - (dti-35) * 4)
-               : Math.max(0, Math.round(25 - (dti-43) * 1.5));
-
-    lastResult = {mp, tc, ti, dti, lo, score};
+    const input = validate();
+    if (!input) { invalid = true; showPlaceholder(); return; }
+    invalid = false;
+    const { debts, budget } = input;
+    const minSum = debts.reduce((a, d) => a + d.min, 0);
+    lastResult = {
+      budget, minSum,
+      avalanche: simulate(debts, budget, BY_RATE),
+      snowball: simulate(debts, budget, BY_BALANCE),
+      minimum: simulate(debts, minSum, BY_RATE),
+      warnings: debts.filter(d => d.min < d.bal * d.apr / 1200 - 0.005).map(d => ({ name: d.name, interest: d.bal * d.apr / 1200 }))
+    };
+    calculated = true;
     renderResults(lastResult);
   }
-
-  function renderResults(r) {
-    const t = T[lang];
-    const {mp, tc, ti, dti, lo, score} = r;
-
-    let vt, icon, tip, color;
-    if (dti <= 35)      { vt = t.verdictLow;  icon = '✅'; tip = t.tipLow;  color = '#00e5a0'; }
-    else if (dti <= 43) { vt = t.verdictMid;  icon = '⚠️'; tip = t.tipMid;  color = '#f5c842'; }
-    else                { vt = t.verdictHigh; icon = '🚨'; tip = t.tipHigh; color = '#ff4d6d'; }
-
-    document.getElementById('placeholder').style.display      = 'none';
-    document.getElementById('results-content').style.display  = 'block';
-
-    const gf = document.getElementById('gauge-fill');
-    gf.style.strokeDashoffset = 251 - (score / 100) * 251;
-    gf.style.stroke = color;
-    document.getElementById('gauge-score').textContent = score;
-
-    const vb = document.getElementById('verdict-box');
-    vb.style.borderColor = color + '55';
-    vb.style.background  = color + '10';
-    document.getElementById('verdict-icon').textContent = icon;
-    const vtEl = document.getElementById('verdict-text');
-    vtEl.textContent = vt;
-    vtEl.classList.add('active');
-    vtEl.style.color = color;
-
-    document.getElementById('dti-fill').style.width      = Math.min(dti, 100) + '%';
-    document.getElementById('dti-fill').style.background = color;
-    document.getElementById('dti-pct').textContent       = dti.toFixed(1) + '%';
-    document.getElementById('dti-pct').style.color       = color;
-
-    document.getElementById('stat-monthly').textContent  = fmt(mp);
-    document.getElementById('stat-leftover').textContent = fmt(lo);
-    document.getElementById('stat-leftover').style.color = lo >= 0 ? '#00e5a0' : '#ff4d6d';
-    document.getElementById('stat-total').textContent    = fmt(tc);
-    document.getElementById('stat-interest').textContent = fmt(ti);
-
-    const tb = document.getElementById('tip-box');
-    tb.classList.add('show');
-    tb.style.background  = color + '15';
-    tb.style.borderColor = color + '40';
-    tb.style.color       = color;
-    document.getElementById('tip-label').textContent = t.tipLabel;
-    document.getElementById('tip-text').textContent  = tip;
+  function showPlaceholder() {
+    document.getElementById('results-content').style.display = 'none';
+    document.getElementById('placeholder').style.display = '';
   }
-
+  function freeDate(m) {
+    if (!m) return D[lang].never;
+    const d = new Date(); d.setDate(1); d.setMonth(d.getMonth() + m);
+    return D[lang].months(m) + ' (' + d.toLocaleDateString(lang === 'es' ? 'es-US' : 'en-US', { month: 'short', year: 'numeric' }) + ')';
+  }
+  function firstGone(sim) { const ms = sim.payoff.map(p => p.month).filter(Boolean); return ms.length ? Math.min(...ms) : null; }
+  function orderList(sim) {
+    return sim.payoff.filter(p => p.month).sort((a, b) => a.month - b.month)
+      .map(p => p.name + ' (' + D[lang].month(p.month) + ')').join(' → ');
+  }
+  function renderResults(r) {
+    const t = D[lang];
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-content').style.display = 'block';
+    const av = r.avalanche, sn = r.snowball, mn = r.minimum;
+    document.getElementById('stat-free').textContent = freeDate(av.months);
+    document.getElementById('stat-interest').textContent = fmt(av.interest);
+    document.getElementById('stat-saved').textContent = mn.months ? fmt(mn.interest - av.interest) : '—';
+    document.getElementById('stat-sooner').textContent = (av.months && mn.months) ? t.months(mn.months - av.months) : '—';
+    const rows = [['avalanche', av], ['snowball', sn], ['minimum', mn]];
+    const best = Math.min(av.interest, sn.interest);
+    document.getElementById('plan-body').innerHTML = rows.map(([k, sim]) => {
+      const fg = firstGone(sim);
+      return '<tr' + (k !== 'minimum' && Math.abs(sim.interest - best) < 0.005 ? ' class="best"' : '') + '><td>' + t.methods[k] + '</td>' +
+        '<td class="num">' + (sim.months ? t.months(sim.months) : t.never) + '</td>' +
+        '<td class="num">' + fmt(sim.interest) + '</td>' +
+        '<td class="num">' + (fg ? t.month(fg) : '—') + '</td></tr>';
+    }).join('');
+    let verdict;
+    const diff = sn.interest - av.interest;
+    if (r.budget - r.minSum < 0.005) verdict = t.verdictNoExtra;
+    else if (Math.abs(diff) < 0.5) verdict = t.verdictSame;
+    else verdict = t.verdictBoth(fmt(diff), t.month(firstGone(sn)));
+    const vt = document.getElementById('verdict-text'); vt.textContent = verdict; vt.classList.add('active'); vt.style.color = '#00e5a0';
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = '#00e5a055'; vb.style.background = '#00e5a010';
+    document.getElementById('tip-label').textContent = t.orderLabel;
+    document.getElementById('tip-text').innerHTML = '';
+    [['avalanche', av], ['snowball', sn]].forEach(([k, sim]) => {
+      const p = document.createElement('div'); p.className = 'order'; p.textContent = t.order(t.methods[k], orderList(sim)); document.getElementById('tip-text').appendChild(p);
+    });
+    const wb = document.getElementById('warn-box');
+    wb.textContent = r.warnings.map(w => t.warn(w.name, fmt(w.interest))).join(' ');
+    wb.style.display = r.warnings.length ? 'block' : 'none';
+    document.getElementById('plan-live').textContent = t.live(freeDate(av.months), fmt(av.interest));
+  }
   function fmt(n) {
-    const a = Math.abs(n);
-    const f = '$' + a.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
+    const abs = Math.abs(n);
+    const f = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     return n < 0 ? '-' + f : f;
   }
 
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  // ----- live updates after the first plan
+  let timer = null;
+  function onEdit() { if (!calculated) return; clearTimeout(timer); timer = setTimeout(calculate, 250); }
+  function bindRow(row) { row.querySelectorAll('input').forEach(i => i.addEventListener('input', onEdit)); }
+  document.getElementById('budget').addEventListener('input', onEdit);
+  START.forEach(d => addDebt(d));
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
 </script>
 <script>
 (function(){
@@ -594,6 +742,5 @@
   }
 })();
 </script>
-<script src="/assets/ca-validate.js"></script>
 </body>
 </html>
