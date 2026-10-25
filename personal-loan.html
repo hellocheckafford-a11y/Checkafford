@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Personal Loan Calculator — Can You Afford It? | CheckAfford</title>
-<meta name="description" content="Enter your income, loan amount, rate and term. Get an instant verdict on whether a personal loan fits your budget. Free, no signup, results in 5 seconds.">
+<title>Personal Loan Calculator: Real APR, Fees and Payoff Savings | CheckAfford</title>
+<meta name="description" content="See how much cash you actually receive after the origination fee, the real APR, and whether a personal loan saves money compared with the debt it would replace. Free, no signup.">
 <meta name="keywords" content="personal loan calculator, can I afford a personal loan, personal loan affordability, debt to income ratio personal loan">
 <link rel="canonical" href="https://checkafford.com/personal-loan">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
@@ -472,6 +472,21 @@
 .rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
 .rel-guides a:hover{border-color:var(--accent);}
 .rel-guides .arr{color:var(--accent);flex-shrink:0;}
+
+  .group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin:18px 0 10px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .field-row .field{margin-bottom:14px;}
+  .field-hint{font-size:11px;color:var(--muted);margin:6px 0 0;line-height:1.4;}
+  .mini-line{font-size:12px;color:var(--muted);margin:0;line-height:1.5;}
+  .sub-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:2px 0 8px;}
+  .cmp-table{width:100%;border-collapse:collapse;font-size:12px;}
+  .cmp-table th,.cmp-table td{padding:7px 5px;border-bottom:1px solid var(--border);text-align:left;}
+  .cmp-table th{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .cmp-table td{font-family:var(--font-mono);white-space:nowrap;}
+  .cmp-table td:first-child{font-family:var(--font-body);color:var(--muted);white-space:normal;}
+  .cmp-table td.win{color:#00e5a0;}
+  .assume{font-size:11px;color:var(--muted);line-height:1.5;margin:0;}
+  .tip-box.show{display:flex;}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -527,7 +542,7 @@
   <div class="hero-left">
     <div class="page-badge" data-en="Personal Loan Calculator" data-es="Calculadora de Préstamo Personal">Personal Loan Calculator</div>
     <h1 data-en="Is a personal loan <em>right for you?</em>" data-es="¿Un préstamo personal es <em>para ti?</em>">Is a personal loan <em>right for you?</em></h1>
-    <p class="page-sub" data-en="Enter your income, loan amount and rate. Get an honest verdict on whether a personal loan fits your budget — before you apply." data-es="Ingresa tu ingreso, monto del préstamo y tasa. Obtén un veredicto honesto sobre si un préstamo personal cabe en tu presupuesto — antes de aplicar.">Enter your income, loan amount and rate. Get an honest verdict on whether a personal loan fits your budget — before you apply.</p>
+    <p class="page-sub" data-en="See how much cash you actually receive after the origination fee, the real APR, and whether the loan saves money compared with the debt it would replace." data-es="Mira cuánto dinero recibes de verdad después de la comisión de apertura, el APR real y si el préstamo te ahorra dinero frente a la deuda que reemplazaría.">See how much cash you actually receive after the origination fee, the real APR, and whether the loan saves money compared with the debt it would replace.</p>
     <div class="quick-facts">
       <div class="fact-chip"><strong data-en="36%" data-es="36%">36%</strong> <span data-en="Common DTI guideline" data-es="Pauta común de DTI">Common DTI guideline</span></div>
       <div class="fact-chip"><strong data-en="6–36%" data-es="6–36%">6–36%</strong> <span data-en="Typical APR range (depends on credit)" data-es="Rango típico de APR (según tu crédito)">Typical APR range (depends on credit)</span></div>
@@ -563,91 +578,82 @@
   <!-- INPUT PANEL -->
   <div class="calc-panel">
     <p class="panel-title" data-en="Your Numbers" data-es="Tus Números">Your Numbers</p>
-
+    <p class="group-title" data-en="The loan offer" data-es="La oferta de préstamo">The loan offer</p>
     <div class="field">
-      <label for="income" data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
-      <input type="number" id="income" placeholder="e.g. 4500" min="0">
+      <label for="loanAmount" data-en="Loan amount ($)" data-es="Monto del préstamo ($)">Loan amount ($)</label>
+      <input type="number" id="loanAmount" value="10000" inputmode="decimal" >
+    </div>
+    <div class="field-row">
+    <div class="field">
+      <label for="rate" data-en="Interest rate (%)" data-es="Tasa de interés (%)">Interest rate (%)</label>
+      <input type="number" id="rate" value="11.5" inputmode="decimal" step="0.1">
     </div>
     <div class="field">
-      <label for="expenses" data-en="Existing Monthly Debt Payments" data-es="Pagos de Deuda Mensuales Existentes">Existing Monthly Debt Payments</label>
-      <input type="number" id="expenses" placeholder="e.g. 800" min="0">
+      <label for="fee" data-en="Origination fee (%)" data-es="Comisión de apertura (%)">Origination fee (%)</label>
+      <input type="number" id="fee" value="5" inputmode="decimal" step="0.1" data-min="0" data-max="12" data-msg="fee">
+    </div>
     </div>
     <div class="field">
-      <label for="loanAmount" data-en="Loan Amount" data-es="Monto del Préstamo">Loan Amount</label>
-      <input type="number" id="loanAmount" placeholder="e.g. 10000" min="0">
+      <label for="term" data-en="Term (months)" data-es="Plazo (meses)">Term (months)</label>
+      <input type="number" id="term" value="36" inputmode="decimal" >
+      <p class="field-hint" data-en="Most lenders take the origination fee out of the money you receive." data-es="La mayoría de los prestamistas descuentan la comisión del dinero que recibes.">Most lenders take the origination fee out of the money you receive.</p>
+    </div>
+    <p class="group-title" data-en="Debt it would pay off (optional)" data-es="Deuda que pagarías con él (opcional)">Debt it would pay off (optional)</p>
+    <div class="field">
+      <label for="cbal" data-en="Current balance ($)" data-es="Saldo actual ($)">Current balance ($)</label>
+      <input type="number" id="cbal" value="9500" inputmode="decimal" data-min="0">
+    </div>
+    <div class="field-row">
+    <div class="field">
+      <label for="capr" data-en="Its APR (%)" data-es="Su APR (%)">Its APR (%)</label>
+      <input type="number" id="capr" value="24" inputmode="decimal" step="0.1" data-min="0" data-max="60" data-msg="rate">
     </div>
     <div class="field">
-      <label for="rate" data-en="APR (annual percentage rate, %)" data-es="APR (tasa anual, %)">APR (annual percentage rate, %)</label>
-      <input type="number" id="rate" placeholder="e.g. 11.5" min="0" step="0.1">
+      <label for="cpay" data-en="What you pay now ($/mo)" data-es="Lo que pagas hoy ($/mes)">What you pay now ($/mo)</label>
+      <input type="number" id="cpay" value="300" inputmode="decimal" data-min="0">
+    </div>
+    </div>
+    <p class="group-title" data-en="Your budget" data-es="Tu presupuesto">Your budget</p>
+    <div class="field-row">
+    <div class="field">
+      <label for="income" data-en="Monthly income before taxes ($)" data-es="Ingreso mensual antes de impuestos ($)">Monthly income before taxes ($)</label>
+      <input type="number" id="income" value="4500" inputmode="decimal" >
     </div>
     <div class="field">
-      <label for="term" data-en="Loan Term (months)" data-es="Plazo del Préstamo (meses)">Loan Term (months)</label>
-      <input type="number" id="term" placeholder="e.g. 36" min="1">
+      <label for="expenses" data-en="Other monthly debt payments ($)" data-es="Otros pagos de deudas al mes ($)">Other monthly debt payments ($)</label>
+      <input type="number" id="expenses" value="400" inputmode="decimal" >
+      <p class="field-hint" data-en="Leave out the debt above." data-es="Sin contar la deuda de arriba.">Leave out the debt above.</p>
     </div>
-    <button class="calc-btn" onclick="calculate()" data-en="Check Affordability" data-es="Verificar Asequibilidad">Check Affordability</button>
+    </div>
+    <button class="calc-btn" onclick="calculate()" data-en="Check the Real Cost" data-es="Ver el costo real">Check the Real Cost</button>
   </div>
 
   <!-- RESULTS PANEL -->
   <div class="calc-panel results-panel">
-    <p class="panel-title" data-en="Affordability Verdict" data-es="Veredicto de Asequibilidad">Affordability Verdict</p>
-
+    <p class="panel-title" data-en="What This Loan Really Costs" data-es="Lo que cuesta de verdad este préstamo">What This Loan Really Costs</p>
     <div id="placeholder" class="placeholder-msg">
       <div class="ph-icon">💵</div>
       <span data-en="Enter your loan details above" data-es="Ingresa los detalles del préstamo arriba">Enter your loan details above</span>
     </div>
-
-    <div id="results-content" style="display:none; display:flex; flex-direction:column; gap:16px;">
-      <div class="gauge-wrap">
-        <svg class="gauge-svg" viewBox="0 0 100 100">
-          <circle class="gauge-track" cx="50" cy="50" r="40"/>
-          <circle class="gauge-fill" id="gauge-fill" cx="50" cy="50" r="40"/>
-        </svg>
-        <div class="gauge-score-wrap">
-          <div class="gauge-score" id="gauge-score">—</div>
-          <div class="gauge-label" data-en="SCORE" data-es="PUNTAJE">SCORE</div>
-        </div>
-      </div>
-
-      <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;" data-en="This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score." data-es="Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p>
-      <div class="verdict-box" id="verdict-box">
-        <span class="verdict-icon" id="verdict-icon">💵</span>
-        <span class="verdict-text" id="verdict-text" data-en="Enter your numbers to see your verdict" data-es="Ingresa tus números para ver tu veredicto">Enter your numbers to see your verdict</span>
-      </div>
-
-      <div class="dti-wrap">
-        <div class="dti-header">
-          <span class="dti-title" data-en="DEBT-TO-INCOME IMPACT" data-es="IMPACTO EN DTI">DEBT-TO-INCOME IMPACT</span>
-          <span class="dti-pct" id="dti-pct">—</span>
-        </div>
-        <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
-      </div>
-
+    <div id="results-content" style="display:none; flex-direction:column; gap:14px;">
+      <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💵</span><span class="verdict-text" id="verdict-text">–</span></div>
       <div class="stats-row">
-        <div class="stat-mini">
-          <div class="stat-mini-val" id="stat-monthly">—</div>
-          <div class="stat-mini-label" data-en="Monthly Payment" data-es="Pago Mensual">Monthly Payment</div>
-        </div>
-        <div class="stat-mini">
-          <div class="stat-mini-val" id="stat-leftover">—</div>
-          <div class="stat-mini-label" data-en="Left Over (before taxes)" data-es="Sobrante (antes de impuestos)">Left Over (before taxes)</div>
-        </div>
-        <div class="stat-mini">
-          <div class="stat-mini-val" id="stat-total">—</div>
-          <div class="stat-mini-label" data-en="Total Cost" data-es="Costo Total">Total Cost</div>
-        </div>
-        <div class="stat-mini">
-          <div class="stat-mini-val" id="stat-interest">—</div>
-          <div class="stat-mini-label" data-en="Total Interest" data-es="Interés Total">Total Interest</div>
-        </div>
+        <div class="stat-mini"><div class="stat-mini-val" id="stat-received">—</div><div class="stat-mini-label" data-en="Cash you receive" data-es="Dinero que recibes">Cash you receive</div></div>
+        <div class="stat-mini"><div class="stat-mini-val" id="stat-monthly">—</div><div class="stat-mini-label" data-en="Monthly payment" data-es="Pago mensual">Monthly payment</div></div>
+        <div class="stat-mini"><div class="stat-mini-val" id="stat-apr">—</div><div class="stat-mini-label" data-en="Real APR with the fee" data-es="APR real con la comisión">Real APR with the fee</div></div>
+        <div class="stat-mini"><div class="stat-mini-val" id="stat-cost">—</div><div class="stat-mini-label" data-en="Cost: interest + fee" data-es="Costo: interés + comisión">Cost: interest + fee</div></div>
       </div>
-
-      <div class="tip-box" id="tip-box">
-        <div>
-          <div class="tip-label" id="tip-label">TIP</div>
-          <div id="tip-text"></div>
-        </div>
+      <p class="mini-line" id="gross-line"></p>
+      <div id="compare-wrap">
+        <p class="sub-title" data-en="Loan vs. keeping your current debt" data-es="Préstamo vs. seguir con tu deuda actual">Loan vs. keeping your current debt</p>
+        <table class="cmp-table">
+          <thead><tr><th></th><th data-en="Current debt" data-es="Deuda actual">Current debt</th><th data-en="Personal loan" data-es="Préstamo personal">Personal loan</th></tr></thead>
+          <tbody id="cmp-body"></tbody>
+        </table>
       </div>
-
+      <p class="mini-line" id="dti-line"></p>
+      <div class="tip-box" id="tip-box"><div><div class="tip-label" id="tip-label">TIP</div><div id="tip-text"></div></div></div>
+      <p class="assume" data-en="Real APR is the yearly rate that makes the cash you receive equal to your payments, the standard way lenders disclose APR. The current debt is projected at the payment you entered, with no new charges." data-es="El APR real es la tasa anual que iguala el dinero que recibes con tus pagos, la forma estándar en que los prestamistas informan el APR. La deuda actual se proyecta con el pago que ingresaste y sin cargos nuevos.">Real APR is the yearly rate that makes the cash you receive equal to your payments, the standard way lenders disclose APR. The current debt is projected at the payment you entered, with no new charges.</p>
     </div>
   </div>
 </div>
@@ -758,101 +764,120 @@
 
   const T = {
     en: {
-      verdictLow: 'Based on your debt-to-income ratio, this loan looks manageable. Also check taxes, living costs and savings.',
-      verdictMid: 'Possible, but tight. Make sure your income stays stable.',
-      verdictHigh: 'High risk. This loan could strain your budget.',
-      tipLow: 'Strong position. Consider a shorter term to save on total interest paid.',
-      tipMid: 'Manageable, but avoid taking on any additional debt while repaying this loan.',
-      tipHigh: 'Your DTI exceeds safe limits. Try a smaller loan amount or longer repayment term.',
       tipLabel: 'TIP',
+      gross: (need, amt) => 'To receive ' + need + ' in hand after the fee, you would borrow about ' + amt + '.',
+      rows: ['Monthly payment', 'Months to pay off', 'Interest and fees'],
+      months: n => n + ' mo', never: 'Never at this payment',
+      dti: (b, a) => 'Debt-to-income: ' + b + ' now → ' + a + ' with the loan. Many lenders look for 36% or less, and some approve up to about 43–50%.',
+      dtiNoCmp: a => 'Debt-to-income with this loan: ' + a + '. Many lenders look for 36% or less, and some approve up to about 43–50%.',
+      vSave: (save, sooner) => 'The loan saves about ' + save + ' in interest and fees' + (sooner > 0 ? ' and finishes ' + sooner + ' months sooner' : '') + ' than keeping your current debt.',
+      vCost: (more) => 'The loan costs about ' + more + ' more than keeping your current debt at the payment you make now.',
+      vNever: 'At your current payment that debt never gets paid off; the loan gives it an end date.',
+      vShort: (rcv, bal, need) => 'You would receive ' + rcv + ', not enough to pay off the ' + bal + ' balance. Borrowing about ' + need + ' would cover it after the fee.',
+      vPlain: (cost, apr) => 'This loan costs ' + cost + ' in interest and fees. With the fee, the real APR is ' + apr + '.',
+      vHigh: p => 'High risk: with this payment your debts take ' + p + ' of your gross income.',
+      tFee: (fee, d) => 'The ' + fee + ' fee adds ' + d + ' points to the rate you see. Ask lenders for offers with no origination fee and compare real APRs.',
+      tLonger: (pay) => 'Your monthly payment goes up to ' + pay + '. Make sure it fits before you sign.',
+      tCards: 'If you consolidate credit cards, avoid running the balances back up; that is the most common way consolidation backfires.',
+      tPlain: 'Compare at least three offers by real APR and total cost, not by monthly payment.'
     },
     es: {
-      verdictLow: 'Según tu relación deuda-ingreso, este préstamo parece manejable. Revisa también impuestos, gastos de vida y ahorro.',
-      verdictMid: 'Posible, pero ajustado. Asegúrate de que tu ingreso se mantenga estable.',
-      verdictHigh: 'Riesgo alto. Este préstamo podría presionar tu presupuesto.',
-      tipLow: 'Posición sólida. Considera un plazo más corto para ahorrar en interés total.',
-      tipMid: 'Manejable, pero evita adquirir deuda adicional mientras pagas este préstamo.',
-      tipHigh: 'Tu DTI supera los límites seguros. Intenta un monto menor o un plazo más largo.',
       tipLabel: 'CONSEJO',
+      gross: (need, amt) => 'Para recibir ' + need + ' en mano después de la comisión, pedirías unos ' + amt + '.',
+      rows: ['Pago mensual', 'Meses para liquidar', 'Intereses y comisiones'],
+      months: n => n + ' meses', never: 'Nunca con este pago',
+      dti: (b, a) => 'Relación deuda-ingreso: ' + b + ' hoy → ' + a + ' con el préstamo. Muchos prestamistas buscan 36% o menos y algunos aprueban hasta cerca de 43–50%.',
+      dtiNoCmp: a => 'Relación deuda-ingreso con este préstamo: ' + a + '. Muchos prestamistas buscan 36% o menos y algunos aprueban hasta cerca de 43–50%.',
+      vSave: (save, sooner) => 'El préstamo ahorra unos ' + save + ' en intereses y comisiones' + (sooner > 0 ? ' y termina ' + sooner + ' meses antes' : '') + ' que seguir con tu deuda actual.',
+      vCost: (more) => 'El préstamo cuesta unos ' + more + ' más que seguir con tu deuda actual con el pago que haces hoy.',
+      vNever: 'Con tu pago actual esa deuda nunca se termina de pagar; el préstamo le pone fecha de fin.',
+      vShort: (rcv, bal, need) => 'Recibirías ' + rcv + ', que no alcanza para pagar el saldo de ' + bal + '. Pedir unos ' + need + ' lo cubriría después de la comisión.',
+      vPlain: (cost, apr) => 'Este préstamo cuesta ' + cost + ' en intereses y comisiones. Con la comisión, el APR real es ' + apr + '.',
+      vHigh: p => 'Riesgo alto: con este pago tus deudas se llevan el ' + p + ' de tu ingreso bruto.',
+      tFee: (fee, d) => 'La comisión de ' + fee + ' suma ' + d + ' puntos a la tasa que ves. Pide ofertas sin comisión de apertura y compara el APR real.',
+      tLonger: (pay) => 'Tu pago mensual sube a ' + pay + '. Asegúrate de que te cabe antes de firmar.',
+      tCards: 'Si consolidas tarjetas, evita volver a llenarlas; es la forma más común en que la consolidación sale mal.',
+      tPlain: 'Compara al menos tres ofertas por APR real y costo total, no por el pago mensual.'
     }
   };
 
   let lastResult = null;
+  const v = id => parseFloat(document.getElementById(id).value) || 0;
+  const has = id => String(document.getElementById(id).value).trim() !== '';
+  const pmt = (P, apr, n) => { const r = apr / 1200; return r === 0 ? P / n : P * r / (1 - Math.pow(1 + r, -n)); };
+  // Real APR: the monthly rate i that makes received = pay × annuity(i, n), found by bisection, × 12.
+  function realApr(received, pay, n) {
+    if (received >= pay * n) return 0;
+    let lo = 0, hi = 1;
+    for (let k = 0; k < 200; k++) {
+      const mid = (lo + hi) / 2;
+      const pv = pay * (1 - Math.pow(1 + mid, -n)) / mid;
+      if (pv > received) lo = mid; else hi = mid;
+    }
+    return (lo + hi) / 2 * 1200;
+  }
+  function payoff(bal, apr, pay) {            // months and interest to clear a balance at a fixed payment
+    let b = bal, m = 0, interest = 0;
+    while (b > 0.005 && m < 600) { const i = b * apr / 1200; if (pay <= i) return { months: null, interest: null }; b += i; interest += i; b -= Math.min(pay, b); m++; }
+    return { months: b > 0.005 ? null : m, interest };
+  }
 
   function calculate() {
-    const income = parseFloat(document.getElementById('income').value) || 0;
-    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
-    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
-    const termMonths = parseFloat(document.getElementById('term').value) || 1;
-
-    let monthlyPayment;
-    if (annualRate === 0) {
-      monthlyPayment = loanAmount / termMonths;
-    } else {
-      const r = annualRate / 100 / 12;
-      monthlyPayment = loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
-    }
-
-    const totalCost = monthlyPayment * termMonths;
-    const totalInterest = totalCost - loanAmount;
-    const dti = income > 0 ? ((expenses + monthlyPayment) / income) * 100 : 100;
-    const leftover = income - expenses - monthlyPayment;
-
-    let score;
-    if (dti <= 20) score = 95;
-    else if (dti <= 35) score = Math.round(95 - (dti - 20) * 2.5);
-    else if (dti <= 43) score = Math.round(57 - (dti - 35) * 4);
-    else score = Math.max(0, Math.round(25 - (dti - 43) * 1.5));
-
-    lastResult = { monthlyPayment, totalCost, totalInterest, dti, leftover, score };
+    const amount = v('loanAmount'), rate = v('rate'), feePct = v('fee'), n = v('term');
+    const income = v('income'), others = v('expenses');
+    const fee = amount * feePct / 100, received = amount - fee;
+    const pay = pmt(amount, rate, n);
+    const cost = pay * n - received;              // interest + fee
+    const apr = realApr(received, pay, n);
+    const cmp = has('cbal') && v('cbal') > 0 && has('cpay');
+    let current = null;
+    if (cmp) { const p = payoff(v('cbal'), v('capr'), v('cpay')); current = { bal: v('cbal'), pay: v('cpay'), months: p.months, interest: p.interest }; }
+    lastResult = { amount, rate, feePct, fee, received, pay, cost, apr, n, income, others, current,
+      dtiBefore: (others + (current ? current.pay : 0)) / income * 100, dtiAfter: (others + pay) / income * 100 };
     renderResults(lastResult);
   }
 
   function renderResults(r) {
     const t = T[lang];
-    const { monthlyPayment, totalCost, totalInterest, dti, leftover, score } = r;
-
-    let risk, verdictText, icon, tipText, color;
-    if (dti <= 35) { risk='low'; verdictText=t.verdictLow; icon='✅'; tipText=t.tipLow; color='#00e5a0'; }
-    else if (dti <= 43) { risk='mid'; verdictText=t.verdictMid; icon='⚠️'; tipText=t.tipMid; color='#f5c842'; }
-    else { risk='high'; verdictText=t.verdictHigh; icon='🚨'; tipText=t.tipHigh; color='#ff4d6d'; }
-
+    const pct = x => x.toFixed(1) + '%', pct2 = x => x.toFixed(2) + '%';
     document.getElementById('placeholder').style.display = 'none';
-    document.getElementById('results-content').style.display = 'flex';
-
-    const gf = document.getElementById('gauge-fill');
-    gf.style.strokeDashoffset = 251 - (score / 100) * 251;
-    gf.style.stroke = color;
-    document.getElementById('gauge-score').textContent = score;
-
-    const vb = document.getElementById('verdict-box');
-    vb.style.borderColor = color + '55';
-    vb.style.background = color + '10';
+    const rc = document.getElementById('results-content'); rc.style.display = 'flex';
+    document.getElementById('stat-received').textContent = fmt(r.received);
+    document.getElementById('stat-monthly').textContent = fmt(r.pay);
+    document.getElementById('stat-apr').textContent = pct2(r.apr);
+    document.getElementById('stat-cost').textContent = fmt(r.cost);
+    const grossAmt = r.feePct > 0 ? Math.ceil(r.amount / (1 - r.feePct / 100) / 10) * 10 : 0;
+    document.getElementById('gross-line').textContent = r.feePct > 0 ? t.gross(fmt(r.amount), fmt(grossAmt)) : '';
+    const c = r.current, short = c && r.received + 0.5 < c.bal;
+    document.getElementById('compare-wrap').style.display = c ? '' : 'none';
+    let verdict, color = '#00e5a0', icon = '✅';
+    if (r.dtiAfter > 43) { verdict = t.vHigh(pct(r.dtiAfter)); color = '#ff4d6d'; icon = '🚨'; }
+    else if (c && short) { verdict = t.vShort(fmt(r.received), fmt(c.bal), fmt(Math.ceil(c.bal / (1 - r.feePct / 100) / 10) * 10)); color = '#f5c842'; icon = '⚠️'; }
+    else if (c && c.months === null) { verdict = t.vNever; }
+    else if (c) {
+      const save = c.interest - r.cost;
+      if (save >= 0) verdict = t.vSave(fmt(save), c.months - r.n);
+      else { verdict = t.vCost(fmt(-save)); color = '#f5c842'; icon = '⚠️'; }
+    } else verdict = t.vPlain(fmt(r.cost), pct2(r.apr));
+    if (c) {
+      const cells = [
+        [fmt(c.pay), fmt(r.pay), r.pay <= c.pay],
+        [c.months === null ? t.never : t.months(c.months), t.months(r.n), c.months === null || r.n <= c.months],
+        [c.interest === null ? '—' : fmt(c.interest), fmt(r.cost), c.interest === null || r.cost <= c.interest]
+      ];
+      document.getElementById('cmp-body').innerHTML = cells.map((x, i) =>
+        '<tr><td>' + t.rows[i] + '</td><td' + (x[2] ? '' : ' class="win"') + '>' + x[0] + '</td><td' + (x[2] ? ' class="win"' : '') + '>' + x[1] + '</td></tr>').join('');
+    }
+    document.getElementById('dti-line').textContent = c ? t.dti(pct(r.dtiBefore), pct(r.dtiAfter)) : t.dtiNoCmp(pct(r.dtiAfter));
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color + '55'; vb.style.background = color + '10';
     document.getElementById('verdict-icon').textContent = icon;
-    const vt = document.getElementById('verdict-text');
-    vt.textContent = verdictText;
-    vt.classList.add('active');
-    vt.style.color = color;
-
-    document.getElementById('dti-fill').style.width = Math.min(dti, 100) + '%';
-    document.getElementById('dti-fill').style.background = color;
-    document.getElementById('dti-pct').textContent = dti.toFixed(1) + '%';
-    document.getElementById('dti-pct').style.color = color;
-
-    document.getElementById('stat-monthly').textContent = fmt(monthlyPayment);
-    document.getElementById('stat-leftover').textContent = fmt(leftover);
-    document.getElementById('stat-leftover').style.color = leftover >= 0 ? '#00e5a0' : '#ff4d6d';
-    document.getElementById('stat-total').textContent = fmt(totalCost);
-    document.getElementById('stat-interest').textContent = fmt(totalInterest);
-
-    const tb = document.getElementById('tip-box');
-    tb.classList.add('show');
-    tb.style.background = color + '15';
-    tb.style.borderColor = color + '40';
-    tb.style.color = color;
-    document.getElementById('tip-label').textContent = t.tipLabel;
-    document.getElementById('tip-text').textContent = tipText;
+    const vt = document.getElementById('verdict-text'); vt.textContent = verdict; vt.classList.add('active'); vt.style.color = color;
+    let tip = t.tPlain;
+    if (r.feePct > 0 && r.apr - r.rate >= 0.5) tip = t.tFee(pct(r.feePct), (r.apr - r.rate).toFixed(1));
+    else if (c && r.pay > c.pay) tip = t.tLonger(fmt(r.pay));
+    else if (c) tip = t.tCards;
+    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background = color + '15'; tb.style.borderColor = color + '40'; tb.style.color = color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
   }
 
   function fmt(n) {
@@ -860,8 +885,7 @@
     const f = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     return n < 0 ? '-' + f : f;
   }
-
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
 </script>
 <script>
 (function(){
