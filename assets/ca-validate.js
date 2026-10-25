@@ -158,8 +158,30 @@
     hideSummary();
     var out = pageCalculate.apply(this, arguments);
     state.calculated = true;
+    announce();
     return out;
   };
+
+  // Screen-reader announcement of the new result (results panel itself is not a live region).
+  function liveEl() {
+    var el = document.getElementById('ca-live');
+    if (!el) {
+      el = document.createElement('div');
+      el.id = 'ca-live';
+      el.setAttribute('aria-live', 'polite');
+      el.setAttribute('role', 'status');
+      el.style.cssText = 'position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;';
+      document.body.appendChild(el);
+    }
+    return el;
+  }
+  function announce() {
+    var parts = ['verdict-text', 'stat-monthly'].map(function (id) {
+      var el = document.getElementById(id);
+      return el ? el.textContent.trim() : '';
+    }).filter(Boolean);
+    liveEl().textContent = parts.join(' ');
+  }
 
   if (typeof window.setLang === 'function') {
     var pageSetLang = window.setLang;
