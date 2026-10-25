@@ -38,6 +38,7 @@
         : 'Enter a whole number of months from 1 to ' + termMax + '.',
       down: 'The down payment must be less than the price.',
       tax: 'Enter a rate from 0% to 20%.',
+      fee: 'Enter a fee from 0% to 12%.',
       summary: 'Fix the highlighted fields to see your result.'
     },
     es: {
@@ -51,6 +52,7 @@
         : 'Ingresa un número entero de meses entre 1 y ' + termMax + '.',
       down: 'El enganche debe ser menor que el precio.',
       tax: 'Ingresa una tasa entre 0% y 20%.',
+      fee: 'Ingresa una comisión entre 0% y 12%.',
       summary: 'Corrige los campos marcados para ver tu resultado.'
     }
   };
