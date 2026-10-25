@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://checkafford.com/bnpl">
-<title id="meta-title">Buy Now Pay Later Calculator — Is BNPL Worth It? | CheckAfford</title>
-<meta name="description" id="meta-desc" content="See the real cost of Buy Now Pay Later before you click. Affirm, Klarna, Afterpay — find out if BNPL fits your budget or quietly ruins it.">
+<title id="meta-title">BNPL Calculator: See Every Plan's Payments by Paycheck | CheckAfford</title>
+<meta name="description" id="meta-desc" content="Add every Buy Now Pay Later plan you have. See which paycheck gets hit hardest, what share of it goes to BNPL, and what a missed payment would cost. Free, no signup.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -132,6 +132,38 @@
 .rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
 .rel-guides a:hover{border-color:var(--accent);}
 .rel-guides .arr{color:var(--accent);flex-shrink:0;}
+
+  .group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--warn,#f5c842);margin:16px 0 10px;}
+  .plan-list{display:grid;gap:12px;margin-bottom:12px;}
+  .plan-row{background:var(--surface2);border:1px solid var(--border);border-radius:14px;padding:12px;}
+  .plan-head{display:flex;gap:8px;margin-bottom:8px;}
+  .plan-head input{flex:1;}
+  .plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:8px;}
+  .plan-grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  .plan-row label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px;}
+  .plan-row input,.plan-row select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-mono);font-size:13px;padding:8px 9px;}
+  .rm-plan{background:none;border:1px solid var(--border);border-radius:8px;color:var(--muted);cursor:pointer;font-size:12px;padding:6px 10px;}
+  .rm-plan:hover,.rm-plan:focus{color:#ff6b81;border-color:#ff6b81;}
+  .add-plan{width:100%;background:none;border:1px dashed var(--border);border-radius:12px;color:var(--warn,#f5c842);cursor:pointer;font-size:13px;padding:10px;margin-bottom:6px;}
+  .add-plan:disabled{opacity:.4;cursor:not-allowed;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .field-hint{font-size:11px;color:var(--muted);margin:6px 0 0;line-height:1.4;}
+  .input-wrap select,.input-wrap input[type="date"]{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:12px;color:var(--text);font-family:var(--font-mono);font-size:15px;font-weight:500;padding:13px 14px;outline:none;}
+  .input-wrap select:focus,.input-wrap input[type="date"]:focus{border-color:var(--warn,#f5c842);}
+  .ca-err{color:#ff6b81;font-size:12px;line-height:1.4;margin:6px 0 0;}
+  input[aria-invalid="true"]{border-color:#ff4d6d!important;}
+  input[type="date"]{color-scheme:dark;}
+  .mini-line{font-size:12px;color:var(--muted);margin:0 0 12px;line-height:1.5;}
+  .sub-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:2px 0 8px;}
+  .cal-table{width:100%;border-collapse:collapse;font-size:12px;margin:0 0 12px;}
+  .cal-table th,.cal-table td{padding:7px 5px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;}
+  .cal-table th{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .cal-table td.num{font-family:var(--font-mono);white-space:nowrap;}
+  .cal-table td.who{color:var(--muted);font-size:11px;}
+  .cal-table tr.peak td{background:rgba(245,200,66,.06);}
+  .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  @media(max-width:640px){.plan-grid{grid-template-columns:1fr 1fr;}}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -187,11 +219,11 @@
 <section class="page-hero">
   <div class="hero-left">
     <div class="page-badge">📱 <span id="badge-text">BNPL Calculator</span></div>
-    <h1 id="hero-title">Is Buy Now Pay Later <em>really free?</em></h1>
-    <p class="page-sub" id="hero-sub">Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.</p>
+    <h1 id="hero-title">Can your paychecks handle <em>all your BNPL plans?</em></h1>
+    <p class="page-sub" id="hero-sub">Afterpay, Klarna, Affirm: each plan looks small on its own. Add all of them and see which paycheck gets hit hardest and what a missed payment would cost.</p>
     <div class="quick-facts">
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact1">In a March 2026 LendingTree survey, 47% of U.S. BNPL users said they paid late on at least one loan in the past year.</span></div>
-      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span id="fact2">Pay-in-4 plans usually charge every two weeks, so two or three plans started close together can land on the same paycheck.</span></div>
       <div class="fact-item"><span class="fact-icon">→</span><span id="fact3">BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.</span></div>
     </div>
   </div>
@@ -208,30 +240,45 @@
     <div class="calc-inner">
       <div class="input-panel">
         <p class="panel-title" id="panel-in">Your Numbers</p>
-        <div class="field"><label for="income" id="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="4000"></div></div>
-        <div class="field"><label for="expenses" id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="300"></div></div>
-        <div class="field"><label for="loanAmount" id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="loanAmount" value="1200"></div></div>
-        <div class="field"><label for="rate" id="lbl-rate">APR (0 if interest-free)</label><div class="input-wrap"><input type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label for="term" id="lbl-term">Number of Installments</label><div class="input-wrap"><input type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
-        <div class="field"><label id="lbl-freq" for="freq">Payment Frequency</label><div class="input-wrap"><select id="freq"><option value="26" id="opt-biweekly">Every 2 weeks</option><option value="52" id="opt-weekly">Weekly</option><option value="12" id="opt-monthly">Monthly</option></select></div></div>
-        <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Real Cost</button>
+        <p class="group-title" data-en="Your BNPL plans" data-es="Tus planes BNPL">Your BNPL plans</p>
+        <div class="plan-list" id="plan-list"></div>
+        <button type="button" class="add-plan" id="add-plan" onclick="addPlan()" data-en="+ Add a plan" data-es="+ Agregar un plan">+ Add a plan</button>
+        <p class="group-title" data-en="Your paycheck" data-es="Tu sueldo">Your paycheck</p>
+        <div class="field"><label for="payfreq" data-en="How often you get paid" data-es="Cada cuánto cobras">How often you get paid</label><div class="input-wrap"><select id="payfreq">
+          <option value="14" data-en="Every 2 weeks" data-es="Cada 2 semanas">Every 2 weeks</option>
+          <option value="7" data-en="Every week" data-es="Cada semana">Every week</option>
+          <option value="semi" data-en="Twice a month (1st and 15th)" data-es="Dos veces al mes (1 y 15)">Twice a month (1st and 15th)</option>
+          <option value="month" data-en="Once a month" data-es="Una vez al mes">Once a month</option>
+        </select></div></div>
+        <div class="field-row">
+          <div class="field"><label for="paycheck" data-en="Take-home pay per paycheck" data-es="Pago neto por quincena o sueldo">Take-home pay per paycheck</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="paycheck" value="1400" inputmode="decimal"></div></div>
+          <div class="field" id="payday-field"><label for="payday" data-en="Next payday" data-es="Próximo día de pago">Next payday</label><div class="input-wrap"><input type="date" id="payday" class="no-prefix"></div></div>
+        </div>
+        <div class="field"><label for="latefee" data-en="Late fee per missed payment" data-es="Cargo por cada pago atrasado">Late fee per missed payment</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="latefee" value="8" inputmode="decimal"></div><p class="field-hint" data-en="Check your provider's terms. Afterpay caps U.S. late fees at $8 per installment." data-es="Revisa los términos de tu proveedor. Afterpay limita en EE. UU. el cargo a $8 por cuota.">Check your provider's terms. Afterpay caps U.S. late fees at $8 per installment.</p></div>
+        <button class="calc-btn" onclick="calculate()" id="calc-btn">Check My Paychecks</button>
       </div>
       <div class="result-panel">
-        <p class="panel-title" id="panel-out">Real Cost Verdict</p>
-        <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p id="ph-text">Enter your purchase details above</p></div>
+        <p class="panel-title" id="panel-out">Your Payment Calendar</p>
+        <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p id="ph-text">Add your plans and paycheck</p><p class="ca-err" id="form-error" role="alert"></p></div>
         <div id="results-content" style="display:none;">
-          <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
-          <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
-          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income Impact</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
-          <p id="mo-eq" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);margin:-6px 0 14px;"></p>
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
           <div class="stats-grid">
-            <div class="stat-item"><div class="stat-label" id="s1-lbl">Per Installment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (before taxes)</div><div class="stat-value" id="stat-leftover">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Heaviest paycheck" data-es="Quincena más cargada">Heaviest paycheck</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Share of that paycheck" data-es="Parte de ese pago">Share of that paycheck</div><div class="stat-value" id="stat-peakpct">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Still to pay, all plans" data-es="Por pagar, todos los planes">Still to pay, all plans</div><div class="stat-value" id="stat-total">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Last payment" data-es="Último pago">Last payment</div><div class="stat-value" id="stat-last">–</div></div>
           </div>
+          <p class="mini-line" id="interest-line"></p>
+          <p class="sub-title" data-en="Payments by paycheck" data-es="Pagos por quincena">Payments by paycheck</p>
+          <table class="cal-table">
+            <thead><tr><th data-en="Paycheck" data-es="Pago del">Paycheck</th><th data-en="Due before the next one" data-es="Vence antes del siguiente">Due before the next one</th><th data-en="Total" data-es="Total">Total</th><th>%</th></tr></thead>
+            <tbody id="cal-body"></tbody>
+          </table>
+          <p class="mini-line" id="late-line"></p>
           <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <p class="assume" data-en="Each payment is counted against the most recent paycheck before its due date. CheckAfford marks BNPL payments above 10% of a paycheck as tight and above 20% as heavy; these are our guidelines, not lender rules. Late fees vary and are often capped by the provider." data-es="Cada pago se cuenta contra el sueldo más reciente antes de su fecha de vencimiento. CheckAfford marca como ajustados los pagos BNPL por encima del 10% de un sueldo y como pesados por encima del 20%; son nuestras pautas, no reglas de prestamistas. Los cargos por atraso varían y el proveedor suele ponerles un tope.">Each payment is counted against the most recent paycheck before its due date. CheckAfford marks BNPL payments above 10% of a paycheck as tight and above 20% as heavy; these are our guidelines, not lender rules. Late fees vary and are often capped by the provider.</p>
         </div>
+        <div class="sr-only" id="cal-live" aria-live="polite" role="status"></div>
       </div>
     </div>
   </div>
@@ -281,20 +328,20 @@
   let lang='en', lastResult=null;
   const T={
     en:{
-      title:"Buy Now Pay Later Calculator — Is BNPL Worth It? | CheckAfford",
-      desc:"See the real cost of Buy Now Pay Later before you click. Affirm, Klarna, Afterpay — find out if BNPL fits your budget or quietly ruins it.",
+      title:"BNPL Calculator: See Every Plan's Payments by Paycheck | CheckAfford",
+      desc:"Add every Buy Now Pay Later plan you have. See which paycheck gets hit hardest, what share of it goes to BNPL, and what a missed payment would cost. Free, no signup.",
       navCar:"Auto Loan", navMort:"Mortgage", navBnpl:"BNPL", navDebt:"Debt Payoff", navPersonal:"Personal Loan", navAll:"← All calculators",
       bcHome:"CheckAfford", bcLabel:"BNPL Calculator",
       banner:"Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.",
-      badge:"BNPL Calculator", heroTitle:"Is Buy Now Pay Later <em>really free?</em>",
-      heroSub:"Affirm, Klarna, Afterpay — they feel small. But split payments add up. Check what BNPL really costs your budget.",
+      badge:"BNPL Calculator", heroTitle:"Can your paychecks handle <em>all your BNPL plans?</em>",
+      heroSub:"Afterpay, Klarna, Affirm: each plan looks small on its own. Add all of them and see which paycheck gets hit hardest and what a missed payment would cost.",
       fact1:"In a March 2026 LendingTree survey, 47% of U.S. BNPL users said they paid late on at least one loan in the past year.",
-      fact2:"BNPL plans count toward your Debt-to-Income ratio — even interest-free ones.",
+      fact2:"Pay-in-4 plans usually charge every two weeks, so two or three plans started close together can land on the same paycheck.",
       fact3:"BNPL plans from different providers can stack up quickly, and each one counts toward your monthly budget.",
       scoreNote:"This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.", srcnote:"Sources: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">LendingTree BNPL survey</a> (March 2026, 2,060 U.S. adults, self-reported); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (Dec. 2025, 2023 data from four lenders, measured per loan, not per borrower); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Afterpay Help Center</a> (late fees capped at 25% of the order value). The survey and the CFPB figures measure different things and are not directly comparable.", stat1:"BNPL users who paid late in the past year (survey)", stat2:"of BNPL loans were assessed a late fee (2023)", stat3:"Avg late fee assessed (2023, inflation-adjusted)", stat4:"Max Afterpay late fee per missed installment (U.S.)",
-      pIn:"Your Numbers", pOut:"Real Cost Verdict",
+      pIn:"Your Numbers", pOut:"Your Payment Calendar",
       lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"APR (0 if interest-free)", lTerm:"Number of Installments", lFreq:"Payment Frequency", oBi:"Every 2 weeks", oW:"Weekly", oM:"Monthly", moEq:"Monthly equivalent while the plan lasts:",
-      suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
+      suffixPay:"pay", btnCalc:"Check My Paychecks", phText:"Add your plans and paycheck",
       gaugeLbl:"SCORE", dtiLbl:"Debt-to-Income Impact",
       s1:"Per Installment", s2:"Left Over (before taxes)", s3:"Total Cost", s4:"Total Interest",
       tipLbl:"TIP", cta:"Compare personal loan rates instead →",
@@ -311,20 +358,20 @@
       foot:"For informational purposes only. Not financial advice. U.S. market guidelines. | checkafford.com"
     },
     es:{
-      title:"Calculadora Buy Now Pay Later — ¿Vale la pena? | CheckAfford",
-      desc:"Mira el costo real de 'Compra ahora, paga después' antes de hacer clic. Affirm, Klarna, Afterpay — descubre si el BNPL encaja en tu presupuesto.",
+      title:"Calculadora BNPL: los pagos de todos tus planes por quincena | CheckAfford",
+      desc:"Agrega todos tus planes de Compra Ahora y Paga Después. Mira qué quincena recibe más pagos, qué parte se va al BNPL y cuánto costaría un pago atrasado. Gratis, sin registro.",
       navCar:"Auto", navMort:"Hipoteca", navBnpl:"BNPL", navDebt:"Deudas", navPersonal:"Préstamo Personal", navAll:"← Calculadoras",
       bcHome:"CheckAfford", bcLabel:"Calculadora BNPL",
       banner:"El 'Compra ahora, paga después' sigue sumando deuda real a tu historial. Muchos subestiman el costo total.",
-      badge:"Calculadora BNPL", heroTitle:"¿El pago a plazos es <em>realmente gratis?</em>",
-      heroSub:"Affirm, Klarna, Afterpay — parecen cuotas pequeñas, pero se acumulan. Mira cómo afecta el BNPL a tu presupuesto.",
+      badge:"Calculadora BNPL", heroTitle:"¿Tus quincenas aguantan <em>todos tus planes BNPL?</em>",
+      heroSub:"Afterpay, Klarna, Affirm: cada plan parece pequeño por separado. Súmalos todos y mira qué quincena recibe más pagos y cuánto costaría un atraso.",
       fact1:"En una encuesta de LendingTree de marzo de 2026, el 47% de los usuarios de BNPL en EE. UU. dijo haber pagado tarde al menos un préstamo en el último año.",
-      fact2:"Los planes BNPL cuentan para tu relación Deuda-Ingreso — incluso los de 0% interés.",
+      fact2:"Los planes de pago en 4 suelen cobrar cada dos semanas, así que dos o tres planes iniciados con pocos días de diferencia pueden caer en la misma quincena.",
       fact3:"Los planes de compra ahora y paga después de distintos proveedores se acumulan rápido, y cada uno cuenta en tu presupuesto mensual.",
       scoreNote:"Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.", srcnote:"Fuentes: <a href=\"https://www.lendingtree.com/personal/buy-now-pay-later-loan-statistics/\" target=\"_blank\" rel=\"noopener\">encuesta de LendingTree sobre BNPL</a> (marzo de 2026, 2,060 adultos en EE. UU., autorreportada); <a href=\"https://www.consumerfinance.gov/data-research/research-reports/the-buy-now-pay-later-market/\" target=\"_blank\" rel=\"noopener\">CFPB, The Buy Now, Pay Later Market</a> (dic. 2025, datos de 2023 de cuatro prestamistas, medidos por préstamo y no por persona); <a href=\"https://www.afterpay.com/en-US/help/900005359783-Is-there-a-cost-to-using-Afterpay\" target=\"_blank\" rel=\"noopener\">Centro de ayuda de Afterpay</a> (cargos por retraso limitados al 25% del valor del pedido). La encuesta y las cifras de la CFPB miden cosas distintas y no son directamente comparables.", stat1:"Usuarios de BNPL que pagaron tarde en el último año (encuesta)", stat2:"de los préstamos BNPL tuvo un cargo por retraso (2023)", stat3:"Cargo promedio por retraso (2023, ajustado por inflación)", stat4:"Cargo máximo de Afterpay por cuota atrasada (EE. UU.)",
-      pIn:"Tus Números", pOut:"Veredicto de Costo Real",
+      pIn:"Tus Números", pOut:"Tu Calendario de Pagos",
       lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"APR (0 si es gratis)", lTerm:"Número de Cuotas", lFreq:"Frecuencia de pago", oBi:"Cada 2 semanas", oW:"Semanal", oM:"Mensual", moEq:"Equivalente mensual mientras dure el plan:",
-      suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
+      suffixPay:"pagos", btnCalc:"Revisar Mis Quincenas", phText:"Agrega tus planes y tu sueldo",
       gaugeLbl:"PUNTAJE", dtiLbl:"Impacto Deuda-Ingreso",
       s1:"Por Cuota", s2:"Te Queda (antes de impuestos)", s3:"Costo Total", s4:"Interés total",
       tipLbl:"CONSEJO", cta:"Comparar préstamos personales →",
@@ -417,53 +464,229 @@
     setText('footer-text',t.foot);
     setText('other-label',t.otherLabel);
 
-    if(lastResult) renderResults(lastResult);
+    document.querySelectorAll('.calc-wrapper [data-en]').forEach(el => { const v = el.getAttribute('data-' + l); if (v) el.textContent = v; });
+    document.querySelectorAll('.plan-row').forEach(row => {
+      const b = B[l];
+      const labs = row.querySelectorAll('.plan-grid label, .plan-grid2 label');
+      [b.amount, b.count, b.apr, b.freq, b.first].forEach((txt, i) => { if (labs[i]) labs[i].textContent = txt; });
+      const f = row.querySelector('.p-freq'); [b.freqs[14], b.freqs[7], b.freqs.month].forEach((txt, i) => { f.options[i].textContent = txt; });
+      const nm = row.querySelector('.p-name'); nm.placeholder = b.store; row.querySelector('.plan-head label').textContent = b.store;
+      const rm = row.querySelector('.rm-plan'); rm.textContent = b.remove; rm.setAttribute('aria-label', b.removeLabel(nm.value || b.store));
+    });
+    if (invalid || calculated) calculate();
   }
 
-  function calculate(){
-    const income=parseFloat(document.getElementById('income').value)||0;
-    const expenses=parseFloat(document.getElementById('expenses').value)||0;
-    const loanAmount=parseFloat(document.getElementById('loanAmount').value)||0;
-    const annualRate=parseFloat(document.getElementById('rate').value)||0;
-    const n=Math.max(1,Math.round(parseFloat(document.getElementById('term').value)||1));
-    const ppy=parseFloat(document.getElementById('freq').value)||12; /* payments per year: 52, 26 or 12 */
-    let mp; const r=annualRate/100/ppy;
-    mp=annualRate===0?loanAmount/n:loanAmount*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1);
-    const me=mp*ppy/12; /* monthly equivalent used for DTI and left-over */
-    const tc=mp*n,ti=tc-loanAmount,dti=income>0?((expenses+me)/income)*100:100,lo=income-expenses-me;
-    let score=dti<=20?95:dti<=35?Math.round(95-(dti-20)*2.5):dti<=43?Math.round(57-(dti-35)*4):Math.max(0,Math.round(25-(dti-43)*1.5));
-    lastResult={mp,me,tc,ti,dti,lo,score};renderResults(lastResult);
+  const B = {
+    en: {
+      store: 'Store or item', amount: 'Amount', count: 'Payments', apr: 'APR %', freq: 'Every', first: 'First payment', remove: 'Remove',
+      removeLabel: n => 'Remove ' + n, defaultName: i => 'Plan ' + i,
+      freqs: { 14: '2 weeks', 7: 'week', month: 'month' },
+      req: 'Enter a value.', pos: 'Enter an amount greater than $0.', cnt: 'Enter 1 to 60 payments.', rate: 'Enter a rate from 0% to 60%.', date: 'Pick a date.', fee: 'Enter a fee from $0 to $1,000.',
+      fix: 'Fix the highlighted fields to see your calendar.', need: 'Add at least one plan.',
+      vOk: (amt, d, p) => 'Your heaviest paycheck (' + d + ') carries ' + amt + ' of BNPL payments: ' + p + ' of it. That fits comfortably.',
+      vMid: (amt, d, p, k) => 'Tight: the paycheck on ' + d + ' carries ' + amt + ' of BNPL payments, ' + p + ' of it' + (k > 1 ? ', from ' + k + ' plans at once.' : '.'),
+      vHigh: (amt, d, p, k) => 'Heavy: the paycheck on ' + d + ' carries ' + amt + ' of BNPL payments, ' + p + ' of it' + (k > 1 ? ', from ' + k + ' plans at once' : '') + '. That leaves less for rent and bills that same week.',
+      interest: (i) => 'Interest across your plans: ' + i + '. Pay-in-4 plans with no interest cost nothing extra if every payment is on time.',
+      noInterest: 'None of these plans charges interest; they cost nothing extra if every payment is on time.',
+      late: (fee, n, all) => 'Missing one payment would add about ' + fee + '. Missing ' + (n === 1 ? 'the payment' : 'the ' + n + ' payments') + ' due from your heaviest paycheck would add about ' + all + ', and the provider may report it or pause your account.',
+      lateNone: 'Even with no late fee, missed payments can be reported or pause your account.',
+      tStack: (d) => 'Thinking about another plan? Starting it after ' + d + ', when your next plan ends, keeps it from stacking on the same paychecks.',
+      tSave: (amt, d) => 'Set aside ' + amt + ' from the paycheck on ' + d + ' before anything else; that is the one most likely to come up short.',
+      tipLabel: 'TIP', live: (amt, p) => 'Heaviest paycheck: ' + amt + ', ' + p + ' of it.'
+    },
+    es: {
+      store: 'Tienda o artículo', amount: 'Monto', count: 'Pagos', apr: 'APR %', freq: 'Cada', first: 'Primer pago', remove: 'Quitar',
+      removeLabel: n => 'Quitar ' + n, defaultName: i => 'Plan ' + i,
+      freqs: { 14: '2 semanas', 7: 'semana', month: 'mes' },
+      req: 'Ingresa un valor.', pos: 'Ingresa un monto mayor que $0.', cnt: 'Ingresa de 1 a 60 pagos.', rate: 'Ingresa una tasa entre 0% y 60%.', date: 'Elige una fecha.', fee: 'Ingresa un cargo entre $0 y $1,000.',
+      fix: 'Corrige los campos marcados para ver tu calendario.', need: 'Agrega al menos un plan.',
+      vOk: (amt, d, p) => 'Tu sueldo más cargado (' + d + ') recibe ' + amt + ' en pagos BNPL: el ' + p + '. Cabe con holgura.',
+      vMid: (amt, d, p, k) => 'Ajustado: el sueldo del ' + d + ' recibe ' + amt + ' en pagos BNPL, el ' + p + (k > 1 ? ', de ' + k + ' planes a la vez.' : '.'),
+      vHigh: (amt, d, p, k) => 'Pesado: el sueldo del ' + d + ' recibe ' + amt + ' en pagos BNPL, el ' + p + (k > 1 ? ', de ' + k + ' planes a la vez' : '') + '. Te deja menos para la renta y las cuentas esa semana.',
+      interest: (i) => 'Interés entre tus planes: ' + i + '. Los planes de pago en 4 sin interés no cuestan nada extra si pagas todo a tiempo.',
+      noInterest: 'Ninguno de estos planes cobra interés; no cuestan nada extra si pagas todo a tiempo.',
+      late: (fee, n, all) => 'Atrasar un pago sumaría unos ' + fee + '. Atrasar ' + (n === 1 ? 'el pago' : 'los ' + n + ' pagos') + ' de tu sueldo más cargado sumaría unos ' + all + ', y el proveedor podría reportarlo o pausar tu cuenta.',
+      lateNone: 'Aunque no haya cargo, un pago atrasado puede reportarse o pausar tu cuenta.',
+      tStack: (d) => '¿Piensas en otro plan? Empezarlo después del ' + d + ', cuando termina tu próximo plan, evita que se sume a las mismas quincenas.',
+      tSave: (amt, d) => 'Aparta ' + amt + ' del sueldo del ' + d + ' antes que nada; es el que tiene más riesgo de no alcanzar.',
+      tipLabel: 'CONSEJO', live: (amt, p) => 'Sueldo más cargado: ' + amt + ', el ' + p + '.'
+    }
+  };
+
+  const MAX_PLANS = 8, DAY = 86400000;
+  const iso = ms => new Date(ms).toISOString().slice(0, 10);
+  const parseDate = str => { if (!/^\d{4}-\d{2}-\d{2}$/.test(str || '')) return null; const [y, m, d] = str.split('-').map(Number); const t = Date.UTC(y, m - 1, d); return isNaN(t) ? null : t; };
+  const addMonths = (ms, k) => { const d = new Date(ms); const y = d.getUTCFullYear(), m = d.getUTCMonth() + k, day = d.getUTCDate(); const last = new Date(Date.UTC(y, m + 1, 0)).getUTCDate(); return Date.UTC(y, m, Math.min(day, last)); };
+  const today = (() => { const n = new Date(); return Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()); })();
+  let planSeq = 0, calculated = false, invalid = false;
+
+  function planHTML(id, p) {
+    const t = B[lang];
+    const q = x => String(x === undefined ? '' : x).replace(/"/g, '&quot;');
+    const opt = (v, txt) => '<option value="' + v + '"' + (String(p.freq) === String(v) ? ' selected' : '') + '>' + txt + '</option>';
+    return '<div class="plan-row" data-plan="' + id + '">' +
+      '<div class="plan-head"><label class="sr-only" for="pn' + id + '">' + t.store + '</label><input type="text" id="pn' + id + '" class="p-name" maxlength="40" value="' + q(p.name) + '" placeholder="' + t.store + '">' +
+      '<button type="button" class="rm-plan" onclick="removePlan(' + id + ')" aria-label="' + t.removeLabel(p.name || t.store) + '">' + t.remove + '</button></div>' +
+      '<div class="plan-grid">' +
+      '<div><label for="pa' + id + '">' + t.amount + '</label><input type="number" id="pa' + id + '" class="p-amt" inputmode="decimal" value="' + q(p.amount) + '"></div>' +
+      '<div><label for="pc' + id + '">' + t.count + '</label><input type="number" id="pc' + id + '" class="p-cnt" inputmode="numeric" value="' + q(p.count) + '"></div>' +
+      '<div><label for="pr' + id + '">' + t.apr + '</label><input type="number" id="pr' + id + '" class="p-apr" step="0.1" inputmode="decimal" value="' + q(p.apr) + '"></div>' +
+      '</div><div class="plan-grid2">' +
+      '<div><label for="pf' + id + '">' + t.freq + '</label><select id="pf' + id + '" class="p-freq">' + opt(14, t.freqs[14]) + opt(7, t.freqs[7]) + opt('month', t.freqs.month) + '</select></div>' +
+      '<div><label for="pd' + id + '">' + t.first + '</label><input type="date" id="pd' + id + '" class="p-date" value="' + q(p.first) + '"></div>' +
+      '</div></div>';
+  }
+  function addPlan(p) {
+    const list = document.getElementById('plan-list');
+    if (list.children.length >= MAX_PLANS) return;
+    const id = ++planSeq;
+    list.insertAdjacentHTML('beforeend', planHTML(id, p || { name: B[lang].defaultName(list.children.length + 1), count: 4, apr: 0, freq: 14, first: iso(today) }));
+    list.lastElementChild.querySelectorAll('input,select').forEach(el => { el.addEventListener('input', onEdit); el.addEventListener('change', onEdit); });
+    document.getElementById('add-plan').disabled = list.children.length >= MAX_PLANS;
+    if (!p) document.getElementById('pa' + id).focus();
+    onEdit();
+  }
+  function removePlan(id) {
+    const row = document.querySelector('[data-plan="' + id + '"]'); if (row) row.remove();
+    document.getElementById('add-plan').disabled = document.getElementById('plan-list').children.length >= MAX_PLANS;
+    onEdit();
   }
 
-  function renderResults(r){
-    const t=T[lang];const{mp,me,tc,ti,dti,lo,score}=r;
-    let vt,icon,tip,color;
-    if(dti<=35){vt=t.vLow;icon='✅';tip=t.tLow;color='#00e5a0';}
-    else if(dti<=43){vt=t.vMid;icon='⚠️';tip=t.tMid;color='#f5c842';}
-    else{vt=t.vHigh;icon='🚨';tip=t.tHigh;color='#ff4d6d';}
-    document.getElementById('placeholder').style.display='none';
-    document.getElementById('results-content').style.display='block';
-    const gf=document.getElementById('gauge-fill');gf.style.strokeDashoffset=251-(score/100)*251;gf.style.stroke=color;
-    document.getElementById('gauge-score').textContent=score;
-    const vb=document.getElementById('verdict-box');vb.style.borderColor=color+'55';vb.style.background=color+'10';
-    document.getElementById('verdict-icon').textContent=icon;
-    const vtEl=document.getElementById('verdict-text');vtEl.textContent=vt;vtEl.classList.add('active');vtEl.style.color=color;
-    document.getElementById('dti-fill').style.width=Math.min(dti,100)+'%';document.getElementById('dti-fill').style.background=color;
-    document.getElementById('dti-pct').textContent=dti.toFixed(1)+'%';document.getElementById('dti-pct').style.color=color;
-    document.getElementById('stat-monthly').textContent=fmt(mp);
-    document.getElementById('mo-eq').textContent=t.moEq+' '+fmt(me);
-    document.getElementById('stat-leftover').textContent=fmt(lo);document.getElementById('stat-leftover').style.color=lo>=0?'#00e5a0':'#ff4d6d';
-    document.getElementById('stat-total').textContent=fmt(tc);document.getElementById('stat-interest').textContent=fmt(ti);
-    const tb=document.getElementById('tip-box');tb.classList.add('show');tb.style.background=color+'15';tb.style.borderColor=color+'40';tb.style.color=color;
-    document.getElementById('tip-label').textContent=t.tipLbl;document.getElementById('tip-text').textContent=tip;
+  function mark(el, msg) {
+    let p = el.parentNode.querySelector('.ca-err');
+    if (!p) { p = document.createElement('p'); p.className = 'ca-err'; p.id = 'err-' + el.id; el.parentNode.appendChild(p); }
+    p.textContent = msg || ''; p.hidden = !msg;
+    if (msg) { el.setAttribute('aria-invalid', 'true'); el.setAttribute('aria-describedby', p.id); }
+    else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-describedby'); }
+  }
+  const num = el => { const r = String(el.value).trim(); return r === '' ? NaN : Number(r); };
+  function validate() {
+    const t = B[lang]; let ok = true; const plans = [];
+    const rows = [...document.querySelectorAll('.plan-row')];
+    rows.forEach((row, i) => {
+      const a = row.querySelector('.p-amt'), c = row.querySelector('.p-cnt'), r = row.querySelector('.p-apr'), d = row.querySelector('.p-date');
+      const va = num(a), vc = num(c), vr = num(r), vd = parseDate(d.value);
+      const ea = isNaN(va) ? t.req : (va <= 0 || va > 100000) ? t.pos : '';
+      const ec = isNaN(vc) ? t.req : (vc < 1 || vc > 60 || Math.floor(vc) !== vc) ? t.cnt : '';
+      const er = isNaN(vr) ? t.req : (vr < 0 || vr > 60) ? t.rate : '';
+      const ed = vd === null ? t.date : '';
+      mark(a, ea); mark(c, ec); mark(r, er); mark(d, ed);
+      if (ea || ec || er || ed) ok = false;
+      else plans.push({ name: row.querySelector('.p-name').value.trim() || t.defaultName(i + 1), amount: va, count: vc, apr: vr, freq: row.querySelector('.p-freq').value, first: vd });
+    });
+    const pc = document.getElementById('paycheck'), pd = document.getElementById('payday'), lf = document.getElementById('latefee');
+    const payfreq = document.getElementById('payfreq').value;
+    const vpc = num(pc), vpd = parseDate(pd.value), vlf = num(lf);
+    const epc = isNaN(vpc) ? t.req : (vpc <= 0 || vpc > 1000000) ? t.pos : '';
+    const epd = (payfreq !== 'semi' && vpd === null) ? t.date : '';
+    const elf = isNaN(vlf) ? '' : (vlf < 0 || vlf > 1000) ? t.fee : '';
+    mark(pc, epc); mark(pd, epd); mark(lf, elf);
+    if (epc || epd || elf) ok = false;
+    let msg = '';
+    if (!rows.length) { ok = false; msg = t.need; } else if (!ok) msg = t.fix;
+    document.getElementById('form-error').textContent = msg;
+    return ok ? { plans, paycheck: vpc, payday: vpd, payfreq, latefee: isNaN(vlf) ? 0 : vlf } : null;
   }
 
+  // ----- engine
+  function schedule(p) {
+    const ppy = p.freq === 'month' ? 12 : (p.freq === '7' ? 52 : 26);
+    const r = p.apr / 100 / ppy;
+    const each = r === 0 ? p.amount / p.count : p.amount * r / (1 - Math.pow(1 + r, -p.count));
+    const out = [];
+    for (let k = 0; k < p.count; k++) {
+      const due = p.freq === 'month' ? addMonths(p.first, k) : p.first + k * Number(p.freq) * DAY;
+      out.push({ due, amount: each, plan: p.name });
+    }
+    return { each, total: each * p.count, interest: each * p.count - p.amount, items: out };
+  }
+  function paydaysBetween(from, to, payfreq, anchor) {
+    const days = [];
+    if (payfreq === 'semi') {
+      const d = new Date(from); let y = d.getUTCFullYear(), m = d.getUTCMonth() - 1;
+      for (let i = 0; i < 200; i++) { [1, 15].forEach(day => days.push(Date.UTC(y, m, day))); m++; if (Date.UTC(y, m, 1) > to + 31 * DAY) break; }
+    } else if (payfreq === 'month') {
+      let k = 0; while (addMonths(anchor, k) > from) k--; for (; addMonths(anchor, k) <= to && days.length < 400; k++) days.push(addMonths(anchor, k));
+    } else {
+      const step = Number(payfreq) * DAY; let t = anchor; while (t > from) t -= step; for (; t <= to && days.length < 2000; t += step) days.push(t);
+    }
+    return days.filter(x => x <= to).sort((a, b) => a - b);
+  }
+  function calculate() {
+    const input = validate();
+    if (!input) { invalid = true; document.getElementById('results-content').style.display = 'none'; document.getElementById('placeholder').style.display = ''; return; }
+    invalid = false;
+    const plans = input.plans.map(p => ({ ...p, s: schedule(p) }));
+    const items = plans.flatMap(p => p.s.items).filter(x => x.due >= today);
+    const all = plans.flatMap(p => p.s.items);
+    const minDue = Math.min(...all.map(x => x.due)), maxDue = Math.max(...all.map(x => x.due));
+    const paydays = paydaysBetween(minDue, maxDue, input.payfreq, input.payday);
+    const buckets = new Map();
+    all.forEach(x => {
+      let pd = paydays[0]; for (const d of paydays) { if (d <= x.due) pd = d; else break; }
+      if (!buckets.has(pd)) buckets.set(pd, { payday: pd, total: 0, items: [] });
+      const b = buckets.get(pd); b.total += x.amount; b.items.push(x);
+    });
+    const rows = [...buckets.values()].sort((a, b) => a.payday - b.payday);
+    const peak = rows.reduce((a, b) => (b.total > a.total + 1e-9 ? b : a), rows[0]);
+    const ends = plans.map(p => Math.max(...p.s.items.map(x => x.due)));
+    lastResult = {
+      rows, peak, paycheck: input.paycheck, latefee: input.latefee,
+      remaining: items.reduce((a, x) => a + x.amount, 0),
+      interest: plans.reduce((a, p) => a + p.s.interest, 0),
+      last: maxDue, nextEnd: plans.length > 1 ? Math.min(...ends) : null
+    };
+    calculated = true;
+    renderResults(lastResult);
+  }
+  const fdate = ms => new Date(ms).toLocaleDateString(lang === 'es' ? 'es-US' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
+  function renderResults(r) {
+    const t = B[lang];
+    const pct = x => (x * 100).toFixed(1) + '%';
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-content').style.display = 'block';
+    const share = r.peak.total / r.paycheck;
+    const plansInPeak = new Set(r.peak.items.map(x => x.plan)).size;
+    let verdict, color, icon;
+    if (share <= 0.10) { verdict = t.vOk(fmt(r.peak.total), fdate(r.peak.payday), pct(share)); color = '#00e5a0'; icon = '✅'; }
+    else if (share <= 0.20) { verdict = t.vMid(fmt(r.peak.total), fdate(r.peak.payday), pct(share), plansInPeak); color = '#f5c842'; icon = '⚠️'; }
+    else { verdict = t.vHigh(fmt(r.peak.total), fdate(r.peak.payday), pct(share), plansInPeak); color = '#ff4d6d'; icon = '🚨'; }
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color + '55'; vb.style.background = color + '10';
+    document.getElementById('verdict-icon').textContent = icon;
+    const vt = document.getElementById('verdict-text'); vt.textContent = verdict; vt.classList.add('active'); vt.style.color = color;
+    document.getElementById('stat-monthly').textContent = fmt(r.peak.total);
+    document.getElementById('stat-peakpct').textContent = pct(share);
+    document.getElementById('stat-total').textContent = fmt(r.remaining);
+    document.getElementById('stat-last').textContent = fdate(r.last);
+    document.getElementById('interest-line').textContent = r.interest > 0.005 ? t.interest(fmt(r.interest)) : t.noInterest;
+    document.getElementById('cal-body').innerHTML = r.rows.map(b => {
+      const p = b.total / r.paycheck, c = p > 0.20 ? '#ff6b81' : p > 0.10 ? '#f5c842' : '#00e5a0';
+      const who = b.items.map(x => x.plan).filter((v, i, a) => a.indexOf(v) === i).map(n => n.replace(/[<>&]/g, '')).join(', ');
+      return '<tr' + (b === r.peak ? ' class="peak"' : '') + '><td class="num">' + fdate(b.payday) + '</td><td class="who">' + who + ' (' + b.items.length + ')</td><td class="num">' + fmt(b.total) + '</td><td class="num" style="color:' + c + '">' + pct(p) + '</td></tr>';
+    }).join('');
+    const n = r.peak.items.length;
+    document.getElementById('late-line').textContent = r.latefee > 0 ? t.late(fmt(r.latefee), n, fmt(r.latefee * n)) : t.lateNone;
+    const tip = (share > 0.10 || !r.nextEnd) ? t.tSave(fmt(r.peak.total), fdate(r.peak.payday)) : t.tStack(fdate(r.nextEnd));
+    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background = color + '15'; tb.style.borderColor = color + '40'; tb.style.color = color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = (r.nextEnd && share > 0.10) ? t.tSave(fmt(r.peak.total), fdate(r.peak.payday)) + ' ' + t.tStack(fdate(r.nextEnd)) : tip;
+    document.getElementById('cal-live').textContent = t.live(fmt(r.peak.total), pct(share));
+  }
   function fmt(n){
-    const locale = lang === 'es' ? 'es-ES' : 'en-US';
-    const a=Math.abs(n),f='$'+a.toLocaleString(locale,{minimumFractionDigits:0,maximumFractionDigits:0});
-    return n<0?'-'+f:f;
+    const abs = Math.abs(n);
+    const f = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    return n < 0 ? '-' + f : f;
   }
-  document.addEventListener('keydown',e=>{if(e.key==='Enter')calculate();});
+  let timer = null;
+  function onEdit() { if (!calculated) return; clearTimeout(timer); timer = setTimeout(calculate, 250); }
+  ['paycheck', 'payday', 'latefee', 'payfreq'].forEach(id => { const el = document.getElementById(id); el.addEventListener('input', onEdit); el.addEventListener('change', onEdit); });
+  document.getElementById('payfreq').addEventListener('change', () => { document.getElementById('payday-field').style.display = document.getElementById('payfreq').value === 'semi' ? 'none' : ''; });
+  document.getElementById('payday').value = iso(today + 3 * DAY);
+  [
+    { name: 'Sneakers', amount: 180, count: 4, apr: 0, freq: 14, first: iso(today) },
+    { name: 'Laptop', amount: 1200, count: 4, apr: 0, freq: 14, first: iso(today + 7 * DAY) },
+    { name: 'Couch', amount: 900, count: 6, apr: 15, freq: 'month', first: iso(addMonths(today, 1)) }
+  ].forEach(p => addPlan(p));
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
 </script>
 <script>
 (function(){
@@ -479,6 +702,5 @@
   }
 })();
 </script>
-<script src="/assets/ca-validate.js" data-term-max="60" data-term-unit="payments"></script>
 </body>
 </html>
