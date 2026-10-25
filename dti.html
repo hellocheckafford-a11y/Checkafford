@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Debt-to-Income Calculator: Your DTI and How Much Room Is Left | CheckAfford</title>
+<meta name="description" content="List your monthly payments to get your housing ratio and total debt-to-income ratio, how many dollars you have left before 36% and 43%, and the loan that fits in that room. Free, no signup.">
+<meta name="keywords" content="debt to income ratio calculator, DTI calculator, how to calculate DTI, front end ratio, back end ratio">
+<link rel="canonical" href="https://checkafford.com/dti">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<meta property="og:title" content="Debt-to-Income Calculator: How Much Room Is Left?">
+<meta property="og:description" content="Your housing ratio, total DTI and the dollars left before 36% and 43%.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: #111118;
+    --surface2: #18181f;
+    --border: rgba(255,255,255,0.07);
+    --text: #f0f0f5;
+    --muted: #8f8fa8;
+    --accent: #00e5a0;
+    --accent-dim: rgba(0,229,160,0.12);
+    --warn: #f5c842;
+    --warn-dim: rgba(245,200,66,0.12);
+    --danger: #ff4d6d;
+    --danger-dim: rgba(255,77,109,0.12);
+    --radius: 16px;
+    --font-display: 'Syne', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,229,160,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,229,160,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo span { color: var(--accent); }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--text); }
+  .nav-link.active { color: var(--accent); }
+  .lang-toggle {
+    display: flex;
+    gap: 4px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px;
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .lang-btn.active { background: var(--accent); color: #000; }
+
+  /* BREADCRUMB */
+  .breadcrumb {
+    position: relative;
+    z-index: 5;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--font-mono);
+  }
+  .breadcrumb a { color: var(--muted); text-decoration: none; }
+  .breadcrumb a:hover { color: var(--accent); }
+  .breadcrumb span { color: var(--accent); }
+
+  /* PAGE HERO — SPECIFIC TO CAR LOAN */
+  .page-hero {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px 48px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  @media (max-width: 640px) {
+    .page-hero { grid-template-columns: 1fr; gap: 24px; }
+    header { padding: 16px 20px; }
+    .breadcrumb { padding: 12px 20px; }
+    .nav-links { display: none; }
+  }
+  .hero-left {}
+  .page-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0,229,160,0.08);
+    border: 1px solid rgba(0,229,160,0.2);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    font-family: var(--font-mono);
+  }
+  .page-badge::before { content: '🚗'; margin-right: 4px; }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 48px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -1.5px;
+    margin-bottom: 16px;
+  }
+  h1 em { font-style: normal; color: var(--accent); }
+  .page-sub {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    font-weight: 300;
+  }
+
+  /* QUICK FACTS */
+  .quick-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .fact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .fact-icon {
+    color: var(--accent);
+    font-size: 14px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* STAT CARDS (right side of hero) */
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .hero-stat {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+  }
+  .hero-stat-num {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .hero-stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+  }
+
+  /* CALCULATOR */
+  .calc-wrapper {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 60px;
+    padding: 0 24px;
+  }
+  .calc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    overflow: hidden;
+  }
+  .calc-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (max-width: 640px) {
+    .calc-inner { grid-template-columns: 1fr; }
+  }
+  .input-panel {
+    padding: 36px;
+    border-right: 1px solid var(--border);
+  }
+  @media (max-width: 640px) {
+    .input-panel { border-right: none; border-bottom: 1px solid var(--border); padding: 24px 20px; }
+  }
+  .panel-title {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+  .field { margin-bottom: 20px; }
+  .field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  .input-wrap { position: relative; }
+  .input-prefix {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    pointer-events: none;
+  }
+  .input-suffix {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--muted);
+    pointer-events: none;
+  }
+  input[type="number"] {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 500;
+    padding: 13px 14px 13px 30px;
+    outline: none;
+    transition: border-color 0.2s;
+    -moz-appearance: textfield;
+  }
+  input[type="number"]::-webkit-inner-spin-button { -webkit-appearance: none; }
+  input:focus { border-color: var(--accent); }
+  input.no-prefix { padding-left: 14px; }
+  input.has-suffix { padding-right: 38px; }
+  .calc-btn {
+    width: 100%;
+    background: var(--accent);
+    border: none;
+    border-radius: 12px;
+    color: #000;
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    padding: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: all 0.2s;
+  }
+  .calc-btn:hover {
+    background: #00ffb3;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(0,229,160,0.25);
+  }
+
+  /* RESULT PANEL */
+  .result-panel {
+    padding: 36px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  @media (max-width: 640px) { .result-panel { padding: 24px 20px; } }
+
+  .placeholder-state { text-align: center; padding: 20px 0; }
+  .placeholder-state .big-q {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 800;
+    color: var(--surface2);
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .placeholder-state p { font-size: 13px; color: var(--muted); }
+
+  .gauge-wrap { text-align: center; margin-bottom: 24px; }
+  .gauge-svg { width: 180px; height: 100px; }
+  .gauge-track { fill: none; stroke: var(--surface2); stroke-width: 14; stroke-linecap: round; }
+  .gauge-fill {
+    fill: none; stroke-width: 14; stroke-linecap: round;
+    transition: stroke-dashoffset 0.8s cubic-bezier(.4,0,.2,1), stroke 0.5s;
+    stroke: var(--accent); stroke-dasharray: 251; stroke-dashoffset: 251;
+  }
+  .gauge-score { font-family: var(--font-display); font-size: 36px; font-weight: 800; fill: var(--text); }
+  .gauge-label-svg { font-family: var(--font-body); font-size: 10px; fill: var(--muted); letter-spacing: 0.5px; }
+
+  .verdict-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 72px;
+    transition: all 0.4s;
+  }
+  .verdict-icon { font-size: 24px; flex-shrink: 0; }
+  .verdict-text {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    color: var(--muted);
+  }
+  .verdict-text.active { color: var(--text); }
+
+  .dti-bar-wrap { margin-bottom: 16px; }
+  .dti-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .dti-bar-label { font-size: 11px; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.5px; }
+  .dti-pct { font-family: var(--font-display); font-size: 13px; font-weight: 700; }
+  .dti-track { height: 6px; background: var(--surface2); border-radius: 100px; overflow: hidden; }
+  .dti-fill { height: 100%; border-radius: 100px; background: var(--accent); width: 0%; transition: width 0.8s cubic-bezier(.4,0,.2,1), background 0.5s; }
+
+  .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px; }
+  .stat-item { background: var(--surface2); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+  .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 6px; font-family: var(--font-mono); }
+  .stat-value { font-family: var(--font-display); font-size: 20px; font-weight: 700; color: var(--text); }
+  .stat-value.highlight { color: var(--accent); }
+
+  .tip-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(0,229,160,0.2);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 13px;
+    color: var(--accent);
+    line-height: 1.5;
+    display: none;
+    margin-bottom: 12px;
+  }
+  .tip-box.show { display: block; }
+  .tip-box strong { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
+
+  /* CTA BUTTON */
+
+  /* CONTENT SECTION */
+  .content-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+  @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
+  .content-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .content-card h3 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--text);
+  }
+  .content-card p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+  .content-card p + p { margin-top: 10px; }
+
+  /* FAQ */
+  .faq-section {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .section-label {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+  .faq-item {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  .faq-q {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text);
+  }
+  .faq-a {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* OTHER CALCULATORS */
+  .other-calcs {
+    position: relative;
+    z-index: 5;
+    max-width: 900px;
+    margin: 0 auto 80px;
+    padding: 0 24px;
+  }
+  .other-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 640px) { .other-grid { grid-template-columns: 1fr 1fr; } }
+  .other-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: block;
+  }
+  .other-card:hover {
+    border-color: rgba(0,229,160,0.3);
+    transform: translateY(-2px);
+  }
+  .other-icon { font-size: 24px; margin-bottom: 8px; }
+  .other-name {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .other-desc { font-size: 11px; color: var(--muted); line-height: 1.4; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 28px 24px;
+    font-size: 12px;
+    color: var(--muted);
+    position: relative;
+    z-index: 5;
+  }
+  footer a { color: var(--accent); text-decoration: none; }
+
+  /* LANG HIDDEN */
+  [data-lang="es"] { display: none; }
+
+/* MOBILE NAV */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);text-decoration:none;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+.mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
+.mobile-lang{display:flex;gap:8px;margin-top:16px;}
+@media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
+
+/* RELATED GUIDES */
+.rel-guides{margin:48px 0 0;}
+.rel-guides.rel-page{position:relative;z-index:1;max-width:900px;margin:48px auto 80px;padding:0 24px;}
+.rel-guides h2{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;letter-spacing:-0.3px;margin:0 0 14px;color:var(--text);}
+.rel-guides ul{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.rel-guides li{margin:0;padding:0;border:0;}
+.rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
+.rel-guides a:hover{border-color:var(--accent);}
+.rel-guides .arr{color:var(--accent);flex-shrink:0;}
+
+  .group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin:18px 0 10px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .field-row.three{grid-template-columns:1fr 1fr 1fr;}
+  .field-row .field{margin-bottom:14px;}
+  .field-hint{font-size:11px;color:var(--muted);margin:-6px 0 14px;line-height:1.4;}
+  .field .field-hint{margin:6px 0 0;}
+  .check-field label{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);cursor:pointer;}
+  .check-field input{width:auto;accent-color:var(--accent);}
+  .mini-line{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5;}
+  .sub-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:4px 0 8px;}
+  .rule-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px;}
+  .rule-list li{font-size:13px;line-height:1.4;display:flex;gap:8px;}
+  .rule-list .ok{color:#00e5a0;} .rule-list .no{color:#ff6b81;}
+  .term-table{width:100%;border-collapse:collapse;font-size:12px;margin:0 0 16px;}
+  .term-table th,.term-table td{padding:7px 5px;border-bottom:1px solid var(--border);text-align:left;}
+  .term-table th{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .term-table td{font-family:var(--font-mono);white-space:nowrap;}
+  .term-table tr.cur td{color:var(--accent);}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
+  @media(max-width:640px){.field-row.three{grid-template-columns:1fr 1fr;}}
+</style>
+<style>
+  .ratio{margin:0 0 14px;}
+  .ratio-head{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);font-family:var(--font-mono);text-transform:uppercase;letter-spacing:.4px;margin-bottom:6px;gap:8px;}
+  .ratio-head span:last-child{font-family:var(--font-display);font-size:14px;font-weight:700;}
+  .ratio-track{position:relative;height:8px;background:var(--surface2);border-radius:100px;overflow:visible;}
+  .ratio-fill{height:100%;border-radius:100px;width:0;transition:width .6s;}
+  .ratio-track i{position:absolute;top:-3px;width:2px;height:14px;background:var(--muted);opacity:.6;}
+  .share-list{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:6px;}
+  .share-list li{display:grid;grid-template-columns:1fr auto auto;gap:10px;font-size:12px;align-items:center;}
+  .share-list .bar{grid-column:1/-1;height:4px;background:var(--surface2);border-radius:4px;overflow:hidden;}
+  .share-list .bar b{display:block;height:100%;background:var(--accent);}
+  .share-list .amt,.share-list .pc{font-family:var(--font-mono);color:var(--muted);}
+</style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZHN6PQSLWN');
+</script>
+</head>
+<body>
+
+<a href="#main-content" class="skip-link" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:#00e5a0;color:#000;font-weight:700;border-radius:8px;text-decoration:none;font-size:14px;outline:2px solid #000;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">check<span>afford</span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/dti" class="nav-link active">DTI</a>
+    <a href="/blog" class="nav-link" data-i="nav-blog">Blog</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+<!-- MOBILE NAV -->
+<button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/car-loan" data-i="nav-auto">Auto Loan</a>
+  <a href="/mortgage" data-i="nav-mortgage">Mortgage</a>
+  <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
+  <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
+  <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/dti">DTI</a>
+  <a href="/blog" data-i="nav-blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
+    <button class="lang-btn" onclick="setLang('es');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">ES</button>
+  </div>
+</div>
+</header>
+
+<main id="main-content">
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <a href="/">CheckAfford</a> › <span data-en="Debt-to-Income Calculator" data-es="Calculadora de Deuda-Ingreso">Debt-to-Income Calculator</span>
+</nav>
+<section class="page-hero">
+  <div class="hero-left">
+    <div class="page-badge" data-en="Debt-to-Income Calculator" data-es="Calculadora de Deuda-Ingreso">Debt-to-Income Calculator</div>
+    <h1 data-en="What is your DTI, and how much <em>room is left?</em>" data-es="¿Cuál es tu DTI y cuánto <em>margen te queda?</em>">What is your DTI, and how much <em>room is left?</em></h1>
+    <p class="page-sub" data-en="List your monthly payments. See your housing ratio and total debt-to-income ratio, how many dollars you have before 36% and 43%, and the loan that fits in that room." data-es="Anota tus pagos mensuales. Mira tu ratio de vivienda y tu relación deuda-ingreso total, cuántos dólares te quedan antes del 36% y del 43%, y el préstamo que cabe en ese margen.">List your monthly payments. See your housing ratio and total debt-to-income ratio, how many dollars you have before 36% and 43%, and the loan that fits in that room.</p>
+    <div class="quick-facts">
+      <div class="fact-item"><span class="fact-icon">→</span><span data-en="DTI = total monthly debt payments ÷ gross monthly income. Lenders use income before taxes." data-es="DTI = pagos mensuales de deudas ÷ ingreso mensual bruto. Los prestamistas usan el ingreso antes de impuestos.">DTI = total monthly debt payments ÷ gross monthly income. Lenders use income before taxes.</span></div>
+      <div class="fact-item"><span class="fact-icon">→</span><span data-en="The 28/36 guideline: housing up to 28% of gross income, all debts up to 36%. Many lenders cap total DTI near 43%, and some programs allow more." data-es="La pauta 28/36: vivienda hasta 28% del ingreso bruto y todas las deudas hasta 36%. Muchos prestamistas ponen el tope cerca de 43% y algunos programas permiten más.">The 28/36 guideline: housing up to 28% of gross income, all debts up to 36%. Many lenders cap total DTI near 43%, and some programs allow more.</span></div>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="hero-stat-num">28%</div><div class="hero-stat-label" data-en="Housing guideline" data-es="Pauta de vivienda">Housing guideline</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">36%</div><div class="hero-stat-label" data-en="Total debt guideline" data-es="Pauta de deuda total">Total debt guideline</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">43%</div><div class="hero-stat-label" data-en="Common lender cap (varies)" data-es="Tope común (varía)">Common lender cap (varies)</div></div>
+    <div class="hero-stat"><div class="hero-stat-num">$</div><div class="hero-stat-label" data-en="Room left, in dollars" data-es="Margen en dólares">Room left, in dollars</div></div>
+  </div>
+</section>
+
+<div class="calc-wrapper">
+  <div class="calc-card">
+    <div class="calc-inner">
+      <div class="input-panel">
+        <p class="panel-title" data-en="Your Numbers" data-es="Tus Datos">Your Numbers</p>
+        <p class="group-title" data-en="Your income" data-es="Tu ingreso">Your income</p>
+        <div class="field">
+          <label for="income" data-en="Monthly income before taxes" data-es="Ingreso mensual antes de impuestos">Monthly income before taxes</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="6000" inputmode="decimal" ></div>
+        </div>
+        <p class="group-title" data-en="Monthly payments" data-es="Pagos mensuales">Monthly payments</p>
+        <div class="field">
+          <label for="housing" data-en="Rent or mortgage (with taxes, insurance, HOA)" data-es="Renta o hipoteca (con impuestos, seguro y HOA)">Rent or mortgage (with taxes, insurance, HOA)</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="housing" value="1650" inputmode="decimal" data-min="0"></div>
+        </div>
+        <div class="field-row">
+        <div class="field">
+          <label for="car" data-en="Car loans" data-es="Préstamos de auto">Car loans</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="car" value="420" inputmode="decimal" data-min="0"></div>
+        </div>
+        <div class="field">
+          <label for="student" data-en="Student loans" data-es="Préstamos estudiantiles">Student loans</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="student" value="250" inputmode="decimal" data-min="0"></div>
+        </div>
+        </div>
+        <div class="field-row">
+        <div class="field">
+          <label for="cards" data-en="Credit card minimums" data-es="Mínimos de tarjetas">Credit card minimums</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="cards" value="120" inputmode="decimal" data-min="0"></div>
+        </div>
+        <div class="field">
+          <label for="other" data-en="Other debts (personal loans, BNPL, support)" data-es="Otras deudas (préstamos personales, BNPL, pensión)">Other debts (personal loans, BNPL, support)</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="other" value="0" inputmode="decimal" data-min="0"></div>
+        </div>
+        </div>
+        <p class="field-hint" data-en="Count required minimum payments, not what you choose to pay. Leave out utilities, groceries and insurance that is not part of a loan." data-es="Cuenta los pagos mínimos obligatorios, no lo que decides pagar. Deja fuera servicios, comida y seguros que no sean parte de un préstamo.">Count required minimum payments, not what you choose to pay. Leave out utilities, groceries and insurance that is not part of a loan.</p>
+        <p class="group-title" data-en="To size a new loan (optional)" data-es="Para dimensionar un préstamo nuevo (opcional)">To size a new loan (optional)</p>
+        <div class="field-row">
+        <div class="field">
+          <label for="rate" data-en="APR" data-es="APR">APR</label>
+          <div class="input-wrap"><input type="number" id="rate" value="8" inputmode="decimal" class="no-prefix has-suffix" step="0.1" data-min="0" data-max="60" data-msg="rate"><span class="input-suffix" aria-hidden="true">%</span></div>
+        </div>
+        <div class="field">
+          <label for="term" data-en="Term" data-es="Plazo">Term</label>
+          <div class="input-wrap"><input type="number" id="term" value="60" inputmode="decimal" class="no-prefix has-suffix" data-min="1" data-max="480" data-integer data-msg="term"><span class="input-suffix" aria-hidden="true">mo</span></div>
+        </div>
+        </div>
+        <button class="calc-btn" onclick="calculate()" data-en="Check My DTI" data-es="Ver mi DTI">Check My DTI</button>
+      </div>
+      <div class="result-panel">
+        <p class="panel-title" data-en="Your Ratios" data-es="Tus Ratios">Your Ratios</p>
+        <div class="placeholder-state" id="placeholder"><div class="big-q">?</div><p data-en="Enter your numbers above" data-es="Ingresa tus datos arriba">Enter your numbers above</p></div>
+        <div id="results-content" style="display:none;">
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
+          <div class="ratio"><div class="ratio-head"><span data-en="Housing ratio (guideline 28%)" data-es="Ratio de vivienda (pauta 28%)">Housing ratio (guideline 28%)</span><span id="front-pct">–</span></div><div class="ratio-track"><div class="ratio-fill" id="front-fill"></div><i style="left:28%"></i></div></div>
+          <div class="ratio"><div class="ratio-head"><span data-en="Total DTI (guideline 36%, common cap 43%)" data-es="DTI total (pauta 36%, tope común 43%)">Total DTI (guideline 36%, common cap 43%)</span><span id="dti-pct">–</span></div><div class="ratio-track"><div class="ratio-fill" id="dti-fill"></div><i style="left:36%"></i><i style="left:43%"></i></div></div>
+          <div class="stats-grid">
+            <div class="stat-item"><div class="stat-label" data-en="Monthly debt payments" data-es="Pagos de deudas al mes">Monthly debt payments</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Room before 36%" data-es="Margen antes del 36%">Room before 36%</div><div class="stat-value" id="stat-room36">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Room before 43%" data-es="Margen antes del 43%">Room before 43%</div><div class="stat-value" id="stat-room43">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Loan that fits by 36%" data-es="Préstamo que cabe hasta 36%">Loan that fits by 36%</div><div class="stat-value" id="stat-loan">–</div></div>
+          </div>
+          <p class="sub-title" data-en="Where your income goes" data-es="Adónde va tu ingreso">Where your income goes</p>
+          <ul class="share-list" id="share-list"></ul>
+          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <p class="assume" data-en="Guidelines, not approval rules: each lender sets its own limits by loan type, credit score and savings. The loan that fits uses the APR and term above and assumes the new payment is your only change." data-es="Son pautas, no reglas de aprobación: cada prestamista fija sus límites según el tipo de préstamo, el puntaje de crédito y los ahorros. El préstamo que cabe usa la APR y el plazo de arriba y supone que el pago nuevo es tu único cambio.">Guidelines, not approval rules: each lender sets its own limits by loan type, credit score and savings. The loan that fits uses the APR and term above and assumes the new payment is your only change.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="content-section">
+  <div class="content-grid">
+    <div class="content-card">
+      <h3 data-en="Front-end vs. back-end ratio" data-es="Ratio de vivienda vs. ratio total">Front-end vs. back-end ratio</h3>
+      <p data-en="The housing (front-end) ratio counts only your rent or mortgage payment, including property tax, insurance and HOA. The total (back-end) ratio adds every other required debt payment: car, student loans, card minimums, personal loans and support." data-es="El ratio de vivienda cuenta solo tu renta o pago de hipoteca, incluyendo impuesto predial, seguro y HOA. El ratio total suma todos los demás pagos obligatorios de deudas: auto, préstamos estudiantiles, mínimos de tarjetas, préstamos personales y pensiones.">The housing (front-end) ratio counts only your rent or mortgage payment, including property tax, insurance and HOA. The total (back-end) ratio adds every other required debt payment: car, student loans, card minimums, personal loans and support.</p>
+    </div>
+    <div class="content-card">
+      <h3 data-en="Why the room in dollars matters" data-es="Por qué importa el margen en dólares">Why the room in dollars matters</h3>
+      <p data-en="A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves." data-es="Un porcentaje te dice dónde estás; el margen en dólares te dice cuánto más puedes asumir. Si tienes $500 de margen antes del 36%, un pago nuevo de auto de $600 te pasaría del límite, apruebe lo que apruebe el concesionario.">A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves.</p>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section">
+  <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
+  <div class="faq-item"><div class="faq-q" data-en="Does rent count in debt-to-income?" data-es="¿La renta cuenta en la relación deuda-ingreso?">Does rent count in debt-to-income?</div><div class="faq-a" data-en="For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view." data-es="En una solicitud de hipoteca, el prestamista reemplaza tu renta por el nuevo pago de hipoteca. En un préstamo de auto o personal, muchos prestamistas miran tu renta o pago de vivienda junto con tus deudas. Esta calculadora muestra ambos ratios para que veas cada enfoque.">For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view.</div></div>
+  <div class="faq-item"><div class="faq-q" data-en="What counts as a debt payment?" data-es="¿Qué cuenta como pago de deuda?">What counts as a debt payment?</div><div class="faq-a" data-en="Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries and subscriptions do not count." data-es="Los pagos mensuales obligatorios de préstamos y crédito: hipoteca o renta, préstamos de auto, préstamos estudiantiles (aunque estén diferidos, los prestamistas suelen contar un pago), mínimos de tarjetas, préstamos personales, planes BNPL y pensiones ordenadas por un juez. Servicios, teléfono, comida y suscripciones no cuentan.">Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries and subscriptions do not count.</div></div>
+</section>
+
+<section class="other-calcs">
+  <p class="section-label" data-en="Other calculators" data-es="Otras calculadoras">Other calculators</p>
+  <div class="other-grid">
+    <a href="/mortgage" class="other-card"><div class="other-icon">🏠</div><div class="other-name" data-en="Mortgage" data-es="Hipoteca">Mortgage</div><div class="other-desc" data-en="How much house can you afford?" data-es="¿Cuánta casa puedes pagar?">How much house can you afford?</div></a>
+    <a href="/car-loan" class="other-card"><div class="other-icon">🚗</div><div class="other-name" data-en="Auto Loan" data-es="Préstamo Auto">Auto Loan</div><div class="other-desc" data-en="What a car really costs each month" data-es="Lo que cuesta de verdad un auto al mes">What a car really costs each month</div></a>
+    <a href="/debt-payoff" class="other-card"><div class="other-icon">💳</div><div class="other-name" data-en="Debt Payoff" data-es="Pago de Deudas">Debt Payoff</div><div class="other-desc" data-en="Which debt should you pay first?" data-es="¿Qué deuda pagas primero?">Which debt should you pay first?</div></a>
+    <a href="/personal-loan" class="other-card"><div class="other-icon">💵</div><div class="other-name" data-en="Personal Loan" data-es="Préstamo Personal">Personal Loan</div><div class="other-desc" data-en="Real APR with the fee" data-es="APR real con la comisión">Real APR with the fee</div></a>
+  </div>
+</section>
+
+<section class="rel-guides rel-page" aria-labelledby="rel-title">
+  <h2 id="rel-title" data-en="Related guides" data-es="Guías relacionadas">Related guides</h2>
+  <ul>
+    <li><a href="/blog/what-is-a-good-debt-to-income-ratio"><span data-en="What Is a Good Debt-to-Income Ratio?" data-es="¿Qué es un buen ratio deuda-ingreso?">What Is a Good Debt-to-Income Ratio?</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/calculate-debt-to-income-ratio"><span data-en="How to Calculate Your Debt-to-Income Ratio" data-es="Cómo calcular tu ratio deuda-ingreso">How to Calculate Your Debt-to-Income Ratio</span><span class="arr">→</span></a></li>
+    <li><a href="/blog/how-much-to-spend-on-rent"><span data-en="How Much Should I Spend on Rent?" data-es="¿Cuánto debo gastar en renta?">How Much Should I Spend on Rent?</span><span class="arr">→</span></a></li>
+  </ul>
+</section>
+</main>
+<footer>
+  <p data-en="For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market." data-es="Solo para fines informativos. No es asesoría financiera. Los resultados son estimaciones basadas en fórmulas estándar de amortización. Las pautas de préstamo y los promedios corresponden al mercado de EE. UU." id="footer-disclaimer">For informational purposes only. Not financial advice. Results are estimates based on standard amortization formulas. Lending guidelines and averages reflect the U.S. market.</p>
+  <p style="margin-top:8px;">
+    <a href="/">checkafford.com</a> &nbsp;·&nbsp;
+    <a href="/privacy" id="footer-privacy">Privacy Policy</a> &nbsp;·&nbsp;
+    <a href="/terms" id="footer-terms">Terms of Use</a> &nbsp;·&nbsp;
+    <a href="/about" data-en="About" data-es="Acerca de">About</a> &nbsp;·&nbsp;
+    <a href="/contact" data-en="Contact" data-es="Contacto">Contact</a> &nbsp;·&nbsp;
+    <a href="/blog" data-en="Blog" data-es="Blog">Blog</a>
+  </p>
+</footer>
+<script>
+  let lang = 'en', lastResult = null;
+  function setLang(l) {
+    lang = l;
+    document.querySelectorAll('.lang-btn').forEach(b => { const a = b.textContent === l.toUpperCase(); b.classList.toggle('active', a); b.setAttribute('aria-pressed', a); });
+    document.querySelectorAll('[data-en]').forEach(el => { if (el.tagName === 'INPUT') return; const v = el.getAttribute('data-' + l); if (v) el.innerHTML = v; });
+    if (lastResult) renderResults(lastResult);
+  }
+  const T = {
+    en: {
+      items: { housing: 'Rent or mortgage', car: 'Car loans', student: 'Student loans', cards: 'Card minimums', other: 'Other debts' },
+      vOk: (d) => 'Your total DTI is ' + d + ', within the 36% guideline.',
+      vFront: (d, f) => 'Your total DTI is ' + d + ', within 36%, but housing alone is ' + f + ' of your income, above the 28% guideline.',
+      vMid: (d) => 'Your total DTI is ' + d + ': above the 36% guideline but under the 43% many lenders accept. New credit may come at a higher rate.',
+      vHigh: (d) => 'Your total DTI is ' + d + ', above the 43% many lenders accept. Paying down a debt before applying gives you more options.',
+      none: 'No room left',
+      tPay: (name, amt, d) => 'Paying off your ' + name.toLowerCase() + ' (' + amt + ' a month) would bring your total DTI to ' + d + '.',
+      tRoom: (amt, loan) => 'You could add a payment of up to ' + amt + ' and stay at 36%: at the APR and term above, that is a loan of about ' + loan + '.',
+      tipLabel: 'TIP'
+    },
+    es: {
+      items: { housing: 'Renta o hipoteca', car: 'Préstamos de auto', student: 'Préstamos estudiantiles', cards: 'Mínimos de tarjetas', other: 'Otras deudas' },
+      vOk: (d) => 'Tu DTI total es ' + d + ', dentro de la pauta del 36%.',
+      vFront: (d, f) => 'Tu DTI total es ' + d + ', dentro del 36%, pero solo la vivienda es el ' + f + ' de tu ingreso, por encima de la pauta del 28%.',
+      vMid: (d) => 'Tu DTI total es ' + d + ': por encima de la pauta del 36% pero por debajo del 43% que aceptan muchos prestamistas. Un crédito nuevo puede salir a una tasa más alta.',
+      vHigh: (d) => 'Tu DTI total es ' + d + ', por encima del 43% que aceptan muchos prestamistas. Pagar una deuda antes de solicitar te da más opciones.',
+      none: 'Sin margen',
+      tPay: (name, amt, d) => 'Liquidar tus ' + name.toLowerCase() + ' (' + amt + ' al mes) bajaría tu DTI total a ' + d + '.',
+      tRoom: (amt, loan) => 'Podrías sumar un pago de hasta ' + amt + ' y quedarte en 36%: con la APR y el plazo de arriba, es un préstamo de unos ' + loan + '.',
+      tipLabel: 'CONSEJO'
+    }
+  };
+  const KEYS = ['housing', 'car', 'student', 'cards', 'other'];
+  const v = id => parseFloat(document.getElementById(id).value) || 0;
+  const loanFor = (pay, apr, n) => { const r = apr / 1200; return r === 0 ? pay * n : pay * (1 - Math.pow(1 + r, -n)) / r; };
+  function calculate() {
+    const income = v('income'), apr = v('rate'), n = v('term');
+    const pays = Object.fromEntries(KEYS.map(k => [k, v(k)]));
+    const total = KEYS.reduce((a, k) => a + pays[k], 0);
+    const room36 = income * 0.36 - total, room43 = income * 0.43 - total;
+    lastResult = { income, pays, total, front: pays.housing / income * 100, dti: total / income * 100, room36, room43,
+      loan36: room36 > 0 && n > 0 ? loanFor(room36, apr, n) : 0 };
+    renderResults(lastResult);
+  }
+  function bar(id, pct, color) { const f = document.getElementById(id + '-fill'), p = document.getElementById(id + '-pct'); f.style.width = Math.min(pct, 100) + '%'; f.style.background = color; p.textContent = pct.toFixed(1) + '%'; p.style.color = color; }
+  function renderResults(r) {
+    const t = T[lang], pct = x => x.toFixed(1) + '%';
+    document.getElementById('placeholder').style.display = 'none';
+    document.getElementById('results-content').style.display = 'block';
+    let verdict, color, icon;
+    if (r.dti > 43) { verdict = t.vHigh(pct(r.dti)); color = '#ff4d6d'; icon = '🚨'; }
+    else if (r.dti > 36) { verdict = t.vMid(pct(r.dti)); color = '#f5c842'; icon = '⚠️'; }
+    else if (r.front > 28) { verdict = t.vFront(pct(r.dti), pct(r.front)); color = '#f5c842'; icon = '⚠️'; }
+    else { verdict = t.vOk(pct(r.dti)); color = '#00e5a0'; icon = '✅'; }
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color + '55'; vb.style.background = color + '10';
+    document.getElementById('verdict-icon').textContent = icon;
+    const vt = document.getElementById('verdict-text'); vt.textContent = verdict; vt.classList.add('active'); vt.style.color = color;
+    bar('front', r.front, r.front > 28 ? '#f5c842' : '#00e5a0');
+    bar('dti', r.dti, color);
+    document.getElementById('stat-monthly').textContent = fmt(r.total);
+    document.getElementById('stat-room36').textContent = r.room36 > 0 ? fmt(r.room36) : t.none;
+    document.getElementById('stat-room43').textContent = r.room43 > 0 ? fmt(r.room43) : t.none;
+    document.getElementById('stat-loan').textContent = r.loan36 > 0 ? fmt(Math.round(r.loan36 / 100) * 100) : '—';
+    const ul = document.getElementById('share-list'); ul.innerHTML = '';
+    KEYS.filter(k => r.pays[k] > 0).sort((a, b) => r.pays[b] - r.pays[a]).forEach(k => {
+      const share = r.pays[k] / r.income * 100;
+      const li = document.createElement('li');
+      li.innerHTML = '<span></span><span class="amt"></span><span class="pc"></span><span class="bar"><b></b></span>';
+      li.children[0].textContent = t.items[k]; li.children[1].textContent = fmt(r.pays[k]); li.children[2].textContent = pct(share);
+      li.querySelector('b').style.width = Math.min(share * 2, 100) + '%';
+      ul.appendChild(li);
+    });
+    let tip;
+    if (r.dti > 36) {
+      const nonHousing = KEYS.filter(k => k !== 'housing' && r.pays[k] > 0).sort((a, b) => r.pays[b] - r.pays[a]);
+      if (nonHousing.length) { const k = nonHousing[0]; tip = t.tPay(t.items[k], fmt(r.pays[k]), pct((r.total - r.pays[k]) / r.income * 100)); }
+    }
+    if (!tip && r.room36 > 0) tip = t.tRoom(fmt(r.room36), fmt(Math.round(r.loan36 / 100) * 100));
+    if (!tip) tip = '';
+    const tb = document.getElementById('tip-box'); tb.classList.toggle('show', !!tip); tb.style.background = color + '15'; tb.style.borderColor = color + '40'; tb.style.color = color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
+  }
+  function fmt(n) { const a = Math.abs(n), f = '$' + a.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); return n < 0 ? '-' + f : f; }
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
+</script>
+<script>
+(function(){
+  function swap(l){
+    document.querySelectorAll('.rel-guides [data-en]').forEach(function(el){
+      var v = el.getAttribute('data-' + l);
+      if (v) el.textContent = v;
+    });
+  }
+  if (typeof window.setLang === 'function') {
+    var orig = window.setLang;
+    window.setLang = function(l){ var r = orig.apply(this, arguments); swap(l); return r; };
+  }
+})();
+</script>
+<script src="/assets/ca-validate.js"></script>
+</body>
+</html>
