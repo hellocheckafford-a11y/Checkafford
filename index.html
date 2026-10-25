@@ -338,6 +338,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
     <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
     <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/dti" class="nav-link">DTI</a>
     <a href="/blog" class="nav-link" data-i="nav-blog">Blog</a>
   </nav>
   <div class="lang-toggle" role="group" aria-label="Language selection">
@@ -355,6 +356,7 @@ footer a{color:var(--accent);text-decoration:none;}
   <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
   <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
   <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/dti">DTI</a>
   <a href="/blog" data-i="nav-blog">Blog</a>
   <div class="mobile-lang">
     <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
@@ -384,7 +386,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">43%</span><span class="card-stat-lbl" data-i="cs-dti">Common DTI cap</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">$765</span><span class="card-stat-lbl" data-i="cs-avg-car">Avg new payment</span></div>
-      <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">5sec</span><span class="card-stat-lbl" data-i="cs-time">Instant result</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">48–72</span><span class="card-stat-lbl" data-i="cs-time">Terms compared</span></div>
     </div>
   </a>
 
@@ -398,7 +400,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">28%</span><span class="card-stat-lbl" data-i="cs-rule">28/36 Rule</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">30-yr</span><span class="card-stat-lbl" data-i="cs-avg-mort">Common term</span></div>
-      <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">5sec</span><span class="card-stat-lbl" data-i="cs-time2">Instant result</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">PMI</span><span class="card-stat-lbl" data-i="cs-time2">Flagged under 20% down</span></div>
     </div>
   </a>
 
@@ -412,7 +414,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">2</span><span class="card-stat-lbl" data-i="cs-crisis">Methods compared</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">20%+</span><span class="card-stat-lbl" data-i="cs-apr">Common card APR</span></div>
-      <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">5sec</span><span class="card-stat-lbl" data-i="cs-time3">Instant result</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">10</span><span class="card-stat-lbl" data-i="cs-time3">Debts at once</span></div>
     </div>
   </a>
 
@@ -426,7 +428,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-apr">Common APR cap</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">Pay in 4</span><span class="card-stat-lbl" data-i="cs-avg-bnpl">Common plan</span></div>
-      <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">5sec</span><span class="card-stat-lbl" data-i="cs-time4">Instant result</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">8</span><span class="card-stat-lbl" data-i="cs-time4">Plans by paycheck</span></div>
     </div>
   </a>
 
@@ -440,7 +442,21 @@ footer a{color:var(--accent);text-decoration:none;}
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-personal">Common APR cap</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">$1k–50k</span><span class="card-stat-lbl" data-i="cs-avg-personal">Common range</span></div>
-      <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">5sec</span><span class="card-stat-lbl" data-i="cs-time5">Instant result</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">APR</span><span class="card-stat-lbl" data-i="cs-time5">Real, with the fee</span></div>
+    </div>
+  </a>
+
+  <!-- DTI -->
+  <a href="/dti" class="calc-card" style="--card-glow:rgba(245,200,66,0.06);">
+    <span class="card-arrow">↗</span>
+    <span class="card-icon">📊</span>
+    <span class="card-tag" style="background:rgba(245,200,66,0.1);color:#f5c842;" data-i="tag-dti">Debt-to-Income</span>
+    <div class="card-title"><span data-i="title-dti">How much room do you </span><em style="color:#f5c842;" data-i="title-dti-em">have left?</em></div>
+    <p class="card-desc" data-i="desc-dti">List your monthly payments. See your housing ratio, total DTI and the dollars left before 36% and 43%.</p>
+    <div class="card-stats">
+      <div class="card-stat"><span class="card-stat-val" style="color:#f5c842;">28%</span><span class="card-stat-lbl" data-i="cs-dti1">Housing guideline</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#f5c842;">36%</span><span class="card-stat-lbl" data-i="cs-dti2">Total guideline</span></div>
+      <div class="card-stat"><span class="card-stat-val" style="color:#f5c842;">$</span><span class="card-stat-lbl" data-i="cs-dti3">Room left</span></div>
     </div>
   </a>
 
@@ -452,8 +468,8 @@ footer a{color:var(--accent);text-decoration:none;}
   <div class="why-grid">
     <div class="why-card">
       <div class="why-icon">⚡</div>
-      <div class="why-title" data-i="why1-title">Instant verdict</div>
-      <p class="why-desc" data-i="why1-desc">No lengthy forms, no email required. Enter your numbers and get a clear answer in seconds.</p>
+      <div class="why-title" data-i="why1-title">One question per calculator</div>
+      <p class="why-desc" data-i="why1-desc">Each tool answers its own decision: what a car really costs, which debt to pay first, which paycheck your BNPL plans hit hardest.</p>
     </div>
     <div class="why-card">
       <div class="why-icon">🎯</div>
@@ -502,25 +518,25 @@ footer a{color:var(--accent);text-decoration:none;}
       'tag-auto':     'Auto Loan',
       'title-auto':   'Can you afford that ',
       'desc-auto':    'See the monthly cost to own the car, not just the payment, how it scores on the 20/4/10 rule and how 48, 60 and 72 months compare.',
-      'cs-dti':       'Common DTI cap', 'cs-avg-car': 'Avg new payment', 'cs-time': 'Instant result',
+      'cs-dti':       'Common DTI cap', 'cs-avg-car': 'Avg new payment', 'cs-time': 'Terms compared',
       'tag-mortgage': 'Mortgage',
       'title-mortgage':'Can you afford that ',
       'desc-mortgage':'Enter income, debts, home price and rate. Get an instant affordability verdict with full payment breakdown.',
-      'cs-rule':      '28/36 Rule', 'cs-avg-mort': 'Common term', 'cs-time2': 'Instant result',
+      'cs-rule':      '28/36 Rule', 'cs-avg-mort': 'Common term', 'cs-time2': 'Flagged under 20% down',
       'tag-debt':     'Debt Payoff',
       'title-debt':   'Which debt should you ',
       'desc-debt':    'List your cards and loans. See which one to pay first, your debt-free date and the interest avalanche vs. snowball costs.',
-      'cs-crisis':    'Methods compared', 'cs-apr': 'Common card APR', 'cs-time3': 'Instant result',
+      'cs-crisis':    'Methods compared', 'cs-apr': 'Common card APR', 'cs-time3': 'Debts at once',
       'tag-bnpl':     'BNPL',
       'title-bnpl':   'Is Buy Now Pay Later ',
       'desc-bnpl':    'Add all your plans and see which paycheck gets hit hardest, what share goes to BNPL and what a missed payment would cost.',
-      'cs-max-apr':   'Common APR cap', 'cs-avg-bnpl': 'Common plan', 'cs-time4': 'Instant result',
+      'cs-max-apr':   'Common APR cap', 'cs-avg-bnpl': 'Common plan', 'cs-time4': 'Plans by paycheck',
       'tag-personal': 'Personal Loan',
       'title-personal': 'Is a personal loan ',
       'desc-personal': 'See the cash you actually receive after fees, the real APR, and whether the loan beats the debt it would replace.',
-      'cs-max-personal': 'Common APR cap', 'cs-avg-personal': 'Common range', 'cs-time5': 'Instant result',
-      'why1-title':   'Instant verdict',
-      'why1-desc':    'No lengthy forms, no email required. Enter your numbers and get a clear answer in seconds.',
+      'cs-max-personal': 'Common APR cap', 'cs-avg-personal': 'Common range', 'cs-time5': 'Real, with the fee',
+      'why1-title':   'One question per calculator',
+      'why1-desc':    'Each tool answers its own decision: what a car really costs, which debt to pay first, which paycheck your BNPL plans hit hardest.',
       'why2-title':   'Real lender logic',
       'why2-desc':    'We use DTI guidelines commonly used by U.S. lenders (typically 36% to 43%) — not optimistic estimates that set you up to fail.',
       'why3-title':   'Your numbers stay private',
@@ -533,7 +549,14 @@ footer a{color:var(--accent);text-decoration:none;}
       'title-personal-em': 'right for you?',
       'badge': 'Free · Instant · No signup',
       'why-label': 'Why CheckAfford',
-      'nav-blog': 'Blog'
+      'nav-blog': 'Blog',
+      'tag-dti': 'Debt-to-Income',
+      'title-dti': 'How much room do you ',
+      'title-dti-em': 'have left?',
+      'desc-dti': 'List your monthly payments. See your housing ratio, total DTI and the dollars left before 36% and 43%.',
+      'cs-dti1': 'Housing guideline',
+      'cs-dti2': 'Total guideline',
+      'cs-dti3': 'Room left'
     },
     es: {
       'nav-auto':     'Préstamo Auto',
@@ -547,23 +570,23 @@ footer a{color:var(--accent);text-decoration:none;}
       'tag-auto':     'Préstamo Auto',
       'title-auto':   '¿Puedes pagar ese ',
       'desc-auto':    'Mira el costo mensual de tener el auto, no solo el pago, cómo sale en la regla 20/4/10 y cómo se comparan 48, 60 y 72 meses.',
-      'cs-dti':       'Tope DTI común', 'cs-avg-car': 'Pago nuevo prom.', 'cs-time': 'Resultado inst.',
+      'cs-dti':       'Tope DTI común', 'cs-avg-car': 'Pago nuevo prom.', 'cs-time': 'Plazos comparados',
       'tag-mortgage': 'Hipoteca',
       'title-mortgage':'¿Puedes pagar esa ',
       'desc-mortgage':'Ingresa ingresos, deudas, precio de la casa y tasa. Obtén un veredicto de accesibilidad instantáneo.',
-      'cs-rule':      'Regla 28/36', 'cs-avg-mort': 'Plazo común', 'cs-time2': 'Resultado inst.',
+      'cs-rule':      'Regla 28/36', 'cs-avg-mort': 'Plazo común', 'cs-time2': 'Aviso con menos de 20%',
       'tag-debt':     'Pago de Deuda',
       'title-debt':   '¿Qué deuda debes ',
       'desc-debt':    'Anota tus tarjetas y préstamos. Mira cuál pagar primero, tu fecha libre de deudas y el interés con avalancha vs. bola de nieve.',
-      'cs-crisis':    'Métodos comparados', 'cs-apr': 'APR común tarjeta', 'cs-time3': 'Resultado inst.',
+      'cs-crisis':    'Métodos comparados', 'cs-apr': 'APR común tarjeta', 'cs-time3': 'Deudas a la vez',
       'tag-bnpl':     'BNPL',
       'title-bnpl':   '¿Vale la pena ',
       'desc-bnpl':    'Agrega todos tus planes y mira qué quincena recibe más pagos, qué parte se va al BNPL y cuánto costaría un atraso.',
-      'cs-max-apr':   'Tope APR común', 'cs-avg-bnpl': 'Plan común', 'cs-time4': 'Resultado inst.',
-      'cs-max-personal': 'Tope APR común', 'cs-avg-personal': 'Rango común', 'cs-time5': 'Resultado inst.',
+      'cs-max-apr':   'Tope APR común', 'cs-avg-bnpl': 'Plan común', 'cs-time4': 'Planes por sueldo',
+      'cs-max-personal': 'Tope APR común', 'cs-avg-personal': 'Rango común', 'cs-time5': 'Real, con la comisión',
       'why-label':    'Por qué CheckAfford',
-      'why1-title':   'Veredicto instantáneo',
-      'why1-desc':    'Sin formularios largos, sin correo requerido. Ingresa tus números y obtén una respuesta clara en segundos.',
+      'why1-title':   'Una pregunta por calculadora',
+      'why1-desc':    'Cada herramienta responde su propia decisión: lo que cuesta de verdad un auto, qué deuda pagar primero, qué quincena golpean más tus planes BNPL.',
       'why2-title':   'Lógica real de prestamistas',
       'why2-desc':    'Usamos pautas de DTI comunes entre los prestamistas de EE. UU. (normalmente de 36% a 43%) — no estimaciones optimistas que te hacen fallar.',
       'why3-title':   'Tus números son privados',
@@ -578,7 +601,14 @@ footer a{color:var(--accent);text-decoration:none;}
       'badge': 'Gratis · Instantáneo · Sin registro',
       'tag-personal': 'Préstamo Personal',
       'desc-personal': 'Mira el dinero que recibes de verdad después de comisiones, el APR real y si el préstamo le gana a la deuda que reemplazaría.',
-      'nav-blog': 'Blog'
+      'nav-blog': 'Blog',
+      'tag-dti': 'Deuda-Ingreso',
+      'title-dti': '¿Cuánto margen ',
+      'title-dti-em': 'te queda?',
+      'desc-dti': 'Anota tus pagos mensuales. Mira tu ratio de vivienda, tu DTI total y los dólares que te quedan antes del 36% y del 43%.',
+      'cs-dti1': 'Pauta de vivienda',
+      'cs-dti2': 'Pauta total',
+      'cs-dti3': 'Margen'
     }
   };
 
