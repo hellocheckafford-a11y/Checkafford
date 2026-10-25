@@ -89,9 +89,7 @@
   .stat-value.highlight{color:var(--warn);}
   .tip-box{border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.5;display:none;margin-bottom:12px;}
   .tip-box.show{display:block;}
-  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}
-  .cta-btn{display:none;width:100%;background:var(--danger);border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;padding:14px;cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;}
-  .cta-btn.show{display:block;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
+  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
   .content-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
   .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
@@ -210,12 +208,12 @@
     <div class="calc-inner">
       <div class="input-panel">
         <p class="panel-title" id="panel-in">Your Numbers</p>
-        <div class="field"><label id="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="4000"></div></div>
-        <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="300"></div></div>
-        <div class="field"><label id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="1200"></div></div>
-        <div class="field"><label id="lbl-rate">APR (0 if interest-free)</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label id="lbl-term">Number of Installments</label><div class="input-wrap"><input aria-label="Number of installments" type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
-        <div class="field"><label id="lbl-freq" for="freq">Payment Frequency</label><div class="input-wrap"><select id="freq" aria-label="Payment frequency"><option value="26" id="opt-biweekly">Every 2 weeks</option><option value="52" id="opt-weekly">Weekly</option><option value="12" id="opt-monthly">Monthly</option></select></div></div>
+        <div class="field"><label for="income" id="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="4000"></div></div>
+        <div class="field"><label for="expenses" id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="300"></div></div>
+        <div class="field"><label for="loanAmount" id="lbl-amount">Purchase Amount (BNPL)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="loanAmount" value="1200"></div></div>
+        <div class="field"><label for="rate" id="lbl-rate">APR (0 if interest-free)</label><div class="input-wrap"><input type="number" id="rate" value="0" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label for="term" id="lbl-term">Number of Installments</label><div class="input-wrap"><input type="number" id="term" value="4" class="no-prefix has-suffix"><span class="input-suffix" id="suffix-pay">pay</span></div></div>
+        <div class="field"><label id="lbl-freq" for="freq">Payment Frequency</label><div class="input-wrap"><select id="freq"><option value="26" id="opt-biweekly">Every 2 weeks</option><option value="52" id="opt-weekly">Weekly</option><option value="12" id="opt-monthly">Monthly</option></select></div></div>
         <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Real Cost</button>
       </div>
       <div class="result-panel">
@@ -228,9 +226,9 @@
           <p id="mo-eq" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);margin:-6px 0 14px;"></p>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" id="s1-lbl">Per Installment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (pre-tax)</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (before taxes)</div><div class="stat-value" id="stat-leftover">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s4-lbl">Extra Fees</div><div class="stat-value" id="stat-interest">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
           <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
         </div>
@@ -298,7 +296,7 @@
       lInc:"Monthly Income (before taxes)", lExp:"Existing Monthly Debt Payments", lAmt:"Purchase Amount (BNPL)", lRate:"APR (0 if interest-free)", lTerm:"Number of Installments", lFreq:"Payment Frequency", oBi:"Every 2 weeks", oW:"Weekly", oM:"Monthly", moEq:"Monthly equivalent while the plan lasts:",
       suffixPay:"pay", btnCalc:"Check Real Cost", phText:"Enter your purchase details above",
       gaugeLbl:"SCORE", dtiLbl:"Debt-to-Income Impact",
-      s1:"Per Installment", s2:"Left Over (pre-tax)", s3:"Total Cost", s4:"Extra Fees",
+      s1:"Per Installment", s2:"Left Over (before taxes)", s3:"Total Cost", s4:"Total Interest",
       tipLbl:"TIP", cta:"Compare personal loan rates instead →",
       vLow:'Looks manageable based on your debt-to-income ratio. Make sure it is your only BNPL plan.',
       vMid:'Possible, but tight. One missed payment could stress your budget.',
@@ -328,7 +326,7 @@
       lInc:"Ingreso mensual (bruto, antes de impuestos)", lExp:"Pagos de Deuda Existentes", lAmt:"Monto de la Compra", lRate:"APR (0 si es gratis)", lTerm:"Número de Cuotas", lFreq:"Frecuencia de pago", oBi:"Cada 2 semanas", oW:"Semanal", oM:"Mensual", moEq:"Equivalente mensual mientras dure el plan:",
       suffixPay:"pagos", btnCalc:"Calcular Costo Real", phText:"Ingresa los detalles arriba",
       gaugeLbl:"PUNTAJE", dtiLbl:"Impacto Deuda-Ingreso",
-      s1:"Por Cuota", s2:"Te Queda (antes de impuestos)", s3:"Costo Total", s4:"Intereses/Cargos",
+      s1:"Por Cuota", s2:"Te Queda (antes de impuestos)", s3:"Costo Total", s4:"Interés total",
       tipLbl:"CONSEJO", cta:"Comparar préstamos personales →",
       vLow:'Parece manejable según tu relación deuda-ingreso. Procura que sea tu único plan BNPL.',
       vMid:'Posible, pero ajustado. Un retraso podría estresar tus finanzas.',
@@ -458,7 +456,6 @@
     document.getElementById('stat-total').textContent=fmt(tc);document.getElementById('stat-interest').textContent=fmt(ti);
     const tb=document.getElementById('tip-box');tb.classList.add('show');tb.style.background=color+'15';tb.style.borderColor=color+'40';tb.style.color=color;
     document.getElementById('tip-label').textContent=t.tipLbl;document.getElementById('tip-text').textContent=tip;
-    const cb=document.getElementById('cta-btn');if(cb){cb.classList.add('show');cb.textContent=t.cta;}
   }
 
   function fmt(n){
@@ -482,5 +479,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js" data-term-max="60" data-term-unit="payments"></script>
 </body>
 </html>

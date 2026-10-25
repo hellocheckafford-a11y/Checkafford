@@ -85,9 +85,7 @@
   .stat-value.highlight{color:var(--accent);}
   .tip-box{border-radius:12px;padding:14px 16px;font-size:13px;line-height:1.5;display:none;margin-bottom:12px;}
   .tip-box.show{display:block;}
-  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}
-  .cta-btn{display:none;width:100%;background:var(--danger);border:none;border-radius:12px;color:#fff;font-family:var(--font-display);font-size:14px;font-weight:700;padding:14px;cursor:pointer;text-align:center;text-decoration:none;transition:all 0.2s;}
-  .cta-btn.show{display:block;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
+  .tip-box strong{display:block;font-family:var(--font-mono);font-size:10px;letter-spacing:1px;margin-bottom:4px;opacity:0.7;}.cta-btn:hover{opacity:0.9;transform:translateY(-1px);}
   .content-section{position:relative;z-index:5;max-width:900px;margin:0 auto 60px;padding:0 24px;}
   .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
@@ -207,11 +205,11 @@
 
       <div class="input-panel">
         <p class="panel-title" data-i="panel-in">Your Numbers</p>
-        <div class="field"><label data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="5000"></div></div>
-        <div class="field"><label data-i="lbl-expenses">Existing Monthly Debt Payments (housing, cards, loans)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="2000"></div></div>
-        <div class="field"><label data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="20000"></div></div>
-        <div class="field"><label data-i="lbl-rate">Average APR</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <div class="field"><label for="income" data-i="lbl-income">Monthly Income (before taxes)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="5000"></div></div>
+        <div class="field"><label for="expenses" data-i="lbl-expenses">Existing Monthly Debt Payments (housing, cards, loans)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="2000"></div></div>
+        <div class="field"><label for="loanAmount" data-i="lbl-amount">Total Debt to Pay Off</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="loanAmount" value="20000"></div></div>
+        <div class="field"><label for="rate" data-i="lbl-rate">Average APR</label><div class="input-wrap"><input type="number" id="rate" value="18" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label for="term" data-i="lbl-term">Payoff Target (months)</label><div class="input-wrap"><input type="number" id="term" value="24" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
         <button class="calc-btn" onclick="calculate()" data-i="calc-btn">Check My Debt Load</button>
       </div>
 
@@ -243,7 +241,7 @@
           </div>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" data-i="s1-lbl">Monthly Payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over (pre-tax)</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-i="s2-lbl">Left Over (before taxes)</div><div class="stat-value" id="stat-leftover">–</div></div>
             <div class="stat-item"><div class="stat-label" data-i="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
             <div class="stat-item"><div class="stat-label" data-i="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
@@ -356,7 +354,7 @@
       // result labels
       'dti-lbl': 'Debt-to-Income',
       's1-lbl':  'Monthly Payment',
-      's2-lbl':  'Left Over (pre-tax)',
+      's2-lbl':  'Left Over (before taxes)',
       's3-lbl':  'Total Cost',
       's4-lbl':  'Total Interest',
       // dynamic result strings
@@ -368,7 +366,6 @@
       tipMid:      'Stay consistent. Even $50 extra per month can save hundreds in interest. Avoid new credit card charges.',
       tipHigh:     "Your DTI exceeds 43%. Speak to a nonprofit credit counselor (NFCC) — it's free and can help you build a realistic plan.",
       tipLabel:    'TIP',
-      cta:         'Explore debt consolidation options →',
       // content cards
       'c1-title': 'Avalanche vs. Snowball method',
       'c1-p1':    'The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.',
@@ -443,7 +440,6 @@
       tipMid:      'Mantén la consistencia. Incluso $50 extra por mes puede ahorrarte cientos en intereses. Evita nuevos cargos en tarjetas.',
       tipHigh:     'Tu DTI supera el 43%. Habla con un asesor de crédito sin fines de lucro (NFCC) — es gratis y puede ayudarte a construir un plan realista.',
       tipLabel:    'CONSEJO',
-      cta:         'Explorar opciones de consolidación de deudas →',
       // content cards
       'c1-title': 'Método Avalancha vs. Bola de Nieve',
       'c1-p1':    'El método avalancha paga primero la deuda con mayor interés — ahorra más dinero matemáticamente. El método bola de nieve paga primero los saldos más pequeños — genera impulso psicológico.',
@@ -574,9 +570,6 @@
     tb.style.color       = color;
     document.getElementById('tip-label').textContent = t.tipLabel;
     document.getElementById('tip-text').textContent  = tip;
-
-    const cb = document.getElementById('cta-btn');
-    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {
@@ -601,5 +594,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js"></script>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Can I Afford a Mortgage? — Free Home Affordability Calculator | CheckAfford</title>
-<meta name="description" content="Find out instantly if you can afford a mortgage payment. Enter your income and debts. Get a clear yes or no in 5 seconds. Free, no signup required.">
+<meta name="description" content="Check a home price against your income: enter price, down payment, rate and debts to see your housing ratio and total DTI next to the 28/36 guideline. Free, no signup.">
 <meta name="keywords" content="can I afford a mortgage, home affordability calculator, how much house can I afford, mortgage DTI calculator">
 <link rel="canonical" href="https://checkafford.com/mortgage">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
@@ -84,6 +84,8 @@
   .verdict-text { font-family: var(--font-display); font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--muted); }
   .verdict-text.active { color: var(--text); }
   .dti-bar-wrap { margin-bottom: 16px; }
+  .loan-line { font-size: 12px; color: var(--muted); text-align: center; margin: 0 0 14px; }
+  .field-note { font-size: 12px; color: var(--muted); margin: 6px 0 0; line-height: 1.4; }
   .dti-bar-header { display: flex; justify-content: space-between; margin-bottom: 8px; }
   .dti-bar-label { font-size: 11px; color: var(--muted); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.5px; }
   .dti-pct { font-family: var(--font-display); font-size: 13px; font-weight: 700; }
@@ -97,9 +99,6 @@
   .tip-box { background: var(--accent-dim); border: 1px solid rgba(0,229,160,0.2); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: var(--accent); line-height: 1.5; display: none; margin-bottom: 12px; }
   .tip-box.show { display: block; }
   .tip-box strong { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
-  .cta-btn { display: none; width: 100%; background: var(--danger); border: none; border-radius: 12px; color: #fff; font-family: var(--font-display); font-size: 14px; font-weight: 700; padding: 14px; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
-  .cta-btn.show { display: block; }
-  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
   .content-section { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
   .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
@@ -212,12 +211,13 @@
     <div class="calc-inner">
       <div class="input-panel">
         <p class="panel-title" id="panel-in">Your Numbers</p>
-        <div class="field"><label id="lbl-income">Monthly Income (gross)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="8000"></div></div>
-        <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="1200"></div></div>
-        <div class="field"><label id="lbl-amount">Mortgage Amount</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="350000"></div></div>
-        <div class="field"><label id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
-        <div class="field"><label id="lbl-housing">Taxes, Insurance, HOA &amp; PMI (monthly, optional)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly property tax, insurance, HOA and mortgage insurance in dollars" type="number" id="housing" value="" placeholder="e.g. 600" min="0"></div><p id="hint-housing" style="font-size:12px;line-height:1.45;color:var(--muted,#8a94a6);margin:6px 0 0;">Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.</p></div>
+        <div class="field"><label for="income" id="lbl-income">Monthly Income (gross)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="8000"></div></div>
+        <div class="field"><label for="expenses" id="lbl-expenses">Other Monthly Debt Payments (car, cards, loans — not rent)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="1200"></div></div>
+        <div class="field"><label for="price" id="lbl-price">Home Price</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="price" value="400000" min="0"></div></div>
+        <div class="field"><label for="down" id="lbl-down">Down Payment</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="down" value="80000" min="0"></div><p class="field-note" id="down-note"></p></div>
+        <div class="field"><label for="rate" id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label for="term" id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <div class="field"><label for="housing" id="lbl-housing">Taxes, Insurance, HOA &amp; PMI (monthly, optional)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="housing" value="" placeholder="e.g. 600" min="0"></div><p id="hint-housing" style="font-size:12px;line-height:1.45;color:var(--muted,#8a94a6);margin:6px 0 0;">Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.</p></div>
         <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Affordability</button>
       </div>
       <div class="result-panel">
@@ -226,11 +226,13 @@
         <div id="results-content" style="display:none;">
           <div class="gauge-wrap"><svg class="gauge-svg" viewBox="0 0 200 110"><path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/><path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/><text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text><text class="gauge-label-svg" id="gauge-lbl" x="100" y="100" text-anchor="middle">SCORE</text></svg></div>
           <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p><div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
-          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Debt-to-Income</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
+          <p class="loan-line" id="loan-line"></p>
+          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="front-lbl">Housing ratio (guideline 28%)</span><span class="dti-pct" id="front-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="front-fill"></div></div></div>
+          <div class="dti-bar-wrap"><div class="dti-bar-header"><span class="dti-bar-label" id="dti-lbl">Total DTI (guideline 36%, many lenders cap near 43%)</span><span class="dti-pct" id="dti-pct">–</span></div><div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div></div>
           <div class="stats-grid">
             <div class="stat-item"><div class="stat-label" id="s1-lbl">Principal &amp; Interest</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over</div><div class="stat-value" id="stat-leftover">–</div></div>
-            <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Cost</div><div class="stat-value" id="stat-total">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s2-lbl">Left Over (before taxes)</div><div class="stat-value" id="stat-leftover">–</div></div>
+            <div class="stat-item"><div class="stat-label" id="s3-lbl">Total Paid (incl. taxes &amp; insurance)</div><div class="stat-value" id="stat-total">–</div></div>
             <div class="stat-item"><div class="stat-label" id="s4-lbl">Total Interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
           <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
@@ -242,7 +244,7 @@
 <section class="content-section">
   <div class="content-grid">
     <div class="content-card"><h3 id="c1-title">The 28/36 Rule explained</h3><p id="c1-p1">Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost (mortgage + insurance + taxes) should not exceed 28% of your gross monthly income.</p><p id="c1-p2">Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.</p></div>
-    <div class="content-card"><h3 id="c2-title">What really drives your mortgage payment</h3><p id="c2-p1">Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term has lower monthly payments but you pay nearly double the home's price in total interest.</p><p id="c2-p2">A 15-year mortgage cuts total interest roughly in half — but monthly payments are 40-50% higher. Use the calculator to find the right balance for your income.</p></div>
+    <div class="content-card"><h3 id="c2-title">What really drives your mortgage payment</h3><p id="c2-p1">Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term lowers the monthly payment, but at about 7% the total interest comes to roughly 1.4 times the amount you borrow.</p><p id="c2-p2">At rates between 6% and 7%, a 15-year mortgage cuts total interest by more than half, but the monthly payment is roughly 35–45% higher. Use the calculator to find the right balance for your income.</p></div>
   </div>
 </section>
 <section class="faq-section">
@@ -282,8 +284,32 @@
 </footer><script>
   let lang = 'en', lastResult = null;
   const T = {
-    en: { verdictLow: 'Based on your debt-to-income ratio, this mortgage looks manageable. Also check taxes, insurance, maintenance and savings.', verdictMid: 'Possible, but tight. You will have little financial flexibility.', verdictHigh: 'High risk. This payment is high for your income and could strain your budget.', tipLow: 'Strong position. Consider a 15-year term to save significantly on total interest.', tipMid: 'Manageable, but look for ways to increase your down payment or reduce the loan amount.', tipHigh: 'Your housing cost exceeds the 28% threshold. Consider a less expensive home or a larger down payment.', tipLabel: 'TIP', cta: 'Compare mortgage rates →', scoreLabel: 'SCORE' },
-    es: { verdictLow: 'Según tu relación deuda-ingreso, esta hipoteca parece manejable. Revisa también impuestos, seguro, mantenimiento y ahorro.', verdictMid: 'Posible, pero ajustado. Tendrás poca flexibilidad financiera.', verdictHigh: 'Riesgo alto. Este pago es alto para tu ingreso y podría presionar tu presupuesto.', tipLow: 'Posición sólida. Considera un plazo de 15 años para ahorrar en interés total.', tipMid: 'Manejable, pero busca formas de aumentar tu pago inicial o reducir el monto del préstamo.', tipHigh: 'Tu costo de vivienda supera el umbral del 28%. Considera una propiedad menos costosa.', tipLabel: 'CONSEJO', cta: 'Comparar tasas de hipoteca →', scoreLabel: 'PUNTAJE' }
+    en: {
+      vOk: 'Within the 28/36 guideline: housing is at or under 28% of gross income and total debt at or under 36%. Also check maintenance, closing costs and savings.',
+      vFront: 'Total debt is within range, but housing alone takes more than 28% of your gross income. Many lenders would still approve this, but it leaves less room for savings and repairs.',
+      vMid: 'Tight. Your total debt is above the 36% guideline but within the roughly 43% many lenders accept.',
+      vHigh: 'High risk. Total debt is above 43% of your gross income, a level many lenders decline and that could strain your budget.',
+      tOk: 'To lower total interest, compare a 15-year term or a larger down payment in the calculator.',
+      tFront: 'A lower price, a larger down payment or a lower rate brings housing back under 28%.',
+      tDebt: 'Paying down other debts lowers your total DTI faster than a cheaper house.',
+      tHigh: 'Try a lower price or larger down payment, or pay down other debts before applying.',
+      pmi: 'Less than 20% down: a conventional loan will usually add PMI. Include it in the monthly costs field.',
+      loan: (amt, pct) => 'Loan amount ' + amt + ' · ' + pct + '% down',
+      tipLabel: 'TIP', scoreLabel: 'SCORE'
+    },
+    es: {
+      vOk: 'Dentro de la pauta 28/36: la vivienda está en o por debajo del 28% del ingreso bruto y la deuda total en o por debajo del 36%. Revisa también mantenimiento, costos de cierre y ahorro.',
+      vFront: 'La deuda total está en rango, pero solo la vivienda se lleva más del 28% de tu ingreso bruto. Muchos prestamistas lo aprobarían igual, pero te deja menos margen para ahorro y reparaciones.',
+      vMid: 'Ajustado. Tu deuda total supera la pauta del 36%, pero está dentro del 43% aproximado que aceptan muchos prestamistas.',
+      vHigh: 'Riesgo alto. La deuda total supera el 43% de tu ingreso bruto, un nivel que muchos prestamistas rechazan y que podría presionar tu presupuesto.',
+      tOk: 'Para pagar menos interés total, compara un plazo de 15 años o un enganche mayor en la calculadora.',
+      tFront: 'Un precio menor, un enganche mayor o una tasa más baja devuelven la vivienda por debajo del 28%.',
+      tDebt: 'Pagar otras deudas baja tu DTI total más rápido que una casa más barata.',
+      tHigh: 'Prueba un precio menor o un enganche mayor, o paga otras deudas antes de solicitar.',
+      pmi: 'Menos de 20% de enganche: un préstamo convencional normalmente añade PMI. Inclúyelo en el campo de costos mensuales.',
+      loan: (amt, pct) => 'Monto del préstamo ' + amt + ' · ' + pct + '% de enganche',
+      tipLabel: 'CONSEJO', scoreLabel: 'PUNTAJE'
+    }
   };
   const translations = {
     'bc-label': { en: 'Mortgage Calculator', es: 'Calculadora de Hipoteca' },
@@ -299,20 +325,22 @@
     'stat4-lbl': { en: 'Ideal down payment to avoid PMI', es: 'Pago inicial ideal para evitar el PMI' },
     'panel-in': { en: 'Your Numbers', es: 'Tus Datos' },
     'lbl-income': { en: 'Monthly Income (gross)', es: 'Ingreso mensual (bruto)' },
-    'lbl-expenses': { en: 'Existing Monthly Debt Payments', es: 'Deudas mensuales existentes' },
-    'lbl-amount': { en: 'Mortgage Amount', es: 'Monto de la hipoteca' },
+    'lbl-expenses': { en: 'Other Monthly Debt Payments (car, cards, loans — not rent)', es: 'Otras deudas mensuales (auto, tarjetas, préstamos — no la renta)' },
+    'lbl-price': { en: 'Home Price', es: 'Precio de la vivienda' },
+    'lbl-down': { en: 'Down Payment', es: 'Enganche' },
+    'front-lbl': { en: 'Housing ratio (guideline 28%)', es: 'Ratio de vivienda (pauta 28%)' },
     'lbl-rate': { en: 'Annual Interest Rate', es: 'Tasa de interés anual' },
-    'score-note': { en: "This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.", es: "Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito." },
+    'score-note': { en: "This 0–100 score is CheckAfford's own scale based on your total debt-to-income ratio. It is not a credit score.", es: "Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso total. No es un puntaje de crédito." },
     'lbl-term': { en: 'Loan Term (months)', es: 'Plazo del préstamo (meses)' },
     'lbl-housing': { en: 'Taxes, Insurance, HOA &amp; PMI (monthly, optional)', es: 'Impuestos, seguro, HOA y PMI (mensual, opcional)' },
     'hint-housing': { en: 'Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.', es: 'Incluye el seguro hipotecario si tu préstamo lo exige: PMI en préstamos convencionales con menos de 20% de enganche, o el MIP mensual en préstamos FHA. Los prestamistas cuentan estos costos en tu DTI.' },
     'calc-btn': { en: 'Check Affordability', es: 'Verificar capacidad de pago' },
     'panel-out': { en: 'Your Verdict', es: 'Tu Veredicto' },
     'ph-text': { en: 'Enter your numbers above', es: 'Ingresa tus datos arriba' },
-    'dti-lbl': { en: 'Debt-to-Income', es: 'Deuda-Ingreso' },
+    'dti-lbl': { en: 'Total DTI (guideline 36%, many lenders cap near 43%)', es: 'DTI total (pauta 36%, muchos prestamistas ponen el tope cerca de 43%)' },
     's1-lbl': { en: 'Principal &amp; Interest', es: 'Capital e intereses' },
-    's2-lbl': { en: 'Left Over', es: 'Sobrante' },
-    's3-lbl': { en: 'Total Cost', es: 'Costo total' },
+    's2-lbl': { en: 'Left Over (before taxes)', es: 'Sobrante (antes de impuestos)' },
+    's3-lbl': { en: 'Total Paid (incl. taxes &amp; insurance)', es: 'Total pagado (con impuestos y seguro)' },
     's4-lbl': { en: 'Total Interest', es: 'Interés total' },
     'faq-label': { en: 'Common questions', es: 'Preguntas frecuentes' },
     'faq1-q': { en: 'How much house can I afford on a $80,000 salary?', es: '¿Cuánta casa puedo pagar con un salario de $80,000?' },
@@ -325,8 +353,8 @@
     'c1-p1': { en: 'Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost should not exceed 28% of your gross monthly income.', es: 'Los bancos usan esta regla para decidir si puedes pagar una hipoteca. Tu costo mensual de vivienda no debe superar el 28% de tu ingreso mensual bruto.' },
     'c1-p2': { en: 'Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.', es: 'Tu deuda mensual total — vivienda más pagos de auto, tarjetas, préstamos estudiantiles — no debe superar el 36%.' },
     'c2-title': { en: 'What really drives your mortgage payment', es: 'Qué realmente determina tu pago de hipoteca' },
-    'c2-p1': { en: 'Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term has lower monthly payments but you pay nearly double the home\'s price in total interest.', es: 'Tres factores mueven tu pago más que nada: el monto del préstamo, la tasa de interés y el plazo. Un plazo de 30 años tiene pagos mensuales más bajos pero pagas casi el doble del precio de la casa en interés total.' },
-    'c2-p2': { en: 'A 15-year mortgage cuts total interest roughly in half — but monthly payments are 40-50% higher. Use the calculator to find the right balance for your income.', es: 'Una hipoteca a 15 años reduce el interés total a la mitad — pero los pagos mensuales son 40-50% más altos.' }
+    'c2-p1': { en: 'Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term lowers the monthly payment, but at about 7% the total interest comes to roughly 1.4 times the amount you borrow.', es: 'Tres factores mueven tu pago más que nada: el monto del préstamo, la tasa de interés y el plazo. Un plazo de 30 años baja el pago mensual, pero con una tasa cercana al 7% el interés total llega a cerca de 1.4 veces lo que pides prestado.' },
+    'c2-p2': { en: 'At rates between 6% and 7%, a 15-year mortgage cuts total interest by more than half, but the monthly payment is roughly 35–45% higher. Use the calculator to find the right balance for your income.', es: 'Con tasas de entre 6% y 7%, una hipoteca a 15 años reduce el interés total a menos de la mitad, pero el pago mensual es entre 35% y 45% más alto. Usa la calculadora para encontrar el equilibrio adecuado para tu ingreso.' }
   };
   function setLang(l) {
     lang = l;
@@ -340,40 +368,54 @@
     if (lastResult) renderResults(lastResult);
   }
   function calculate() {
-    const income = parseFloat(document.getElementById('income').value) || 0;
-    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
-    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
-    const termMonths = parseFloat(document.getElementById('term').value) || 1;
-    const housing = parseFloat(document.getElementById('housing').value) || 0; // property tax + insurance + HOA: US lenders count these in DTI
-    let mp; const r = annualRate / 100 / 12;
-    mp = annualRate === 0 ? loanAmount / termMonths : loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
-    const tc = mp * termMonths, ti = tc - loanAmount, dti = income > 0 ? ((expenses + mp + housing) / income) * 100 : 100, lo = income - expenses - mp - housing;
-    let score = dti <= 20 ? 95 : dti <= 35 ? Math.round(95-(dti-20)*2.5) : dti <= 43 ? Math.round(57-(dti-35)*4) : Math.max(0, Math.round(25-(dti-43)*1.5));
-    lastResult = { mp, tc, ti, dti, lo, score };
+    const num = id => parseFloat(document.getElementById(id).value) || 0;
+    const income = num('income'), expenses = num('expenses'), price = num('price'), down = num('down');
+    const annualRate = num('rate'), n = num('term'), extras = num('housing');
+    const loan = price - down;
+    const r = annualRate / 100 / 12;
+    const pi = annualRate === 0 ? loan / n : loan * r / (1 - Math.pow(1 + r, -n));
+    const housing = pi + extras;                      // monthly housing payment lenders count (PITI + HOA + PMI)
+    const front = housing / income * 100;             // housing ratio, 28% guideline
+    const back = (housing + expenses) / income * 100; // total DTI, 36% guideline / ~43% common cap
+    const totalPaid = housing * n, interest = pi * n - loan, leftover = income - expenses - housing;
+    const downPct = price > 0 ? down / price * 100 : 0;
+    const score = back <= 20 ? 95 : back <= 35 ? Math.round(95-(back-20)*2.5) : back <= 43 ? Math.round(57-(back-35)*4) : Math.max(0, Math.round(25-(back-43)*1.5));
+    lastResult = { loan, pi, housing, front, back, totalPaid, interest, leftover, downPct, extras, score };
     renderResults(lastResult);
   }
+  function verdictFor(front, back) {
+    if (back > 43) return { key: 'High', tip: 'tHigh', color: '#ff4d6d', icon: '🚨' };
+    if (back > 36) return { key: 'Mid', tip: front > 28 ? 'tFront' : 'tDebt', color: '#f5c842', icon: '⚠️' };
+    if (front > 28) return { key: 'Front', tip: 'tFront', color: '#f5c842', icon: '⚠️' };
+    return { key: 'Ok', tip: 'tOk', color: '#00e5a0', icon: '✅' };
+  }
+  function bar(prefix, pct, limit) {
+    const c = pct <= limit ? '#00e5a0' : '#ff4d6d';
+    const fill = document.getElementById(prefix + '-fill'), lbl = document.getElementById(prefix + '-pct');
+    fill.style.width = Math.min(pct, 100) + '%'; fill.style.background = c;
+    lbl.textContent = pct.toFixed(1) + '%'; lbl.style.color = c;
+  }
   function renderResults(r) {
-    const t = T[lang]; const { mp, tc, ti, dti, lo, score } = r;
-    let vt, icon, tip, color;
-    if (dti <= 35) { vt=t.verdictLow; icon='✅'; tip=t.tipLow; color='#00e5a0'; }
-    else if (dti <= 43) { vt=t.verdictMid; icon='⚠️'; tip=t.tipMid; color='#f5c842'; }
-    else { vt=t.verdictHigh; icon='🚨'; tip=t.tipHigh; color='#ff4d6d'; }
+    const t = T[lang];
+    const v = verdictFor(r.front, r.back);
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('results-content').style.display = 'block';
-    const gf = document.getElementById('gauge-fill'); gf.style.strokeDashoffset = 251-(score/100)*251; gf.style.stroke = color;
-    document.getElementById('gauge-score').textContent = score;
-    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color+'55'; vb.style.background = color+'10';
-    document.getElementById('verdict-icon').textContent = icon;
-    const vtEl = document.getElementById('verdict-text'); vtEl.textContent = vt; vtEl.classList.add('active'); vtEl.style.color = color;
-    document.getElementById('dti-fill').style.width = Math.min(dti,100)+'%'; document.getElementById('dti-fill').style.background = color;
-    document.getElementById('dti-pct').textContent = dti.toFixed(1)+'%'; document.getElementById('dti-pct').style.color = color;
-    document.getElementById('stat-monthly').textContent = fmt(mp);
-    document.getElementById('stat-leftover').textContent = fmt(lo); document.getElementById('stat-leftover').style.color = lo>=0?'#00e5a0':'#ff4d6d';
-    document.getElementById('stat-total').textContent = fmt(tc); document.getElementById('stat-interest').textContent = fmt(ti);
-    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background=color+'15'; tb.style.borderColor=color+'40'; tb.style.color=color;
-    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
-    const cb = document.getElementById('cta-btn'); if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
+    const gf = document.getElementById('gauge-fill'); gf.style.strokeDashoffset = 251-(r.score/100)*251; gf.style.stroke = v.color;
+    document.getElementById('gauge-score').textContent = r.score;
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = v.color+'55'; vb.style.background = v.color+'10';
+    document.getElementById('verdict-icon').textContent = v.icon;
+    const vtEl = document.getElementById('verdict-text'); vtEl.textContent = t['v' + v.key]; vtEl.classList.add('active'); vtEl.style.color = v.color;
+    document.getElementById('loan-line').textContent = t.loan(fmt(r.loan), r.downPct.toFixed(1));
+    bar('front', r.front, 28);
+    bar('dti', r.back, 36);
+    if (r.back > 43) { document.getElementById('dti-fill').style.background = '#ff4d6d'; }
+    else if (r.back > 36) { document.getElementById('dti-fill').style.background = '#f5c842'; document.getElementById('dti-pct').style.color = '#f5c842'; }
+    document.getElementById('stat-monthly').textContent = fmt(r.pi);
+    document.getElementById('stat-leftover').textContent = fmt(r.leftover); document.getElementById('stat-leftover').style.color = r.leftover>=0?'#00e5a0':'#ff4d6d';
+    document.getElementById('stat-total').textContent = fmt(r.totalPaid); document.getElementById('stat-interest').textContent = fmt(r.interest);
+    document.getElementById('down-note').textContent = (r.downPct < 20 && r.extras === 0) ? t.pmi : '';
+    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background=v.color+'15'; tb.style.borderColor=v.color+'40'; tb.style.color=v.color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = t[v.tip];
   }
   function fmt(n) { const a=Math.abs(n), f='$'+a.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); return n<0?'-'+f:f; }
   document.addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
@@ -392,5 +434,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js"></script>
 </body>
 </html>
