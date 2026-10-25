@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Can I Afford a Car Payment? — Free Auto Loan Calculator | CheckAfford</title>
-<meta name="description" content="Enter your income and current debts. Get an instant yes/no on whether you can afford that car payment. Free, no signup, results in 5 seconds.">
+<meta name="description" content="See what a car really costs each month: payment, insurance, fuel and maintenance, the 20/4/10 rule checked part by part, and 48 vs. 60 vs. 72 months side by side. Free, no signup.">
 <meta name="keywords" content="can I afford a car payment, auto loan affordability calculator, car payment calculator, debt to income ratio car loan">
 <link rel="canonical" href="https://checkafford.com/car-loan">
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986"crossorigin="anonymous"></script>
@@ -553,6 +553,28 @@
 .rel-guides a{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;font-weight:500;line-height:1.4;transition:border-color .2s;}
 .rel-guides a:hover{border-color:var(--accent);}
 .rel-guides .arr{color:var(--accent);flex-shrink:0;}
+
+  .group-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent);margin:18px 0 10px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+  .field-row.three{grid-template-columns:1fr 1fr 1fr;}
+  .field-row .field{margin-bottom:14px;}
+  .field-hint{font-size:11px;color:var(--muted);margin:-6px 0 14px;line-height:1.4;}
+  .field .field-hint{margin:6px 0 0;}
+  .check-field label{display:flex;gap:8px;align-items:center;font-size:12px;color:var(--muted);cursor:pointer;}
+  .check-field input{width:auto;accent-color:var(--accent);}
+  .mini-line{font-size:12px;color:var(--muted);margin:0 0 14px;line-height:1.5;}
+  .sub-title{font-family:var(--font-mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--muted);margin:4px 0 8px;}
+  .rule-list{list-style:none;margin:0 0 10px;padding:0;display:grid;gap:6px;}
+  .rule-list li{font-size:13px;line-height:1.4;display:flex;gap:8px;}
+  .rule-list .ok{color:#00e5a0;} .rule-list .no{color:#ff6b81;}
+  .term-table{width:100%;border-collapse:collapse;font-size:12px;margin:0 0 16px;}
+  .term-table th,.term-table td{padding:7px 5px;border-bottom:1px solid var(--border);text-align:left;}
+  .term-table th{font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.4px;}
+  .term-table td{font-family:var(--font-mono);white-space:nowrap;}
+  .term-table tr.cur td{color:var(--accent);}
+  .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+  .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
+  @media(max-width:640px){.field-row.three{grid-template-columns:1fr 1fr;}}
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -610,7 +632,7 @@
   <div class="hero-left">
     <div class="page-badge" data-en="Auto Loan Calculator" data-es="Calculadora de Préstamo Auto">Auto Loan Calculator</div>
     <h1 data-en="Can you afford that <em>car payment?</em>" data-es="¿Puedes pagar ese <em>préstamo de auto?</em>">Can you afford that <em>car payment?</em></h1>
-    <p class="page-sub" data-en="Enter your income, existing debts, and the loan details. Get an instant verdict — no guesswork, no jargon." data-es="Ingresa tu ingreso, deudas existentes y los detalles del préstamo. Obtén un veredicto instantáneo — sin tecnicismos.">Enter your income, existing debts, and the loan details. Get an instant verdict — no guesswork, no jargon.</p>
+    <p class="page-sub" data-en="Enter the price, the loan and what the car costs to run. See the monthly cost of owning it, how it scores on the 20/4/10 rule, and how 48, 60 and 72 months compare." data-es="Ingresa el precio, el préstamo y lo que cuesta usar el auto. Mira el costo mensual de tenerlo, cómo sale en la regla 20/4/10 y cómo se comparan 48, 60 y 72 meses.">Enter the price, the loan and what the car costs to run. See the monthly cost of owning it, how it scores on the 20/4/10 rule, and how 48, 60 and 72 months compare.</p>
     <div class="quick-facts">
       <div class="fact-item">
         <span class="fact-icon">→</span>
@@ -653,42 +675,75 @@
       <!-- INPUT -->
       <div class="input-panel">
         <p class="panel-title" data-en="Your Numbers" data-es="Tus Datos">Your Numbers</p>
+        <p class="group-title" data-en="The car" data-es="El auto">The car</p>
         <div class="field">
-          <label for="income" data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
-          <div class="input-wrap">
-            <span class="input-prefix" aria-hidden="true">$</span>
-            <input type="number" id="income" value="5000" placeholder="5000">
-          </div>
+          <label for="price" data-en="Vehicle price" data-es="Precio del vehículo">Vehicle price</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="price" value="32000" inputmode="decimal" data-min="1" data-max="1000000" data-required data-msg="positive"></div>
+        </div>
+        <div class="field-row">
+        <div class="field">
+          <label for="down" data-en="Down payment (cash)" data-es="Enganche (efectivo)">Down payment (cash)</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="down" value="4000" inputmode="decimal" data-min="0" data-max="1000000"></div>
         </div>
         <div class="field">
-          <label for="expenses" data-en="Existing Monthly Debt Payments" data-es="Deudas mensuales existentes">Existing Monthly Debt Payments</label>
-          <div class="input-wrap">
-            <span class="input-prefix" aria-hidden="true">$</span>
-            <input type="number" id="expenses" value="600" placeholder="600">
-          </div>
+          <label for="tradein" data-en="Trade-in value" data-es="Valor del auto que entregas">Trade-in value</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="tradein" value="0" inputmode="decimal" data-min="0" data-max="1000000"></div>
+        </div>
+        </div>
+        <div class="field-row">
+        <div class="field">
+          <label for="owed" data-en="Still owed on trade-in" data-es="Lo que aún debes de ese auto">Still owed on trade-in</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="owed" value="0" inputmode="decimal" data-min="0" data-max="1000000"></div>
         </div>
         <div class="field">
-          <label for="loanAmount" data-en="Car Loan Amount" data-es="Monto del préstamo de auto">Car Loan Amount</label>
-          <div class="input-wrap">
-            <span class="input-prefix" aria-hidden="true">$</span>
-            <input type="number" id="loanAmount" value="25000" placeholder="25000">
-          </div>
+          <label for="tax" data-en="Sales tax rate" data-es="Impuesto de venta">Sales tax rate</label>
+          <div class="input-wrap"><input type="number" id="tax" value="7" inputmode="decimal" class="no-prefix has-suffix" step="0.01" data-min="0" data-max="20" data-msg="tax"><span class="input-suffix" aria-hidden="true">%</span></div>
+        </div>
         </div>
         <div class="field">
-          <label for="rate" data-en="APR (annual percentage rate)" data-es="APR (tasa anual)">APR (annual percentage rate)</label>
-          <div class="input-wrap">
-            <input type="number" id="rate" value="5.9" class="no-prefix has-suffix" step="0.1">
-            <span class="input-suffix" aria-hidden="true">%</span>
-          </div>
+          <label for="fees" data-en="Title, registration and dealer fees" data-es="Título, registro y cargos del concesionario">Title, registration and dealer fees</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="fees" value="600" inputmode="decimal" data-min="0" data-max="100000"></div>
+        </div>
+        <div class="field check-field"><label><input type="checkbox" id="financeExtras" checked> <span data-en="Include tax and fees in the loan" data-es="Incluir impuesto y cargos en el préstamo">Include tax and fees in the loan</span></label></div>
+        <p class="group-title" data-en="The loan" data-es="El préstamo">The loan</p>
+        <div class="field-row">
+        <div class="field">
+          <label for="rate" data-en="APR" data-es="APR">APR</label>
+          <div class="input-wrap"><input type="number" id="rate" value="7.5" inputmode="decimal" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div>
         </div>
         <div class="field">
-          <label for="term" data-en="Loan Term (months)" data-es="Plazo del préstamo (meses)">Loan Term (months)</label>
-          <div class="input-wrap">
-            <input type="number" id="term" value="60" class="no-prefix has-suffix">
-            <span class="input-suffix" aria-hidden="true">mo</span>
-          </div>
+          <label for="term" data-en="Loan term" data-es="Plazo">Loan term</label>
+          <div class="input-wrap"><input type="number" id="term" value="72" inputmode="decimal" class="no-prefix has-suffix" ><span class="input-suffix" aria-hidden="true">mo</span></div>
         </div>
-        <button class="calc-btn" onclick="calculate()" data-en="Check Affordability" data-es="Verificar capacidad de pago">Check Affordability</button>
+        </div>
+        <p class="group-title" data-en="Running costs (monthly)" data-es="Costos de uso (mensuales)">Running costs (monthly)</p>
+        <div class="field-row three">
+        <div class="field">
+          <label for="insurance" data-en="Insurance" data-es="Seguro">Insurance</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="insurance" value="170" inputmode="decimal" data-min="0"></div>
+        </div>
+        <div class="field">
+          <label for="fuel" data-en="Fuel" data-es="Gasolina">Fuel</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="fuel" value="160" inputmode="decimal" data-min="0"></div>
+        </div>
+        <div class="field">
+          <label for="maint" data-en="Maintenance" data-es="Mantenimiento">Maintenance</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="maint" value="90" inputmode="decimal" data-min="0"></div>
+        </div>
+        </div>
+        <p class="field-hint" data-en="Example values. Use your own quote and driving." data-es="Valores de ejemplo. Usa tu cotización y tu manejo.">Example values. Use your own quote and driving.</p>
+        <p class="group-title" data-en="Your income" data-es="Tu ingreso">Your income</p>
+        <div class="field-row">
+        <div class="field">
+          <label for="income" data-en="Monthly income (before taxes)" data-es="Ingreso mensual (antes de impuestos)">Monthly income (before taxes)</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="6000" inputmode="decimal" ></div>
+        </div>
+        <div class="field">
+          <label for="expenses" data-en="Other monthly debt payments" data-es="Otros pagos de deudas al mes">Other monthly debt payments</label>
+          <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="400" inputmode="decimal" ></div>
+        </div>
+        </div>
+        <button class="calc-btn" onclick="calculate()" data-en="Check the Full Cost" data-es="Ver el costo completo">Check the Full Cost</button>
       </div>
 
       <!-- RESULT -->
@@ -699,48 +754,24 @@
           <p data-en="Enter your numbers above" data-es="Ingresa tus datos arriba">Enter your numbers above</p>
         </div>
         <div id="results-content" style="display:none;">
-          <div class="gauge-wrap">
-            <svg class="gauge-svg" viewBox="0 0 200 110">
-              <path class="gauge-track" d="M 20 100 A 80 80 0 0 1 180 100"/>
-              <path class="gauge-fill" id="gauge-fill" d="M 20 100 A 80 80 0 0 1 180 100"/>
-              <text class="gauge-score" id="gauge-score" x="100" y="82" text-anchor="middle">0</text>
-              <text class="gauge-label-svg" x="100" y="100" text-anchor="middle" data-en="SCORE" data-es="PUNTAJE">SCORE</text>
-            </svg>
-          </div>
-          <p class="score-note" id="score-note" style="font-size:12px;line-height:1.45;color:var(--muted,#8f8fa8);text-align:center;margin:-10px 0 14px;" data-en="This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score." data-es="Este puntaje de 0 a 100 es la escala propia de CheckAfford, basada en tu relación deuda-ingreso. No es un puntaje de crédito.">This 0–100 score is CheckAfford's own scale based on your debt-to-income ratio. It is not a credit score.</p>
-          <div class="verdict-box" id="verdict-box">
-            <span class="verdict-icon" id="verdict-icon">💭</span>
-            <span class="verdict-text" id="verdict-text">–</span>
-          </div>
-          <div class="dti-bar-wrap">
-            <div class="dti-bar-header">
-              <span class="dti-bar-label" data-en="Debt-to-Income" data-es="Deuda-Ingreso">Debt-to-Income</span>
-              <span class="dti-pct" id="dti-pct">–</span>
-            </div>
-            <div class="dti-track"><div class="dti-fill" id="dti-fill"></div></div>
-          </div>
+          <div class="verdict-box" id="verdict-box"><span class="verdict-icon" id="verdict-icon">💭</span><span class="verdict-text" id="verdict-text">–</span></div>
           <div class="stats-grid">
-            <div class="stat-item">
-              <div class="stat-label" data-en="Monthly Payment" data-es="Pago mensual">Monthly Payment</div>
-              <div class="stat-value highlight" id="stat-monthly">–</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label" data-en="Left Over (before taxes)" data-es="Sobrante (antes de impuestos)">Left Over (before taxes)</div>
-              <div class="stat-value" id="stat-leftover">–</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label" data-en="Total Cost" data-es="Costo total">Total Cost</div>
-              <div class="stat-value" id="stat-total">–</div>
-            </div>
-            <div class="stat-item">
-              <div class="stat-label" data-en="Total Interest" data-es="Interés total">Total Interest</div>
-              <div class="stat-value" id="stat-interest">–</div>
-            </div>
+            <div class="stat-item"><div class="stat-label" data-en="Monthly payment" data-es="Pago mensual">Monthly payment</div><div class="stat-value highlight" id="stat-monthly">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Monthly cost to own" data-es="Costo mensual de tenerlo">Monthly cost to own</div><div class="stat-value" id="stat-own">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Amount financed" data-es="Monto financiado">Amount financed</div><div class="stat-value" id="stat-financed">–</div></div>
+            <div class="stat-item"><div class="stat-label" data-en="Total interest" data-es="Interés total">Total interest</div><div class="stat-value" id="stat-interest">–</div></div>
           </div>
-          <div class="tip-box" id="tip-box">
-            <strong id="tip-label">TIP</strong>
-            <span id="tip-text">–</span>
-          </div>
+          <p class="mini-line" id="cash-line"></p>
+          <p class="sub-title" data-en="The 20/4/10 rule" data-es="La regla 20/4/10">The 20/4/10 rule</p>
+          <ul class="rule-list" id="rule-list"></ul>
+          <p class="mini-line" id="dti-line"></p>
+          <p class="sub-title" data-en="Compare loan terms" data-es="Compara plazos">Compare loan terms</p>
+          <table class="term-table">
+            <thead><tr><th data-en="Term" data-es="Plazo">Term</th><th data-en="Payment" data-es="Pago">Payment</th><th data-en="Cost to own / mo" data-es="Costo de tenerlo / mes">Cost to own / mo</th><th data-en="Total interest" data-es="Interés total">Total interest</th></tr></thead>
+            <tbody id="term-body"></tbody>
+          </table>
+          <div class="tip-box" id="tip-box"><strong id="tip-label">TIP</strong><span id="tip-text">–</span></div>
+          <p class="assume" data-en="Estimate. Sales tax is applied to the price minus the trade-in value, as most states do; some states tax the full price. Negative trade-in equity is added to the loan." data-es="Estimación. El impuesto de venta se aplica al precio menos el valor del auto que entregas, como hace la mayoría de los estados; algunos lo cobran sobre el precio completo. Si debes más de lo que vale el auto que entregas, la diferencia se suma al préstamo.">Estimate. Sales tax is applied to the price minus the trade-in value, as most states do; some states tax the full price. Negative trade-in equity is added to the loan.</p>
         </div>
       </div>
     </div>
@@ -768,7 +799,7 @@
   <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
   <div class="faq-item">
     <div class="faq-q" data-en="How much car can I afford on a $50,000 salary?" data-es="¿Cuánto auto puedo pagar con un salario de $50,000?">How much car can I afford on a $50,000 salary?</div>
-    <div class="faq-a" data-en="On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates, assuming you already have some existing debt." data-es="Con un salario anual de $50,000 (~$4,167/mes), la regla del 10% sugiere mantener tus costos totales del auto por debajo de $417/mes. Eso típicamente soporta un préstamo de $18,000–$22,000 a 60 meses con las tasas actuales.">On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates, assuming you already have some existing debt.</div>
+    <div class="faq-a" data-en="On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates (about 7% APR), before insurance." data-es="Con un salario anual de $50,000 (~$4,167/mes), la regla del 10% sugiere mantener tus costos totales del auto por debajo de $417/mes. Eso típicamente soporta un préstamo de $18,000–$22,000 a 60 meses con las tasas actuales.">On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates (about 7% APR), before insurance.</div>
   </div>
   <div class="faq-item">
     <div class="faq-q" data-en="Is a $600 car payment too much?" data-es="¿Es demasiado un pago de auto de $600?">Is a $600 car payment too much?</div>
@@ -848,101 +879,110 @@
 
   const T = {
     en: {
-      verdictLow: 'Based on your debt-to-income ratio, this car payment looks manageable. Also check insurance, taxes, living costs and savings.',
-      verdictMid: 'Possible, but tight. Your savings will take a hit.',
-      verdictHigh: 'High risk. This car payment could strain your budget.',
-      tipLow: 'Strong position. Consider a shorter term to reduce total interest paid.',
-      tipMid: 'Manageable, but consider a larger down payment to reduce the monthly amount.',
-      tipHigh: 'Your DTI exceeds safe limits. Try a less expensive vehicle or a larger down payment.',
-      tipLabel: 'TIP',
+      tipLabel: 'TIP', met: 'Met: ', notMet: 'Not met: ',
+      rDown: (p, need) => 'Down payment of at least 20%: yours is ' + p + (need > 0 ? ' (about ' + fmt(need) + ' more would reach 20%)' : ''),
+      rTerm: m => 'Loan of 4 years (48 months) or less: yours is ' + m + ' months',
+      rTen: (p) => 'Payment plus insurance under 10% of gross income: yours is ' + p,
+      dti: (p) => 'Debt-to-income with this payment: ' + p + '. Many lenders look for 43% or less; limits vary by lender.',
+      cash: (c) => 'Cash due at signing: ' + c,
+      vPass: own => 'Passes all three parts of the 20/4/10 rule. Owning this car costs about ' + own + ' a month with fuel and maintenance.',
+      vSome: (n, own) => 'Misses ' + (n === 3 ? 'all 3' : n + ' of the 3') + ' parts of the 20/4/10 rule. Owning this car costs about ' + own + ' a month with fuel and maintenance.',
+      vHigh: p => 'High risk. With this payment your debts take ' + p + ' of your gross income, above the 43% many lenders accept.',
+      vNone: 'Your down payment and trade-in cover the full price, so there is nothing to finance.',
+      tTen: (pay, loan) => 'To stay under 10%, keep the payment near ' + pay + ': at this rate and term that is a loan of about ' + loan + '.',
+      tTenNone: 'Insurance alone is already 10% of your gross income; a cheaper car or insurance quote is the first lever.',
+      tTerm: (pay, save) => 'At 48 months the payment is ' + pay + ' and you pay ' + save + ' less interest.',
+      tDown: need => 'Putting about ' + fmt(need) + ' more down reaches 20% and lowers both the payment and the interest.',
+      tPass: 'Strong position. A shorter term still lowers total interest if the payment fits.',
+      termRow: m => m + ' mo'
     },
     es: {
-      verdictLow: 'Según tu relación deuda-ingreso, este pago de auto parece manejable. Revisa también seguro, impuestos, gastos de vida y ahorro.',
-      verdictMid: 'Posible, pero ajustado. Tus ahorros se verán afectados.',
-      verdictHigh: 'Riesgo alto. Este pago de auto podría presionar tu presupuesto.',
-      tipLow: 'Posición sólida. Considera un plazo más corto para reducir el interés total.',
-      tipMid: 'Manejable, pero considera un enganche mayor para reducir el pago mensual.',
-      tipHigh: 'Tu DTI supera los límites seguros. Considera un vehículo menos costoso o un mayor enganche.',
-      tipLabel: 'CONSEJO',
+      tipLabel: 'CONSEJO', met: 'Cumple: ', notMet: 'No cumple: ',
+      rDown: (p, need) => 'Enganche de al menos 20%: el tuyo es ' + p + (need > 0 ? ' (unos ' + fmt(need) + ' más llegarían a 20%)' : ''),
+      rTerm: m => 'Préstamo de 4 años (48 meses) o menos: el tuyo es de ' + m + ' meses',
+      rTen: (p) => 'Pago más seguro por debajo del 10% del ingreso bruto: el tuyo es ' + p,
+      dti: (p) => 'Relación deuda-ingreso con este pago: ' + p + '. Muchos prestamistas buscan 43% o menos; los límites varían.',
+      cash: (c) => 'Efectivo al firmar: ' + c,
+      vPass: own => 'Cumple las tres partes de la regla 20/4/10. Tener este auto cuesta unos ' + own + ' al mes con gasolina y mantenimiento.',
+      vSome: (n, own) => 'No cumple ' + (n === 3 ? 'ninguna' : n) + ' de las 3 partes de la regla 20/4/10. Tener este auto cuesta unos ' + own + ' al mes con gasolina y mantenimiento.',
+      vHigh: p => 'Riesgo alto. Con este pago tus deudas se llevan el ' + p + ' de tu ingreso bruto, por encima del 43% que aceptan muchos prestamistas.',
+      vNone: 'Tu enganche y el auto que entregas cubren todo el precio, así que no hay nada que financiar.',
+      tTen: (pay, loan) => 'Para quedar por debajo del 10%, mantén el pago cerca de ' + pay + ': con esta tasa y plazo es un préstamo de unos ' + loan + '.',
+      tTenNone: 'Solo el seguro ya es el 10% de tu ingreso bruto; un auto o un seguro más barato es lo primero que mover.',
+      tTerm: (pay, save) => 'A 48 meses el pago es ' + pay + ' y pagas ' + save + ' menos de interés.',
+      tDown: need => 'Dar unos ' + fmt(need) + ' más de enganche llega al 20% y baja el pago y el interés.',
+      tPass: 'Posición sólida. Un plazo más corto todavía baja el interés total si el pago te cabe.',
+      termRow: m => m + ' meses'
     }
   };
 
   let lastResult = null;
+  const v = id => parseFloat(document.getElementById(id).value) || 0;
+  const pmt = (P, apr, n) => { if (P <= 0) return 0; const r = apr / 1200; return r === 0 ? P / n : P * r / (1 - Math.pow(1 + r, -n)); };
+  const loanFor = (pay, apr, n) => { const r = apr / 1200; return r === 0 ? pay * n : pay * (1 - Math.pow(1 + r, -n)) / r; };
 
   function calculate() {
-    const income = parseFloat(document.getElementById('income').value) || 0;
-    const expenses = parseFloat(document.getElementById('expenses').value) || 0;
-    const loanAmount = parseFloat(document.getElementById('loanAmount').value) || 0;
-    const annualRate = parseFloat(document.getElementById('rate').value) || 0;
-    const termMonths = parseFloat(document.getElementById('term').value) || 1;
-
-    let monthlyPayment;
-    if (annualRate === 0) {
-      monthlyPayment = loanAmount / termMonths;
-    } else {
-      const r = annualRate / 100 / 12;
-      monthlyPayment = loanAmount * r * Math.pow(1+r, termMonths) / (Math.pow(1+r, termMonths) - 1);
-    }
-
-    const totalCost = monthlyPayment * termMonths;
-    const totalInterest = totalCost - loanAmount;
-    const dti = income > 0 ? ((expenses + monthlyPayment) / income) * 100 : 100;
-    const leftover = income - expenses - monthlyPayment;
-
-    let score;
-    if (dti <= 20) score = 95;
-    else if (dti <= 35) score = Math.round(95 - (dti - 20) * 2.5);
-    else if (dti <= 43) score = Math.round(57 - (dti - 35) * 4);
-    else score = Math.max(0, Math.round(25 - (dti - 43) * 1.5));
-
-    lastResult = { monthlyPayment, totalCost, totalInterest, dti, leftover, score };
+    const price = v('price'), down = v('down'), trade = v('tradein'), owed = v('owed');
+    const taxRate = v('tax'), fees = v('fees'), apr = v('rate'), n = v('term');
+    const ins = v('insurance'), fuel = v('fuel'), maint = v('maint'), income = v('income'), debts = v('expenses');
+    const financeExtras = document.getElementById('financeExtras').checked;
+    const tax = Math.max(0, price - trade) * taxRate / 100;
+    const extras = tax + fees;
+    const equity = trade - owed;                       // negative equity rolls into the loan
+    const financed = price - down - equity + (financeExtras ? extras : 0);
+    const cash = down + (financeExtras ? 0 : extras);
+    const pay = pmt(financed, apr, n);
+    const own = pay + ins + fuel + maint;
+    const downPct = price > 0 ? (down + Math.max(0, equity)) / price * 100 : 0;
+    const tenPct = (pay + ins) / income * 100;
+    const dti = (debts + pay) / income * 100;
+    const terms = [...new Set([48, 60, 72, n])].sort((a, b) => a - b).map(m => {
+      const p = pmt(financed, apr, m); return { m, pay: p, own: p + ins + fuel + maint, interest: p * m - Math.max(0, financed) };
+    });
+    const maxPay = income * 0.10 - ins;
+    lastResult = { price, financed, cash, pay, own, n, apr, interest: pay * n - Math.max(0, financed), downPct, tenPct, dti, terms,
+      needDown: Math.max(0, price * 0.20 - down - Math.max(0, equity)), maxPay, maxLoan: maxPay > 0 ? loanFor(maxPay, apr, n) : 0 };
     renderResults(lastResult);
   }
 
   function renderResults(r) {
     const t = T[lang];
-    const { monthlyPayment, totalCost, totalInterest, dti, leftover, score } = r;
-
-    let risk, verdictText, icon, tipText, color;
-    if (dti <= 35) { risk='low'; verdictText=t.verdictLow; icon='✅'; tipText=t.tipLow; color='#00e5a0'; }
-    else if (dti <= 43) { risk='mid'; verdictText=t.verdictMid; icon='⚠️'; tipText=t.tipMid; color='#f5c842'; }
-    else { risk='high'; verdictText=t.verdictHigh; icon='🚨'; tipText=t.tipHigh; color='#ff4d6d'; }
-
     document.getElementById('placeholder').style.display = 'none';
     document.getElementById('results-content').style.display = 'block';
-
-    const gf = document.getElementById('gauge-fill');
-    gf.style.strokeDashoffset = 251 - (score / 100) * 251;
-    gf.style.stroke = color;
-    document.getElementById('gauge-score').textContent = score;
-
-    const vb = document.getElementById('verdict-box');
-    vb.style.borderColor = color + '55';
-    vb.style.background = color + '10';
+    const pct = x => x.toFixed(1) + '%';
+    const rules = [
+      { ok: r.downPct >= 20 - 1e-9, txt: t.rDown(pct(r.downPct), r.needDown) },
+      { ok: r.n <= 48, txt: t.rTerm(r.n) },
+      { ok: r.tenPct <= 10 + 1e-9, txt: t.rTen(pct(r.tenPct)) }
+    ];
+    const misses = rules.filter(x => !x.ok).length;
+    let verdict, color, icon;
+    if (r.financed <= 0) { verdict = t.vNone; color = '#00e5a0'; icon = '✅'; }
+    else if (r.dti > 43) { verdict = t.vHigh(pct(r.dti)); color = '#ff4d6d'; icon = '🚨'; }
+    else if (!misses) { verdict = t.vPass(fmt(r.own)); color = '#00e5a0'; icon = '✅'; }
+    else { verdict = t.vSome(misses, fmt(r.own)); color = '#f5c842'; icon = '⚠️'; }
+    const vb = document.getElementById('verdict-box'); vb.style.borderColor = color + '55'; vb.style.background = color + '10';
     document.getElementById('verdict-icon').textContent = icon;
-    const vt = document.getElementById('verdict-text');
-    vt.textContent = verdictText;
-    vt.classList.add('active');
-    vt.style.color = color;
-
-    document.getElementById('dti-fill').style.width = Math.min(dti, 100) + '%';
-    document.getElementById('dti-fill').style.background = color;
-    document.getElementById('dti-pct').textContent = dti.toFixed(1) + '%';
-    document.getElementById('dti-pct').style.color = color;
-
-    document.getElementById('stat-monthly').textContent = fmt(monthlyPayment);
-    document.getElementById('stat-leftover').textContent = fmt(leftover);
-    document.getElementById('stat-leftover').style.color = leftover >= 0 ? '#00e5a0' : '#ff4d6d';
-    document.getElementById('stat-total').textContent = fmt(totalCost);
-    document.getElementById('stat-interest').textContent = fmt(totalInterest);
-
-    const tb = document.getElementById('tip-box');
-    tb.classList.add('show');
-    tb.style.background = color + '15';
-    tb.style.borderColor = color + '40';
-    tb.style.color = color;
-    document.getElementById('tip-label').textContent = t.tipLabel;
-    document.getElementById('tip-text').textContent = tipText;
+    const vt = document.getElementById('verdict-text'); vt.textContent = verdict; vt.classList.add('active'); vt.style.color = color;
+    document.getElementById('stat-monthly').textContent = fmt(r.pay);
+    document.getElementById('stat-own').textContent = fmt(r.own);
+    document.getElementById('stat-financed').textContent = fmt(Math.max(0, r.financed));
+    document.getElementById('stat-interest').textContent = fmt(r.interest);
+    document.getElementById('cash-line').textContent = t.cash(fmt(r.cash));
+    const ul = document.getElementById('rule-list'); ul.innerHTML = '';
+    rules.forEach(x => { const li = document.createElement('li'); const m = document.createElement('span'); m.className = x.ok ? 'ok' : 'no'; m.textContent = x.ok ? '✓' : '✗'; m.setAttribute('aria-hidden', 'true'); const sp = document.createElement('span'); sp.textContent = x.txt; const sr = document.createElement('span'); sr.className = 'sr-only'; sr.textContent = x.ok ? t.met : t.notMet; sp.prepend(sr); li.append(m, sp); ul.appendChild(li); });
+    document.getElementById('dti-line').textContent = t.dti(pct(r.dti));
+    document.getElementById('term-body').innerHTML = r.terms.map(x =>
+      '<tr' + (x.m === r.n ? ' class="cur"' : '') + '><td>' + t.termRow(x.m) + '</td><td>' + fmt(x.pay) + '</td><td>' + fmt(x.own) + '</td><td>' + fmt(x.interest) + '</td></tr>').join('');
+    let tip = t.tPass;
+    const t48 = r.terms.find(x => x.m === 48);
+    if (r.financed > 0) {
+      if (r.tenPct > 10 + 1e-9) tip = r.maxPay > 0 ? t.tTen(fmt(r.maxPay), fmt(Math.round(r.maxLoan / 100) * 100)) : t.tTenNone;
+      else if (r.n > 48 && t48) tip = t.tTerm(fmt(t48.pay), fmt(r.interest - t48.interest));
+      else if (r.downPct < 20) tip = t.tDown(r.needDown);
+    }
+    const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background = color + '15'; tb.style.borderColor = color + '40'; tb.style.color = color;
+    document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
   }
 
   function fmt(n) {
@@ -950,8 +990,10 @@
     const f = '$' + abs.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
     return n < 0 ? '-' + f : f;
   }
-
-  document.addEventListener('keydown', e => { if (e.key === 'Enter') calculate(); });
+  document.getElementById('financeExtras').addEventListener('change', () => {
+    if (window.CheckAffordValidation && window.CheckAffordValidation.state.calculated) calculate();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
 </script>
 <script>
 (function(){

@@ -36,7 +36,8 @@
       term: termUnit === 'payments'
         ? 'Enter a whole number of payments from 1 to ' + termMax + '.'
         : 'Enter a whole number of months from 1 to ' + termMax + '.',
-      down: 'The down payment must be less than the home price.',
+      down: 'The down payment must be less than the price.',
+      tax: 'Enter a rate from 0% to 20%.',
       summary: 'Fix the highlighted fields to see your result.'
     },
     es: {
@@ -48,7 +49,8 @@
       term: termUnit === 'payments'
         ? 'Ingresa un número entero de pagos entre 1 y ' + termMax + '.'
         : 'Ingresa un número entero de meses entre 1 y ' + termMax + '.',
-      down: 'El enganche debe ser menor que el precio de la vivienda.',
+      down: 'El enganche debe ser menor que el precio.',
+      tax: 'Ingresa una tasa entre 0% y 20%.',
       summary: 'Corrige los campos marcados para ver tu resultado.'
     }
   };
@@ -63,8 +65,27 @@
     '.ca-summary{color:#ff6b81;font-size:13px;margin:12px 0 0;text-align:center;}';
   document.head.appendChild(css);
 
+  // Inputs can also declare their own rule: data-min, data-max, data-required, data-integer, data-msg.
+  function ruleFor(id) {
+    var el = document.getElementById(id);
+    if (el && el.hasAttribute('data-min')) {
+      return {
+        required: el.hasAttribute('data-required'),
+        min: Number(el.getAttribute('data-min')),
+        max: Number(el.getAttribute('data-max') || 10000000),
+        integer: el.hasAttribute('data-integer'),
+        msg: el.getAttribute('data-msg') || 'range'
+      };
+    }
+    return RULES[id];
+  }
+
   function fields() {
-    return Object.keys(RULES).filter(function (id) { return document.getElementById(id); });
+    var ids = Object.keys(RULES).filter(function (id) { return document.getElementById(id); });
+    Array.prototype.forEach.call(document.querySelectorAll('input[data-min]'), function (el) {
+      if (el.id && ids.indexOf(el.id) === -1) ids.push(el.id);
+    });
+    return ids;
   }
 
   function errorEl(id) {
@@ -105,7 +126,7 @@
   function validate() {
     var ok = true;
     fields().forEach(function (id) {
-      var rule = RULES[id];
+      var rule = ruleFor(id);
       var raw = String(document.getElementById(id).value).trim();
       if (raw === '') {
         if (rule.required) { setError(id, 'required'); ok = false; } else { clearError(id); }
