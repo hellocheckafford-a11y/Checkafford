@@ -97,9 +97,6 @@
   .tip-box { background: var(--accent-dim); border: 1px solid rgba(0,229,160,0.2); border-radius: 12px; padding: 14px 16px; font-size: 13px; color: var(--accent); line-height: 1.5; display: none; margin-bottom: 12px; }
   .tip-box.show { display: block; }
   .tip-box strong { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
-  .cta-btn { display: none; width: 100%; background: var(--danger); border: none; border-radius: 12px; color: #fff; font-family: var(--font-display); font-size: 14px; font-weight: 700; padding: 14px; cursor: pointer; text-align: center; text-decoration: none; transition: all 0.2s; }
-  .cta-btn.show { display: block; }
-  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
   .content-section { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
   .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
   @media (max-width: 640px) { .content-grid { grid-template-columns: 1fr; } }
@@ -212,12 +209,12 @@
     <div class="calc-inner">
       <div class="input-panel">
         <p class="panel-title" id="panel-in">Your Numbers</p>
-        <div class="field"><label id="lbl-income">Monthly Income (gross)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly income in dollars" type="number" id="income" value="8000"></div></div>
-        <div class="field"><label id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="1200"></div></div>
-        <div class="field"><label id="lbl-amount">Mortgage Amount</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="350000"></div></div>
-        <div class="field"><label id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input aria-label="Annual interest rate percentage" type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
-        <div class="field"><label id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input aria-label="Loan term in months" type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
-        <div class="field"><label id="lbl-housing">Taxes, Insurance, HOA &amp; PMI (monthly, optional)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input aria-label="Monthly property tax, insurance, HOA and mortgage insurance in dollars" type="number" id="housing" value="" placeholder="e.g. 600" min="0"></div><p id="hint-housing" style="font-size:12px;line-height:1.45;color:var(--muted,#8a94a6);margin:6px 0 0;">Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.</p></div>
+        <div class="field"><label for="income" id="lbl-income">Monthly Income (gross)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="8000"></div></div>
+        <div class="field"><label for="expenses" id="lbl-expenses">Existing Monthly Debt Payments</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="1200"></div></div>
+        <div class="field"><label for="loanAmount" id="lbl-amount">Mortgage Amount</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="loanAmount" value="350000"></div></div>
+        <div class="field"><label for="rate" id="lbl-rate">Annual Interest Rate</label><div class="input-wrap"><input type="number" id="rate" value="7.1" class="no-prefix has-suffix" step="0.1"><span class="input-suffix" aria-hidden="true">%</span></div></div>
+        <div class="field"><label for="term" id="lbl-term">Loan Term (months)</label><div class="input-wrap"><input type="number" id="term" value="360" class="no-prefix has-suffix"><span class="input-suffix" aria-hidden="true">mo</span></div></div>
+        <div class="field"><label for="housing" id="lbl-housing">Taxes, Insurance, HOA &amp; PMI (monthly, optional)</label><div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="housing" value="" placeholder="e.g. 600" min="0"></div><p id="hint-housing" style="font-size:12px;line-height:1.45;color:var(--muted,#8a94a6);margin:6px 0 0;">Include mortgage insurance if your loan requires it: PMI on conventional loans with less than 20% down, or the monthly MIP on FHA loans. Lenders count these costs in your DTI.</p></div>
         <button class="calc-btn" onclick="calculate()" id="calc-btn">Check Affordability</button>
       </div>
       <div class="result-panel">
@@ -282,8 +279,8 @@
 </footer><script>
   let lang = 'en', lastResult = null;
   const T = {
-    en: { verdictLow: 'Based on your debt-to-income ratio, this mortgage looks manageable. Also check taxes, insurance, maintenance and savings.', verdictMid: 'Possible, but tight. You will have little financial flexibility.', verdictHigh: 'High risk. This payment is high for your income and could strain your budget.', tipLow: 'Strong position. Consider a 15-year term to save significantly on total interest.', tipMid: 'Manageable, but look for ways to increase your down payment or reduce the loan amount.', tipHigh: 'Your housing cost exceeds the 28% threshold. Consider a less expensive home or a larger down payment.', tipLabel: 'TIP', cta: 'Compare mortgage rates →', scoreLabel: 'SCORE' },
-    es: { verdictLow: 'Según tu relación deuda-ingreso, esta hipoteca parece manejable. Revisa también impuestos, seguro, mantenimiento y ahorro.', verdictMid: 'Posible, pero ajustado. Tendrás poca flexibilidad financiera.', verdictHigh: 'Riesgo alto. Este pago es alto para tu ingreso y podría presionar tu presupuesto.', tipLow: 'Posición sólida. Considera un plazo de 15 años para ahorrar en interés total.', tipMid: 'Manejable, pero busca formas de aumentar tu pago inicial o reducir el monto del préstamo.', tipHigh: 'Tu costo de vivienda supera el umbral del 28%. Considera una propiedad menos costosa.', tipLabel: 'CONSEJO', cta: 'Comparar tasas de hipoteca →', scoreLabel: 'PUNTAJE' }
+    en: { verdictLow: 'Based on your debt-to-income ratio, this mortgage looks manageable. Also check taxes, insurance, maintenance and savings.', verdictMid: 'Possible, but tight. You will have little financial flexibility.', verdictHigh: 'High risk. This payment is high for your income and could strain your budget.', tipLow: 'Strong position. Consider a 15-year term to save significantly on total interest.', tipMid: 'Manageable, but look for ways to increase your down payment or reduce the loan amount.', tipHigh: 'Your housing cost exceeds the 28% threshold. Consider a less expensive home or a larger down payment.', tipLabel: 'TIP', scoreLabel: 'SCORE' },
+    es: { verdictLow: 'Según tu relación deuda-ingreso, esta hipoteca parece manejable. Revisa también impuestos, seguro, mantenimiento y ahorro.', verdictMid: 'Posible, pero ajustado. Tendrás poca flexibilidad financiera.', verdictHigh: 'Riesgo alto. Este pago es alto para tu ingreso y podría presionar tu presupuesto.', tipLow: 'Posición sólida. Considera un plazo de 15 años para ahorrar en interés total.', tipMid: 'Manejable, pero busca formas de aumentar tu pago inicial o reducir el monto del préstamo.', tipHigh: 'Tu costo de vivienda supera el umbral del 28%. Considera una propiedad menos costosa.', tipLabel: 'CONSEJO', scoreLabel: 'PUNTAJE' }
   };
   const translations = {
     'bc-label': { en: 'Mortgage Calculator', es: 'Calculadora de Hipoteca' },
@@ -373,7 +370,6 @@
     document.getElementById('stat-total').textContent = fmt(tc); document.getElementById('stat-interest').textContent = fmt(ti);
     const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background=color+'15'; tb.style.borderColor=color+'40'; tb.style.color=color;
     document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = tip;
-    const cb = document.getElementById('cta-btn'); if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
   function fmt(n) { const a=Math.abs(n), f='$'+a.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); return n<0?'-'+f:f; }
   document.addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
@@ -392,5 +388,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js"></script>
 </body>
 </html>

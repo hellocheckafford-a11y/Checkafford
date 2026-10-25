@@ -382,23 +382,6 @@
   }
   .tip-box.show { display: flex; }
   .tip-label { font-family: var(--font-mono); font-size: 10px; font-weight: 600; letter-spacing: 1px; margin-bottom: 4px; }
-  .cta-btn {
-    display: none;
-    width: 100%;
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    border-radius: 10px;
-    padding: 12px;
-    font-size: 13px;
-    font-family: var(--font-display);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-align: center;
-  }
-  .cta-btn.show { display: block; }
-  .cta-btn:hover { border-color: var(--accent); color: var(--accent); }
 
   /* CONTENT SECTION */
   .content-section {
@@ -582,23 +565,23 @@
     <p class="panel-title" data-en="Your Numbers" data-es="Tus Números">Your Numbers</p>
 
     <div class="field">
-      <label data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
+      <label for="income" data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
       <input type="number" id="income" placeholder="e.g. 4500" min="0">
     </div>
     <div class="field">
-      <label data-en="Existing Monthly Debt Payments" data-es="Pagos de Deuda Mensuales Existentes">Existing Monthly Debt Payments</label>
+      <label for="expenses" data-en="Existing Monthly Debt Payments" data-es="Pagos de Deuda Mensuales Existentes">Existing Monthly Debt Payments</label>
       <input type="number" id="expenses" placeholder="e.g. 800" min="0">
     </div>
     <div class="field">
-      <label data-en="Loan Amount" data-es="Monto del Préstamo">Loan Amount</label>
+      <label for="loanAmount" data-en="Loan Amount" data-es="Monto del Préstamo">Loan Amount</label>
       <input type="number" id="loanAmount" placeholder="e.g. 10000" min="0">
     </div>
     <div class="field">
-      <label data-en="APR (annual percentage rate, %)" data-es="APR (tasa anual, %)">APR (annual percentage rate, %)</label>
+      <label for="rate" data-en="APR (annual percentage rate, %)" data-es="APR (tasa anual, %)">APR (annual percentage rate, %)</label>
       <input type="number" id="rate" placeholder="e.g. 11.5" min="0" step="0.1">
     </div>
     <div class="field">
-      <label data-en="Loan Term (months)" data-es="Plazo del Préstamo (meses)">Loan Term (months)</label>
+      <label for="term" data-en="Loan Term (months)" data-es="Plazo del Préstamo (meses)">Loan Term (months)</label>
       <input type="number" id="term" placeholder="e.g. 36" min="1">
     </div>
     <button class="calc-btn" onclick="calculate()" data-en="Check Affordability" data-es="Verificar Asequibilidad">Check Affordability</button>
@@ -782,7 +765,6 @@
       tipMid: 'Manageable, but avoid taking on any additional debt while repaying this loan.',
       tipHigh: 'Your DTI exceeds safe limits. Try a smaller loan amount or longer repayment term.',
       tipLabel: 'TIP',
-      cta: 'Compare personal loan rates →',
     },
     es: {
       verdictLow: 'Según tu relación deuda-ingreso, este préstamo parece manejable. Revisa también impuestos, gastos de vida y ahorro.',
@@ -792,7 +774,6 @@
       tipMid: 'Manejable, pero evita adquirir deuda adicional mientras pagas este préstamo.',
       tipHigh: 'Tu DTI supera los límites seguros. Intenta un monto menor o un plazo más largo.',
       tipLabel: 'CONSEJO',
-      cta: 'Comparar tasas de préstamo personal →',
     }
   };
 
@@ -872,9 +853,6 @@
     tb.style.color = color;
     document.getElementById('tip-label').textContent = t.tipLabel;
     document.getElementById('tip-text').textContent = tipText;
-
-    const cb = document.getElementById('cta-btn');
-    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {
@@ -899,5 +877,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js"></script>
 </body>
 </html>

@@ -411,25 +411,6 @@
   .tip-box strong { display: block; font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px; margin-bottom: 4px; opacity: 0.7; }
 
   /* CTA BUTTON */
-  .cta-btn {
-    display: block;
-    width: 100%;
-    background: var(--danger);
-    border: none;
-    border-radius: 12px;
-    color: #fff;
-    font-family: var(--font-display);
-    font-size: 14px;
-    font-weight: 700;
-    padding: 14px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    transition: all 0.2s;
-    display: none;
-  }
-  .cta-btn.show { display: block; }
-  .cta-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
   /* CONTENT SECTION */
   .content-section {
@@ -673,37 +654,37 @@
       <div class="input-panel">
         <p class="panel-title" data-en="Your Numbers" data-es="Tus Datos">Your Numbers</p>
         <div class="field">
-          <label data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
+          <label for="income" data-en="Monthly Income (before taxes)" data-es="Ingreso mensual (bruto, antes de impuestos)">Monthly Income (before taxes)</label>
           <div class="input-wrap">
             <span class="input-prefix" aria-hidden="true">$</span>
-            <input aria-label="Monthly income in dollars" type="number" id="income" value="5000" placeholder="5000">
+            <input type="number" id="income" value="5000" placeholder="5000">
           </div>
         </div>
         <div class="field">
-          <label data-en="Existing Monthly Debt Payments" data-es="Deudas mensuales existentes">Existing Monthly Debt Payments</label>
+          <label for="expenses" data-en="Existing Monthly Debt Payments" data-es="Deudas mensuales existentes">Existing Monthly Debt Payments</label>
           <div class="input-wrap">
             <span class="input-prefix" aria-hidden="true">$</span>
-            <input aria-label="Monthly debt payments in dollars" type="number" id="expenses" value="600" placeholder="600">
+            <input type="number" id="expenses" value="600" placeholder="600">
           </div>
         </div>
         <div class="field">
-          <label data-en="Car Loan Amount" data-es="Monto del préstamo de auto">Car Loan Amount</label>
+          <label for="loanAmount" data-en="Car Loan Amount" data-es="Monto del préstamo de auto">Car Loan Amount</label>
           <div class="input-wrap">
             <span class="input-prefix" aria-hidden="true">$</span>
-            <input aria-label="Loan amount in dollars" type="number" id="loanAmount" value="25000" placeholder="25000">
+            <input type="number" id="loanAmount" value="25000" placeholder="25000">
           </div>
         </div>
         <div class="field">
-          <label data-en="APR (annual percentage rate)" data-es="APR (tasa anual)">APR (annual percentage rate)</label>
+          <label for="rate" data-en="APR (annual percentage rate)" data-es="APR (tasa anual)">APR (annual percentage rate)</label>
           <div class="input-wrap">
-            <input aria-label="Annual interest rate percentage" type="number" id="rate" value="5.9" class="no-prefix has-suffix" step="0.1">
+            <input type="number" id="rate" value="5.9" class="no-prefix has-suffix" step="0.1">
             <span class="input-suffix" aria-hidden="true">%</span>
           </div>
         </div>
         <div class="field">
-          <label data-en="Loan Term (months)" data-es="Plazo del préstamo (meses)">Loan Term (months)</label>
+          <label for="term" data-en="Loan Term (months)" data-es="Plazo del préstamo (meses)">Loan Term (months)</label>
           <div class="input-wrap">
-            <input aria-label="Loan term in months" type="number" id="term" value="60" class="no-prefix has-suffix">
+            <input type="number" id="term" value="60" class="no-prefix has-suffix">
             <span class="input-suffix" aria-hidden="true">mo</span>
           </div>
         </div>
@@ -874,7 +855,6 @@
       tipMid: 'Manageable, but consider a larger down payment to reduce the monthly amount.',
       tipHigh: 'Your DTI exceeds safe limits. Try a less expensive vehicle or a larger down payment.',
       tipLabel: 'TIP',
-      cta: 'Compare auto loan rates →',
     },
     es: {
       verdictLow: 'Según tu relación deuda-ingreso, este pago de auto parece manejable. Revisa también seguro, impuestos, gastos de vida y ahorro.',
@@ -884,7 +864,6 @@
       tipMid: 'Manejable, pero considera un enganche mayor para reducir el pago mensual.',
       tipHigh: 'Tu DTI supera los límites seguros. Considera un vehículo menos costoso o un mayor enganche.',
       tipLabel: 'CONSEJO',
-      cta: 'Comparar tasas de préstamo auto →',
     }
   };
 
@@ -964,9 +943,6 @@
     tb.style.color = color;
     document.getElementById('tip-label').textContent = t.tipLabel;
     document.getElementById('tip-text').textContent = tipText;
-
-    const cb = document.getElementById('cta-btn');
-    if (cb) { cb.classList.add('show'); cb.textContent = t.cta; }
   }
 
   function fmt(n) {
@@ -991,5 +967,6 @@
   }
 })();
 </script>
+<script src="/assets/ca-validate.js"></script>
 </body>
 </html>
