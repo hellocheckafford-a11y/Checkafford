@@ -367,7 +367,7 @@ footer a{color:var(--accent);text-decoration:none;}
 <!-- HERO -->
 <section class="hero">
   <div class="hero-badge">⚡ <span data-i="badge">Free · Instant · No signup</span></div>
-  <h1 data-i="h1">Can you <em data-i="h1-em">actually afford it?</em></h1>
+  <h1><span data-i="h1">Can you </span><em data-i="h1-em">actually afford it?</em></h1>
   <p class="hero-sub" data-i="hero-sub">Enter your numbers. Get an honest verdict in seconds — no guesswork, no jargon, no signup required.</p>
 </section>
 
@@ -379,7 +379,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <span class="card-arrow">↗</span>
     <span class="card-icon">🚗</span>
     <span class="card-tag" style="background:rgba(255,100,80,0.1);color:#ff6450;" data-i="tag-auto">Auto Loan</span>
-    <div class="card-title" data-i="title-auto">Can you afford that <em style="color:#ff6450;">car payment?</em></div>
+    <div class="card-title"><span data-i="title-auto">Can you afford that </span><em style="color:#ff6450;" data-i="title-auto-em">car payment?</em></div>
     <p class="card-desc" data-i="desc-auto">Check your DTI, monthly payment, and total loan cost. Find out if that car fits your budget before you sign.</p>
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#ff6450;">43%</span><span class="card-stat-lbl" data-i="cs-dti">Common DTI cap</span></div>
@@ -393,7 +393,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <span class="card-arrow">↗</span>
     <span class="card-icon">🏠</span>
     <span class="card-tag" style="background:rgba(0,229,160,0.1);color:var(--accent);" data-i="tag-mortgage">Mortgage</span>
-    <div class="card-title" data-i="title-mortgage">Can you afford that <em style="color:var(--accent);">mortgage?</em></div>
+    <div class="card-title"><span data-i="title-mortgage">Can you afford that </span><em style="color:var(--accent);" data-i="title-mortgage-em">mortgage?</em></div>
     <p class="card-desc" data-i="desc-mortgage">Enter income, debts, home price and rate. Get an instant affordability verdict with full payment breakdown.</p>
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:var(--accent);">28%</span><span class="card-stat-lbl" data-i="cs-rule">28/36 Rule</span></div>
@@ -407,7 +407,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <span class="card-arrow">↗</span>
     <span class="card-icon">💳</span>
     <span class="card-tag" style="background:rgba(255,77,109,0.1);color:#ff4d6d;" data-i="tag-debt">Debt Payoff</span>
-    <div class="card-title" data-i="title-debt">Is your debt load <em style="color:#ff4d6d;">manageable?</em></div>
+    <div class="card-title"><span data-i="title-debt">Is your debt load </span><em style="color:#ff4d6d;" data-i="title-debt-em">manageable?</em></div>
     <p class="card-desc" data-i="desc-debt">Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.</p>
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#ff4d6d;">43%</span><span class="card-stat-lbl" data-i="cs-crisis">High-risk DTI</span></div>
@@ -421,8 +421,8 @@ footer a{color:var(--accent);text-decoration:none;}
     <span class="card-arrow">↗</span>
     <span class="card-icon">📱</span>
     <span class="card-tag" style="background:rgba(160,100,255,0.1);color:#a064ff;" data-i="tag-bnpl">BNPL</span>
-    <div class="card-title" data-i="title-bnpl">Is Buy Now Pay Later <em style="color:#a064ff;">worth it?</em></div>
-    <p class="card-desc" data-i="desc-bnpl">See the real cost of Afterpay, Klarna and other BNPL plans — including fees, interest, and what happens if you miss a payment.</p>
+    <div class="card-title"><span data-i="title-bnpl">Is Buy Now Pay Later </span><em style="color:#a064ff;" data-i="title-bnpl-em">worth it?</em></div>
+    <p class="card-desc" data-i="desc-bnpl">See what an installment plan really costs and how its payments fit your monthly budget before you click buy.</p>
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-apr">Common APR cap</span></div>
       <div class="card-stat"><span class="card-stat-val" style="color:#a064ff;">Pay in 4</span><span class="card-stat-lbl" data-i="cs-avg-bnpl">Common plan</span></div>
@@ -435,7 +435,7 @@ footer a{color:var(--accent);text-decoration:none;}
     <span class="card-arrow">↗</span>
     <span class="card-icon">💵</span>
     <span class="card-tag" style="background:rgba(0,200,255,0.1);color:#00c8ff;" data-i="tag-personal">Personal Loan</span>
-    <div class="card-title" data-i="title-personal">Is a personal loan <em style="color:#00c8ff;">right for you?</em></div>
+    <div class="card-title"><span data-i="title-personal">Is a personal loan </span><em style="color:#00c8ff;" data-i="title-personal-em">right for you?</em></div>
     <p class="card-desc" data-i="desc-personal">Enter your income, existing debts and loan details. Get an instant verdict on whether you can handle the payments — before you apply.</p>
     <div class="card-stats">
       <div class="card-stat"><span class="card-stat-val" style="color:#00c8ff;">36%</span><span class="card-stat-lbl" data-i="cs-max-personal">Common APR cap</span></div>
@@ -500,23 +500,23 @@ footer a{color:var(--accent);text-decoration:none;}
       'h1-em':        'actually afford it?',
       'hero-sub':     'Enter your numbers. Get an honest verdict in seconds — no guesswork, no jargon, no signup required.',
       'tag-auto':     'Auto Loan',
-      'title-auto':   'Can you afford that car payment?',
+      'title-auto':   'Can you afford that ',
       'desc-auto':    'Check your DTI, monthly payment, and total loan cost. Find out if that car fits your budget before you sign.',
       'cs-dti':       'Common DTI cap', 'cs-avg-car': 'Avg new payment', 'cs-time': 'Instant result',
       'tag-mortgage': 'Mortgage',
-      'title-mortgage':'Can you afford that mortgage?',
+      'title-mortgage':'Can you afford that ',
       'desc-mortgage':'Enter income, debts, home price and rate. Get an instant affordability verdict with full payment breakdown.',
       'cs-rule':      '28/36 Rule', 'cs-avg-mort': 'Common term', 'cs-time2': 'Instant result',
       'tag-debt':     'Debt Payoff',
-      'title-debt':   'Is your debt load manageable?',
+      'title-debt':   'Is your debt load ',
       'desc-debt':    'Credit cards, student loans, car payments — find out if your total debt is under control or quietly spiraling.',
       'cs-crisis':    'High-risk DTI', 'cs-apr': 'Common card APR', 'cs-time3': 'Instant result',
       'tag-bnpl':     'BNPL',
-      'title-bnpl':   'Is Buy Now Pay Later worth it?',
-      'desc-bnpl':    'See the real cost of Afterpay, Klarna and other BNPL plans — including fees, interest, and what happens if you miss a payment.',
+      'title-bnpl':   'Is Buy Now Pay Later ',
+      'desc-bnpl':    'See what an installment plan really costs and how its payments fit your monthly budget before you click buy.',
       'cs-max-apr':   'Common APR cap', 'cs-avg-bnpl': 'Common plan', 'cs-time4': 'Instant result',
       'tag-personal': 'Personal Loan',
-      'title-personal': 'Is a personal loan right for you?',
+      'title-personal': 'Is a personal loan ',
       'desc-personal': 'Enter your income, existing debts and loan details. Get an instant verdict on whether you can handle the payments — before you apply.',
       'cs-max-personal': 'Common APR cap', 'cs-avg-personal': 'Common range', 'cs-time5': 'Instant result',
       'why1-title':   'Instant verdict',
@@ -525,7 +525,15 @@ footer a{color:var(--accent);text-decoration:none;}
       'why2-desc':    'We use DTI guidelines commonly used by U.S. lenders (typically 36% to 43%) — not optimistic estimates that set you up to fail.',
       'why3-title':   'Your numbers stay private',
       'why3-desc':    'All calculations happen in your browser, and the figures you enter are never sent to our servers. We use Google Analytics to measure page visits — see our Privacy Policy.',
-      'footer':       'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>'
+      'footer':       'For informational purposes only. Not financial advice. U.S. market guidelines. | <a href="/">checkafford.com</a>',
+      'title-auto-em': 'car payment?',
+      'title-mortgage-em': 'mortgage?',
+      'title-debt-em': 'manageable?',
+      'title-bnpl-em': 'worth it?',
+      'title-personal-em': 'right for you?',
+      'badge': 'Free · Instant · No signup',
+      'why-label': 'Why CheckAfford',
+      'nav-blog': 'Blog'
     },
     es: {
       'nav-auto':     'Préstamo Auto',
@@ -537,20 +545,20 @@ footer a{color:var(--accent);text-decoration:none;}
       'h1-em':        'pagar?',
       'hero-sub':     'Ingresa tus números. Obtén una respuesta honesta en segundos — sin suposiciones, sin tecnicismos, sin registro.',
       'tag-auto':     'Préstamo Auto',
-      'title-auto':   '¿Puedes pagar ese auto?',
+      'title-auto':   '¿Puedes pagar ese ',
       'desc-auto':    'Revisa tu DTI, pago mensual y costo total del préstamo. Descubre si ese auto cabe en tu presupuesto antes de firmar.',
       'cs-dti':       'Tope DTI común', 'cs-avg-car': 'Pago nuevo prom.', 'cs-time': 'Resultado inst.',
       'tag-mortgage': 'Hipoteca',
-      'title-mortgage':'¿Puedes pagar esa hipoteca?',
+      'title-mortgage':'¿Puedes pagar esa ',
       'desc-mortgage':'Ingresa ingresos, deudas, precio de la casa y tasa. Obtén un veredicto de accesibilidad instantáneo.',
       'cs-rule':      'Regla 28/36', 'cs-avg-mort': 'Plazo común', 'cs-time2': 'Resultado inst.',
       'tag-debt':     'Pago de Deuda',
-      'title-debt':   '¿Tu deuda es manejable?',
+      'title-debt':   '¿Tu deuda es ',
       'desc-debt':    'Tarjetas, préstamos estudiantiles, pagos de auto — descubre si tu deuda total está bajo control o creciendo.',
       'cs-crisis':    'DTI alto riesgo', 'cs-apr': 'APR común tarjeta', 'cs-time3': 'Resultado inst.',
       'tag-bnpl':     'BNPL',
-      'title-bnpl':   '¿Vale la pena comprar ahora y pagar después?',
-      'desc-bnpl':    'Mira el costo real de Afterpay, Klarna y otros planes BNPL — incluyendo cargos, intereses y pagos perdidos.',
+      'title-bnpl':   '¿Vale la pena ',
+      'desc-bnpl':    'Mira cuánto cuesta en realidad un plan a plazos y cómo encajan sus pagos en tu presupuesto mensual antes de comprar.',
       'cs-max-apr':   'Tope APR común', 'cs-avg-bnpl': 'Plan común', 'cs-time4': 'Resultado inst.',
       'cs-max-personal': 'Tope APR común', 'cs-avg-personal': 'Rango común', 'cs-time5': 'Resultado inst.',
       'why-label':    'Por qué CheckAfford',
@@ -560,7 +568,17 @@ footer a{color:var(--accent);text-decoration:none;}
       'why2-desc':    'Usamos pautas de DTI comunes entre los prestamistas de EE. UU. (normalmente de 36% a 43%) — no estimaciones optimistas que te hacen fallar.',
       'why3-title':   'Tus números son privados',
       'why3-desc':    'Todos los cálculos ocurren en tu navegador y las cifras que ingresas nunca se envían a nuestros servidores. Usamos Google Analytics para medir las visitas — consulta nuestra Política de Privacidad.',
-      'footer':       'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>'
+      'footer':       'Solo para fines informativos. No es asesoramiento financiero. Pautas del mercado de EE. UU. | <a href="/">checkafford.com</a>',
+      'title-auto-em': 'auto?',
+      'title-mortgage-em': 'hipoteca?',
+      'title-debt-em': 'manejable?',
+      'title-bnpl-em': 'comprar ahora y pagar después?',
+      'title-personal': '¿Te conviene un ',
+      'title-personal-em': 'préstamo personal?',
+      'badge': 'Gratis · Instantáneo · Sin registro',
+      'tag-personal': 'Préstamo Personal',
+      'desc-personal': 'Ingresa tu ingreso, tus deudas y los datos del préstamo. Obtén un veredicto instantáneo sobre si puedes con los pagos, antes de solicitarlo.',
+      'nav-blog': 'Blog'
     }
   };
 
@@ -578,6 +596,10 @@ footer a{color:var(--accent);text-decoration:none;}
         if (key === 'footer') { el.innerHTML = t[key]; }
         else { el.textContent = t[key]; }
       }
+    });
+    document.querySelectorAll('footer [data-en]').forEach(el => {
+      const v = el.getAttribute('data-' + l);
+      if (v) el.textContent = v;
     });
   }
 </script>
