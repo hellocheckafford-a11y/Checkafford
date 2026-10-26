@@ -296,6 +296,7 @@
       tDebt: 'Paying down other debts lowers your total DTI faster than a cheaper house.',
       tHigh: 'Try a lower price or larger down payment, or pay down other debts before applying.',
       pmi: 'Less than 20% down: a conventional loan will usually add PMI. Include it in the monthly costs field.',
+      noExtras: 'Taxes and insurance are not included yet, so this verdict understates your housing cost. Add them in the monthly costs field.',
       loan: (amt, pct) => 'Loan amount ' + amt + ' · ' + pct + '% down',
       tipLabel: 'TIP', scoreLabel: 'SCORE'
     },
@@ -309,6 +310,7 @@
       tDebt: 'Pagar otras deudas baja tu DTI total más rápido que una casa más barata.',
       tHigh: 'Prueba un precio menor o un enganche mayor, o paga otras deudas antes de solicitar.',
       pmi: 'Menos de 20% de enganche: un préstamo convencional normalmente añade PMI. Inclúyelo en el campo de costos mensuales.',
+      noExtras: 'Todavía no incluyes impuestos ni seguro, así que este veredicto subestima tu costo de vivienda. Agrégalos en el campo de costos mensuales.',
       loan: (amt, pct) => 'Monto del préstamo ' + amt + ' · ' + pct + '% de enganche',
       tipLabel: 'CONSEJO', scoreLabel: 'PUNTAJE'
     }
@@ -416,11 +418,12 @@
     document.getElementById('stat-leftover').textContent = fmt(r.leftover); document.getElementById('stat-leftover').style.color = r.leftover>=0?'#00e5a0':'#ff4d6d';
     document.getElementById('stat-total').textContent = fmt(r.totalPaid); document.getElementById('stat-interest').textContent = fmt(r.interest);
     document.getElementById('down-note').textContent = (r.downPct < 20 && r.extras === 0) ? t.pmi : '';
+    if (r.extras === 0) vtEl.textContent += ' ' + t.noExtras;
     const tb = document.getElementById('tip-box'); tb.classList.add('show'); tb.style.background=v.color+'15'; tb.style.borderColor=v.color+'40'; tb.style.color=v.color;
     document.getElementById('tip-label').textContent = t.tipLabel; document.getElementById('tip-text').textContent = t[v.tip];
   }
   function fmt(n) { const a=Math.abs(n), f='$'+a.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0}); return n<0?'-'+f:f; }
-  document.addEventListener('keydown', e => { if(e.key==='Enter') calculate(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target.tagName === 'INPUT') calculate(); });
 </script>
 <script>
 (function(){

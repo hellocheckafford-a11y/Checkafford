@@ -39,6 +39,7 @@
       down: 'The down payment must be less than the price.',
       tax: 'Enter a rate from 0% to 20%.',
       fee: 'Enter a fee from 0% to 12%.',
+      max: 'That number is above the maximum this calculator accepts. Check for an extra zero.',
       summary: 'Fix the highlighted fields to see your result.'
     },
     es: {
@@ -53,6 +54,7 @@
       down: 'El enganche debe ser menor que el precio.',
       tax: 'Ingresa una tasa entre 0% y 20%.',
       fee: 'Ingresa una comisión entre 0% y 12%.',
+      max: 'Ese número supera el máximo que acepta esta calculadora. Revisa si sobra un cero.',
       summary: 'Corrige los campos marcados para ver tu resultado.'
     }
   };
@@ -135,6 +137,9 @@
         return;
       }
       var n = Number(raw);
+      if (isFinite(n) && n > rule.max && !rule.integer && rule.msg !== 'rate' && rule.msg !== 'tax' && rule.msg !== 'fee') {
+        setError(id, 'max'); ok = false; return;
+      }
       if (!isFinite(n) || n < rule.min || n > rule.max || (rule.integer && Math.floor(n) !== n)) {
         setError(id, rule.msg); ok = false; return;
       }

@@ -630,13 +630,17 @@
       const b = buckets.get(pd); b.total += x.amount; b.items.push(x);
     });
     const rows = [...buckets.values()].sort((a, b) => a.payday - b.payday);
-    const peak = rows.reduce((a, b) => (b.total > a.total + 1e-9 ? b : a), rows[0]);
-    const ends = plans.map(p => Math.max(...p.s.items.map(x => x.due)));
+    // Only the current paycheck (the latest one on or before today) and later ones count for the peak and the tips.
+    const current = paydays.filter(d => d <= today).pop();
+    const upcoming = rows.filter(b => current === undefined ? b.payday >= today : b.payday >= current);
+    const pool = upcoming.length ? upcoming : rows;
+    const peak = pool.reduce((a, b) => (b.total > a.total + 1e-9 ? b : a), pool[0]);
+    const ends = plans.map(p => Math.max(...p.s.items.map(x => x.due))).filter(e => e >= today);
     lastResult = {
       rows, peak, paycheck: input.paycheck, latefee: input.latefee,
       remaining: items.reduce((a, x) => a + x.amount, 0),
       interest: plans.reduce((a, p) => a + p.s.interest, 0),
-      last: maxDue, nextEnd: plans.length > 1 ? Math.min(...ends) : null
+      last: maxDue, nextEnd: ends.length > 1 ? Math.min(...ends) : null, current
     };
     calculated = true;
     renderResults(lastResult);
@@ -664,7 +668,7 @@
     document.getElementById('cal-body').innerHTML = r.rows.map(b => {
       const p = b.total / r.paycheck, c = p > 0.20 ? '#ff6b81' : p > 0.10 ? '#f5c842' : '#00e5a0';
       const who = b.items.map(x => x.plan).filter((v, i, a) => a.indexOf(v) === i).map(n => n.replace(/[<>&]/g, '')).join(', ');
-      return '<tr' + (b === r.peak ? ' class="peak"' : '') + '><td class="num">' + fdate(b.payday) + '</td><td class="who">' + who + ' (' + b.items.length + ')</td><td class="num">' + fmt(b.total) + '</td><td class="num" style="color:' + c + '">' + pct(p) + '</td></tr>';
+      return '<tr' + (b === r.peak ? ' class="peak"' : (r.current !== undefined && b.payday < r.current ? ' style="opacity:.45"' : '')) + '><td class="num">' + fdate(b.payday) + '</td><td class="who">' + who + ' (' + b.items.length + ')</td><td class="num">' + fmt(b.total) + '</td><td class="num" style="color:' + c + '">' + pct(p) + '</td></tr>';
     }).join('');
     const n = r.peak.items.length;
     document.getElementById('late-line').textContent = r.latefee > 0 ? t.late(fmt(r.latefee), n, fmt(r.latefee * n)) : t.lateNone;
