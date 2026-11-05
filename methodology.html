@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Methodology — How CheckAfford Calculates Every Number</title>
+<meta name="description" content="The exact formulas, assumptions and thresholds behind every CheckAfford calculator: loan amortization, DTI, real APR with fees, avalanche vs. snowball, and BNPL paycheck load.">
+<link rel="canonical" href="https://checkafford.com/methodology">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0a0a0f;--surface:#111118;--surface2:#18181f;--border:rgba(255,255,255,0.07);--text:#f0f0f5;--muted:#8f8fa8;--accent:#00e5a0;--font-display:"Syne",sans-serif;--font-body:"DM Sans",sans-serif;--font-mono:"DM Mono",monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.6;min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;inset:0;background-image:linear-gradient(rgba(0,229,160,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,160,0.03) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0;}
+header{position:relative;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:20px 40px;border-bottom:1px solid var(--border);}
+.logo{font-family:var(--font-display);font-size:18px;font-weight:800;letter-spacing:-0.5px;color:var(--text);text-decoration:none;}
+.logo span{color:var(--accent);}
+.nav-links{display:flex;gap:24px;align-items:center;}
+.nav-link{color:var(--muted);font-size:13px;font-weight:500;text-decoration:none;transition:color 0.2s;}
+.nav-link:hover{color:var(--text);}
+.lang-toggle{display:flex;gap:4px;background:var(--surface2);border:1px solid var(--border);border-radius:100px;padding:4px;}
+.lang-btn{background:none;border:none;color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:6px 16px;border-radius:100px;cursor:pointer;transition:all 0.2s;}
+.lang-btn.active{background:var(--accent);color:#000;}
+.page-wrap{position:relative;z-index:5;max-width:800px;margin:0 auto;padding:72px 24px 100px;}
+.page-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(0,229,160,0.08);border:1px solid rgba(0,229,160,0.2);color:var(--accent);font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:6px 16px;border-radius:100px;margin-bottom:28px;font-family:var(--font-mono);}
+.page-title{font-family:var(--font-display);font-size:clamp(32px,5vw,56px);font-weight:800;line-height:1.05;letter-spacing:-2px;margin-bottom:20px;}
+.page-title em{font-style:normal;color:var(--accent);}
+.page-sub{font-size:16px;color:var(--muted);max-width:540px;margin-bottom:56px;font-weight:300;line-height:1.7;}
+.section{margin-bottom:56px;}
+.section-label{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.section h2{font-family:var(--font-display);font-size:26px;font-weight:700;letter-spacing:-0.5px;margin-bottom:16px;}
+.section p{color:var(--muted);font-size:16px;line-height:1.8;margin-bottom:14px;}
+.section p strong{color:var(--text);font-weight:600;}
+.section p a,.value-desc a,.disclaimer p a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px;}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;transition:border-color 0.2s;}
+.value-card:hover{border-color:rgba(0,229,160,0.3);}
+.value-icon{font-size:28px;margin-bottom:14px;}
+.value-title{font-family:var(--font-display);font-size:16px;font-weight:700;color:var(--text);margin-bottom:8px;}
+.value-desc{font-size:14px;color:var(--muted);line-height:1.6;}
+.tools-list{display:flex;flex-direction:column;gap:12px;margin-top:20px;}
+.tool-item{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;text-decoration:none;transition:all 0.2s;}
+.tool-item:hover{border-color:rgba(0,229,160,0.3);transform:translateX(4px);}
+.tool-name{font-family:var(--font-display);font-size:15px;font-weight:700;color:var(--text);}
+.tool-desc{font-size:13px;color:var(--muted);margin-top:3px;}
+.tool-arrow{color:var(--accent);font-size:20px;font-family:var(--font-mono);}
+.disclaimer{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--muted);border-radius:16px;padding:20px 24px;margin-top:48px;}
+.disclaimer p{font-size:14px;color:var(--muted);line-height:1.6;margin:0;}
+.disclaimer p strong{color:var(--text);}
+footer{position:relative;z-index:1;text-align:center;padding:32px 24px;border-top:1px solid var(--border);font-size:13px;color:var(--muted);}
+footer a{color:var(--muted);text-decoration:none;transition:color 0.2s;}
+footer a:hover{color:var(--accent);}
+@media(max-width:640px){header{padding:16px 20px;}.nav-links{display:none;}.page-wrap{padding:48px 20px 80px;}.values-grid{grid-template-columns:1fr;}}
+
+/* MOBILE NAV */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all 0.3s;}
+.mobile-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--bg);z-index:100;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
+.mobile-nav.open{display:flex;}
+.mobile-nav a{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--text);text-decoration:none;}
+.mobile-nav a:hover,.mobile-nav a.active{color:var(--accent);}
+.mobile-nav .close-btn{position:absolute;top:24px;right:24px;background:none;border:none;color:var(--text);font-size:28px;cursor:pointer;}
+.mobile-lang{display:flex;gap:8px;margin-top:16px;}
+@media(max-width:640px){.hamburger{display:flex;}.nav-links{display:none!important;}.lang-toggle{display:none;}}
+
+.byline{font-size:13px;color:var(--muted);margin:-36px 0 48px;font-family:var(--font-mono);}
+.byline a{color:var(--accent);text-decoration:underline;text-underline-offset:3px;}
+.formula{font-family:var(--font-mono);font-size:15px;background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:12px;padding:18px 20px;margin:18px 0;color:var(--text);line-height:1.9;overflow-x:auto;}
+.section p.example{background:rgba(0,229,160,0.06);border:1px solid rgba(0,229,160,0.18);border-radius:12px;padding:14px 18px;font-size:15px;}
+.calc-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:26px 28px;margin-top:16px;}
+.calc-card h3{font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:12px;color:var(--text);}
+.calc-card p{color:var(--muted);font-size:15px;line-height:1.75;margin-bottom:12px;}
+.calc-card p:last-child{margin-bottom:0;}
+.limits{list-style:none;display:grid;gap:10px;}
+.limits li{color:var(--muted);padding-left:22px;position:relative;line-height:1.7;}
+.limits li::before{content:"—";position:absolute;left:0;color:var(--accent);}
+.sources ul{list-style:none;display:grid;gap:10px;}
+.sources a{display:flex;justify-content:space-between;gap:12px;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 18px;color:var(--text);text-decoration:none;font-size:14px;}
+.sources a:hover{border-color:var(--accent);}
+.sources a span{color:var(--accent);}
+@media(max-width:640px){.calc-card{padding:20px;}.formula{font-size:13px;}}
+</style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-ZHN6PQSLWN');
+</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Methodology — How CheckAfford Calculates Every Number","url":"https://checkafford.com/methodology","inLanguage":"en","datePublished":"2026-11-04","dateModified":"2026-11-04","author":{"@type":"Person","name":"Elba Nabetcy Guissepe Avalo","jobTitle":"Actuary","url":"https://checkafford.com/about"},"publisher":{"@type":"Organization","name":"CheckAfford","url":"https://checkafford.com"},"citation":["https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-en-1791/","https://selling-guide.fanniemae.com/sel/b3-6-02/debt-income-ratios","https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/","https://www.federalreserve.gov/releases/g19/current/default.htm","https://www.kellogg.northwestern.edu/news/blog/2012/08/07/the-snowball-approach-to-debt/"]}</script>
+</head>
+<body>
+<a href="#main-content" style="position:absolute;left:-9999px;top:4px;z-index:9999;padding:8px 16px;background:var(--accent);color:#000;font-weight:700;border-radius:8px;text-decoration:none;">Skip to main content</a>
+<header>
+  <a href="/" class="logo">Check<span>Afford</span></a>
+    <nav class="nav-links" aria-label="Main navigation">
+    <a href="/car-loan" class="nav-link" data-i="nav-auto">Auto Loan</a>
+    <a href="/mortgage" class="nav-link" data-i="nav-mortgage">Mortgage</a>
+    <a href="/bnpl" class="nav-link" data-i="nav-bnpl">BNPL</a>
+    <a href="/debt-payoff" class="nav-link" data-i="nav-debt">Debt Payoff</a>
+    <a href="/personal-loan" class="nav-link" data-i="nav-personal">Personal Loan</a>
+    <a href="/dti" class="nav-link">DTI</a>
+    <a href="/blog/" class="nav-link" data-i="nav-blog">Blog</a>
+  </nav>
+  <div class="lang-toggle" role="group" aria-label="Language selection">
+    <button class="lang-btn active" onclick="setLang('en')" aria-label="Switch to English" aria-pressed="true">EN</button>
+    <button class="lang-btn" onclick="setLang('es')" aria-label="Cambiar a Español" aria-pressed="false">ES</button>
+  </div>
+<!-- MOBILE NAV -->
+<button class="hamburger" onclick="document.getElementById('mobileNav').classList.toggle('open')" aria-label="Open menu">
+  <span></span><span></span><span></span>
+</button>
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-btn" onclick="document.getElementById('mobileNav').classList.remove('open')" aria-label="Close menu">✕</button>
+  <a href="/car-loan" data-i="nav-auto">Auto Loan</a>
+  <a href="/mortgage" data-i="nav-mortgage">Mortgage</a>
+  <a href="/bnpl" data-i="nav-bnpl">BNPL</a>
+  <a href="/debt-payoff" data-i="nav-debt">Debt Payoff</a>
+  <a href="/personal-loan" data-i="nav-personal">Personal Loan</a>
+  <a href="/dti">DTI</a>
+  <a href="/blog/" data-i="nav-blog">Blog</a>
+  <div class="mobile-lang">
+    <button class="lang-btn" onclick="setLang('en');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">EN</button>
+    <button class="lang-btn" onclick="setLang('es');document.getElementById('mobileNav').classList.remove('open')" style="background:var(--surface2);border:1px solid var(--border);color:var(--muted);font-family:var(--font-display);font-size:13px;font-weight:600;padding:8px 20px;border-radius:100px;cursor:pointer;">ES</button>
+  </div>
+</div>
+</header>
+<main id="main-content">
+<div class="page-wrap">
+  <div class="page-badge">✦ <span data-i="badge">Methodology</span></div>
+  <h1 class="page-title"><span data-i="page-title">How every number is calculated. </span><em data-i="page-title-em">Formulas, assumptions and limits.</em></h1>
+  <p class="page-sub" data-i="page-sub">This page documents the exact math behind each CheckAfford calculator — the same formulas the code runs in your browser — plus the thresholds used for each verdict and what the tools do not account for.</p>
+  <p class="byline" data-i="by">Written and reviewed by <a href="/about">Elba Nabetcy Guissepe Avalo</a>, actuary · Last reviewed November 4, 2026</p>
+
+  <div class="section">
+    <div class="section-label" data-i="s1-label">The core formula</div>
+    <h2 data-i="s1-title">Monthly loan payment (amortization)</h2>
+    <p data-i="s1-p1">Every fixed-rate loan on this site — car, mortgage, personal loan and interest-bearing BNPL plans — uses the standard annuity formula. With principal <strong>P</strong>, annual rate <strong>APR</strong>, periodic rate <strong>r</strong> = APR ÷ 12 and <strong>n</strong> monthly payments:</p>
+    <div class="formula" role="math" aria-label="M equals P times r divided by 1 minus 1 plus r to the power of minus n">M = P × r ÷ [1 − (1 + r)<sup>−n</sup>]</div>
+    <p data-i="s1-p2">When the rate is 0%, the payment is simply P ÷ n. Total interest is M × n − P. To answer “how much can I borrow for a given payment?”, the calculators invert the formula: P = M × [1 − (1 + r)<sup>−n</sup>] ÷ r.</p>
+    <p class="example" data-i="s1-ex"><strong>Example:</strong> $30,000 at 7% APR for 60 months → r = 0.5833% per month → M = <strong>$594.04</strong>. Total paid $35,642; total interest <strong>$5,642</strong>.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s2-label">The lender's view</div>
+    <h2 data-i="s2-title">Debt-to-income ratio (DTI)</h2>
+    <p data-i="s2-p1">DTI is the measure lenders use to judge whether you can take on a new payment. CheckAfford computes two versions:</p>
+    <div class="formula" data-i="f-dti">Front-end DTI = housing payment ÷ gross monthly income<br>Back-end DTI = (housing + all other debt payments) ÷ gross monthly income</div>
+    <p data-i="s2-p2">The verdicts use three reference points: <strong>28%</strong> for housing (front-end), <strong>36%</strong> for total debt, and <strong>43%</strong> as an upper caution line. These are common guidelines, not universal rules: Fannie Mae, for example, caps manually underwritten loans at 36% (up to 45% with strong credit and reserves) and allows up to 50% through its automated system. Your lender's limit may be higher or lower.</p>
+    <p data-i="s2-p3">Income is always <strong>gross</strong> (before taxes), because that is what lenders use. The BNPL calculator is the exception: it compares installments to your <strong>take-home</strong> paycheck, because that is the money that actually has to cover them.</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s3-label">Calculator by calculator</div>
+    <h2 data-i="s3-title">What each tool computes</h2>
+    <div class="calc-card">
+      <h3 data-i="c1-t">🚗 Auto Loan</h3>
+      <p data-i="c1-p1">Sales tax is applied to the price minus the trade-in value. Trade-in equity (trade-in value − amount still owed) reduces the loan; <strong>negative equity is added to the new loan</strong>, as dealers usually do. Tax and fees are either financed or paid upfront, depending on your choice.</p>
+      <p data-i="c1-p2">The result is checked against the <strong>20/4/10 rule</strong>: at least 20% down (cash plus positive equity), a term of 48 months or less, and car payment plus insurance at or below 10% of gross monthly income. A total DTI above 43% overrides everything with a red verdict. “Cost to own” adds insurance, fuel and maintenance to the payment.</p>
+    </div>
+    <div class="calc-card">
+      <h3 data-i="c2-t">🏠 Mortgage</h3>
+      <p data-i="c2-p1">Principal and interest use the amortization formula on price minus down payment. The housing payment adds the monthly property tax, insurance, HOA and PMI you enter. Front-end ratio = housing ÷ income; back-end ratio = (housing + other debts) ÷ income.</p>
+      <p data-i="c2-p2">The 0–100 affordability score is a simple, transparent mapping of the back-end ratio: 95 at 20% or less; 95 − 2.5 points per point above 20% up to 35%; 57 − 4 points per point from 35% to 43%; and 25 − 1.5 points per point above 43% (minimum 0). It is a reading aid, not a credit score or an approval probability.</p>
+    </div>
+    <div class="calc-card">
+      <h3 data-i="c3-t">💵 Personal Loan</h3>
+      <p data-i="c3-p1">Many lenders deduct an origination fee from the money you receive while you repay the full amount. CheckAfford computes the payment on the full loan, then finds the <strong>real APR</strong>: the monthly rate i that makes the amount you actually receive equal to the present value of your payments, solved numerically (bisection) and multiplied by 12. Total cost = payments − amount received.</p>
+      <p class="example" data-i="c3-ex"><strong>Example:</strong> $10,000 at 12% for 36 months with a 5% fee → you receive $9,500, pay $332.14 a month, and the real APR is about <strong>15.6%</strong>, not 12%. Total cost: $2,457.</p>
+      <p data-i="c3-p2">To compare with your current debt, the calculator simulates that balance month by month (interest = balance × APR ÷ 12, then your payment). If the payment does not cover the monthly interest, the debt is flagged as never paid off.</p>
+    </div>
+    <div class="calc-card">
+      <h3 data-i="c4-t">💳 Debt Payoff</h3>
+      <p data-i="c4-p1">A month-by-month simulation with a fixed total budget. Each month: interest is added to every open debt, every minimum is paid, and the money left over goes to one target debt. <strong>Avalanche</strong> targets the highest APR first (ties: smaller balance); <strong>snowball</strong> targets the smallest balance first (ties: higher APR). Because the budget stays fixed, the minimum of a paid-off debt automatically rolls into the next one.</p>
+      <p data-i="c4-p2">A third scenario pays only the minimums, to show what the plan saves. Simulations stop at 600 months (50 years). Any debt whose minimum is below its monthly interest gets a warning, because it can never shrink on minimums alone.</p>
+    </div>
+    <div class="calc-card">
+      <h3 data-i="c5-t">📱 Buy Now, Pay Later</h3>
+      <p data-i="c5-p1">Each plan is turned into a dated schedule: equal installments of amount ÷ number of payments, or an annuity payment when the plan charges interest (52, 26 or 12 periods per year for weekly, biweekly or monthly plans). Every installment is assigned to the <strong>last payday on or before its due date</strong>, because that is the paycheck that has to cover it.</p>
+      <p data-i="c5-p2">The verdict looks at the heaviest paycheck from the current one onward: up to 10% of take-home pay is green, 10–20% is yellow, and above 20% is red. These are CheckAfford's own guardrails for cash-flow risk, not a lender rule.</p>
+    </div>
+    <div class="calc-card">
+      <h3 data-i="c6-t">📊 DTI Calculator</h3>
+      <p data-i="c6-p1">Adds up every monthly debt payment you enter, divides by gross monthly income, and shows how much room is left before 36% and 43%. The “room at 36%” amount is converted into the largest loan it could support at the rate and term you choose, using the inverted payment formula above.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s4-label">Honest limits</div>
+    <h2 data-i="s4-title">What the calculators do not do</h2>
+    <ul class="limits">
+      <li data-i="s4-l1">They do not check your credit or know the rate a lender will actually offer you.</li>
+      <li data-i="s4-l2">They assume fixed rates and fixed payments. Variable rates, promotional periods, prepayment penalties and late fees are not modeled.</li>
+      <li data-i="s4-l3">Property taxes, insurance and HOA dues are whatever you enter; they are not looked up and can change over time.</li>
+      <li data-i="s4-l4">Results are rounded for display and are estimates — not a loan offer, a pre-approval, or financial advice.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <div class="section-label" data-i="s5-label">Trust</div>
+    <h2 data-i="s5-title">Privacy and corrections</h2>
+    <p data-i="s5-p1">All calculations run in your browser; the numbers you type are not sent to or stored by CheckAfford. The formulas on this page are reviewed whenever a calculator changes. If a result looks wrong, <a href="/contact">tell me</a> — I will check the math and correct it.</p>
+  </div>
+
+  <div class="section sources">
+    <h2 data-i="src-title">Sources</h2>
+    <ul>
+      <li><a href="https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-en-1791/" target="_blank" rel="noopener">CFPB — What is a debt-to-income ratio?<span>↗</span></a></li>
+      <li><a href="https://selling-guide.fanniemae.com/sel/b3-6-02/debt-income-ratios" target="_blank" rel="noopener">Fannie Mae Selling Guide B3-6-02 — Debt-to-Income Ratios<span>↗</span></a></li>
+      <li><a href="https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/" target="_blank" rel="noopener">CFPB — When can I remove private mortgage insurance (PMI)?<span>↗</span></a></li>
+      <li><a href="https://www.federalreserve.gov/releases/g19/current/default.htm" target="_blank" rel="noopener">Federal Reserve — Consumer Credit (G.19), interest rates<span>↗</span></a></li>
+      <li><a href="https://www.kellogg.northwestern.edu/news/blog/2012/08/07/the-snowball-approach-to-debt/" target="_blank" rel="noopener">Kellogg School of Management — The “snowball approach” to debt (2012)<span>↗</span></a></li>
+    </ul>
+  </div>
+
+  <div class="disclaimer"><p data-i="disclaimer"><strong>Educational use only.</strong> CheckAfford is not a lender or a licensed financial advisor. Lending rules vary by lender and loan program; confirm the numbers with your lender before you commit.</p></div>
+</div>
+</main>
+<footer>
+  <p data-i="footer-disc">For informational purposes only. Not financial advice.</p>
+  <p style="margin-top:8px;"><a href="/">checkafford.com</a> &nbsp;·&nbsp; <a href="/privacy" data-i="f-priv">Privacy Policy</a> &nbsp;·&nbsp; <a href="/terms" data-i="f-terms">Terms of Use</a> &nbsp;·&nbsp; <a href="/about" data-i="f-about">About</a> &nbsp;·&nbsp; <a href="/methodology" data-i="f-method" data-en="Methodology" data-es="Metodología">Methodology</a> &nbsp;·&nbsp; <a href="/contact" data-i="f-contact">Contact</a> &nbsp;·&nbsp; <a href="/blog/" data-i="f-blog">Blog</a></p>
+</footer>
+<script>
+const T={
+ "en": {
+  "nav-auto": "Auto Loan",
+  "nav-mortgage": "Mortgage",
+  "nav-bnpl": "BNPL",
+  "nav-debt": "Debt Payoff",
+  "nav-personal": "Personal Loan",
+  "nav-blog": "Blog",
+  "footer-disc": "For informational purposes only. Not financial advice.",
+  "f-priv": "Privacy Policy",
+  "f-terms": "Terms of Use",
+  "f-about": "About",
+  "f-contact": "Contact",
+  "f-blog": "Blog",
+  "badge": "Methodology",
+  "page-title": "How every number is calculated. ",
+  "page-title-em": "Formulas, assumptions and limits.",
+  "page-sub": "This page documents the exact math behind each CheckAfford calculator — the same formulas the code runs in your browser — plus the thresholds used for each verdict and what the tools do not account for.",
+  "by": "Written and reviewed by <a href=\"/about\">Elba Nabetcy Guissepe Avalo</a>, actuary · Last reviewed November 4, 2026",
+  "s1-label": "The core formula",
+  "s1-title": "Monthly loan payment (amortization)",
+  "s1-p1": "Every fixed-rate loan on this site — car, mortgage, personal loan and interest-bearing BNPL plans — uses the standard annuity formula. With principal <strong>P</strong>, annual rate <strong>APR</strong>, periodic rate <strong>r</strong> = APR ÷ 12 and <strong>n</strong> monthly payments:",
+  "s1-p2": "When the rate is 0%, the payment is simply P ÷ n. Total interest is M × n − P. To answer “how much can I borrow for a given payment?”, the calculators invert the formula: P = M × [1 − (1 + r)<sup>−n</sup>] ÷ r.",
+  "s1-ex": "<strong>Example:</strong> $30,000 at 7% APR for 60 months → r = 0.5833% per month → M = <strong>$594.04</strong>. Total paid $35,642; total interest <strong>$5,642</strong>.",
+  "s2-label": "The lender's view",
+  "s2-title": "Debt-to-income ratio (DTI)",
+  "s2-p1": "DTI is the measure lenders use to judge whether you can take on a new payment. CheckAfford computes two versions:",
+  "f-dti": "Front-end DTI = housing payment ÷ gross monthly income<br>Back-end DTI = (housing + all other debt payments) ÷ gross monthly income",
+  "s2-p2": "The verdicts use three reference points: <strong>28%</strong> for housing (front-end), <strong>36%</strong> for total debt, and <strong>43%</strong> as an upper caution line. These are common guidelines, not universal rules: Fannie Mae, for example, caps manually underwritten loans at 36% (up to 45% with strong credit and reserves) and allows up to 50% through its automated system. Your lender's limit may be higher or lower.",
+  "s2-p3": "Income is always <strong>gross</strong> (before taxes), because that is what lenders use. The BNPL calculator is the exception: it compares installments to your <strong>take-home</strong> paycheck, because that is the money that actually has to cover them.",
+  "s3-label": "Calculator by calculator",
+  "s3-title": "What each tool computes",
+  "c1-t": "🚗 Auto Loan",
+  "c1-p1": "Sales tax is applied to the price minus the trade-in value. Trade-in equity (trade-in value − amount still owed) reduces the loan; <strong>negative equity is added to the new loan</strong>, as dealers usually do. Tax and fees are either financed or paid upfront, depending on your choice.",
+  "c1-p2": "The result is checked against the <strong>20/4/10 rule</strong>: at least 20% down (cash plus positive equity), a term of 48 months or less, and car payment plus insurance at or below 10% of gross monthly income. A total DTI above 43% overrides everything with a red verdict. “Cost to own” adds insurance, fuel and maintenance to the payment.",
+  "c2-t": "🏠 Mortgage",
+  "c2-p1": "Principal and interest use the amortization formula on price minus down payment. The housing payment adds the monthly property tax, insurance, HOA and PMI you enter. Front-end ratio = housing ÷ income; back-end ratio = (housing + other debts) ÷ income.",
+  "c2-p2": "The 0–100 affordability score is a simple, transparent mapping of the back-end ratio: 95 at 20% or less; 95 − 2.5 points per point above 20% up to 35%; 57 − 4 points per point from 35% to 43%; and 25 − 1.5 points per point above 43% (minimum 0). It is a reading aid, not a credit score or an approval probability.",
+  "c3-t": "💵 Personal Loan",
+  "c3-p1": "Many lenders deduct an origination fee from the money you receive while you repay the full amount. CheckAfford computes the payment on the full loan, then finds the <strong>real APR</strong>: the monthly rate i that makes the amount you actually receive equal to the present value of your payments, solved numerically (bisection) and multiplied by 12. Total cost = payments − amount received.",
+  "c3-ex": "<strong>Example:</strong> $10,000 at 12% for 36 months with a 5% fee → you receive $9,500, pay $332.14 a month, and the real APR is about <strong>15.6%</strong>, not 12%. Total cost: $2,457.",
+  "c3-p2": "To compare with your current debt, the calculator simulates that balance month by month (interest = balance × APR ÷ 12, then your payment). If the payment does not cover the monthly interest, the debt is flagged as never paid off.",
+  "c4-t": "💳 Debt Payoff",
+  "c4-p1": "A month-by-month simulation with a fixed total budget. Each month: interest is added to every open debt, every minimum is paid, and the money left over goes to one target debt. <strong>Avalanche</strong> targets the highest APR first (ties: smaller balance); <strong>snowball</strong> targets the smallest balance first (ties: higher APR). Because the budget stays fixed, the minimum of a paid-off debt automatically rolls into the next one.",
+  "c4-p2": "A third scenario pays only the minimums, to show what the plan saves. Simulations stop at 600 months (50 years). Any debt whose minimum is below its monthly interest gets a warning, because it can never shrink on minimums alone.",
+  "c5-t": "📱 Buy Now, Pay Later",
+  "c5-p1": "Each plan is turned into a dated schedule: equal installments of amount ÷ number of payments, or an annuity payment when the plan charges interest (52, 26 or 12 periods per year for weekly, biweekly or monthly plans). Every installment is assigned to the <strong>last payday on or before its due date</strong>, because that is the paycheck that has to cover it.",
+  "c5-p2": "The verdict looks at the heaviest paycheck from the current one onward: up to 10% of take-home pay is green, 10–20% is yellow, and above 20% is red. These are CheckAfford's own guardrails for cash-flow risk, not a lender rule.",
+  "c6-t": "📊 DTI Calculator",
+  "c6-p1": "Adds up every monthly debt payment you enter, divides by gross monthly income, and shows how much room is left before 36% and 43%. The “room at 36%” amount is converted into the largest loan it could support at the rate and term you choose, using the inverted payment formula above.",
+  "s4-label": "Honest limits",
+  "s4-title": "What the calculators do not do",
+  "s4-l1": "They do not check your credit or know the rate a lender will actually offer you.",
+  "s4-l2": "They assume fixed rates and fixed payments. Variable rates, promotional periods, prepayment penalties and late fees are not modeled.",
+  "s4-l3": "Property taxes, insurance and HOA dues are whatever you enter; they are not looked up and can change over time.",
+  "s4-l4": "Results are rounded for display and are estimates — not a loan offer, a pre-approval, or financial advice.",
+  "s5-label": "Trust",
+  "s5-title": "Privacy and corrections",
+  "s5-p1": "All calculations run in your browser; the numbers you type are not sent to or stored by CheckAfford. The formulas on this page are reviewed whenever a calculator changes. If a result looks wrong, <a href=\"/contact\">tell me</a> — I will check the math and correct it.",
+  "src-title": "Sources",
+  "disclaimer": "<strong>Educational use only.</strong> CheckAfford is not a lender or a licensed financial advisor. Lending rules vary by lender and loan program; confirm the numbers with your lender before you commit.",
+  "f-method": "Methodology"
+ },
+ "es": {
+  "nav-auto": "Préstamo Auto",
+  "nav-mortgage": "Hipoteca",
+  "nav-bnpl": "BNPL",
+  "nav-debt": "Pago de Deuda",
+  "nav-personal": "Préstamo Personal",
+  "nav-blog": "Blog",
+  "footer-disc": "Solo para fines informativos. No es asesoría financiera.",
+  "f-priv": "Política de Privacidad",
+  "f-terms": "Términos de Uso",
+  "f-about": "Acerca de",
+  "f-contact": "Contacto",
+  "f-blog": "Blog",
+  "badge": "Metodología",
+  "page-title": "Cómo se calcula cada número. ",
+  "page-title-em": "Fórmulas, supuestos y límites.",
+  "page-sub": "Esta página documenta la matemática exacta detrás de cada calculadora de CheckAfford — las mismas fórmulas que el código ejecuta en tu navegador —, los umbrales de cada veredicto y lo que las herramientas no toman en cuenta.",
+  "by": "Escrito y revisado por <a href=\"/about\">Elba Nabetcy Guissepe Avalo</a>, actuaria · Última revisión: 4 de noviembre de 2026",
+  "s1-label": "La fórmula base",
+  "s1-title": "Pago mensual de un préstamo (amortización)",
+  "s1-p1": "Todos los préstamos a tasa fija del sitio — auto, hipoteca, préstamo personal y planes BNPL con interés — usan la fórmula estándar de anualidad. Con capital <strong>P</strong>, tasa anual <strong>APR</strong>, tasa periódica <strong>r</strong> = APR ÷ 12 y <strong>n</strong> pagos mensuales:",
+  "s1-p2": "Cuando la tasa es 0%, el pago es simplemente P ÷ n. El interés total es M × n − P. Para responder «¿cuánto puedo pedir prestado con un pago dado?», las calculadoras invierten la fórmula: P = M × [1 − (1 + r)<sup>−n</sup>] ÷ r.",
+  "s1-ex": "<strong>Ejemplo:</strong> $30,000 al 7% APR por 60 meses → r = 0,5833% mensual → M = <strong>$594.04</strong>. Total pagado $35,642; interés total <strong>$5,642</strong>.",
+  "s2-label": "La mirada del prestamista",
+  "s2-title": "Relación deuda-ingreso (DTI)",
+  "s2-p1": "La DTI es la medida que usan los prestamistas para juzgar si puedes asumir un pago nuevo. CheckAfford calcula dos versiones:",
+  "f-dti": "DTI front-end = pago de vivienda ÷ ingreso bruto mensual<br>DTI back-end = (vivienda + todos los demás pagos de deuda) ÷ ingreso bruto mensual",
+  "s2-p2": "Los veredictos usan tres puntos de referencia: <strong>28%</strong> para vivienda (front-end), <strong>36%</strong> para la deuda total y <strong>43%</strong> como línea de precaución superior. Son guías comunes, no reglas universales: Fannie Mae, por ejemplo, limita los préstamos evaluados manualmente al 36% (hasta 45% con buen crédito y reservas) y permite hasta 50% en su sistema automatizado. El límite de tu prestamista puede ser mayor o menor.",
+  "s2-p3": "El ingreso siempre es <strong>bruto</strong> (antes de impuestos), porque es lo que usan los prestamistas. La calculadora BNPL es la excepción: compara las cuotas con tu cheque <strong>neto</strong>, porque ese es el dinero que realmente tiene que cubrirlas.",
+  "s3-label": "Calculadora por calculadora",
+  "s3-title": "Qué calcula cada herramienta",
+  "c1-t": "🚗 Préstamo de Auto",
+  "c1-p1": "El impuesto de venta se aplica al precio menos el valor del auto que entregas. El capital de ese auto (su valor − lo que aún debes) reduce el préstamo; <strong>el capital negativo se suma al nuevo préstamo</strong>, como suelen hacer los concesionarios. Impuestos y cargos se financian o se pagan al inicio, según elijas.",
+  "c1-p2": "El resultado se compara con la <strong>regla 20/4/10</strong>: al menos 20% de inicial (efectivo más capital positivo), plazo de 48 meses o menos, y pago del auto más seguro en o por debajo del 10% del ingreso bruto mensual. Una DTI total mayor a 43% se impone con un veredicto rojo. «Costo de tenerlo» suma seguro, gasolina y mantenimiento al pago.",
+  "c2-t": "🏠 Hipoteca",
+  "c2-p1": "Capital e interés usan la fórmula de amortización sobre el precio menos la inicial. El pago de vivienda suma el impuesto predial, seguro, HOA y PMI mensuales que ingresas. Ratio front-end = vivienda ÷ ingreso; ratio back-end = (vivienda + otras deudas) ÷ ingreso.",
+  "c2-p2": "El puntaje de 0 a 100 es una transformación simple y transparente del ratio back-end: 95 con 20% o menos; 95 − 2,5 puntos por cada punto sobre 20% hasta 35%; 57 − 4 puntos por punto entre 35% y 43%; y 25 − 1,5 puntos por punto sobre 43% (mínimo 0). Es una ayuda de lectura, no un puntaje de crédito ni una probabilidad de aprobación.",
+  "c3-t": "💵 Préstamo Personal",
+  "c3-p1": "Muchos prestamistas descuentan una comisión de apertura del dinero que recibes, mientras tú pagas el monto completo. CheckAfford calcula el pago sobre el préstamo completo y luego encuentra el <strong>APR real</strong>: la tasa mensual i que iguala el dinero que realmente recibes con el valor presente de tus pagos, resuelta numéricamente (bisección) y multiplicada por 12. Costo total = pagos − monto recibido.",
+  "c3-ex": "<strong>Ejemplo:</strong> $10,000 al 12% por 36 meses con 5% de comisión → recibes $9,500, pagas $332.14 al mes y el APR real es cerca de <strong>15,6%</strong>, no 12%. Costo total: $2,457.",
+  "c3-p2": "Para compararlo con tu deuda actual, la calculadora simula ese saldo mes a mes (interés = saldo × APR ÷ 12, luego tu pago). Si el pago no cubre el interés mensual, la deuda se marca como que nunca se paga.",
+  "c4-t": "💳 Pago de Deuda",
+  "c4-p1": "Una simulación mes a mes con un presupuesto total fijo. Cada mes: se suma el interés a cada deuda abierta, se paga cada mínimo y el dinero restante va a una deuda objetivo. <strong>Avalancha</strong> ataca primero la tasa más alta (empates: saldo menor); <strong>bola de nieve</strong> ataca primero el saldo más pequeño (empates: tasa más alta). Como el presupuesto no cambia, el mínimo de una deuda pagada pasa automáticamente a la siguiente.",
+  "c4-p2": "Un tercer escenario paga solo los mínimos, para mostrar cuánto ahorra el plan. Las simulaciones se detienen en 600 meses (50 años). Toda deuda cuyo mínimo sea menor que su interés mensual recibe una alerta, porque nunca puede bajar solo con mínimos.",
+  "c5-t": "📱 Compra Ahora, Paga Después",
+  "c5-p1": "Cada plan se convierte en un calendario con fechas: cuotas iguales de monto ÷ número de pagos, o un pago de anualidad cuando el plan cobra interés (52, 26 o 12 periodos al año para planes semanales, quincenales o mensuales). Cada cuota se asigna al <strong>último día de pago en o antes de su vencimiento</strong>, porque ese es el cheque que tiene que cubrirla.",
+  "c5-p2": "El veredicto mira el cheque más cargado desde el actual en adelante: hasta 10% del pago neto es verde, de 10% a 20% amarillo y más de 20% rojo. Son límites propios de CheckAfford para el riesgo de flujo de caja, no una regla de prestamistas.",
+  "c6-t": "📊 Calculadora de DTI",
+  "c6-p1": "Suma cada pago mensual de deuda que ingresas, lo divide entre el ingreso bruto mensual y muestra cuánto espacio queda antes de 36% y 43%. El espacio hasta 36% se convierte en el préstamo más grande que podría sostener con la tasa y el plazo que elijas, usando la fórmula de pago invertida de arriba.",
+  "s4-label": "Límites honestos",
+  "s4-title": "Lo que las calculadoras no hacen",
+  "s4-l1": "No revisan tu crédito ni saben la tasa que un prestamista realmente te ofrecerá.",
+  "s4-l2": "Suponen tasas y pagos fijos. No modelan tasas variables, periodos promocionales, penalidades por pago anticipado ni cargos por mora.",
+  "s4-l3": "Impuestos, seguros y cuotas de HOA son los que ingresas; no se buscan automáticamente y pueden cambiar con el tiempo.",
+  "s4-l4": "Los resultados se redondean para mostrarlos y son estimaciones — no una oferta de préstamo, una preaprobación ni asesoría financiera.",
+  "s5-label": "Confianza",
+  "s5-title": "Privacidad y correcciones",
+  "s5-p1": "Todos los cálculos se hacen en tu navegador; los números que escribes no se envían a CheckAfford ni se guardan. Las fórmulas de esta página se revisan cada vez que cambia una calculadora. Si un resultado parece incorrecto, <a href=\"/contact\">avísame</a> — reviso la matemática y la corrijo.",
+  "src-title": "Fuentes",
+  "disclaimer": "<strong>Solo con fines educativos.</strong> CheckAfford no es un prestamista ni un asesor financiero con licencia. Las reglas varían según el prestamista y el programa; confirma los números con tu prestamista antes de comprometerte.",
+  "f-method": "Metodología"
+ }
+};
+function setLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>{const a=b.textContent===l.toUpperCase();b.classList.toggle('active',a);b.setAttribute('aria-pressed',a);});
+  const t=T[l];
+  document.querySelectorAll('[data-i]').forEach(el=>{const k=el.getAttribute('data-i');if(t[k]!==undefined)el.innerHTML=t[k];});
+}
+</script>
+</body>
+</html>
