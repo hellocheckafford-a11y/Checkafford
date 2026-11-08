@@ -7,6 +7,62 @@
 <meta name="description" content="Check a home price against your income: enter price, down payment, rate and debts to see your housing ratio and total DTI next to the 28/36 guideline. Free, no signup.">
 <meta name="keywords" content="can I afford a mortgage, home affordability calculator, how much house can I afford, mortgage DTI calculator">
 <link rel="canonical" href="https://checkafford.com/mortgage">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is the difference between the housing ratio and total DTI?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "The housing ratio counts only your housing cost: principal, interest, property taxes, insurance, HOA dues and mortgage insurance. Total DTI adds every other monthly debt payment. Lenders look at both, but total DTI usually decides the approval, because it is the ratio with a hard limit in most loan programs."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What counts as monthly debt in the DTI calculation?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Recurring payments that show up on your credit report or are legally required: car loans, student loans, personal loans, the minimum payment on each credit card, and child support or alimony. Utilities, groceries, phone bills, car insurance and the rent you will stop paying once you buy are not counted."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does the calculator use gross income instead of take-home pay?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because US lenders qualify borrowers on gross income, before taxes and payroll deductions. That makes the ratios look smaller than what you actually feel each month. Check the Left Over figure too: it is your gross income minus debts and housing, so taxes, retirement contributions and living costs still have to come out of it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is a $2,500 mortgage payment too much on a $70k salary?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "On $70,000 a year (about $5,833 a month gross), a $2,500 housing payment is a 43% housing ratio, far above the 28% guideline. Since total DTI also includes your other debts, it would be at or above the roughly 43% many lenders accept even if you owed nothing else. Most lenders would see it as a stretch, and it leaves little room for savings or emergencies."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I need 20% down to get a mortgage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Some conventional loans allow 3% down and FHA loans allow 3.5% down. With less than 20% down on a conventional loan you will usually pay private mortgage insurance (PMI), often around 0.5% to 1.5% of the loan amount per year. FHA loans charge their own mortgage insurance (MIP) instead. Add either one to the monthly costs field so your ratios are accurate."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I include property taxes and insurance?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Lenders qualify you on the full monthly housing payment, often called PITI (principal, interest, taxes and insurance), plus HOA dues and mortgage insurance. Leaving them out can make an unaffordable home look fine: in the worked example above, $600 a month of taxes and insurance adds 7.5 points to both ratios."
+   }
+  }
+ ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -108,9 +164,24 @@
   .content-card p + p { margin-top: 10px; }
   .faq-section { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 60px; padding: 0 24px; }
   .section-label { font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; }
-  .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-  .faq-q { font-family: var(--font-display); font-size: 15px; font-weight: 700; margin-bottom: 10px; }
-  .faq-a { font-size: 13px; color: var(--muted); line-height: 1.7; }
+  .faq-item { border-bottom: 1px solid var(--border); padding: 18px 0; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-a { font-size: 13px; color: var(--muted); line-height: 1.7; margin-top: 10px; }
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .hero-stats, .quick-facts { display: none; } }
   .other-calcs { position: relative; z-index: 5; max-width: 900px; margin: 0 auto 80px; padding: 0 24px; }
   .other-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
   @media (max-width: 640px) { .other-grid { grid-template-columns: 1fr 1fr; } }
@@ -243,17 +314,23 @@
     </div>
   </div>
 </div>
-<section class="content-section">
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title">How to Calculate What Mortgage You Can Afford</h2>
+  <p class="content-intro" id="guide-intro">Mortgage affordability is the largest monthly payment you can carry without your debts taking too big a share of your income. Lenders work it out from four numbers: your gross monthly income (before taxes), your other monthly debt payments, your down payment, and the full housing cost: principal, interest, property taxes, homeowners insurance, HOA dues and mortgage insurance. This calculator runs the same two ratios a lender checks. If you want a starting price range by salary first, see <a href="/blog/how-much-house-can-i-afford">How Much House Can I Afford on My Salary?</a></p>
   <div class="content-grid">
-    <div class="content-card"><h3 id="c1-title">The 28/36 Rule explained</h3><p id="c1-p1">Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost (mortgage + insurance + taxes) should not exceed 28% of your gross monthly income.</p><p id="c1-p2">Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.</p></div>
+    <div class="content-card"><h3 id="c1-title">The 28/36 rule: the US lending standard</h3><p id="c1-p1">The <strong>housing ratio</strong> (front-end ratio) divides your full monthly housing cost by your gross monthly income. The common guideline is 28% or less.</p><p id="c1-p2">The <strong>total debt-to-income ratio</strong> (back-end DTI) adds car payments, student loans, credit card minimums and other loans to the housing cost. The guideline is 36% or less. Many lenders accept up to about 43%, and some programs, such as FHA loans, can go to about 50% with strong compensating factors like savings or a high credit score. The calculator shows both ratios and flags each threshold.</p></div>
     <div class="content-card"><h3 id="c2-title">What really drives your mortgage payment</h3><p id="c2-p1">Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term lowers the monthly payment, but at about 7% the total interest comes to roughly 1.4 times the amount you borrow.</p><p id="c2-p2">At rates between 6% and 7%, a 15-year mortgage cuts total interest by more than half, but the monthly payment is roughly 35–45% higher. Use the calculator to find the right balance for your income.</p></div>
+    <div class="content-card wide"><h3 id="c3-title">Worked example: the calculator's default numbers</h3><p id="c3-p1">Take a gross income of $8,000 a month, $1,200 in other debt payments, a $400,000 home with $80,000 down, a 7.1% rate over 30 years, and about $600 a month for taxes and insurance:</p><ol id="c3-list"><li>Loan amount: $400,000 − $80,000 = $320,000.</li><li>Principal and interest: about $2,151 a month. Adding $600 for taxes and insurance gives a housing cost of about $2,751.</li><li>Housing ratio: $2,751 ÷ $8,000 = 34.4%, above the 28% guideline.</li><li>Total DTI: ($2,751 + $1,200) ÷ $8,000 = 49.4%, above the roughly 43% many lenders accept.</li></ol><p id="c3-p2">Same income, same $80,000 down, but a $320,000 home: the loan falls to $240,000, principal and interest to about $1,613, and with roughly $500 in taxes and insurance the housing ratio drops to 26.4%. Total DTI is still 41.4%, so the bigger lever here is the other debt. Cutting it from $1,200 to $700 a month brings total DTI to about 35%, inside the 36% guideline.</p></div>
   </div>
 </section>
-<section class="faq-section">
-  <p class="section-label" id="faq-label">Common questions</p>
-  <div class="faq-item"><div class="faq-q" id="faq1-q">How much house can I afford on a $80,000 salary?</div><div class="faq-a" id="faq1-a">On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing costs. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years, before factoring in property taxes and insurance.</div></div>
-  <div class="faq-item"><div class="faq-q" id="faq2-q">Is a $2,500 mortgage too much on a $70k salary?</div><div class="faq-a" id="faq2-a">On $70,000/year (~$5,833/month gross), a $2,500 mortgage payment represents 43% of gross income, which is at the upper end of what many lenders accept. That leaves very little margin for other debts or emergencies, so many advisors would call it aggressive.</div></div>
-  <div class="faq-item"><div class="faq-q" id="faq3-q">Do I need 20% down to get a mortgage?</div><div class="faq-a" id="faq3-a">No — FHA loans allow as little as 3.5% down, and conventional loans can go as low as 3%. However, putting less than 20% down means paying Private Mortgage Insurance (PMI), which adds $50–$200/month to your payment depending on the loan size.</div></div>
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="section-label" id="faq-label">Common questions</h2>
+  <details class="faq-item"><summary id="faq1-q">What is the difference between the housing ratio and total DTI?</summary><div class="faq-a" id="faq1-a">The housing ratio counts only your housing cost: principal, interest, property taxes, insurance, HOA dues and mortgage insurance. Total DTI adds every other monthly debt payment. Lenders look at both, but total DTI usually decides the approval, because it is the ratio with a hard limit in most loan programs.</div></details>
+  <details class="faq-item"><summary id="faq2-q">What counts as monthly debt in the DTI calculation?</summary><div class="faq-a" id="faq2-a">Recurring payments that show up on your credit report or are legally required: car loans, student loans, personal loans, the minimum payment on each credit card, and child support or alimony. Utilities, groceries, phone bills, car insurance and the rent you will stop paying once you buy are not counted.</div></details>
+  <details class="faq-item"><summary id="faq3-q">Why does the calculator use gross income instead of take-home pay?</summary><div class="faq-a" id="faq3-a">Because US lenders qualify borrowers on gross income, before taxes and payroll deductions. That makes the ratios look smaller than what you actually feel each month. Check the Left Over figure too: it is your gross income minus debts and housing, so taxes, retirement contributions and living costs still have to come out of it.</div></details>
+  <details class="faq-item"><summary id="faq4-q">Is a $2,500 mortgage payment too much on a $70k salary?</summary><div class="faq-a" id="faq4-a">On $70,000 a year (about $5,833 a month gross), a $2,500 housing payment is a 43% housing ratio, far above the 28% guideline. Since total DTI also includes your other debts, it would be at or above the roughly 43% many lenders accept even if you owed nothing else. Most lenders would see it as a stretch, and it leaves little room for savings or emergencies.</div></details>
+  <details class="faq-item"><summary id="faq5-q">Do I need 20% down to get a mortgage?</summary><div class="faq-a" id="faq5-a">No. Some conventional loans allow 3% down and FHA loans allow 3.5% down. With less than 20% down on a conventional loan you will usually pay private mortgage insurance (PMI), often around 0.5% to 1.5% of the loan amount per year. FHA loans charge their own mortgage insurance (MIP) instead. Add either one to the monthly costs field so your ratios are accurate.</div></details>
+  <details class="faq-item"><summary id="faq6-q">Should I include property taxes and insurance?</summary><div class="faq-a" id="faq6-a">Yes. Lenders qualify you on the full monthly housing payment, often called PITI (principal, interest, taxes and insurance), plus HOA dues and mortgage insurance. Leaving them out can make an unaffordable home look fine: in the worked example above, $600 a month of taxes and insurance adds 7.5 points to both ratios.</div></details>
 </section>
 <section class="other-calcs">
   <p class="section-label">Other calculators</p>
@@ -347,15 +424,27 @@
     's3-lbl': { en: 'Total Paid (incl. taxes &amp; insurance)', es: 'Total pagado (con impuestos y seguro)' },
     's4-lbl': { en: 'Total Interest', es: 'Interés total' },
     'faq-label': { en: 'Common questions', es: 'Preguntas frecuentes' },
-    'faq1-q': { en: 'How much house can I afford on a $80,000 salary?', es: '¿Cuánta casa puedo pagar con un salario de $80,000?' },
-    'faq1-a': { en: 'On $80,000/year (~$6,667/month gross), the 28% rule allows up to $1,867/month for housing. At current rates (~7%), that supports a mortgage of roughly $280,000–$300,000 over 30 years.', es: 'Con $80,000/año (~$6,667/mes bruto), la regla del 28% permite hasta $1,867/mes para vivienda. Con tasas actuales (~7%), eso soporta una hipoteca de aproximadamente $280,000–$300,000 a 30 años.' },
-    'faq2-q': { en: 'Is a $2,500 mortgage too much on a $70k salary?', es: '¿Es demasiado una hipoteca de $2,500 con un salario de $70k?' },
-    'faq2-a': { en: 'On $70,000/year (~$5,833/month gross), a $2,500 payment is 43% of gross income, which is at the upper end of what many lenders accept. Very little margin for other debts or emergencies.', es: 'Con $70,000/año (~$5,833/mes bruto), un pago de $2,500 es el 43% del ingreso bruto, en el extremo alto de lo que muchos prestamistas aceptan. Muy poco margen para otras deudas o emergencias.' },
-    'faq3-q': { en: 'Do I need 20% down to get a mortgage?', es: '¿Necesito el 20% de enganche para obtener una hipoteca?' },
-    'faq3-a': { en: 'No — FHA loans allow as little as 3.5% down. However, putting less than 20% means paying Private Mortgage Insurance (PMI), adding $50–$200/month to your payment.', es: 'No — los préstamos FHA permiten tan solo el 3.5% de enganche. Sin embargo, menos del 20% significa pagar el Seguro Hipotecario Privado (PMI), agregando $50–$200/mes a tu pago.' },
-    'c1-title': { en: 'The 28/36 Rule explained', es: 'La regla 28/36 explicada' },
-    'c1-p1': { en: 'Banks use this rule to decide if you can afford a mortgage. Your monthly housing cost should not exceed 28% of your gross monthly income.', es: 'Los bancos usan esta regla para decidir si puedes pagar una hipoteca. Tu costo mensual de vivienda no debe superar el 28% de tu ingreso mensual bruto.' },
-    'c1-p2': { en: 'Your total monthly debt — housing plus car payments, credit cards, student loans — should not exceed 36%. Our calculator flags when either threshold is crossed.', es: 'Tu deuda mensual total — vivienda más pagos de auto, tarjetas, préstamos estudiantiles — no debe superar el 36%.' },
+    'guide-title': { en: 'How to Calculate What Mortgage You Can Afford', es: 'Cómo calcular qué hipoteca puedes pagar' },
+    'guide-intro': { en: 'Mortgage affordability is the largest monthly payment you can carry without your debts taking too big a share of your income. Lenders work it out from four numbers: your gross monthly income (before taxes), your other monthly debt payments, your down payment, and the full housing cost: principal, interest, property taxes, homeowners insurance, HOA dues and mortgage insurance. This calculator runs the same two ratios a lender checks. If you want a starting price range by salary first, see <a href="/blog/how-much-house-can-i-afford">How Much House Can I Afford on My Salary?</a>', es: 'La capacidad de pago de una hipoteca es el mayor pago mensual que puedes asumir sin que tus deudas se lleven una parte demasiado grande de tu ingreso. Los prestamistas la calculan con cuatro números: tu ingreso mensual bruto (antes de impuestos), tus otros pagos mensuales de deuda, tu enganche y el costo total de vivienda: capital, intereses, impuestos a la propiedad, seguro de vivienda, cuotas de HOA y seguro hipotecario. Esta calculadora aplica los mismos dos ratios que revisa un prestamista. Si primero quieres un rango de precio según tu salario, lee <a href="/blog/how-much-house-can-i-afford">¿Cuánta casa puedo pagar con mi salario?</a>' },
+    'c1-title': { en: 'The 28/36 rule: the US lending standard', es: 'La regla 28/36: el estándar de crédito en EE. UU.' },
+    'c1-p1': { en: 'The <strong>housing ratio</strong> (front-end ratio) divides your full monthly housing cost by your gross monthly income. The common guideline is 28% or less.', es: 'El <strong>ratio de vivienda</strong> (front-end) divide tu costo mensual total de vivienda entre tu ingreso mensual bruto. La pauta común es 28% o menos.' },
+    'c1-p2': { en: 'The <strong>total debt-to-income ratio</strong> (back-end DTI) adds car payments, student loans, credit card minimums and other loans to the housing cost. The guideline is 36% or less. Many lenders accept up to about 43%, and some programs, such as FHA loans, can go to about 50% with strong compensating factors like savings or a high credit score. The calculator shows both ratios and flags each threshold.', es: 'La <strong>relación deuda-ingreso total</strong> (DTI back-end) suma al costo de vivienda los pagos de auto, préstamos estudiantiles, mínimos de tarjetas y otros préstamos. La pauta es 36% o menos. Muchos prestamistas aceptan hasta cerca del 43%, y algunos programas, como los préstamos FHA, llegan a cerca del 50% con factores compensatorios sólidos, como ahorros o un buen puntaje de crédito. La calculadora muestra ambos ratios y marca cada límite.' },
+    'c3-title': { en: 'Worked example: the calculator\'s default numbers', es: 'Ejemplo práctico: los números por defecto de la calculadora' },
+    'c3-p1': { en: 'Take a gross income of $8,000 a month, $1,200 in other debt payments, a $400,000 home with $80,000 down, a 7.1% rate over 30 years, and about $600 a month for taxes and insurance:', es: 'Toma un ingreso bruto de $8,000 al mes, $1,200 en otros pagos de deuda, una casa de $400,000 con $80,000 de enganche, una tasa de 7.1% a 30 años y unos $600 al mes de impuestos y seguro:' },
+    'c3-list': { en: '<li>Loan amount: $400,000 − $80,000 = $320,000.</li><li>Principal and interest: about $2,151 a month. Adding $600 for taxes and insurance gives a housing cost of about $2,751.</li><li>Housing ratio: $2,751 ÷ $8,000 = 34.4%, above the 28% guideline.</li><li>Total DTI: ($2,751 + $1,200) ÷ $8,000 = 49.4%, above the roughly 43% many lenders accept.</li>', es: '<li>Monto del préstamo: $400,000 − $80,000 = $320,000.</li><li>Capital e intereses: unos $2,151 al mes. Con $600 de impuestos y seguro, el costo de vivienda es de unos $2,751.</li><li>Ratio de vivienda: $2,751 ÷ $8,000 = 34.4%, por encima de la pauta del 28%.</li><li>DTI total: ($2,751 + $1,200) ÷ $8,000 = 49.4%, por encima del 43% aproximado que aceptan muchos prestamistas.</li>' },
+    'c3-p2': { en: 'Same income, same $80,000 down, but a $320,000 home: the loan falls to $240,000, principal and interest to about $1,613, and with roughly $500 in taxes and insurance the housing ratio drops to 26.4%. Total DTI is still 41.4%, so the bigger lever here is the other debt. Cutting it from $1,200 to $700 a month brings total DTI to about 35%, inside the 36% guideline.', es: 'Mismo ingreso y mismos $80,000 de enganche, pero una casa de $320,000: el préstamo baja a $240,000, el capital e intereses a unos $1,613 y, con unos $500 de impuestos y seguro, el ratio de vivienda cae a 26.4%. El DTI total sigue en 41.4%, así que aquí la palanca más fuerte son las otras deudas. Bajarlas de $1,200 a $700 al mes deja el DTI total en cerca del 35%, dentro de la pauta del 36%.' },
+    'faq1-q': { en: 'What is the difference between the housing ratio and total DTI?', es: '¿Cuál es la diferencia entre el ratio de vivienda y el DTI total?' },
+    'faq1-a': { en: 'The housing ratio counts only your housing cost: principal, interest, property taxes, insurance, HOA dues and mortgage insurance. Total DTI adds every other monthly debt payment. Lenders look at both, but total DTI usually decides the approval, because it is the ratio with a hard limit in most loan programs.', es: 'El ratio de vivienda cuenta solo tu costo de vivienda: capital, intereses, impuestos a la propiedad, seguro, cuotas de HOA y seguro hipotecario. El DTI total suma todos tus demás pagos mensuales de deuda. Los prestamistas revisan ambos, pero el DTI total suele decidir la aprobación, porque es el ratio con un límite firme en la mayoría de los programas de préstamo.' },
+    'faq2-q': { en: 'What counts as monthly debt in the DTI calculation?', es: '¿Qué cuenta como deuda mensual en el cálculo del DTI?' },
+    'faq2-a': { en: 'Recurring payments that show up on your credit report or are legally required: car loans, student loans, personal loans, the minimum payment on each credit card, and child support or alimony. Utilities, groceries, phone bills, car insurance and the rent you will stop paying once you buy are not counted.', es: 'Los pagos recurrentes que aparecen en tu historial de crédito o que son obligatorios por ley: préstamos de auto, préstamos estudiantiles, préstamos personales, el pago mínimo de cada tarjeta de crédito y la manutención de hijos o pensión alimenticia. No cuentan los servicios, el supermercado, el teléfono, el seguro del auto ni la renta que dejarás de pagar al comprar.' },
+    'faq3-q': { en: 'Why does the calculator use gross income instead of take-home pay?', es: '¿Por qué la calculadora usa el ingreso bruto y no el neto?' },
+    'faq3-a': { en: 'Because US lenders qualify borrowers on gross income, before taxes and payroll deductions. That makes the ratios look smaller than what you actually feel each month. Check the Left Over figure too: it is your gross income minus debts and housing, so taxes, retirement contributions and living costs still have to come out of it.', es: 'Porque los prestamistas en EE. UU. califican con el ingreso bruto, antes de impuestos y deducciones de nómina. Por eso los ratios se ven más bajos que lo que realmente sientes cada mes. Revisa también el sobrante: es tu ingreso bruto menos deudas y vivienda, así que de ahí todavía salen impuestos, aportes de jubilación y gastos de vida.' },
+    'faq4-q': { en: 'Is a $2,500 mortgage payment too much on a $70k salary?', es: '¿Es demasiado un pago de hipoteca de $2,500 con un salario de $70k?' },
+    'faq4-a': { en: 'On $70,000 a year (about $5,833 a month gross), a $2,500 housing payment is a 43% housing ratio, far above the 28% guideline. Since total DTI also includes your other debts, it would be at or above the roughly 43% many lenders accept even if you owed nothing else. Most lenders would see it as a stretch, and it leaves little room for savings or emergencies.', es: 'Con $70,000 al año (unos $5,833 al mes brutos), un pago de vivienda de $2,500 es un ratio de vivienda del 43%, muy por encima de la pauta del 28%. Como el DTI total incluye además tus otras deudas, quedaría en o por encima del 43% aproximado que aceptan muchos prestamistas aunque no debieras nada más. La mayoría lo vería como un esfuerzo excesivo, y deja poco margen para ahorro o emergencias.' },
+    'faq5-q': { en: 'Do I need 20% down to get a mortgage?', es: '¿Necesito el 20% de enganche para obtener una hipoteca?' },
+    'faq5-a': { en: 'No. Some conventional loans allow 3% down and FHA loans allow 3.5% down. With less than 20% down on a conventional loan you will usually pay private mortgage insurance (PMI), often around 0.5% to 1.5% of the loan amount per year. FHA loans charge their own mortgage insurance (MIP) instead. Add either one to the monthly costs field so your ratios are accurate.', es: 'No. Algunos préstamos convencionales permiten un 3% de enganche y los préstamos FHA un 3.5%. Con menos del 20% en un préstamo convencional normalmente pagarás seguro hipotecario privado (PMI), a menudo entre el 0.5% y el 1.5% del monto del préstamo al año. Los préstamos FHA cobran su propio seguro hipotecario (MIP). Agrega cualquiera de los dos al campo de costos mensuales para que tus ratios sean exactos.' },
+    'faq6-q': { en: 'Should I include property taxes and insurance?', es: '¿Debo incluir los impuestos a la propiedad y el seguro?' },
+    'faq6-a': { en: 'Yes. Lenders qualify you on the full monthly housing payment, often called PITI (principal, interest, taxes and insurance), plus HOA dues and mortgage insurance. Leaving them out can make an unaffordable home look fine: in the worked example above, $600 a month of taxes and insurance adds 7.5 points to both ratios.', es: 'Sí. Los prestamistas te califican con el pago mensual completo de vivienda, conocido como PITI (capital, intereses, impuestos y seguro), más cuotas de HOA y seguro hipotecario. Si los dejas fuera, una casa que no puedes pagar puede parecer viable: en el ejemplo de arriba, $600 al mes de impuestos y seguro suman 7.5 puntos a ambos ratios.' },
     'c2-title': { en: 'What really drives your mortgage payment', es: 'Qué realmente determina tu pago de hipoteca' },
     'c2-p1': { en: 'Three factors move your payment the most: the loan amount, the interest rate, and the term. A 30-year term lowers the monthly payment, but at about 7% the total interest comes to roughly 1.4 times the amount you borrow.', es: 'Tres factores mueven tu pago más que nada: el monto del préstamo, la tasa de interés y el plazo. Un plazo de 30 años baja el pago mensual, pero con una tasa cercana al 7% el interés total llega a cerca de 1.4 veces lo que pides prestado.' },
     'c2-p2': { en: 'At rates between 6% and 7%, a 15-year mortgage cuts total interest by more than half, but the monthly payment is roughly 35–45% higher. Use the calculator to find the right balance for your income.', es: 'Con tasas de entre 6% y 7%, una hipoteca a 15 años reduce el interés total a menos de la mitad, pero el pago mensual es entre 35% y 45% más alto. Usa la calculadora para encontrar el equilibrio adecuado para tu ingreso.' }
