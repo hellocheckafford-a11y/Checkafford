@@ -7,6 +7,62 @@
 <meta name="description" content="See what a car really costs each month: payment, insurance, fuel and maintenance, the 20/4/10 rule checked part by part, and 48 vs. 60 vs. 72 months side by side. Free, no signup.">
 <meta name="keywords" content="can I afford a car payment, auto loan affordability calculator, car payment calculator, debt to income ratio car loan">
 <link rel="canonical" href="https://checkafford.com/car-loan">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is 72 months too long for a car loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It lowers the payment but costs more and keeps you owing more than the car is worth for longer. With the calculator's default numbers ($30,840 financed at 7.5%), 72 months means about $533 a month and $7,552 in interest; 48 months means about $746 a month and $4,953 in interest, roughly $2,600 less. If only the 72-month payment fits your budget, the car is probably too expensive for now."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What counts toward the 10% part of the 20/4/10 rule?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "This calculator uses the most common version: the loan payment plus insurance, compared with your gross monthly income. Stricter versions also count fuel and maintenance, which is why the results also show the monthly cost to own the car. If that full figure is well above 10% of your income, the car will feel more expensive than the payment suggests."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I roll sales tax and fees into the loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only if you cannot pay them up front. In the default example, $2,240 of sales tax and $600 of fees are financed, which adds about $695 of interest over 72 months and leaves you owing more than the car is worth from day one. Uncheck the option in the calculator to see the cash due at signing instead."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens if I owe more on my trade-in than it is worth?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "That gap is called negative equity, and dealers usually add it to the new loan. You then pay interest on debt from a car you no longer own, and the new loan starts underwater. Enter the trade-in value and what you still owe, and the calculator adds the difference to the amount financed."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What interest rate can I expect with my credit score?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Rates depend heavily on credit. In Experian's Q2 2026 data, the average new-car APR was about 6.4% overall, about 4.4% for super-prime borrowers (781–850) and about 13.5% for subprime borrowers (501–600). Used-car loans run several points higher in every tier. Get a preapproval from a bank or credit union before visiting the dealer and enter that APR here."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Will a car loan affect my chances of getting a mortgage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. The car payment counts in your debt-to-income ratio for years. With the default numbers, a $533 payment on a $6,000 monthly income uses almost 9 points of DTI, which reduces how much house a lender will approve. If you plan to buy a home soon, run both numbers together in the mortgage calculator."
+   }
+  }
+ ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <meta property="og:title" content="What Does That Car Really Cost Each Month?">
 <meta property="og:description" content="The monthly cost to own a car, the 20/4/10 rule part by part, and 48 vs. 60 vs. 72 months.">
@@ -575,6 +631,25 @@
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
   .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
   @media(max-width:640px){.field-row.three{grid-template-columns:1fr 1fr;}}
+
+  /* SEO content + FAQ (Nov 2026) */
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-item .faq-a { margin-top: 10px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .hero-stats, .quick-facts { display: none; } }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -642,7 +717,7 @@
       </div>
       <div class="fact-item">
         <span class="fact-icon">→</span>
-        <span data-en="The 20/4/10 rule: 20% down, 4-year term, payments under 10% of gross income." data-es="La regla 20/4/10: 20% de enganche, plazo de 4 años, pagos menores al 10% de tu ingreso bruto.">The 20/4/10 rule: 20% down, 4-year term, payments under 10% of gross income.</span>
+        <span data-en="The 20/4/10 rule: 20% down, a 4-year term, and payment plus insurance under 10% of gross income." data-es="La regla 20/4/10: 20% de enganche, plazo de 4 años, y pago más seguro por debajo del 10% de tu ingreso bruto.">The 20/4/10 rule: 20% down, a 4-year term, and payment plus insurance under 10% of gross income.</span>
       </div>
       <div class="fact-item">
         <span class="fact-icon">→</span>
@@ -741,7 +816,7 @@
           <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="income" value="6000" inputmode="decimal" ></div>
         </div>
         <div class="field">
-          <label for="expenses" data-en="Other monthly debt payments" data-es="Otros pagos de deudas al mes">Other monthly debt payments</label>
+          <label for="expenses" data-en="Other monthly debt payments (rent or mortgage, cards, loans)" data-es="Otros pagos de deudas al mes (renta o hipoteca, tarjetas, préstamos)">Other monthly debt payments (rent or mortgage, cards, loans)</label>
           <div class="input-wrap"><span class="input-prefix" aria-hidden="true">$</span><input type="number" id="expenses" value="400" inputmode="decimal" ></div>
         </div>
         </div>
@@ -781,36 +856,38 @@
 </div>
 
 <!-- CONTENT SECTION (SEO) -->
-<section class="content-section">
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title" data-en="How to Calculate How Much Car You Can Afford" data-es="Cómo calcular cuánto auto puedes pagar">How to Calculate How Much Car You Can Afford</h2>
+  <p class="content-intro" data-en="To know if you can afford a car, look past the sticker price and the monthly payment. What matters is the amount you finance (price minus down payment and trade-in, plus sales tax and fees if you roll them in), the APR, the loan term, and what the car costs to run: insurance, fuel and maintenance. This calculator checks those numbers against the 20/4/10 rule and your debt-to-income ratio. For a starting budget by salary, see &lt;a href=&quot;/blog/how-much-car-can-i-afford&quot;&gt;How Much Car Can I Afford on My Salary?&lt;/a&gt;" data-es="Para saber si puedes pagar un auto, mira más allá del precio y del pago mensual. Lo que importa es el monto que financias (precio menos enganche y auto que entregas, más impuesto y cargos si los incluyes), el APR, el plazo y lo que cuesta usar el auto: seguro, gasolina y mantenimiento. Esta calculadora compara esos números con la regla 20/4/10 y con tu relación deuda-ingreso. Si quieres un presupuesto inicial según tu salario, lee &lt;a href=&quot;/blog/how-much-car-can-i-afford&quot;&gt;¿Cuánto auto puedo pagar con mi salario?&lt;/a&gt;">To know if you can afford a car, look past the sticker price and the monthly payment. What matters is the amount you finance (price minus down payment and trade-in, plus sales tax and fees if you roll them in), the APR, the loan term, and what the car costs to run: insurance, fuel and maintenance. This calculator checks those numbers against the 20/4/10 rule and your debt-to-income ratio. For a starting budget by salary, see <a href="/blog/how-much-car-can-i-afford">How Much Car Can I Afford on My Salary?</a></p>
   <div class="content-grid">
     <div class="content-card">
-      <h3 data-en="The 20/4/10 Rule" data-es="La Regla 20/4/10">The 20/4/10 Rule</h3>
-      <p data-en="Financial experts recommend putting at least 20% down on a car, financing for no more than 4 years, and keeping your total car expenses (payment + insurance) under 10% of your gross monthly income." data-es="Los expertos recomiendan dar al menos un 20% de enganche, financiar por no más de 4 años, y mantener el total de gastos del auto (pago + seguro) por debajo del 10% de tu ingreso bruto mensual.">Financial experts recommend putting at least 20% down on a car, financing for no more than 4 years, and keeping your total car expenses (payment + insurance) under 10% of your gross monthly income.</p>
-      <p data-en="Our calculator flags a DTI above 35% as tight and above 43% as high risk. These are common guidelines, not universal rules: each lender sets its own limits based on loan type, credit score, and down payment." data-es="Nuestra calculadora marca un DTI superior al 35% como ajustado y superior al 43% como de alto riesgo. Son pautas comunes, no reglas universales: cada prestamista fija sus propios límites según el tipo de préstamo, el score de crédito y el enganche.">Our calculator flags a DTI above 35% as tight and above 43% as high risk. These are common guidelines, not universal rules: each lender sets its own limits based on loan type, credit score, and down payment.</p>
+      <h3 data-en="The 20/4/10 rule" data-es="La regla 20/4/10">The 20/4/10 rule</h3>
+      <p data-en="A common guideline for car buyers: put at least &lt;strong&gt;20% down&lt;/strong&gt;, finance for &lt;strong&gt;4 years&lt;/strong&gt; (48 months) or less, and keep the loan payment plus insurance under &lt;strong&gt;10%&lt;/strong&gt; of your gross monthly income." data-es="Una pauta común para comprar auto: da al menos un &lt;strong&gt;20% de enganche&lt;/strong&gt;, financia a &lt;strong&gt;4 años&lt;/strong&gt; (48 meses) o menos, y mantén el pago del préstamo más el seguro por debajo del &lt;strong&gt;10%&lt;/strong&gt; de tu ingreso mensual bruto.">A common guideline for car buyers: put at least <strong>20% down</strong>, finance for <strong>4 years</strong> (48 months) or less, and keep the loan payment plus insurance under <strong>10%</strong> of your gross monthly income.</p>
+      <p data-en="The down payment protects you from owing more than the car is worth, the short term limits interest, and the 10% cap leaves room for the rest of your budget. The calculator checks each part separately, so you can see which one to fix." data-es="El enganche te protege de deber más de lo que vale el auto, el plazo corto limita el interés y el tope del 10% deja espacio para el resto de tu presupuesto. La calculadora revisa cada parte por separado, para que veas cuál corregir.">The down payment protects you from owing more than the car is worth, the short term limits interest, and the 10% cap leaves room for the rest of your budget. The calculator checks each part separately, so you can see which one to fix.</p>
     </div>
     <div class="content-card">
       <h3 data-en="What DTI means for your car loan" data-es="Qué significa el DTI para tu préstamo de auto">What DTI means for your car loan</h3>
-      <p data-en="Debt-to-Income (DTI) is the percentage of your monthly income that goes toward debt payments. Add up your rent, credit cards, student loans, and the new car payment — divide by your income." data-es="El ratio Deuda-Ingreso (DTI) es el porcentaje de tu ingreso mensual que va hacia pagos de deudas. Suma tu renta, tarjetas de crédito, préstamos estudiantiles y el nuevo pago del auto — divide entre tu ingreso.">Debt-to-Income (DTI) is the percentage of your monthly income that goes toward debt payments. Add up your rent, credit cards, student loans, and the new car payment — divide by your income.</p>
-      <p data-en="Under 35% is comfortable. 35–43% is tight but possible. Above 43%, many lenders may decline the application or charge a higher rate, though limits vary by lender." data-es="Menos del 35% es cómodo. 35–43% es ajustado pero posible. Por encima del 43%, muchos prestamistas pueden rechazar la solicitud o cobrar una tasa más alta, aunque los límites varían según el prestamista.">Under 35% is comfortable. 35–43% is tight but possible. Above 43%, many lenders may decline the application or charge a higher rate, though limits vary by lender.</p>
+      <p data-en="Debt-to-income (DTI) is the share of your gross monthly income that goes to debt payments. For an auto loan, lenders add your rent or mortgage, credit card minimums, student loans, other loans and the new car payment, then divide by your income." data-es="La relación deuda-ingreso (DTI) es la parte de tu ingreso mensual bruto que se va en pagos de deudas. Para un préstamo de auto, los prestamistas suman tu renta o hipoteca, los mínimos de tarjetas, los préstamos estudiantiles, otros préstamos y el nuevo pago del auto, y lo dividen entre tu ingreso.">Debt-to-income (DTI) is the share of your gross monthly income that goes to debt payments. For an auto loan, lenders add your rent or mortgage, credit card minimums, student loans, other loans and the new car payment, then divide by your income.</p>
+      <p data-en="Many lenders look for 43% or less with the new payment included, though limits vary by lender, credit score and down payment. The calculator flags a DTI above 43% as high risk." data-es="Muchos prestamistas buscan 43% o menos incluyendo el nuevo pago, aunque los límites varían según el prestamista, el puntaje de crédito y el enganche. La calculadora marca un DTI superior al 43% como riesgo alto.">Many lenders look for 43% or less with the new payment included, though limits vary by lender, credit score and down payment. The calculator flags a DTI above 43% as high risk.</p>
+    </div>
+    <div class="content-card wide">
+      <h3 data-en="Worked example: the calculator&#x27;s default numbers" data-es="Ejemplo práctico: los números por defecto de la calculadora">Worked example: the calculator's default numbers</h3>
+      <p data-en="A $32,000 car with $4,000 down, 7% sales tax, $600 in fees rolled into the loan, 7.5% APR for 72 months, $170 a month of insurance, a $6,000 gross monthly income and $400 in other debt payments:" data-es="Un auto de $32,000 con $4,000 de enganche, 7% de impuesto de venta, $600 de cargos incluidos en el préstamo, 7.5% APR a 72 meses, $170 al mes de seguro, un ingreso bruto de $6,000 al mes y $400 en otros pagos de deuda:">A $32,000 car with $4,000 down, 7% sales tax, $600 in fees rolled into the loan, 7.5% APR for 72 months, $170 a month of insurance, a $6,000 gross monthly income and $400 in other debt payments:</p>
+      <ol data-en="&lt;li&gt;Amount financed: $32,000 − $4,000 down + $2,240 sales tax (7%) + $600 fees = $30,840.&lt;/li&gt;&lt;li&gt;Payment at 7.5% APR over 72 months: about $533. With $170 of insurance, that is $703, or 11.7% of $6,000.&lt;/li&gt;&lt;li&gt;The 20/4/10 check: 12.5% down (misses 20%), 72 months (misses 4 years), 11.7% of income (misses 10%).&lt;/li&gt;&lt;li&gt;Debt-to-income: ($400 + $533) ÷ $6,000 = 15.6%, well within what lenders accept.&lt;/li&gt;" data-es="&lt;li&gt;Monto financiado: $32,000 − $4,000 de enganche + $2,240 de impuesto (7%) + $600 de cargos = $30,840.&lt;/li&gt;&lt;li&gt;Pago con 7.5% APR a 72 meses: unos $533. Con $170 de seguro son $703, el 11.7% de $6,000.&lt;/li&gt;&lt;li&gt;Revisión 20/4/10: 12.5% de enganche (no llega al 20%), 72 meses (pasa de 4 años), 11.7% del ingreso (pasa del 10%).&lt;/li&gt;&lt;li&gt;Relación deuda-ingreso: ($400 + $533) ÷ $6,000 = 15.6%, muy dentro de lo que aceptan los prestamistas.&lt;/li&gt;"><li>Amount financed: $32,000 − $4,000 down + $2,240 sales tax (7%) + $600 fees = $30,840.</li><li>Payment at 7.5% APR over 72 months: about $533. With $170 of insurance, that is $703, or 11.7% of $6,000.</li><li>The 20/4/10 check: 12.5% down (misses 20%), 72 months (misses 4 years), 11.7% of income (misses 10%).</li><li>Debt-to-income: ($400 + $533) ÷ $6,000 = 15.6%, well within what lenders accept.</li></ol>
+      <p data-en="So the loan is easy to get approved but misses all three parts of the rule. With fuel ($160) and maintenance ($90), owning the car costs about $953 a month. To pass all three with the same income and rate, the payment has to stay near $430, which at 48 months is a loan of about $17,800: roughly a $19,700 car with $3,950 down." data-es="O sea, el préstamo se aprobaría sin problema, pero no cumple ninguna de las tres partes de la regla. Con gasolina ($160) y mantenimiento ($90), tener el auto cuesta unos $953 al mes. Para cumplir las tres con el mismo ingreso y tasa, el pago tiene que quedar cerca de $430, que a 48 meses es un préstamo de unos $17,800: más o menos un auto de $19,700 con $3,950 de enganche.">So the loan is easy to get approved but misses all three parts of the rule. With fuel ($160) and maintenance ($90), owning the car costs about $953 a month. To pass all three with the same income and rate, the payment has to stay near $430, which at 48 months is a loan of about $17,800: roughly a $19,700 car with $3,950 down.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ (SEO) -->
-<section class="faq-section">
-  <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
-  <div class="faq-item">
-    <div class="faq-q" data-en="How much car can I afford on a $50,000 salary?" data-es="¿Cuánto auto puedo pagar con un salario de $50,000?">How much car can I afford on a $50,000 salary?</div>
-    <div class="faq-a" data-en="On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates (about 7% APR), before insurance." data-es="Con un salario anual de $50,000 (~$4,167/mes), la regla del 10% sugiere mantener tus costos totales del auto por debajo de $417/mes. Eso típicamente soporta un préstamo de $18,000–$22,000 a 60 meses con las tasas actuales.">On a $50,000 annual salary (~$4,167/month), the 10% rule suggests keeping your total car costs under $417/month. That typically supports a loan of $18,000–$22,000 over 60 months at current rates (about 7% APR), before insurance.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-en="Is a $600 car payment too much?" data-es="¿Es demasiado un pago de auto de $600?">Is a $600 car payment too much?</div>
-    <div class="faq-a" data-en="It depends entirely on your income and other debts. On a $5,000/month income with $500 in other debts, a $600 car payment puts your DTI at 22% — very comfortable. On the same income with $1,500 in other debts, your DTI hits 42% — dangerously close to the limit. Use the calculator above to check your specific situation." data-es="Depende completamente de tu ingreso y otras deudas. Con un ingreso de $5,000/mes y $500 en otras deudas, un pago de $600 pone tu DTI en 22% — muy cómodo. Con el mismo ingreso y $1,500 en otras deudas, tu DTI llega al 42% — peligrosamente cerca del límite.">It depends entirely on your income and other debts. On a $5,000/month income with $500 in other debts, a $600 car payment puts your DTI at 22% — very comfortable. On the same income with $1,500 in other debts, your DTI hits 42% — dangerously close to the limit. Use the calculator above to check your specific situation.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-en="What credit score do I need for a car loan?" data-es="¿Qué score de crédito necesito para un préstamo de auto?">What credit score do I need for a car loan?</div>
-    <div class="faq-a" data-en="Many lenders approve auto loans with scores above 600, but the best rates (under 6% APR) typically require 700+. With a score below 600, you may still qualify but expect rates of 15–20% APR, which significantly increases your total cost." data-es="Muchos prestamistas aprueban préstamos de auto con scores superiores a 600, pero las mejores tasas (menos del 6% APR) típicamente requieren 700+. Con un score inferior a 600, aún puedes calificar pero espera tasas del 15–20% APR.">Many lenders approve auto loans with scores above 600, but the best rates (under 6% APR) typically require 700+. With a score below 600, you may still qualify but expect rates of 15–20% APR, which significantly increases your total cost.</div>
-  </div>
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="section-label" id="faq-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</h2>
+  <details class="faq-item"><summary data-en="Is 72 months too long for a car loan?" data-es="¿Es demasiado largo un préstamo de auto a 72 meses?">Is 72 months too long for a car loan?</summary><div class="faq-a" data-en="It lowers the payment but costs more and keeps you owing more than the car is worth for longer. With the calculator&#x27;s default numbers ($30,840 financed at 7.5%), 72 months means about $533 a month and $7,552 in interest; 48 months means about $746 a month and $4,953 in interest, roughly $2,600 less. If only the 72-month payment fits your budget, the car is probably too expensive for now." data-es="Baja el pago, pero cuesta más y te deja más tiempo debiendo más de lo que vale el auto. Con los números por defecto de la calculadora ($30,840 financiados al 7.5%), 72 meses son unos $533 al mes y $7,552 de interés; 48 meses son unos $746 al mes y $4,953 de interés, unos $2,600 menos. Si solo te cabe el pago a 72 meses, probablemente el auto es demasiado caro por ahora.">It lowers the payment but costs more and keeps you owing more than the car is worth for longer. With the calculator's default numbers ($30,840 financed at 7.5%), 72 months means about $533 a month and $7,552 in interest; 48 months means about $746 a month and $4,953 in interest, roughly $2,600 less. If only the 72-month payment fits your budget, the car is probably too expensive for now.</div></details>
+  <details class="faq-item"><summary data-en="What counts toward the 10% part of the 20/4/10 rule?" data-es="¿Qué cuenta para el 10% de la regla 20/4/10?">What counts toward the 10% part of the 20/4/10 rule?</summary><div class="faq-a" data-en="This calculator uses the most common version: the loan payment plus insurance, compared with your gross monthly income. Stricter versions also count fuel and maintenance, which is why the results also show the monthly cost to own the car. If that full figure is well above 10% of your income, the car will feel more expensive than the payment suggests." data-es="Esta calculadora usa la versión más común: el pago del préstamo más el seguro, comparado con tu ingreso mensual bruto. Las versiones más estrictas también cuentan gasolina y mantenimiento; por eso los resultados muestran además el costo mensual de tener el auto. Si esa cifra completa queda muy por encima del 10% de tu ingreso, el auto se sentirá más caro de lo que sugiere el pago.">This calculator uses the most common version: the loan payment plus insurance, compared with your gross monthly income. Stricter versions also count fuel and maintenance, which is why the results also show the monthly cost to own the car. If that full figure is well above 10% of your income, the car will feel more expensive than the payment suggests.</div></details>
+  <details class="faq-item"><summary data-en="Should I roll sales tax and fees into the loan?" data-es="¿Conviene incluir el impuesto de venta y los cargos en el préstamo?">Should I roll sales tax and fees into the loan?</summary><div class="faq-a" data-en="Only if you cannot pay them up front. In the default example, $2,240 of sales tax and $600 of fees are financed, which adds about $695 of interest over 72 months and leaves you owing more than the car is worth from day one. Uncheck the option in the calculator to see the cash due at signing instead." data-es="Solo si no puedes pagarlos por adelantado. En el ejemplo por defecto se financian $2,240 de impuesto y $600 de cargos, lo que suma unos $695 de interés en 72 meses y te deja debiendo más de lo que vale el auto desde el primer día. Desmarca la opción en la calculadora para ver el efectivo que pagarías al firmar.">Only if you cannot pay them up front. In the default example, $2,240 of sales tax and $600 of fees are financed, which adds about $695 of interest over 72 months and leaves you owing more than the car is worth from day one. Uncheck the option in the calculator to see the cash due at signing instead.</div></details>
+  <details class="faq-item"><summary data-en="What happens if I owe more on my trade-in than it is worth?" data-es="¿Qué pasa si debo más de lo que vale el auto que entrego?">What happens if I owe more on my trade-in than it is worth?</summary><div class="faq-a" data-en="That gap is called negative equity, and dealers usually add it to the new loan. You then pay interest on debt from a car you no longer own, and the new loan starts underwater. Enter the trade-in value and what you still owe, and the calculator adds the difference to the amount financed." data-es="Esa diferencia se llama capital negativo, y los concesionarios suelen sumarla al nuevo préstamo. Así pagas intereses por la deuda de un auto que ya no tienes, y el nuevo préstamo empieza debiendo más de lo que vale. Ingresa el valor del auto que entregas y lo que aún debes, y la calculadora suma la diferencia al monto financiado.">That gap is called negative equity, and dealers usually add it to the new loan. You then pay interest on debt from a car you no longer own, and the new loan starts underwater. Enter the trade-in value and what you still owe, and the calculator adds the difference to the amount financed.</div></details>
+  <details class="faq-item"><summary data-en="What interest rate can I expect with my credit score?" data-es="¿Qué tasa de interés puedo esperar según mi puntaje de crédito?">What interest rate can I expect with my credit score?</summary><div class="faq-a" data-en="Rates depend heavily on credit. In Experian&#x27;s Q2 2026 data, the average new-car APR was about 6.4% overall, about 4.4% for super-prime borrowers (781–850) and about 13.5% for subprime borrowers (501–600). Used-car loans run several points higher in every tier. Get a preapproval from a bank or credit union before visiting the dealer and enter that APR here." data-es="La tasa depende mucho del crédito. En los datos de Experian del 2.º trimestre de 2026, el APR promedio de un auto nuevo fue de cerca del 6.4% en general, del 4.4% para perfiles súper prime (781–850) y del 13.5% para perfiles subprime (501–600). Los préstamos de autos usados van varios puntos más arriba en cada nivel. Pide una preaprobación a un banco o cooperativa de crédito antes de ir al concesionario y usa ese APR aquí.">Rates depend heavily on credit. In Experian's Q2 2026 data, the average new-car APR was about 6.4% overall, about 4.4% for super-prime borrowers (781–850) and about 13.5% for subprime borrowers (501–600). Used-car loans run several points higher in every tier. Get a preapproval from a bank or credit union before visiting the dealer and enter that APR here.</div></details>
+  <details class="faq-item"><summary data-en="Will a car loan affect my chances of getting a mortgage?" data-es="¿Un préstamo de auto afecta mis posibilidades de obtener una hipoteca?">Will a car loan affect my chances of getting a mortgage?</summary><div class="faq-a" data-en="Yes. The car payment counts in your debt-to-income ratio for years. With the default numbers, a $533 payment on a $6,000 monthly income uses almost 9 points of DTI, which reduces how much house a lender will approve. If you plan to buy a home soon, run both numbers together in the mortgage calculator." data-es="Sí. El pago del auto cuenta en tu relación deuda-ingreso durante años. Con los números por defecto, un pago de $533 con un ingreso de $6,000 al mes ocupa casi 9 puntos de DTI, lo que reduce cuánta casa te aprobará un prestamista. Si piensas comprar casa pronto, revisa ambos números juntos en la calculadora de hipoteca.">Yes. The car payment counts in your debt-to-income ratio for years. With the default numbers, a $533 payment on a $6,000 monthly income uses almost 9 points of DTI, which reduces how much house a lender will approve. If you plan to buy a home soon, run both numbers together in the mortgage calculator.</div></details>
 </section>
 
 <!-- OTHER CALCULATORS -->
