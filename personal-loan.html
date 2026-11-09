@@ -7,6 +7,62 @@
 <meta name="description" content="See how much cash you actually receive after the origination fee, the real APR, and whether a personal loan saves money compared with the debt it would replace. Free, no signup.">
 <meta name="keywords" content="personal loan calculator, can I afford a personal loan, personal loan affordability, debt to income ratio personal loan">
 <link rel="canonical" href="https://checkafford.com/personal-loan">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What is an origination fee and how does it change the real APR?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It is a one-time charge, usually taken out of the money you receive. With the calculator's defaults, a $10,000 loan at 11.5% with a 5% fee pays out $9,500, but you repay it as if you had received $10,000: about $330 a month for 36 months. Measured against the cash you actually get, the real APR is about 15.1%, so the fee adds about 3.6 points. Compare offers by APR, not by the interest rate."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much should I borrow if the lender deducts a fee?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Divide the amount you need by one minus the fee. To get $10,000 in hand with a 5% fee, you would borrow about $10,530, which raises the payment to about $347 a month. The calculator shows this figure under the results whenever you enter a fee."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does consolidating credit card debt with a personal loan always save money?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. It saves money when the real APR of the loan is clearly lower than your cards and you keep the cards paid off afterward. It can cost more if the new term is much longer than your current payoff time, if the fee is high, or if the card balances build up again. Enter your current balance, APR and payment, and the calculator compares both paths side by side."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What interest rate can I expect on a personal loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It depends mostly on your credit score and income. Personal loan APRs commonly run from about 6% to 36%. Bankrate's June 2026 average was about 12.3% for a borrower with a 700 FICO score, a $5,000 loan and a 3-year term. Borrowers with excellent credit can get single-digit rates, while fair or poor credit usually means 20% or more. Prequalify with several lenders, which uses a soft credit check, and enter the best real APR here."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does a personal loan hurt my credit score?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Prequalifying does not, because it uses a soft inquiry. The formal application adds a hard inquiry, which usually lowers your score a few points for a short time. If you use the loan to pay off credit cards, your credit utilization drops, which often helps your score, and on-time payments build positive history."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How much can I borrow with a personal loan?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Many lenders offer between about $1,000 and $50,000, and some go higher. The limit depends on your income, credit and existing debts. Lenders usually want your debt-to-income ratio, including the new payment and your rent or mortgage, at 36% or less, and some approve up to about 43–50%."
+   }
+  }
+ ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <meta property="og:title" content="What Does This Personal Loan Really Cost?">
 <meta property="og:description" content="Cash you receive after the fee, the real APR, and whether it beats the debt it replaces.">
@@ -487,6 +543,25 @@
   .cmp-table td.win{color:#00e5a0;}
   .assume{font-size:11px;color:var(--muted);line-height:1.5;margin:0;}
   .tip-box.show{display:flex;}
+
+  /* SEO content + FAQ (Nov 2026) */
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-item .faq-a { margin-top: 10px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .page-hero .quick-facts, .page-hero .stats-grid, .info-banner { display: none; } }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -561,8 +636,8 @@
       <div class="stat-label" data-en="Common loan range" data-es="Rango común de montos">Common loan range</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val">24mo</div>
-      <div class="stat-label" data-en="Most common loan term" data-es="Plazo más común">Most common loan term</div>
+      <div class="stat-val">1–7yr</div>
+      <div class="stat-label" data-en="Typical range of loan terms" data-es="Rango típico de plazos">Typical range of loan terms</div>
     </div>
     <div class="stat-card">
       <div class="stat-val">5sec</div>
@@ -624,7 +699,7 @@
     <div class="field">
       <label for="expenses" data-en="Other monthly debt payments ($)" data-es="Otros pagos de deudas al mes ($)">Other monthly debt payments ($)</label>
       <input type="number" id="expenses" value="400" inputmode="decimal" >
-      <p class="field-hint" data-en="Leave out the debt above." data-es="Sin contar la deuda de arriba.">Leave out the debt above.</p>
+      <p class="field-hint" data-en="Include rent or mortgage. Leave out the debt above." data-es="Incluye la renta o hipoteca. Sin contar la deuda de arriba.">Include rent or mortgage. Leave out the debt above.</p>
     </div>
     </div>
     <button class="calc-btn" onclick="calculate()" data-en="Check the Real Cost" data-es="Ver el costo real">Check the Real Cost</button>
@@ -661,40 +736,38 @@
 </div>
 
 <!-- CONTENT -->
-<section class="content-section">
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title" data-en="How to Calculate If a Personal Loan Is Worth It" data-es="Cómo calcular si te conviene un préstamo personal">How to Calculate If a Personal Loan Is Worth It</h2>
+  <p class="content-intro" data-en="A personal loan is affordable when the payment fits your budget and the total cost is worth what the money does for you. Four numbers decide it: the amount, the interest rate, the origination fee and the term. The fee matters more than most people expect, because it usually comes out of the money you receive while you still repay the full amount. This calculator shows the cash you actually get, the real APR including the fee, your debt-to-income ratio, and whether the loan beats keeping the debt you already have. If you are choosing between a loan and a card, see &lt;a href=&quot;/blog/personal-loan-vs-credit-card&quot;&gt;Personal Loan vs Credit Card: Which Is Better?&lt;/a&gt;" data-es="Un préstamo personal es pagable cuando el pago cabe en tu presupuesto y el costo total vale lo que el dinero hace por ti. Cuatro números lo deciden: el monto, la tasa de interés, la comisión de apertura y el plazo. La comisión pesa más de lo que la mayoría espera, porque normalmente sale del dinero que recibes mientras igual pagas el monto completo. Esta calculadora muestra el dinero que de verdad recibes, el APR real con la comisión, tu relación deuda-ingreso y si el préstamo le gana a seguir con la deuda que ya tienes. Si estás decidiendo entre un préstamo y una tarjeta, lee &lt;a href=&quot;/blog/personal-loan-vs-credit-card&quot;&gt;Préstamo personal vs tarjeta: ¿cuál es mejor?&lt;/a&gt;">A personal loan is affordable when the payment fits your budget and the total cost is worth what the money does for you. Four numbers decide it: the amount, the interest rate, the origination fee and the term. The fee matters more than most people expect, because it usually comes out of the money you receive while you still repay the full amount. This calculator shows the cash you actually get, the real APR including the fee, your debt-to-income ratio, and whether the loan beats keeping the debt you already have. If you are choosing between a loan and a card, see <a href="/blog/personal-loan-vs-credit-card">Personal Loan vs Credit Card: Which Is Better?</a></p>
   <div class="content-grid">
     <div class="content-card">
       <h3 data-en="When a personal loan makes sense" data-es="Cuándo tiene sentido un préstamo personal">When a personal loan makes sense</h3>
-      <p data-en="Personal loans work best for debt consolidation — replacing multiple high-interest debts with one fixed payment at a lower rate." data-es="Los préstamos personales funcionan mejor para consolidar deudas — reemplazar múltiples deudas de alto interés con un pago fijo a una tasa menor.">Personal loans work best for debt consolidation — replacing multiple high-interest debts with one fixed payment at a lower rate.</p>
-      <p data-en="They also make sense for large one-time expenses like home repairs or medical bills, where you need a fixed payoff timeline." data-es="También tienen sentido para gastos grandes únicos como reparaciones del hogar o facturas médicas, donde necesitas un plazo de pago fijo.">They also make sense for large one-time expenses like home repairs or medical bills, where you need a fixed payoff timeline.</p>
+      <p data-en="The strongest case is &lt;strong&gt;debt consolidation&lt;/strong&gt;: replacing high-interest credit card balances with one fixed payment at a clearly lower real APR and a set end date." data-es="El mejor caso es la &lt;strong&gt;consolidación de deudas&lt;/strong&gt;: reemplazar saldos de tarjetas con interés alto por un solo pago fijo, con un APR real claramente menor y una fecha de fin.">The strongest case is <strong>debt consolidation</strong>: replacing high-interest credit card balances with one fixed payment at a clearly lower real APR and a set end date.</p>
+      <p data-en="They can also make sense for a necessary one-time expense, like an urgent home or car repair, when you have no savings to cover it and the payment fits your budget." data-es="También pueden tener sentido para un gasto necesario y único, como una reparación urgente de la casa o del auto, cuando no tienes ahorros para cubrirlo y el pago cabe en tu presupuesto.">They can also make sense for a necessary one-time expense, like an urgent home or car repair, when you have no savings to cover it and the payment fits your budget.</p>
     </div>
     <div class="content-card">
       <h3 data-en="When to avoid a personal loan" data-es="Cuándo evitar un préstamo personal">When to avoid a personal loan</h3>
-      <p data-en="If a loan pushes your DTI above 43%, many lenders may decline your application or charge a higher rate. Even at 36–43%, you risk financial stress if your income dips." data-es="Si un préstamo lleva tu DTI por encima del 43%, muchos prestamistas pueden rechazar tu solicitud o cobrar una tasa más alta. Incluso al 36–43%, arriesgas estrés financiero si tu ingreso baja.">If a loan pushes your DTI above 43%, many lenders may decline your application or charge a higher rate. Even at 36–43%, you risk financial stress if your income dips.</p>
-      <p data-en="Avoid personal loans for discretionary spending like vacations or shopping — the interest cost makes these purchases much more expensive." data-es="Evita préstamos personales para gastos discrecionales como vacaciones o compras — el costo del interés hace que estas compras sean mucho más caras.">Avoid personal loans for discretionary spending like vacations or shopping — the interest cost makes these purchases much more expensive.</p>
+      <p data-en="If the loan pushes your debt-to-income ratio above about 43%, many lenders will decline it or charge a much higher rate, and even 36–43% leaves little margin if your income drops." data-es="Si el préstamo lleva tu relación deuda-ingreso por encima de cerca del 43%, muchos prestamistas lo rechazarán o cobrarán una tasa mucho más alta, e incluso entre 36% y 43% te deja poco margen si baja tu ingreso.">If the loan pushes your debt-to-income ratio above about 43%, many lenders will decline it or charge a much higher rate, and even 36–43% leaves little margin if your income drops.</p>
+      <p data-en="Avoid them for vacations or shopping, and be careful with consolidation if the new term is much longer than your current payoff time: a lower payment can still mean more total interest." data-es="Evítalos para vacaciones o compras, y ten cuidado al consolidar si el nuevo plazo es mucho más largo que el tiempo que te falta para pagar: un pago más bajo puede igual significar más interés total.">Avoid them for vacations or shopping, and be careful with consolidation if the new term is much longer than your current payoff time: a lower payment can still mean more total interest.</p>
+    </div>
+    <div class="content-card wide">
+      <h3 data-en="Worked example: the calculator&#x27;s default numbers" data-es="Ejemplo práctico: los números por defecto de la calculadora">Worked example: the calculator's default numbers</h3>
+      <p data-en="A $10,000 loan at 11.5% for 36 months with a 5% origination fee, used to pay off a $9,500 credit card balance at 24% APR that you pay $300 a month:" data-es="Un préstamo de $10,000 al 11.5% a 36 meses con una comisión de apertura del 5%, para pagar un saldo de tarjeta de $9,500 al 24% de APR al que hoy le pagas $300 al mes:">A $10,000 loan at 11.5% for 36 months with a 5% origination fee, used to pay off a $9,500 credit card balance at 24% APR that you pay $300 a month:</p>
+      <ol data-en="&lt;li&gt;Cash you receive: $10,000 − 5% fee ($500) = $9,500, enough to pay off the $9,500 balance.&lt;/li&gt;&lt;li&gt;Loan payment: about $330 a month for 36 months, $30 more than you pay now.&lt;/li&gt;&lt;li&gt;Total cost of the loan: about $2,371 in interest and fee. Real APR with the fee: about 15.1%, still well below 24%.&lt;/li&gt;&lt;li&gt;Keeping the current debt at $300 a month: 51 months and about $5,700 in interest.&lt;/li&gt;" data-es="&lt;li&gt;Dinero que recibes: $10,000 − 5% de comisión ($500) = $9,500, justo para pagar el saldo de $9,500.&lt;/li&gt;&lt;li&gt;Pago del préstamo: unos $330 al mes durante 36 meses, $30 más de lo que pagas hoy.&lt;/li&gt;&lt;li&gt;Costo total del préstamo: unos $2,371 entre intereses y comisión. APR real con la comisión: cerca del 15.1%, todavía muy por debajo del 24%.&lt;/li&gt;&lt;li&gt;Seguir con la deuda actual pagando $300 al mes: 51 meses y unos $5,700 de interés.&lt;/li&gt;"><li>Cash you receive: $10,000 − 5% fee ($500) = $9,500, enough to pay off the $9,500 balance.</li><li>Loan payment: about $330 a month for 36 months, $30 more than you pay now.</li><li>Total cost of the loan: about $2,371 in interest and fee. Real APR with the fee: about 15.1%, still well below 24%.</li><li>Keeping the current debt at $300 a month: 51 months and about $5,700 in interest.</li></ol>
+      <p data-en="The loan saves about $3,329 and finishes 15 months sooner, and debt-to-income on a $4,500 income moves only from 15.6% to 16.2%. The fee is the weak spot: the same loan with no fee would cost about $1,871, so an offer with no origination fee at a slightly higher rate can still be the better deal." data-es="El préstamo ahorra unos $3,329 y termina 15 meses antes, y la relación deuda-ingreso con un ingreso de $4,500 solo pasa de 15.6% a 16.2%. El punto débil es la comisión: el mismo préstamo sin comisión costaría unos $1,871, así que una oferta sin comisión de apertura y con una tasa un poco más alta puede ser mejor negocio.">The loan saves about $3,329 and finishes 15 months sooner, and debt-to-income on a $4,500 income moves only from 15.6% to 16.2%. The fee is the weak spot: the same loan with no fee would cost about $1,871, so an offer with no origination fee at a slightly higher rate can still be the better deal.</p>
     </div>
   </div>
 </section>
 
 <!-- FAQ -->
-<section class="faq-section">
-  <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
-  <div class="faq-item">
-    <div class="faq-q" data-en="What credit score do I need for a personal loan?" data-es="¿Qué score de crédito necesito para un préstamo personal?">What credit score do I need for a personal loan?</div>
-    <div class="faq-a" data-en="Many lenders require a score of 580+ to qualify, but the best rates (under 10% APR) typically require 700 or higher. With a score below 600, expect rates of 20–36% APR, which significantly increases the total cost of borrowing." data-es="La mayoría de los prestamistas requieren un score de 580+ para calificar, pero las mejores tasas (menos del 10% APR) típicamente requieren 700 o más. Con un score por debajo de 600, espera tasas del 20–36% APR.">Many lenders require a score of 580+ to qualify, but the best rates (under 10% APR) typically require 700 or higher. With a score below 600, expect rates of 20–36% APR, which significantly increases the total cost of borrowing.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-en="Is it better to pay off debt or take a personal loan?" data-es="¿Es mejor pagar deudas o tomar un préstamo personal?">Is it better to pay off debt or take a personal loan?</div>
-    <div class="faq-a" data-en="If your existing debt carries a higher rate than the personal loan (e.g., credit cards at 20%+ vs. a personal loan at 11%), consolidating makes sense mathematically. The key is not accumulating new debt afterward." data-es="Si tu deuda existente tiene una tasa mayor que el préstamo personal (ej. tarjetas al 20%+ vs. préstamo al 11%), consolidar tiene sentido matemáticamente. La clave es no acumular nueva deuda después.">If your existing debt carries a higher rate than the personal loan (e.g., credit cards at 20%+ vs. a personal loan at 11%), consolidating makes sense mathematically. The key is not accumulating new debt afterward.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-en="How much can I borrow with a personal loan?" data-es="¿Cuánto puedo pedir prestado con un préstamo personal?">How much can I borrow with a personal loan?</div>
-    <div class="faq-a" data-en="Many lenders offer between $1,000 and $50,000. The amount you qualify for depends on your income, credit score, and existing debts. Many lenders will not approve an amount that pushes your DTI much above 43%." data-es="La mayoría de los prestamistas ofrecen entre $1,000 y $50,000. El monto para el que calificas depende de tu ingreso, score de crédito y deudas existentes. Muchos prestamistas no aprobarán un monto que lleve tu DTI muy por encima del 43%.">Many lenders offer between $1,000 and $50,000. The amount you qualify for depends on your income, credit score, and existing debts. Many lenders will not approve an amount that pushes your DTI much above 43%.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-en="Does a personal loan hurt my credit score?" data-es="¿Un préstamo personal daña mi score de crédito?">Does a personal loan hurt my credit score?</div>
-    <div class="faq-a" data-en="Applying causes a small temporary dip (hard inquiry). However, if you use it to pay off credit cards, your overall credit utilization drops, which can actually improve your score over time. On-time payments also build positive history." data-es="Aplicar causa una pequeña caída temporal (consulta dura). Sin embargo, si lo usas para pagar tarjetas de crédito, tu utilización de crédito baja, lo que puede mejorar tu score con el tiempo. Los pagos a tiempo también construyen historial positivo.">Applying causes a small temporary dip (hard inquiry). However, if you use it to pay off credit cards, your overall credit utilization drops, which can actually improve your score over time. On-time payments also build positive history.</div>
-  </div>
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="section-label" id="faq-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</h2>
+  <details class="faq-item"><summary data-en="What is an origination fee and how does it change the real APR?" data-es="¿Qué es la comisión de apertura y cómo cambia el APR real?">What is an origination fee and how does it change the real APR?</summary><div class="faq-a" data-en="It is a one-time charge, usually taken out of the money you receive. With the calculator&#x27;s defaults, a $10,000 loan at 11.5% with a 5% fee pays out $9,500, but you repay it as if you had received $10,000: about $330 a month for 36 months. Measured against the cash you actually get, the real APR is about 15.1%, so the fee adds about 3.6 points. Compare offers by APR, not by the interest rate." data-es="Es un cargo único que normalmente se descuenta del dinero que recibes. Con los valores por defecto de la calculadora, un préstamo de $10,000 al 11.5% con una comisión del 5% te entrega $9,500, pero lo pagas como si hubieras recibido $10,000: unos $330 al mes durante 36 meses. Medido contra el dinero que de verdad recibes, el APR real es de cerca del 15.1%, así que la comisión suma unos 3.6 puntos. Compara ofertas por APR, no por la tasa de interés.">It is a one-time charge, usually taken out of the money you receive. With the calculator's defaults, a $10,000 loan at 11.5% with a 5% fee pays out $9,500, but you repay it as if you had received $10,000: about $330 a month for 36 months. Measured against the cash you actually get, the real APR is about 15.1%, so the fee adds about 3.6 points. Compare offers by APR, not by the interest rate.</div></details>
+  <details class="faq-item"><summary data-en="How much should I borrow if the lender deducts a fee?" data-es="¿Cuánto debo pedir si el prestamista descuenta una comisión?">How much should I borrow if the lender deducts a fee?</summary><div class="faq-a" data-en="Divide the amount you need by one minus the fee. To get $10,000 in hand with a 5% fee, you would borrow about $10,530, which raises the payment to about $347 a month. The calculator shows this figure under the results whenever you enter a fee." data-es="Divide el monto que necesitas entre uno menos la comisión. Para recibir $10,000 en mano con una comisión del 5%, pedirías unos $10,530, lo que sube el pago a unos $347 al mes. La calculadora muestra esta cifra debajo de los resultados cuando ingresas una comisión.">Divide the amount you need by one minus the fee. To get $10,000 in hand with a 5% fee, you would borrow about $10,530, which raises the payment to about $347 a month. The calculator shows this figure under the results whenever you enter a fee.</div></details>
+  <details class="faq-item"><summary data-en="Does consolidating credit card debt with a personal loan always save money?" data-es="¿Consolidar deudas de tarjetas con un préstamo personal siempre ahorra dinero?">Does consolidating credit card debt with a personal loan always save money?</summary><div class="faq-a" data-en="No. It saves money when the real APR of the loan is clearly lower than your cards and you keep the cards paid off afterward. It can cost more if the new term is much longer than your current payoff time, if the fee is high, or if the card balances build up again. Enter your current balance, APR and payment, and the calculator compares both paths side by side." data-es="No. Ahorra cuando el APR real del préstamo es claramente menor que el de tus tarjetas y después no las vuelves a llenar. Puede costar más si el nuevo plazo es mucho más largo que el tiempo que te falta para pagar, si la comisión es alta o si los saldos de las tarjetas vuelven a crecer. Ingresa tu saldo actual, su APR y tu pago, y la calculadora compara los dos caminos lado a lado.">No. It saves money when the real APR of the loan is clearly lower than your cards and you keep the cards paid off afterward. It can cost more if the new term is much longer than your current payoff time, if the fee is high, or if the card balances build up again. Enter your current balance, APR and payment, and the calculator compares both paths side by side.</div></details>
+  <details class="faq-item"><summary data-en="What interest rate can I expect on a personal loan?" data-es="¿Qué tasa de interés puedo esperar en un préstamo personal?">What interest rate can I expect on a personal loan?</summary><div class="faq-a" data-en="It depends mostly on your credit score and income. Personal loan APRs commonly run from about 6% to 36%. Bankrate&#x27;s June 2026 average was about 12.3% for a borrower with a 700 FICO score, a $5,000 loan and a 3-year term. Borrowers with excellent credit can get single-digit rates, while fair or poor credit usually means 20% or more. Prequalify with several lenders, which uses a soft credit check, and enter the best real APR here." data-es="Depende sobre todo de tu puntaje de crédito y tu ingreso. El APR de los préstamos personales suele ir de cerca del 6% al 36%. El promedio de Bankrate en junio de 2026 fue de cerca del 12.3% para un perfil con puntaje FICO de 700, un préstamo de $5,000 y un plazo de 3 años. Con crédito excelente se consiguen tasas de un dígito, mientras que un crédito regular o malo suele significar 20% o más. Precalifica con varios prestamistas, que solo hacen una consulta suave de crédito, y usa aquí el mejor APR real.">It depends mostly on your credit score and income. Personal loan APRs commonly run from about 6% to 36%. Bankrate's June 2026 average was about 12.3% for a borrower with a 700 FICO score, a $5,000 loan and a 3-year term. Borrowers with excellent credit can get single-digit rates, while fair or poor credit usually means 20% or more. Prequalify with several lenders, which uses a soft credit check, and enter the best real APR here.</div></details>
+  <details class="faq-item"><summary data-en="Does a personal loan hurt my credit score?" data-es="¿Un préstamo personal daña mi puntaje de crédito?">Does a personal loan hurt my credit score?</summary><div class="faq-a" data-en="Prequalifying does not, because it uses a soft inquiry. The formal application adds a hard inquiry, which usually lowers your score a few points for a short time. If you use the loan to pay off credit cards, your credit utilization drops, which often helps your score, and on-time payments build positive history." data-es="Precalificar no, porque usa una consulta suave. La solicitud formal agrega una consulta dura, que normalmente baja tu puntaje unos pocos puntos por poco tiempo. Si usas el préstamo para pagar tarjetas, tu utilización de crédito baja, lo que suele ayudar a tu puntaje, y los pagos a tiempo construyen historial positivo.">Prequalifying does not, because it uses a soft inquiry. The formal application adds a hard inquiry, which usually lowers your score a few points for a short time. If you use the loan to pay off credit cards, your credit utilization drops, which often helps your score, and on-time payments build positive history.</div></details>
+  <details class="faq-item"><summary data-en="How much can I borrow with a personal loan?" data-es="¿Cuánto puedo pedir prestado con un préstamo personal?">How much can I borrow with a personal loan?</summary><div class="faq-a" data-en="Many lenders offer between about $1,000 and $50,000, and some go higher. The limit depends on your income, credit and existing debts. Lenders usually want your debt-to-income ratio, including the new payment and your rent or mortgage, at 36% or less, and some approve up to about 43–50%." data-es="Muchos prestamistas ofrecen entre unos $1,000 y $50,000, y algunos más. El límite depende de tu ingreso, tu crédito y tus deudas actuales. Los prestamistas suelen querer tu relación deuda-ingreso, incluyendo el nuevo pago y tu renta o hipoteca, en 36% o menos, y algunos aprueban hasta cerca de 43–50%.">Many lenders offer between about $1,000 and $50,000, and some go higher. The limit depends on your income, credit and existing debts. Lenders usually want your debt-to-income ratio, including the new payment and your rent or mortgage, at 36% or less, and some approve up to about 43–50%.</div></details>
 </section>
 
 <!-- OTHER CALCULATORS -->
