@@ -4,6 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="canonical" href="https://checkafford.com/bnpl">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Does BNPL affect my credit score?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It depends on the provider and the plan, and the rules are changing. Affirm began reporting its loans, including Pay in 4, to Experian in 2025, while other providers report only longer-term loans or none of their pay-in-4 plans. Almost any provider can send a seriously overdue balance to collections, and that does hurt your score. Treat every plan as a debt you must pay on time."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Is 0% BNPL really free?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Only if every payment goes through on time. Missed payments usually trigger late fees; Afterpay, for example, caps U.S. late fees at $8 per installment and 25% of the order value. Longer plans for bigger purchases often charge interest: in the default example, the $900 couch over 6 months at 15% costs about $40 extra."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Why does the calculator use take-home pay instead of gross income?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Because BNPL payments come straight out of your bank account or card on fixed dates, and what you have available on those dates is your take-home pay after taxes and deductions. Comparing each payment with the paycheck it falls on shows whether rent, groceries and bills still fit that week."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens if I miss a BNPL payment?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Most providers retry the charge, add a late fee and may pause your account so you cannot start new plans. If the balance stays unpaid, it can go to collections. The calculator estimates the late fees if you missed the payments from your heaviest paycheck. For what to do next, see <a href=\"/blog/bnpl-missed-payment\">What Happens If You Miss a BNPL Payment?</a>"
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How many BNPL plans is too many?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "There is no official limit, so look at your paychecks instead of the number of plans. CheckAfford marks a paycheck as tight when BNPL takes more than 10% of it and as heavy above 20%. Two small plans that land on the same payday can be harder to handle than one larger plan spread out."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do BNPL payments count in my debt-to-income ratio?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Lenders count the payments they can see, and many pay-in-4 plans still do not appear on credit reports. They are still money you owe every month, so include them when you check your own budget. The <a href=\"/dti\">DTI calculator</a> has a field for personal loans and BNPL."
+   }
+  }
+ ]
+}
+</script>
 <title id="meta-title">BNPL Calculator: See Every Plan's Payments by Paycheck | CheckAfford</title>
 <meta name="description" id="meta-desc" content="Add every Buy Now Pay Later plan you have. See which paycheck gets hit hardest, what share of it goes to BNPL, and what a missed payment would cost. Free, no signup.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -164,6 +220,25 @@
   .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
   @media(max-width:640px){.plan-grid{grid-template-columns:1fr 1fr;}}
+
+  /* SEO content + FAQ (Nov 2026) */
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-item .faq-a { margin-top: 10px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .hero-stats, .quick-facts, #stat-sources { display: none; } }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -215,7 +290,7 @@
 <div class="bnpl-banner">
   <div class="bnpl-alert">
     <span class="bnpl-alert-icon">⚠️</span>
-    <span id="bnpl-banner-text">Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.</span>
+    <span id="bnpl-banner-text">Buy Now Pay Later is still debt you owe on fixed dates. Most people underestimate how the payments stack up.</span>
   </div>
 </div>
 <section class="page-hero">
@@ -285,17 +360,41 @@
     </div>
   </div>
 </div>
-<section class="content-section">
+<!-- CONTENT (SEO) -->
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title" class="seo-i18n" data-en="How to Calculate If You Can Afford Your BNPL Payments" data-es="Cómo calcular si puedes pagar tus planes BNPL">How to Calculate If You Can Afford Your BNPL Payments</h2>
+  <p class="seo-i18n content-intro" data-en="To know if you can afford your Buy Now, Pay Later plans, look at timing, not just totals. Pay-in-4 plans from Afterpay, Klarna or Affirm usually charge every two weeks, longer plans charge monthly, and payments from several plans can land on the same paycheck. So the useful number is how much of each take-home paycheck goes to BNPL before rent and bills. This calculator builds that payment calendar from your plans and pay schedule and shows what a missed payment would cost." data-es="Para saber si puedes pagar tus planes de Compra Ahora, Paga Después, fíjate en las fechas, no solo en los totales. Los planes en 4 pagos de Afterpay, Klarna o Affirm suelen cobrar cada dos semanas, los planes más largos cobran cada mes, y los pagos de varios planes pueden caer en el mismo sueldo. Por eso el número útil es cuánto de cada pago neto se va en BNPL antes de la renta y las cuentas. Esta calculadora arma ese calendario de pagos con tus planes y tu frecuencia de pago, y muestra cuánto costaría un pago atrasado.">To know if you can afford your Buy Now, Pay Later plans, look at timing, not just totals. Pay-in-4 plans from Afterpay, Klarna or Affirm usually charge every two weeks, longer plans charge monthly, and payments from several plans can land on the same paycheck. So the useful number is how much of each take-home paycheck goes to BNPL before rent and bills. This calculator builds that payment calendar from your plans and pay schedule and shows what a missed payment would cost.</p>
   <div class="content-grid">
-    <div class="content-card"><h3 id="c1-title">Why BNPL feels cheaper than it is</h3><p id="c1-p1">Splitting $1,200 into four $300 payments feels painless. But you're still spending $1,200.</p><p id="c1-p2">BNPL providers count on this psychological trick. Our calculator shows the real monthly impact.</p></div>
-    <div class="content-card"><h3 id="c2-title">When BNPL actually makes sense</h3><p id="c2-p1">BNPL can be useful for necessities if the plan is interest-free and the payments fit comfortably in your budget (a common rule of thumb is under 5% of your income).</p><p id="c2-p2">It's dangerous for discretionary spending. If you can't pay cash, BNPL delays the problem.</p></div>
+    <div class="content-card">
+      <h3 class="seo-i18n" data-en="Why BNPL feels cheaper than it is" data-es="Por qué el BNPL parece más barato de lo que es">Why BNPL feels cheaper than it is</h3>
+      <p class="seo-i18n" data-en="Splitting $1,200 into four $300 payments makes each one feel small, but you are still spending $1,200, and the payments arrive every two weeks whether or not anything else is due." data-es="Dividir $1,200 en cuatro pagos de $300 hace que cada uno parezca pequeño, pero igual estás gastando $1,200, y los pagos llegan cada dos semanas aunque tengas otras cosas por pagar.">Splitting $1,200 into four $300 payments makes each one feel small, but you are still spending $1,200, and the payments arrive every two weeks whether or not anything else is due.</p>
+      <p class="seo-i18n" data-en="The bigger risk is stacking: plans from different stores and providers each look fine alone, and none of them shows you the total. This calculator lines up every payment against the paycheck it falls on." data-es="El riesgo más grande es acumular: los planes de distintas tiendas y proveedores parecen manejables por separado, y ninguno te muestra el total. Esta calculadora pone cada pago junto al sueldo en el que cae.">The bigger risk is stacking: plans from different stores and providers each look fine alone, and none of them shows you the total. This calculator lines up every payment against the paycheck it falls on.</p>
+    </div>
+    <div class="content-card">
+      <h3 class="seo-i18n" data-en="When BNPL actually makes sense" data-es="Cuándo el BNPL sí tiene sentido">When BNPL actually makes sense</h3>
+      <p class="seo-i18n" data-en="BNPL can work for a needed purchase when the plan has no interest, you have the money to cover the payments even if something unexpected comes up, and no paycheck ends up carrying more than about 10% in BNPL payments." data-es="El BNPL puede funcionar para una compra necesaria cuando el plan no tiene interés, tienes el dinero para cubrir los pagos aunque surja algo inesperado y ningún sueldo termina cargando más del 10% en pagos BNPL.">BNPL can work for a needed purchase when the plan has no interest, you have the money to cover the payments even if something unexpected comes up, and no paycheck ends up carrying more than about 10% in BNPL payments.</p>
+      <p class="seo-i18n" data-en="It is risky for things you could not pay for in cash. If the purchase only fits by spreading it out, BNPL delays the problem instead of solving it." data-es="Es arriesgado para cosas que no podrías pagar en efectivo. Si la compra solo cabe repartiéndola, el BNPL aplaza el problema en vez de resolverlo.">It is risky for things you could not pay for in cash. If the purchase only fits by spreading it out, BNPL delays the problem instead of solving it.</p>
+    </div>
+    <div class="content-card wide">
+      <h3 class="seo-i18n" data-en="Worked example: the calculator&#x27;s default numbers" data-es="Ejemplo práctico: los números por defecto de la calculadora">Worked example: the calculator's default numbers</h3>
+      <p class="seo-i18n" data-en="A take-home paycheck of $1,400 every two weeks and three plans started close together:" data-es="Un pago neto de $1,400 cada dos semanas y tres planes que empiezan casi al mismo tiempo:">A take-home paycheck of $1,400 every two weeks and three plans started close together:</p>
+      <ol class="seo-i18n" data-en="&lt;li&gt;Sneakers: $180 in 4 payments every two weeks, $45 each.&lt;/li&gt;&lt;li&gt;Laptop: $1,200 in 4 payments every two weeks, starting a week later, $300 each.&lt;/li&gt;&lt;li&gt;Couch: $900 over 6 monthly payments at 15% APR, about $157 each and about $40 in interest.&lt;/li&gt;&lt;li&gt;The heaviest paycheck carries all three: $45 + $300 + $157 = $502, or 35.8% of $1,400.&lt;/li&gt;" data-es="&lt;li&gt;Tenis: $180 en 4 pagos cada dos semanas, $45 cada uno.&lt;/li&gt;&lt;li&gt;Laptop: $1,200 en 4 pagos cada dos semanas, empezando una semana después, $300 cada uno.&lt;/li&gt;&lt;li&gt;Sofá: $900 en 6 pagos mensuales al 15% de APR, unos $157 cada uno y unos $40 de interés.&lt;/li&gt;&lt;li&gt;El sueldo más cargado lleva los tres: $45 + $300 + $157 = $502, o el 35.8% de $1,400.&lt;/li&gt;"><li>Sneakers: $180 in 4 payments every two weeks, $45 each.</li><li>Laptop: $1,200 in 4 payments every two weeks, starting a week later, $300 each.</li><li>Couch: $900 over 6 monthly payments at 15% APR, about $157 each and about $40 in interest.</li><li>The heaviest paycheck carries all three: $45 + $300 + $157 = $502, or 35.8% of $1,400.</li></ol>
+      <p class="seo-i18n" data-en="In total there is $2,320 still to pay. Each plan looks small on its own, yet one paycheck loses more than a third of its money to BNPL, and missing the three payments due from it would add about $24 in late fees at $8 each. Without the laptop plan, that same paycheck would carry $202, or 14.4%." data-es="En total quedan $2,320 por pagar. Cada plan parece pequeño por separado, pero un sueldo pierde más de un tercio de su dinero en BNPL, y no pagar los tres pagos que vencen en él sumaría unos $24 en cargos de $8 cada uno. Sin el plan de la laptop, ese mismo sueldo cargaría $202, o el 14.4%.">In total there is $2,320 still to pay. Each plan looks small on its own, yet one paycheck loses more than a third of its money to BNPL, and missing the three payments due from it would add about $24 in late fees at $8 each. Without the laptop plan, that same paycheck would carry $202, or 14.4%.</p>
+    </div>
   </div>
 </section>
-<section class="faq-section">
-  <p class="section-label" id="faq-label">Common questions</p>
-  <div class="faq-item"><div class="faq-q" id="faq1-q">Does BNPL affect my credit score?</div><div class="faq-a" id="faq1-a">It depends. Providers may report missed payments which damage your credit score.</div></div>
-  <div class="faq-item"><div class="faq-q" id="faq2-q">Is 0% BNPL really free?</div><div class="faq-a" id="faq2-a">Only if you pay on time. Late fees and deferred interest traps can make it very expensive.</div></div>
+
+<!-- FAQ (SEO) -->
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="seo-i18n section-label" id="faq-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</h2>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Does BNPL affect my credit score?" data-es="¿El BNPL afecta mi puntaje de crédito?">Does BNPL affect my credit score?</summary><div class="seo-i18n faq-a" data-en="It depends on the provider and the plan, and the rules are changing. Affirm began reporting its loans, including Pay in 4, to Experian in 2025, while other providers report only longer-term loans or none of their pay-in-4 plans. Almost any provider can send a seriously overdue balance to collections, and that does hurt your score. Treat every plan as a debt you must pay on time." data-es="Depende del proveedor y del plan, y las reglas están cambiando. Affirm empezó a reportar sus préstamos, incluido Pay in 4, a Experian en 2025, mientras que otros proveedores reportan solo los préstamos a más largo plazo o ninguno de sus planes en 4 pagos. Casi cualquier proveedor puede mandar a cobranza un saldo muy atrasado, y eso sí daña tu puntaje. Trata cada plan como una deuda que debes pagar a tiempo.">It depends on the provider and the plan, and the rules are changing. Affirm began reporting its loans, including Pay in 4, to Experian in 2025, while other providers report only longer-term loans or none of their pay-in-4 plans. Almost any provider can send a seriously overdue balance to collections, and that does hurt your score. Treat every plan as a debt you must pay on time.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Is 0% BNPL really free?" data-es="¿El BNPL al 0% es realmente gratis?">Is 0% BNPL really free?</summary><div class="seo-i18n faq-a" data-en="Only if every payment goes through on time. Missed payments usually trigger late fees; Afterpay, for example, caps U.S. late fees at $8 per installment and 25% of the order value. Longer plans for bigger purchases often charge interest: in the default example, the $900 couch over 6 months at 15% costs about $40 extra." data-es="Solo si todos los pagos pasan a tiempo. Los pagos atrasados suelen generar cargos; Afterpay, por ejemplo, limita en EE. UU. el cargo a $8 por cuota y al 25% del valor de la orden. Los planes más largos para compras grandes suelen cobrar interés: en el ejemplo por defecto, el sofá de $900 a 6 meses al 15% cuesta unos $40 extra.">Only if every payment goes through on time. Missed payments usually trigger late fees; Afterpay, for example, caps U.S. late fees at $8 per installment and 25% of the order value. Longer plans for bigger purchases often charge interest: in the default example, the $900 couch over 6 months at 15% costs about $40 extra.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Why does the calculator use take-home pay instead of gross income?" data-es="¿Por qué la calculadora usa el pago neto y no el ingreso bruto?">Why does the calculator use take-home pay instead of gross income?</summary><div class="seo-i18n faq-a" data-en="Because BNPL payments come straight out of your bank account or card on fixed dates, and what you have available on those dates is your take-home pay after taxes and deductions. Comparing each payment with the paycheck it falls on shows whether rent, groceries and bills still fit that week." data-es="Porque los pagos BNPL salen directo de tu cuenta o tarjeta en fechas fijas, y lo que tienes disponible esas fechas es tu pago neto, después de impuestos y deducciones. Comparar cada pago con el sueldo en el que cae muestra si la renta, el supermercado y las cuentas todavía caben esa semana.">Because BNPL payments come straight out of your bank account or card on fixed dates, and what you have available on those dates is your take-home pay after taxes and deductions. Comparing each payment with the paycheck it falls on shows whether rent, groceries and bills still fit that week.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="What happens if I miss a BNPL payment?" data-es="¿Qué pasa si no hago un pago BNPL?">What happens if I miss a BNPL payment?</summary><div class="seo-i18n faq-a" data-en="Most providers retry the charge, add a late fee and may pause your account so you cannot start new plans. If the balance stays unpaid, it can go to collections. The calculator estimates the late fees if you missed the payments from your heaviest paycheck. For what to do next, see &lt;a href=&quot;/blog/bnpl-missed-payment&quot;&gt;What Happens If You Miss a BNPL Payment?&lt;/a&gt;" data-es="La mayoría de los proveedores vuelve a intentar el cobro, agrega un cargo por atraso y puede pausar tu cuenta para que no abras planes nuevos. Si el saldo sigue sin pagarse, puede ir a cobranza. La calculadora estima los cargos si no pagaras lo que vence en tu sueldo más cargado. Para saber qué hacer, lee &lt;a href=&quot;/blog/bnpl-missed-payment&quot;&gt;¿Qué pasa si pierdes un pago BNPL?&lt;/a&gt;">Most providers retry the charge, add a late fee and may pause your account so you cannot start new plans. If the balance stays unpaid, it can go to collections. The calculator estimates the late fees if you missed the payments from your heaviest paycheck. For what to do next, see <a href="/blog/bnpl-missed-payment">What Happens If You Miss a BNPL Payment?</a></div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="How many BNPL plans is too many?" data-es="¿Cuántos planes BNPL son demasiados?">How many BNPL plans is too many?</summary><div class="seo-i18n faq-a" data-en="There is no official limit, so look at your paychecks instead of the number of plans. CheckAfford marks a paycheck as tight when BNPL takes more than 10% of it and as heavy above 20%. Two small plans that land on the same payday can be harder to handle than one larger plan spread out." data-es="No hay un límite oficial, así que mira tus sueldos en vez de la cantidad de planes. CheckAfford marca un sueldo como ajustado cuando el BNPL se lleva más del 10% y como pesado por encima del 20%. Dos planes pequeños que caen el mismo día de pago pueden ser más difíciles de manejar que un plan grande repartido.">There is no official limit, so look at your paychecks instead of the number of plans. CheckAfford marks a paycheck as tight when BNPL takes more than 10% of it and as heavy above 20%. Two small plans that land on the same payday can be harder to handle than one larger plan spread out.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Do BNPL payments count in my debt-to-income ratio?" data-es="¿Los pagos BNPL cuentan en mi relación deuda-ingreso?">Do BNPL payments count in my debt-to-income ratio?</summary><div class="seo-i18n faq-a" data-en="Lenders count the payments they can see, and many pay-in-4 plans still do not appear on credit reports. They are still money you owe every month, so include them when you check your own budget. The &lt;a href=&quot;/dti&quot;&gt;DTI calculator&lt;/a&gt; has a field for personal loans and BNPL." data-es="Los prestamistas cuentan los pagos que pueden ver, y muchos planes en 4 pagos todavía no aparecen en los reportes de crédito. Igual son dinero que debes cada mes, así que inclúyelos cuando revises tu presupuesto. La &lt;a href=&quot;/dti&quot;&gt;calculadora de DTI&lt;/a&gt; tiene un campo para préstamos personales y BNPL.">Lenders count the payments they can see, and many pay-in-4 plans still do not appear on credit reports. They are still money you owe every month, so include them when you check your own budget. The <a href="/dti">DTI calculator</a> has a field for personal loans and BNPL.</div></details>
 </section>
+
 <!-- OTHER CALCULATORS -->
 <section class="other-calcs">
   <p class="section-label" id="other-label">Other calculators</p>
@@ -334,7 +433,7 @@
       desc:"Add every Buy Now Pay Later plan you have. See which paycheck gets hit hardest, what share of it goes to BNPL, and what a missed payment would cost. Free, no signup.",
       navCar:"Auto Loan", navMort:"Mortgage", navBnpl:"BNPL", navDebt:"Debt Payoff", navPersonal:"Personal Loan", navAll:"← All calculators",
       bcHome:"CheckAfford", bcLabel:"BNPL Calculator",
-      banner:"Buy Now Pay Later still adds real debt to your credit profile. Most people underestimate the total cost.",
+      banner:"Buy Now Pay Later is still debt you owe on fixed dates. Most people underestimate how the payments stack up.",
       badge:"BNPL Calculator", heroTitle:"Can your paychecks handle <em>all your BNPL plans?</em>",
       heroSub:"Afterpay, Klarna, Affirm: each plan looks small on its own. Add all of them and see which paycheck gets hit hardest and what a missed payment would cost.",
       fact1:"In a March 2026 LendingTree survey, 47% of U.S. BNPL users said they paid late on at least one loan in the past year.",
@@ -364,7 +463,7 @@
       desc:"Agrega todos tus planes de Compra Ahora y Paga Después. Mira qué quincena recibe más pagos, qué parte se va al BNPL y cuánto costaría un pago atrasado. Gratis, sin registro.",
       navCar:"Auto", navMort:"Hipoteca", navBnpl:"BNPL", navDebt:"Deudas", navPersonal:"Préstamo Personal", navAll:"← Calculadoras",
       bcHome:"CheckAfford", bcLabel:"Calculadora BNPL",
-      banner:"El 'Compra ahora, paga después' sigue sumando deuda real a tu historial. Muchos subestiman el costo total.",
+      banner:"El 'Compra ahora, paga después' sigue siendo deuda que pagas en fechas fijas. Muchos subestiman cómo se acumulan los pagos.",
       badge:"Calculadora BNPL", heroTitle:"¿Tus quincenas aguantan <em>todos tus planes BNPL?</em>",
       heroSub:"Afterpay, Klarna, Affirm: cada plan parece pequeño por separado. Súmalos todos y mira qué quincena recibe más pagos y cuánto costaría un atraso.",
       fact1:"En una encuesta de LendingTree de marzo de 2026, el 47% de los usuarios de BNPL en EE. UU. dijo haber pagado tarde al menos un préstamo en el último año.",
@@ -706,6 +805,13 @@
     var orig = window.setLang;
     window.setLang = function(l){ var r = orig.apply(this, arguments); swap(l); return r; };
   }
+})();
+</script>
+<script>
+(function(){
+  var o = window.setLang; if (typeof o !== 'function') return;
+  function swap(l){ document.querySelectorAll('.seo-i18n[data-en]').forEach(function(el){ var v = el.getAttribute('data-' + l); if (v) el.innerHTML = v; }); }
+  window.setLang = function(l){ var r = o.apply(this, arguments); swap(l); return r; };
 })();
 </script>
 </body>
