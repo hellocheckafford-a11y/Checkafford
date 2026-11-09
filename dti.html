@@ -7,6 +7,62 @@
 <meta name="description" content="List your monthly payments to get your housing ratio and total debt-to-income ratio, how many dollars you have left before 36% and 43%, and the loan that fits in that room. Free, no signup.">
 <meta name="keywords" content="debt to income ratio calculator, DTI calculator, how to calculate DTI, front end ratio, back end ratio">
 <link rel="canonical" href="https://checkafford.com/dti">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "What counts as a debt payment?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries, insurance you pay separately and subscriptions do not count."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does rent count in debt-to-income?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What is a good debt-to-income ratio?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "As a rule of thumb, 36% or less is comfortable, 36% to 43% is tight, and above 43% many lenders decline or charge more, although some loan programs go to about 50% with strong credit or savings. For the housing part alone, the common guideline is 28%. See <a href=\"/blog/what-is-a-good-debt-to-income-ratio\">What Is a Good Debt-to-Income Ratio?</a> for more detail."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I use gross or take-home income?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Use gross income, before taxes and payroll deductions, because that is what lenders use. If you are self-employed, lenders generally use your net business income after expenses, usually averaged from your recent tax returns, so use that figure instead of your revenue."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How can I lower my DTI quickly?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Paying off a debt removes its whole payment, so the fastest wins are debts with a high payment and a small remaining balance. Lowering a balance without ending the loan usually does not change the payment, except on credit cards, where the minimum falls with the balance. Raising your income also lowers the ratio, and avoiding new credit keeps it from rising."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does my debt-to-income ratio affect my credit score?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Credit reports do not include your income, so DTI is not part of your score. Lenders calculate it separately when you apply. What does affect your score is credit card utilization, the share of your card limits you are using, which is a different ratio."
+   }
+  }
+ ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <meta property="og:title" content="Debt-to-Income Calculator: How Much Room Is Left?">
 <meta property="og:description" content="Your housing ratio, total DTI and the dollars left before 36% and 43%.">
@@ -575,6 +631,25 @@
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
   .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
   @media(max-width:640px){.field-row.three{grid-template-columns:1fr 1fr;}}
+
+  /* SEO content + FAQ (Nov 2026) */
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-item .faq-a { margin-top: 10px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .hero-stats, .quick-facts { display: none; } }
 </style>
 <style>
   .ratio{margin:0 0 14px;}
@@ -731,23 +806,39 @@
   </div>
 </div>
 
-<section class="content-section">
+<!-- CONTENT (SEO) -->
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title" class="seo-i18n" data-en="How Much Room Your Debt-to-Income Ratio Leaves" data-es="Cuánto margen te deja tu relación deuda-ingreso">How Much Room Your Debt-to-Income Ratio Leaves</h2>
+  <p class="seo-i18n content-intro" data-en="Your debt-to-income ratio (DTI) is your total monthly debt payments divided by your gross monthly income, before taxes. Lenders look at it in two ways: the housing ratio, with only your rent or mortgage, and the total ratio, with every required debt payment. Knowing the percentage is only half the answer; the other half is how many dollars you have left before the limits lenders use. This calculator shows both ratios, your room in dollars before 36% and 43%, and the loan that fits in that room. For the formula step by step, see &lt;a href=&quot;/blog/calculate-debt-to-income-ratio&quot;&gt;How to Calculate Your Debt-to-Income Ratio&lt;/a&gt;." data-es="Tu relación deuda-ingreso (DTI) es el total de tus pagos mensuales de deudas dividido entre tu ingreso mensual bruto, antes de impuestos. Los prestamistas la miran de dos formas: el ratio de vivienda, solo con tu renta o hipoteca, y el ratio total, con todos los pagos obligatorios. Saber el porcentaje es solo la mitad de la respuesta; la otra mitad es cuántos dólares te quedan antes de los límites que usan los prestamistas. Esta calculadora muestra ambos ratios, tu margen en dólares antes del 36% y del 43%, y el préstamo que cabe en ese margen. Para la fórmula paso a paso, lee &lt;a href=&quot;/blog/calculate-debt-to-income-ratio&quot;&gt;Cómo calcular tu ratio deuda-ingreso&lt;/a&gt;.">Your debt-to-income ratio (DTI) is your total monthly debt payments divided by your gross monthly income, before taxes. Lenders look at it in two ways: the housing ratio, with only your rent or mortgage, and the total ratio, with every required debt payment. Knowing the percentage is only half the answer; the other half is how many dollars you have left before the limits lenders use. This calculator shows both ratios, your room in dollars before 36% and 43%, and the loan that fits in that room. For the formula step by step, see <a href="/blog/calculate-debt-to-income-ratio">How to Calculate Your Debt-to-Income Ratio</a>.</p>
   <div class="content-grid">
     <div class="content-card">
-      <h3 data-en="Front-end vs. back-end ratio" data-es="Ratio de vivienda vs. ratio total">Front-end vs. back-end ratio</h3>
-      <p data-en="The housing (front-end) ratio counts only your rent or mortgage payment, including property tax, insurance and HOA. The total (back-end) ratio adds every other required debt payment: car, student loans, card minimums, personal loans and support." data-es="El ratio de vivienda cuenta solo tu renta o pago de hipoteca, incluyendo impuesto predial, seguro y HOA. El ratio total suma todos los demás pagos obligatorios de deudas: auto, préstamos estudiantiles, mínimos de tarjetas, préstamos personales y pensiones.">The housing (front-end) ratio counts only your rent or mortgage payment, including property tax, insurance and HOA. The total (back-end) ratio adds every other required debt payment: car, student loans, card minimums, personal loans and support.</p>
+      <h3 class="seo-i18n" data-en="Front-end vs. back-end ratio" data-es="Ratio de vivienda vs. ratio total">Front-end vs. back-end ratio</h3>
+      <p class="seo-i18n" data-en="The &lt;strong&gt;housing (front-end) ratio&lt;/strong&gt; counts only your rent or mortgage payment, including property tax, insurance and HOA. The common guideline is 28% of gross income." data-es="El &lt;strong&gt;ratio de vivienda (front-end)&lt;/strong&gt; cuenta solo tu renta o pago de hipoteca, incluyendo impuesto predial, seguro y HOA. La pauta común es 28% del ingreso bruto.">The <strong>housing (front-end) ratio</strong> counts only your rent or mortgage payment, including property tax, insurance and HOA. The common guideline is 28% of gross income.</p>
+      <p class="seo-i18n" data-en="The &lt;strong&gt;total (back-end) ratio&lt;/strong&gt; adds every other required debt payment: car, student loans, card minimums, personal loans, BNPL and support. The guideline is 36%, and many lenders cap it near 43%." data-es="El &lt;strong&gt;ratio total (back-end)&lt;/strong&gt; suma todos los demás pagos obligatorios: auto, préstamos estudiantiles, mínimos de tarjetas, préstamos personales, BNPL y pensiones. La pauta es 36%, y muchos prestamistas ponen el tope cerca del 43%.">The <strong>total (back-end) ratio</strong> adds every other required debt payment: car, student loans, card minimums, personal loans, BNPL and support. The guideline is 36%, and many lenders cap it near 43%.</p>
     </div>
     <div class="content-card">
-      <h3 data-en="Why the room in dollars matters" data-es="Por qué importa el margen en dólares">Why the room in dollars matters</h3>
-      <p data-en="A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves." data-es="Un porcentaje te dice dónde estás; el margen en dólares te dice cuánto más puedes asumir. Si tienes $500 de margen antes del 36%, un pago nuevo de auto de $600 te pasaría del límite, apruebe lo que apruebe el concesionario.">A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves.</p>
+      <h3 class="seo-i18n" data-en="Why the room in dollars matters" data-es="Por qué importa el margen en dólares">Why the room in dollars matters</h3>
+      <p class="seo-i18n" data-en="A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves." data-es="Un porcentaje te dice dónde estás; el margen en dólares te dice cuánto más puedes asumir. Si tienes $500 de margen antes del 36%, un pago nuevo de auto de $600 te pasaría del límite, apruebe lo que apruebe el concesionario.">A percentage tells you where you stand; the dollar room tells you what you can still take on. If you have $500 of room before 36%, a new $600 car payment would push you over, whatever the dealer approves.</p>
+      <p class="seo-i18n" data-en="The calculator turns that room into a loan amount using the APR and term you enter, so you know the size of loan that fits before you apply." data-es="La calculadora convierte ese margen en un monto de préstamo con la APR y el plazo que ingreses, para que sepas qué tamaño de préstamo te cabe antes de solicitar.">The calculator turns that room into a loan amount using the APR and term you enter, so you know the size of loan that fits before you apply.</p>
+    </div>
+    <div class="content-card wide">
+      <h3 class="seo-i18n" data-en="Worked example: the calculator&#x27;s default numbers" data-es="Ejemplo práctico: los números por defecto de la calculadora">Worked example: the calculator's default numbers</h3>
+      <p class="seo-i18n" data-en="A gross income of $6,000 a month with rent of $1,650, a $420 car payment, $250 in student loans and $120 in card minimums:" data-es="Un ingreso bruto de $6,000 al mes con una renta de $1,650, un pago de auto de $420, $250 de préstamos estudiantiles y $120 de mínimos de tarjetas:">A gross income of $6,000 a month with rent of $1,650, a $420 car payment, $250 in student loans and $120 in card minimums:</p>
+      <ol class="seo-i18n" data-en="&lt;li&gt;Housing ratio: $1,650 ÷ $6,000 = 27.5%, just under the 28% guideline.&lt;/li&gt;&lt;li&gt;Total payments: $1,650 + $420 + $250 + $120 = $2,440.&lt;/li&gt;&lt;li&gt;Total DTI: $2,440 ÷ $6,000 = 40.7%, above 36% but under 43%.&lt;/li&gt;&lt;li&gt;Room before 36% ($2,160): none, $280 over. Room before 43% ($2,580): $140.&lt;/li&gt;" data-es="&lt;li&gt;Ratio de vivienda: $1,650 ÷ $6,000 = 27.5%, justo debajo de la pauta del 28%.&lt;/li&gt;&lt;li&gt;Pagos totales: $1,650 + $420 + $250 + $120 = $2,440.&lt;/li&gt;&lt;li&gt;DTI total: $2,440 ÷ $6,000 = 40.7%, por encima del 36% pero debajo del 43%.&lt;/li&gt;&lt;li&gt;Margen antes del 36% ($2,160): ninguno, $280 por encima. Margen antes del 43% ($2,580): $140.&lt;/li&gt;"><li>Housing ratio: $1,650 ÷ $6,000 = 27.5%, just under the 28% guideline.</li><li>Total payments: $1,650 + $420 + $250 + $120 = $2,440.</li><li>Total DTI: $2,440 ÷ $6,000 = 40.7%, above 36% but under 43%.</li><li>Room before 36% ($2,160): none, $280 over. Room before 43% ($2,580): $140.</li></ol>
+      <p class="seo-i18n" data-en="At 8% APR over 60 months, $140 a month supports a loan of only about $6,900, and it would put this person at the 43% limit. Paying off the car loan changes the picture: total DTI drops to 33.7%, with $140 of room before 36%." data-es="Con 8% de APR a 60 meses, $140 al mes alcanzan para un préstamo de solo unos $6,900, y dejarían a esta persona en el límite del 43%. Terminar de pagar el auto cambia el panorama: el DTI total baja a 33.7%, con $140 de margen antes del 36%.">At 8% APR over 60 months, $140 a month supports a loan of only about $6,900, and it would put this person at the 43% limit. Paying off the car loan changes the picture: total DTI drops to 33.7%, with $140 of room before 36%.</p>
     </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <p class="section-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</p>
-  <div class="faq-item"><div class="faq-q" data-en="Does rent count in debt-to-income?" data-es="¿La renta cuenta en la relación deuda-ingreso?">Does rent count in debt-to-income?</div><div class="faq-a" data-en="For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view." data-es="En una solicitud de hipoteca, el prestamista reemplaza tu renta por el nuevo pago de hipoteca. En un préstamo de auto o personal, muchos prestamistas miran tu renta o pago de vivienda junto con tus deudas. Esta calculadora muestra ambos ratios para que veas cada enfoque.">For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view.</div></div>
-  <div class="faq-item"><div class="faq-q" data-en="What counts as a debt payment?" data-es="¿Qué cuenta como pago de deuda?">What counts as a debt payment?</div><div class="faq-a" data-en="Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries and subscriptions do not count." data-es="Los pagos mensuales obligatorios de préstamos y crédito: hipoteca o renta, préstamos de auto, préstamos estudiantiles (aunque estén diferidos, los prestamistas suelen contar un pago), mínimos de tarjetas, préstamos personales, planes BNPL y pensiones ordenadas por un juez. Servicios, teléfono, comida y suscripciones no cuentan.">Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries and subscriptions do not count.</div></div>
+<!-- FAQ (SEO) -->
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="seo-i18n section-label" id="faq-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</h2>
+  <details class="faq-item"><summary class="seo-i18n" data-en="What counts as a debt payment?" data-es="¿Qué cuenta como pago de deuda?">What counts as a debt payment?</summary><div class="seo-i18n faq-a" data-en="Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries, insurance you pay separately and subscriptions do not count." data-es="Los pagos mensuales obligatorios de préstamos y crédito: hipoteca o renta, préstamos de auto, préstamos estudiantiles (aunque estén diferidos, los prestamistas suelen contar un pago), mínimos de tarjetas, préstamos personales, planes BNPL y pensiones ordenadas por un juez. Los servicios, el teléfono, la comida, los seguros que pagas aparte y las suscripciones no cuentan.">Required monthly payments on loans and credit: mortgage or rent, car loans, student loans (even if deferred, lenders often count a payment), credit card minimums, personal loans, BNPL plans and court-ordered support. Utilities, phone, groceries, insurance you pay separately and subscriptions do not count.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Does rent count in debt-to-income?" data-es="¿La renta cuenta en la relación deuda-ingreso?">Does rent count in debt-to-income?</summary><div class="seo-i18n faq-a" data-en="For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view." data-es="En una solicitud de hipoteca, el prestamista reemplaza tu renta por el nuevo pago de hipoteca. En un préstamo de auto o personal, muchos prestamistas miran tu renta o pago de vivienda junto con tus deudas. Esta calculadora muestra ambos ratios para que veas cada enfoque.">For a mortgage application, lenders replace your rent with the new mortgage payment. For a car or personal loan, many lenders look at your rent or housing payment along with your debts. This calculator shows both ratios so you can see each view.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="What is a good debt-to-income ratio?" data-es="¿Qué es una buena relación deuda-ingreso?">What is a good debt-to-income ratio?</summary><div class="seo-i18n faq-a" data-en="As a rule of thumb, 36% or less is comfortable, 36% to 43% is tight, and above 43% many lenders decline or charge more, although some loan programs go to about 50% with strong credit or savings. For the housing part alone, the common guideline is 28%. See &lt;a href=&quot;/blog/what-is-a-good-debt-to-income-ratio&quot;&gt;What Is a Good Debt-to-Income Ratio?&lt;/a&gt; for more detail." data-es="Como regla general, 36% o menos es cómodo, entre 36% y 43% es ajustado, y por encima del 43% muchos prestamistas rechazan o cobran más, aunque algunos programas llegan a cerca del 50% con buen crédito o ahorros. Para la parte de vivienda sola, la pauta común es 28%. Lee &lt;a href=&quot;/blog/what-is-a-good-debt-to-income-ratio&quot;&gt;¿Qué es un buen ratio deuda-ingreso?&lt;/a&gt; para más detalle.">As a rule of thumb, 36% or less is comfortable, 36% to 43% is tight, and above 43% many lenders decline or charge more, although some loan programs go to about 50% with strong credit or savings. For the housing part alone, the common guideline is 28%. See <a href="/blog/what-is-a-good-debt-to-income-ratio">What Is a Good Debt-to-Income Ratio?</a> for more detail.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Should I use gross or take-home income?" data-es="¿Debo usar el ingreso bruto o el neto?">Should I use gross or take-home income?</summary><div class="seo-i18n faq-a" data-en="Use gross income, before taxes and payroll deductions, because that is what lenders use. If you are self-employed, lenders generally use your net business income after expenses, usually averaged from your recent tax returns, so use that figure instead of your revenue." data-es="Usa el ingreso bruto, antes de impuestos y deducciones de nómina, porque es el que usan los prestamistas. Si trabajas por cuenta propia, los prestamistas suelen usar tu ingreso neto del negocio después de gastos, normalmente promediado de tus declaraciones de impuestos recientes, así que usa esa cifra y no tus ventas.">Use gross income, before taxes and payroll deductions, because that is what lenders use. If you are self-employed, lenders generally use your net business income after expenses, usually averaged from your recent tax returns, so use that figure instead of your revenue.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="How can I lower my DTI quickly?" data-es="¿Cómo puedo bajar mi DTI rápido?">How can I lower my DTI quickly?</summary><div class="seo-i18n faq-a" data-en="Paying off a debt removes its whole payment, so the fastest wins are debts with a high payment and a small remaining balance. Lowering a balance without ending the loan usually does not change the payment, except on credit cards, where the minimum falls with the balance. Raising your income also lowers the ratio, and avoiding new credit keeps it from rising." data-es="Terminar de pagar una deuda elimina todo su pago, así que lo más rápido es atacar las deudas con un pago alto y poco saldo pendiente. Bajar un saldo sin terminar el préstamo normalmente no cambia el pago, salvo en las tarjetas, donde el mínimo baja con el saldo. Subir tu ingreso también baja el ratio, y evitar crédito nuevo impide que suba.">Paying off a debt removes its whole payment, so the fastest wins are debts with a high payment and a small remaining balance. Lowering a balance without ending the loan usually does not change the payment, except on credit cards, where the minimum falls with the balance. Raising your income also lowers the ratio, and avoiding new credit keeps it from rising.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Does my debt-to-income ratio affect my credit score?" data-es="¿Mi relación deuda-ingreso afecta mi puntaje de crédito?">Does my debt-to-income ratio affect my credit score?</summary><div class="seo-i18n faq-a" data-en="No. Credit reports do not include your income, so DTI is not part of your score. Lenders calculate it separately when you apply. What does affect your score is credit card utilization, the share of your card limits you are using, which is a different ratio." data-es="No. Los reportes de crédito no incluyen tu ingreso, así que el DTI no forma parte de tu puntaje. Los prestamistas lo calculan aparte cuando solicitas. Lo que sí afecta tu puntaje es la utilización de las tarjetas, la parte de tus límites que estás usando, que es un ratio distinto.">No. Credit reports do not include your income, so DTI is not part of your score. Lenders calculate it separately when you apply. What does affect your score is credit card utilization, the share of your card limits you are using, which is a different ratio.</div></details>
 </section>
 
 <section class="other-calcs">
