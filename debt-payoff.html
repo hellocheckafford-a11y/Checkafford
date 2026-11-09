@@ -7,6 +7,62 @@
 <meta name="description" content="List your debts and what you can pay each month. See your debt-free date, payoff order and total interest with the avalanche and snowball methods side by side. Free, no signup.">
 <meta name="keywords" content="debt payoff calculator, debt avalanche calculator, debt snowball calculator, debt free date, pay off credit cards">
 <link rel="canonical" href="https://checkafford.com/debt-payoff">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Is avalanche or snowball better?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With the calculator's default debts ($4,000 at 24%, $1,500 at 19% and $9,000 at 7%) and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How long will it take to pay off $20,000 in credit card debt?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "At 18% APR with no new charges: paying $500 a month takes about 62 months and about $10,800 in interest; $600 a month takes about 47 months and $7,900; $1,000 a month takes about 24 months and $4,000. Paying only a minimum of 2% of the balance would take more than 50 years and about $74,000 in total payments. Actual minimums vary by issuer."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What if my budget only covers the minimum payments?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Then there is no extra money for either method, and the calculator shows how long minimums alone take. Even a small increase helps: in the default example, moving from $415 of minimums to $600 a month saves about $2,281 in interest and finishes 18 months sooner. If you cannot cover the minimums at all, call your card issuers about hardship programs or contact a nonprofit credit counseling agency before you miss payments."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I include my car loan, student loans or mortgage?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Include every debt you want a payoff date for, such as cards, personal loans, car loans and student loans. With avalanche, low-rate debts like a 7% car loan naturally go last, so including them does not slow down the expensive debts. Most people leave a mortgage out, because it runs for decades and usually has the lowest rate."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can a balance transfer or consolidation loan speed this up?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It can, if the new rate is clearly lower and you stop adding new charges. Balance transfer cards often charge a fee of about 3% to 5% of the amount moved, and the promotional rate ends after a set period. To test it, replace the debts you would move with one debt at the new balance (including the fee) and the new APR, and compare the debt-free date and interest."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I pay off debt or save first?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Start with a small emergency fund, often around $1,000, so a surprise expense does not go back on a card. Then put extra money toward debt above about 7% APR: paying off a card at 18% is a guaranteed 18% return, which investments do not reliably beat. Once high-interest debt is gone, build a 3–6 month emergency fund and start investing."
+   }
+  }
+ ]
+}
+</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2010839680419986" crossorigin="anonymous"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -153,6 +209,25 @@
   .assume{font-size:11px;color:var(--muted);line-height:1.5;margin-top:4px;}
   .field-hint{font-size:12px;color:var(--muted);margin:6px 0 0;line-height:1.4;}
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;}
+
+  /* SEO content + FAQ (Nov 2026) */
+  .content-section h2 { font-family: var(--font-display); font-size: clamp(22px, 5vw, 28px); font-weight: 800; letter-spacing: -0.5px; line-height: 1.2; margin-bottom: 12px; color: var(--text); }
+  .content-intro { font-size: 14px; color: var(--muted); line-height: 1.7; margin-bottom: 24px; max-width: 760px; }
+  .content-intro a, .content-card a { color: var(--accent); }
+  .content-card.wide { grid-column: 1 / -1; }
+  .content-card ol { font-size: 13px; color: var(--muted); line-height: 1.7; padding-left: 20px; margin-top: 10px; }
+  .content-card ol li + li { margin-top: 6px; }
+  .content-card ol + p { margin-top: 10px; }
+  .content-card strong { color: var(--text); font-weight: 500; }
+  h2.section-label { font-size: 11px; }
+  .faq-item summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 20px; line-height: 1; flex-shrink: 0; }
+  .faq-item[open] summary::after { content: '\2212'; }
+  .faq-item summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+  .faq-item .faq-a { margin-top: 10px; }
+  /* Mobile-first: on phones the calculator comes right after the headline */
+  @media (max-width: 640px) { .page-hero { padding: 20px 20px 24px; } .hero-stats, .quick-facts { display: none; } }
 </style>
 <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZHN6PQSLWN"></script>
@@ -268,35 +343,39 @@
   </div>
 </div>
 
-<section class="content-section">
+<!-- CONTENT (SEO) -->
+<section class="content-section" aria-labelledby="guide-title">
+  <h2 id="guide-title" class="seo-i18n" data-en="How to Calculate Your Debt Payoff Plan" data-es="Cómo calcular tu plan para pagar deudas">How to Calculate Your Debt Payoff Plan</h2>
+  <p class="seo-i18n content-intro" data-en="To calculate a debt payoff plan, list each debt with its balance, APR and minimum payment, then decide the total you can pay every month. Anything above the minimums is your extra payment, and where you send it decides how fast you finish and how much interest you pay. This calculator simulates every month with interest at APR ÷ 12 and shows your debt-free date with the avalanche and snowball methods next to paying only the minimums. For a step-by-step plan, see &lt;a href=&quot;/blog/how-to-pay-off-debt-fast&quot;&gt;How to Pay Off $10,000 in Debt Fast&lt;/a&gt;." data-es="Para calcular un plan de pago de deudas, anota cada deuda con su saldo, APR y pago mínimo, y decide el total que puedes pagar cada mes. Lo que pase de los mínimos es tu pago extra, y a dónde lo mandas decide qué tan rápido terminas y cuánto interés pagas. Esta calculadora simula cada mes con un interés de APR ÷ 12 y muestra tu fecha sin deudas con los métodos avalancha y bola de nieve, junto a pagar solo los mínimos. Para un plan paso a paso, lee &lt;a href=&quot;/blog/how-to-pay-off-debt-fast&quot;&gt;Cómo pagar $10,000 en deuda rápido&lt;/a&gt;.">To calculate a debt payoff plan, list each debt with its balance, APR and minimum payment, then decide the total you can pay every month. Anything above the minimums is your extra payment, and where you send it decides how fast you finish and how much interest you pay. This calculator simulates every month with interest at APR ÷ 12 and shows your debt-free date with the avalanche and snowball methods next to paying only the minimums. For a step-by-step plan, see <a href="/blog/how-to-pay-off-debt-fast">How to Pay Off $10,000 in Debt Fast</a>.</p>
   <div class="content-grid">
     <div class="content-card">
-      <h3 data-i="c1-title">Avalanche vs. Snowball method</h3>
-      <p data-i="c1-p1">The avalanche method pays off highest-interest debt first — it saves the most money mathematically. The snowball method pays off smallest balances first — it builds momentum psychologically.</p>
-      <p data-i="c1-p2">Both pay every minimum each month; the only difference is where the extra money goes. The calculator runs both on your numbers so you can see what snowball\'s earlier wins cost compared with avalanche.</p>
+      <h3 class="seo-i18n" data-en="Avalanche vs. snowball" data-es="Avalancha vs. bola de nieve">Avalanche vs. snowball</h3>
+      <p class="seo-i18n" data-en="Both methods pay every minimum each month and send the extra money to one target debt at a time. &lt;strong&gt;Avalanche&lt;/strong&gt; targets the highest APR first, which minimizes interest. &lt;strong&gt;Snowball&lt;/strong&gt; targets the smallest balance first, which gives you an early win." data-es="Ambos métodos pagan todos los mínimos cada mes y mandan el dinero extra a una deuda objetivo a la vez. La &lt;strong&gt;avalancha&lt;/strong&gt; ataca primero el APR más alto, lo que minimiza el interés. La &lt;strong&gt;bola de nieve&lt;/strong&gt; ataca primero el saldo más pequeño, lo que te da una victoria temprana.">Both methods pay every minimum each month and send the extra money to one target debt at a time. <strong>Avalanche</strong> targets the highest APR first, which minimizes interest. <strong>Snowball</strong> targets the smallest balance first, which gives you an early win.</p>
+      <p class="seo-i18n" data-en="When a debt is paid off, its minimum rolls into the next target, so the payment toward each debt grows over time. The calculator runs both orders on your numbers so you can see exactly what the early win costs." data-es="Cuando terminas una deuda, su mínimo pasa a la siguiente, así que el pago hacia cada deuda crece con el tiempo. La calculadora corre ambos órdenes con tus números para que veas exactamente cuánto cuesta la victoria temprana.">When a debt is paid off, its minimum rolls into the next target, so the payment toward each debt grows over time. The calculator runs both orders on your numbers so you can see exactly what the early win costs.</p>
     </div>
     <div class="content-card">
-      <h3 data-i="c2-title">When to consider consolidation</h3>
-      <p data-i="c2-p1">Debt consolidation makes sense when: you have multiple high-interest debts (especially credit cards above 20% APR), you can qualify for a consolidation loan at a lower rate, and your DTI is below 43%.</p>
-      <p data-i="c2-p2">It does not solve overspending — it restructures existing debt. If you consolidate and continue using the cards, you end up with more debt, not less. Fix the behavior first, then consolidate.</p>
+      <h3 class="seo-i18n" data-en="When to consider consolidation" data-es="Cuándo considerar la consolidación">When to consider consolidation</h3>
+      <p class="seo-i18n" data-en="Consolidation can help when you have several high-interest debts, especially credit cards above about 20% APR, you qualify for a loan or balance transfer at a clearly lower rate, and your debt-to-income ratio is below about 43%." data-es="La consolidación puede ayudar cuando tienes varias deudas de interés alto, sobre todo tarjetas por encima de cerca del 20% de APR, calificas para un préstamo o una transferencia de saldo con una tasa claramente menor y tu relación deuda-ingreso está por debajo de cerca del 43%.">Consolidation can help when you have several high-interest debts, especially credit cards above about 20% APR, you qualify for a loan or balance transfer at a clearly lower rate, and your debt-to-income ratio is below about 43%.</p>
+      <p class="seo-i18n" data-en="It restructures debt; it does not reduce it. If the cards fill up again after you consolidate, you end up with more debt than before. Use the &lt;a href=&quot;/personal-loan&quot;&gt;personal loan calculator&lt;/a&gt; to check the real APR of an offer." data-es="Reestructura la deuda, no la reduce. Si las tarjetas se vuelven a llenar después de consolidar, terminas con más deuda que antes. Usa la &lt;a href=&quot;/personal-loan&quot;&gt;calculadora de préstamo personal&lt;/a&gt; para revisar el APR real de una oferta.">It restructures debt; it does not reduce it. If the cards fill up again after you consolidate, you end up with more debt than before. Use the <a href="/personal-loan">personal loan calculator</a> to check the real APR of an offer.</p>
+    </div>
+    <div class="content-card wide">
+      <h3 class="seo-i18n" data-en="Worked example: the calculator&#x27;s default numbers" data-es="Ejemplo práctico: los números por defecto de la calculadora">Worked example: the calculator's default numbers</h3>
+      <p class="seo-i18n" data-en="Three debts totaling $14,500 with $415 in combined minimums, and a budget of $600 a month, which leaves $185 extra:" data-es="Tres deudas que suman $14,500 con $415 de mínimos en total, y un presupuesto de $600 al mes, que deja $185 extra:">Three debts totaling $14,500 with $415 in combined minimums, and a budget of $600 a month, which leaves $185 extra:</p>
+      <ol class="seo-i18n" data-en="&lt;li&gt;Credit card A: $4,000 at 24%, $120 minimum.&lt;/li&gt;&lt;li&gt;Credit card B: $1,500 at 19%, $45 minimum.&lt;/li&gt;&lt;li&gt;Car loan: $9,000 at 7%, $250 minimum.&lt;/li&gt;&lt;li&gt;Minimums only: debt-free in 46 months, about $4,263 in interest.&lt;/li&gt;&lt;li&gt;Avalanche (card A, then card B, then the car loan): debt-free in 28 months, about $1,982 in interest.&lt;/li&gt;&lt;li&gt;Snowball (card B, then card A, then the car loan): also 28 months, about $2,070 in interest.&lt;/li&gt;" data-es="&lt;li&gt;Tarjeta A: $4,000 al 24%, mínimo de $120.&lt;/li&gt;&lt;li&gt;Tarjeta B: $1,500 al 19%, mínimo de $45.&lt;/li&gt;&lt;li&gt;Préstamo de auto: $9,000 al 7%, mínimo de $250.&lt;/li&gt;&lt;li&gt;Solo mínimos: sin deudas en 46 meses, unos $4,263 de interés.&lt;/li&gt;&lt;li&gt;Avalancha (tarjeta A, luego tarjeta B, luego el auto): sin deudas en 28 meses, unos $1,982 de interés.&lt;/li&gt;&lt;li&gt;Bola de nieve (tarjeta B, luego tarjeta A, luego el auto): también 28 meses, unos $2,070 de interés.&lt;/li&gt;"><li>Credit card A: $4,000 at 24%, $120 minimum.</li><li>Credit card B: $1,500 at 19%, $45 minimum.</li><li>Car loan: $9,000 at 7%, $250 minimum.</li><li>Minimums only: debt-free in 46 months, about $4,263 in interest.</li><li>Avalanche (card A, then card B, then the car loan): debt-free in 28 months, about $1,982 in interest.</li><li>Snowball (card B, then card A, then the car loan): also 28 months, about $2,070 in interest.</li></ol>
+      <p class="seo-i18n" data-en="The $185 a month on top of the minimums saves about $2,281 and 18 months. Choosing avalanche over snowball saves only another $88 here, because the two cards have similar rates. The gap grows when one debt has a much higher APR and a larger balance than the others." data-es="Los $185 al mes por encima de los mínimos ahorran unos $2,281 y 18 meses. Elegir avalancha en vez de bola de nieve ahorra solo $88 más en este caso, porque las dos tarjetas tienen tasas parecidas. La diferencia crece cuando una deuda tiene un APR mucho más alto y un saldo más grande que las demás.">The $185 a month on top of the minimums saves about $2,281 and 18 months. Choosing avalanche over snowball saves only another $88 here, because the two cards have similar rates. The gap grows when one debt has a much higher APR and a larger balance than the others.</p>
     </div>
   </div>
 </section>
 
-<section class="faq-section">
-  <p class="section-label" data-i="faq-label">Common questions</p>
-  <div class="faq-item">
-    <div class="faq-q" data-i="faq1-q">How long will it take to pay off $20,000 in credit card debt?</div>
-    <div class="faq-a" data-i="faq1-a">On a $20,000 balance at 18% APR, paying only a minimum of about 2% of the balance would take over 50 years and cost roughly $77,000 in total (illustrative; actual minimums vary by issuer and assume no new charges). Paying $600/month clears the debt in about 47 months at a total cost of about $27,900. Paying $1,000/month clears it in about 24 months, for about $24,000 in total. Use the calculator above to find your optimal payment.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-i="faq2-q">Is avalanche or snowball better?</div>
-    <div class="faq-a" data-i="faq2-a">Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With three debts of $4,000 at 24%, $1,500 at 19% and $9,000 at 7%, and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16.</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q" data-i="faq3-q">Should I pay off debt or save first?</div>
-    <div class="faq-a" data-i="faq3-a">Build a $1,000 emergency fund first — always. Then aggressively pay down any debt above 7% APR before investing. Debt at 18% APR is a guaranteed 18% return when paid off — no investment consistently beats that. Once high-interest debt is clear, shift to building a 3–6 month emergency fund and then investing.</div>
-  </div>
+<!-- FAQ (SEO) -->
+<section class="faq-section" aria-labelledby="faq-label">
+  <h2 class="seo-i18n section-label" id="faq-label" data-en="Common questions" data-es="Preguntas frecuentes">Common questions</h2>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Is avalanche or snowball better?" data-es="¿Qué es mejor, avalancha o bola de nieve?">Is avalanche or snowball better?</summary><div class="seo-i18n faq-a" data-en="Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With the calculator&#x27;s default debts ($4,000 at 24%, $1,500 at 19% and $9,000 at 7%) and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16." data-es="La avalancha nunca cuesta más interés que la bola de nieve, porque cada dólar extra va a la tasa más alta. La bola de nieve elimina tu primera deuda antes, lo que ayuda a algunas personas a mantenerse motivadas. Con las deudas por defecto de la calculadora ($4,000 al 24%, $1,500 al 19% y $9,000 al 7%) y $600 al mes, ambos métodos terminan en el mes 28; la avalancha paga unos $88 menos de interés, mientras que la bola de nieve elimina la primera deuda en el mes 7 en vez del mes 16.">Avalanche never costs more interest than snowball, because every extra dollar goes to the highest rate. Snowball clears your first debt sooner, which helps some people stay motivated. With the calculator's default debts ($4,000 at 24%, $1,500 at 19% and $9,000 at 7%) and $600 a month, both finish in month 28; avalanche pays about $88 less interest, while snowball clears the first debt in month 7 instead of month 16.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="How long will it take to pay off $20,000 in credit card debt?" data-es="¿Cuánto tiempo toma pagar $20,000 de deuda de tarjeta de crédito?">How long will it take to pay off $20,000 in credit card debt?</summary><div class="seo-i18n faq-a" data-en="At 18% APR with no new charges: paying $500 a month takes about 62 months and about $10,800 in interest; $600 a month takes about 47 months and $7,900; $1,000 a month takes about 24 months and $4,000. Paying only a minimum of 2% of the balance would take more than 50 years and about $74,000 in total payments. Actual minimums vary by issuer." data-es="Al 18% de APR y sin cargos nuevos: pagando $500 al mes toma unos 62 meses y unos $10,800 de interés; con $600 al mes, unos 47 meses y $7,900; con $1,000 al mes, unos 24 meses y $4,000. Pagando solo un mínimo del 2% del saldo tomaría más de 50 años y unos $74,000 en pagos totales. Los mínimos reales varían según el emisor.">At 18% APR with no new charges: paying $500 a month takes about 62 months and about $10,800 in interest; $600 a month takes about 47 months and $7,900; $1,000 a month takes about 24 months and $4,000. Paying only a minimum of 2% of the balance would take more than 50 years and about $74,000 in total payments. Actual minimums vary by issuer.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="What if my budget only covers the minimum payments?" data-es="¿Qué pasa si mi presupuesto solo alcanza para los pagos mínimos?">What if my budget only covers the minimum payments?</summary><div class="seo-i18n faq-a" data-en="Then there is no extra money for either method, and the calculator shows how long minimums alone take. Even a small increase helps: in the default example, moving from $415 of minimums to $600 a month saves about $2,281 in interest and finishes 18 months sooner. If you cannot cover the minimums at all, call your card issuers about hardship programs or contact a nonprofit credit counseling agency before you miss payments." data-es="Entonces no queda dinero extra para ningún método, y la calculadora muestra cuánto tardan solo los mínimos. Incluso un aumento pequeño ayuda: en el ejemplo por defecto, pasar de $415 de mínimos a $600 al mes ahorra unos $2,281 de interés y termina 18 meses antes. Si no puedes cubrir ni los mínimos, llama a los emisores de tus tarjetas para preguntar por programas de dificultad financiera o contacta a una agencia de asesoría de crédito sin fines de lucro antes de atrasarte.">Then there is no extra money for either method, and the calculator shows how long minimums alone take. Even a small increase helps: in the default example, moving from $415 of minimums to $600 a month saves about $2,281 in interest and finishes 18 months sooner. If you cannot cover the minimums at all, call your card issuers about hardship programs or contact a nonprofit credit counseling agency before you miss payments.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Should I include my car loan, student loans or mortgage?" data-es="¿Debo incluir mi préstamo de auto, préstamos estudiantiles o hipoteca?">Should I include my car loan, student loans or mortgage?</summary><div class="seo-i18n faq-a" data-en="Include every debt you want a payoff date for, such as cards, personal loans, car loans and student loans. With avalanche, low-rate debts like a 7% car loan naturally go last, so including them does not slow down the expensive debts. Most people leave a mortgage out, because it runs for decades and usually has the lowest rate." data-es="Incluye toda deuda para la que quieras una fecha de pago final, como tarjetas, préstamos personales, préstamos de auto y estudiantiles. Con la avalancha, las deudas de tasa baja como un préstamo de auto al 7% quedan naturalmente al final, así que incluirlas no frena las deudas caras. La mayoría deja fuera la hipoteca, porque dura décadas y suele tener la tasa más baja.">Include every debt you want a payoff date for, such as cards, personal loans, car loans and student loans. With avalanche, low-rate debts like a 7% car loan naturally go last, so including them does not slow down the expensive debts. Most people leave a mortgage out, because it runs for decades and usually has the lowest rate.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Can a balance transfer or consolidation loan speed this up?" data-es="¿Una transferencia de saldo o un préstamo de consolidación lo acelera?">Can a balance transfer or consolidation loan speed this up?</summary><div class="seo-i18n faq-a" data-en="It can, if the new rate is clearly lower and you stop adding new charges. Balance transfer cards often charge a fee of about 3% to 5% of the amount moved, and the promotional rate ends after a set period. To test it, replace the debts you would move with one debt at the new balance (including the fee) and the new APR, and compare the debt-free date and interest." data-es="Puede, si la nueva tasa es claramente menor y dejas de hacer cargos nuevos. Las tarjetas de transferencia de saldo suelen cobrar una comisión de cerca del 3% al 5% del monto transferido, y la tasa promocional termina después de un plazo fijo. Para probarlo, reemplaza las deudas que moverías por una sola deuda con el nuevo saldo (incluyendo la comisión) y el nuevo APR, y compara la fecha de fin y el interés.">It can, if the new rate is clearly lower and you stop adding new charges. Balance transfer cards often charge a fee of about 3% to 5% of the amount moved, and the promotional rate ends after a set period. To test it, replace the debts you would move with one debt at the new balance (including the fee) and the new APR, and compare the debt-free date and interest.</div></details>
+  <details class="faq-item"><summary class="seo-i18n" data-en="Should I pay off debt or save first?" data-es="¿Debo pagar deudas o ahorrar primero?">Should I pay off debt or save first?</summary><div class="seo-i18n faq-a" data-en="Start with a small emergency fund, often around $1,000, so a surprise expense does not go back on a card. Then put extra money toward debt above about 7% APR: paying off a card at 18% is a guaranteed 18% return, which investments do not reliably beat. Once high-interest debt is gone, build a 3–6 month emergency fund and start investing." data-es="Empieza con un fondo de emergencia pequeño, a menudo de unos $1,000, para que un gasto inesperado no vuelva a la tarjeta. Luego destina el dinero extra a las deudas por encima de cerca del 7% de APR: pagar una tarjeta al 18% es un rendimiento garantizado del 18%, algo que las inversiones no superan de forma confiable. Cuando ya no tengas deuda de interés alto, arma un fondo de emergencia de 3 a 6 meses y empieza a invertir.">Start with a small emergency fund, often around $1,000, so a surprise expense does not go back on a card. Then put extra money toward debt above about 7% APR: paying off a card at 18% is a guaranteed 18% return, which investments do not reliably beat. Once high-interest debt is gone, build a 3–6 month emergency fund and start investing.</div></details>
 </section>
 
 <section class="other-calcs">
@@ -742,6 +821,13 @@
     var orig = window.setLang;
     window.setLang = function(l){ var r = orig.apply(this, arguments); swap(l); return r; };
   }
+})();
+</script>
+<script>
+(function(){
+  var o = window.setLang; if (typeof o !== 'function') return;
+  function swap(l){ document.querySelectorAll('.seo-i18n[data-en]').forEach(function(el){ var v = el.getAttribute('data-' + l); if (v) el.innerHTML = v; }); }
+  window.setLang = function(l){ var r = o.apply(this, arguments); swap(l); return r; };
 })();
 </script>
 </body>
